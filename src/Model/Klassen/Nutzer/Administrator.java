@@ -42,8 +42,8 @@ public class Administrator extends Mensch {
         return new ArrayList<>();
     }
 
-    public void gepaeckeBearbeiten(Buchung buchung, int gewicht) {
-        buchung.getAnwender().gepaeckBearbeiten(buchung,gewicht);
+    public void gepaeckeBearbeiten(Buchung buchung, double neuesGewicht) {
+        buchung.getAnwender().gepaeckBearbeiten(buchung,neuesGewicht);
     }
 
     public void buchungLoeschen(Buchung buchung) {

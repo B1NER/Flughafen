@@ -118,7 +118,12 @@ public class Anwender extends Mensch {
         return new ArrayList<>();
     }
 
-    public void gepaeckBearbeiten(Buchung buchung, int neuesGewicht) {
-        buchung.getGepaeck().setGewicht(neuesGewicht);
+    public void gepaeckBearbeiten(Buchung buchung, double neuesGewicht) {
+        if(neuesGewicht < 20){
+            buchung.getGepaeck().setGewicht(neuesGewicht);
+        }else{
+            //Throw new ToMuchGewichtException();
+        }
+
     }
 }

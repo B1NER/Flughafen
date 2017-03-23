@@ -43,11 +43,11 @@ public class Angestellter extends Mensch {
     }
 
     public ArrayList<Buchung> getAnwenderBuchungen(Anwender anwender) {
-        return new ArrayList<>();
+        return anwender.getBuchungen();
     }
 
-    public void gepeckBearbeiten(Anwender anwender) {
-
+    public void gepeckBearbeiten(Anwender anwender, Buchung buchung, double neuesGewicht) {
+        anwender.gepaeckBearbeiten(buchung, neuesGewicht);
     }
 
 
