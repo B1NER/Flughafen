@@ -21,7 +21,7 @@ import static org.junit.Assert.*;
  */
 public class VerwaltungTest {
 
-    ArrayList<Anwender> anwender = new ArrayList<Anwender>();
+    private ArrayList<Anwender> anwender = new ArrayList<Anwender>();
 
     @Before
     public void before() {
@@ -36,7 +36,7 @@ public class VerwaltungTest {
         anwender.add(new Anwender(2, "Martina", "Musterfrau", "03.02.2000", 2222, "martina.musterfrau@test.com", "martina123"));
 
         try {
-            Verwaltung.anwenderEinlesen("C:\\Users\\jonas\\Documents\\Schule\\4BT\\TP\\Projekt Flughafen\\Flughafen-B1NER\\src\\Daten\\Menschen\\Anwender.csv");
+            Verwaltung.anwenderEinlesen("src\\Model\\Daten\\Menschen\\Anwender.csv");
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -57,7 +57,7 @@ public class VerwaltungTest {
         angestellte.add(new Angestellter(2, "Jonas", "Pfeifhofer", "06.11.1999", 3948, "jonas.pfeifhofer99@gmail.com", "jonaspf127"));
 
         try {
-            Verwaltung.angestellteEinlesen("C:\\Users\\jonas\\Documents\\Schule\\4BT\\TP\\Projekt Flughafen\\Flughafen-B1NER\\src\\Daten\\Menschen\\Angestellter.csv");
+            Verwaltung.angestellteEinlesen("src\\Model\\Daten\\Menschen\\Angestellter.csv");
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -78,7 +78,7 @@ public class VerwaltungTest {
         administratoren.add(new Administrator(2, "Jonas", "Pfeifhofer", "06.11.1999", 3948, "jonas.pfeifhofer99@gmail.com", "jonaspf127"));
 
         try {
-            Verwaltung.administratorenEinlesen("C:\\Users\\jonas\\Documents\\Schule\\4BT\\TP\\Projekt Flughafen\\Flughafen-B1NER\\src\\Daten\\Menschen\\Admin.csv");
+            Verwaltung.administratorenEinlesen("src\\Model\\Daten\\Menschen\\Admin.csv");
         }catch (IOException e){
             e.printStackTrace();
         }
