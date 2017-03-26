@@ -12,15 +12,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
-import static org.junit.Assert;
-import static org.junit.Assert;
+import org.junit.*;
+
+import static org.junit.Assert.*;
 
 /**
  * Created by jonas on 22.03.2017.
  */
 public class VerwaltungTest {
 
-    Verwaltung verwaltung = new Verwaltung();
     ArrayList<Anwender> anwender = new ArrayList<Anwender>();
 
     @Before
@@ -31,8 +31,7 @@ public class VerwaltungTest {
         //,da davon ausgegangen wird, dass das die Methoder für beliebig viele Elemen
         //funktionieren, wenn sie für 2 Elemente funktionieren
 
-        //Anwender
-
+        //Anwender erstellen, um dann zu vergleichen
         anwender.add(new Anwender(1, "Max", "Mustermann", "01.01.2000",1111, "max.mustermann@test.com", "maxi123"));
         anwender.add(new Anwender(2, "Martina", "Musterfrau", "03.02.2000", 2222, "martina.musterfrau@test.com", "martina123"));
 
@@ -43,13 +42,13 @@ public class VerwaltungTest {
         }
 
         for (int i = 0; i < anwender.size(); i++) {
-            assertEquals(verwaltung.getAnwender().get(i).getAnwenderID(),anwender.get(i).getAnwenderID());
-            assertEquals(verwaltung.getAnwender().get(i).getVorname(),anwender.get(i).getVorname());
-            assertEquals(verwaltung.getAnwender().get(i).getNachname(),anwender.get(i).getNachname());
-            assertEquals(verwaltung.getAnwender().get(i).getGeburtsdatum(),anwender.get(i).getGeburtsdatum());
-            assertEquals(verwaltung.getAnwender().get(i).getPassnummer(),anwender.get(i).getPassnummer());
-            assertEquals(verwaltung.getAnwender().get(i).geteMail(),anwender.get(i).geteMail());
-            assertEquals(verwaltung.getAnwender().get(i).getPasswort(),anwender.get(i).getPasswort());
+            assertEquals(Verwaltung.getAnwender().get(i).getAnwenderID(), anwender.get(i).getAnwenderID());
+            assertEquals(Verwaltung.getAnwender().get(i).getVorname(), anwender.get(i).getVorname());
+            assertEquals(Verwaltung.getAnwender().get(i).getNachname(), anwender.get(i).getNachname());
+            assertEquals(Verwaltung.getAnwender().get(i).getGeburtsdatum(), anwender.get(i).getGeburtsdatum());
+            assertEquals(Verwaltung.getAnwender().get(i).getPassnummer(), anwender.get(i).getPassnummer());
+            assertEquals(Verwaltung.getAnwender().get(i).geteMail(), anwender.get(i).geteMail());
+            assertEquals(Verwaltung.getAnwender().get(i).getPasswort(), anwender.get(i).getPasswort());
         }
 
         //Angestellte
@@ -64,13 +63,13 @@ public class VerwaltungTest {
         }
 
         for (int i = 0; i < angestellte.size(); i++) {
-            assertEquals(verwaltung.getAngestellte().get(i).getAngestelltenID(),angestellte.get(i).getAngestelltenID());
-            assertEquals(verwaltung.getAngestellte().get(i).getVorname(),angestellte.get(i).getVorname());
-            assertEquals(verwaltung.getAngestellte().get(i).getNachname(),angestellte.get(i).getNachname());
-            assertEquals(verwaltung.getAngestellte().get(i).getGeburtsdatum(),angestellte.get(i).getGeburtsdatum());
-            assertEquals(verwaltung.getAngestellte().get(i).getPassnummer(),angestellte.get(i).getPassnummer());
-            assertEquals(verwaltung.getAngestellte().get(i).geteMail(),angestellte.get(i).geteMail());
-            assertEquals(verwaltung.getAngestellte().get(i).getPasswort(),angestellte.get(i).getPasswort());
+            assertEquals(Verwaltung.getAngestellte().get(i).getAngestelltenID(), angestellte.get(i).getAngestelltenID());
+            assertEquals(Verwaltung.getAngestellte().get(i).getVorname(), angestellte.get(i).getVorname());
+            assertEquals(Verwaltung.getAngestellte().get(i).getNachname(), angestellte.get(i).getNachname());
+            assertEquals(Verwaltung.getAngestellte().get(i).getGeburtsdatum(), angestellte.get(i).getGeburtsdatum());
+            assertEquals(Verwaltung.getAngestellte().get(i).getPassnummer(), angestellte.get(i).getPassnummer());
+            assertEquals(Verwaltung.getAngestellte().get(i).geteMail(), angestellte.get(i).geteMail());
+            assertEquals(Verwaltung.getAngestellte().get(i).getPasswort(), angestellte.get(i).getPasswort());
         }
 
         //Administratoren
@@ -85,13 +84,13 @@ public class VerwaltungTest {
         }
 
         for (int i = 0; i < administratoren.size(); i++) {
-            assertEquals(verwaltung.getAdministratoren().get(i).getAdminID(),administratoren.get(i).getAdminID());
-            assertEquals(verwaltung.getAdministratoren().get(i).getVorname(),administratoren.get(i).getVorname());
-            assertEquals(verwaltung.getAdministratoren().get(i).getNachname(),administratoren.get(i).getNachname());
-            assertEquals(verwaltung.getAdministratoren().get(i).getGeburtsdatum(),administratoren.get(i).getGeburtsdatum());
-            assertEquals(verwaltung.getAdministratoren().get(i).getPassnummer(),administratoren.get(i).getPassnummer());
-            assertEquals(verwaltung.getAdministratoren().get(i).geteMail(),administratoren.get(i).geteMail());
-            assertEquals(verwaltung.getAdministratoren().get(i).getPasswort(),administratoren.get(i).getPasswort());
+            assertEquals(Verwaltung.getAdministratoren().get(i).getAdminID(), administratoren.get(i).getAdminID());
+            assertEquals(Verwaltung.getAdministratoren().get(i).getVorname(), administratoren.get(i).getVorname());
+            assertEquals(Verwaltung.getAdministratoren().get(i).getNachname(), administratoren.get(i).getNachname());
+            assertEquals(Verwaltung.getAdministratoren().get(i).getGeburtsdatum(), administratoren.get(i).getGeburtsdatum());
+            assertEquals(Verwaltung.getAdministratoren().get(i).getPassnummer(), administratoren.get(i).getPassnummer());
+            assertEquals(Verwaltung.getAdministratoren().get(i).geteMail(), administratoren.get(i).geteMail());
+            assertEquals(Verwaltung.getAdministratoren().get(i).getPasswort(), administratoren.get(i).getPasswort());
         }
 
         /*
@@ -159,7 +158,7 @@ public class VerwaltungTest {
         Gepaeck gepaeck = new Gepaeck(32, 1000, "Handgepaek");
 
         Buchung buchung = new Buchung(flug, anwender, 3, gepaeck, 140, false);
-        verwaltung.getBuchungen().add(buchung);
+        Verwaltung.getBuchungen().add(buchung);
 
         try {
             //Bei Flug, Anwender und Gepäck reicht nur der Vergleich der IDs
@@ -174,7 +173,7 @@ public class VerwaltungTest {
         }catch (BuchungDoesNotExistException e){
             e.printStackTrace();
         }
-        verwaltung.getBuchungen().remove(buchung);
+        Verwaltung.getBuchungen().remove(buchung);
 
         /*
         //prüfen, ob richtige Buchungen zurückkommen
