@@ -74,7 +74,6 @@ public class Flug {
         }
     }
 
-
     public int getAnzahlPlaetze() {
         return anzahlPlaetze;
     }

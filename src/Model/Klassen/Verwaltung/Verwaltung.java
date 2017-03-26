@@ -291,7 +291,7 @@ public class Verwaltung {
         }
         Anwender.setAnwenderCounter(Anwender.getAnwenderCounter()+1);
         anwender.add(new Anwender(Anwender.getAnwenderCounter(),vorname,nachname,geburtsdatum,passnummer,eMail,passwort));
-        System.out.println(vorname+" "+nachname+" "+" added\t -->"+ eMail);
+        //System.out.println(vorname+" "+nachname+" "+" added\t -->"+ eMail);
     }
 
     public static void addBuchung(Buchung buchung) {
