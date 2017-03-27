@@ -2,6 +2,7 @@ package Model.Klassen.Elemente;
 
 
 import Model.Klassen.Nutzer.Anwender;
+import Model.Klassen.Verwaltung.Buchungen;
 
 /**
  * Created by knoll on 17.03.2017.
@@ -15,12 +16,11 @@ public class Buchung {
     private int anzahlSitzplaetze;
     private Gepaeck gepaeck;
     private double buchungspreis;
-    private boolean createdByAnwender;      //true = 0      false = 1
-    private static int buchungsCounter = 0;
+    private boolean createdByAnwender; //1 = Anwender hat gbucht = true     0 = Angestellter hat gebucht = false
 
     public Buchung(Flug hinflug, Flug rueckflug, Anwender anwender, int anzahlSitzplaetze, Gepaeck gepaeck, double buchungspreis, boolean createdByAnwender){
-        buchungsCounter++;
-        setBuchungsID(buchungsCounter);
+        Buchungen.setBuchungsCounter(Buchungen.getBuchungsCounter() + 1);
+        setBuchungsID(Buchungen.getBuchungsCounter());
         setAnwender(anwender);
         setAnzahlSitzplaetze(anzahlSitzplaetze);
         setBuchungsID(buchungsID);
@@ -32,8 +32,8 @@ public class Buchung {
     }
 
     public Buchung(Flug hinflug, Anwender anwender, int anzahlSitzplaetze, Gepaeck gepaeck, double buchungspreis, boolean createdByAnwender){
-        buchungsCounter++;
-        setBuchungsID(buchungsCounter);
+        Buchungen.setBuchungsCounter(Buchungen.getBuchungsCounter() + 1);
+        setBuchungsID(Buchungen.getBuchungsCounter());
         setAnwender(anwender);
         setAnzahlSitzplaetze(anzahlSitzplaetze);
         setBuchungsID(buchungsID);
@@ -42,6 +42,7 @@ public class Buchung {
         setGepaeck(gepaeck);
         setCreatedByAnwender(createdByAnwender);
     }
+
 
     public boolean isCreatedByAnwender() {
         return createdByAnwender;
@@ -75,6 +76,7 @@ public class Buchung {
         return buchungsID;
     }
 
+
     public void setAnwender(Anwender anwender) {
         this.anwender = anwender;
     }
@@ -106,13 +108,4 @@ public class Buchung {
     public void setRueckflug(Flug rueckflug) {
         this.rueckflug = rueckflug;
     }
-
-    public boolean isRueckflug(){
-        if(rueckflug == null){
-            return false;
-        }else {
-            return true;
-        }
-    }
-
 }

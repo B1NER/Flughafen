@@ -1,3 +1,4 @@
+/*
 
 import Model.Exceptions.BuchungDoesNotExistException;
 import Model.Klassen.Elemente.Buchung;
@@ -16,9 +17,11 @@ import org.junit.*;
 
 import static org.junit.Assert.*;
 
+*/
 /**
  * Created by jonas on 22.03.2017.
- */
+ *//*
+
 public class VerwaltungTest {
 
     private ArrayList<Anwender> anwender = new ArrayList<Anwender>();
@@ -26,7 +29,7 @@ public class VerwaltungTest {
     @Before
     public void before() {
         //prüfen, ob anwender, angestellte und admins richtig eingelesen werden
-        //Für Test müssen zuerst neue Anwenderm, Angestellte und Admins erstellt werden
+        //Für Test müssen zuerst neue Anwenderm, Angestellten und Admins erstellt werden
         //Weitere Vorraussetzung: es müssen immer nur 2 Elemente in den Listen sein
         //,da davon ausgegangen wird, dass das die Methoder für beliebig viele Elemen
         //funktionieren, wenn sie für 2 Elemente funktionieren
@@ -51,7 +54,7 @@ public class VerwaltungTest {
             assertEquals(Verwaltung.getAnwender().get(i).getPasswort(), anwender.get(i).getPasswort());
         }
 
-        //Angestellte
+        //Angestellten
         ArrayList <Angestellter> angestellte = new ArrayList<Angestellter>();
         angestellte.add(new Angestellter(1,"Matthias","Obergasser", "23.09.1999",8274, "matti.climb@gmail.com", "mattrivals1999"));
         angestellte.add(new Angestellter(2, "Jonas", "Pfeifhofer", "06.11.1999", 3948, "jonas.pfeifhofer99@gmail.com", "jonaspf127"));
@@ -93,7 +96,8 @@ public class VerwaltungTest {
             assertEquals(Verwaltung.getAdministratoren().get(i).getPasswort(), administratoren.get(i).getPasswort());
         }
 
-        /*
+        */
+/*
         //Buchungen
         ArrayList <Buchung> buchungen = new ArrayList<Buchung>();
         buchungen.add(new Buchung());
@@ -115,8 +119,10 @@ public class VerwaltungTest {
             //assertEquals(verwaltung.getBuchungen().get(i).getBuchungspreis(),buchungen.get(i).getBuchungspreis());
             assertEquals(verwaltung.getBuchungen().get(i).getAngestelltenID(),buchungen.get(i).getAngestelltenID());
 
-        }*/
-        /*
+        }*//*
+
+        */
+/*
         //Flüge
         ArrayList <Flug> fluege = new ArrayList<Flug>();
         fluege.add(new Flug("LH3428","Lufthansa", "München","Berlin",150,   20000, new Date(14:00), 21.03.2017", "	21.03.2017 15:10	150));
@@ -139,7 +145,8 @@ public class VerwaltungTest {
             assertEquals(verwaltung.getFluege().get(i).getAnzahlPlaetze(),fluege.get(i).getAnzahlPlaetze());
             assertEquals(verwaltung.getFluege().get(i).getGepaeckskapazitaet(),fluege.get(i).getGepaeckskapazitaet());
             assertEquals(verwaltung.getFluege().get(i).getPreisProPerson(),fluege.get(i).getPreisProPerson());
-        }*/
+        }*//*
+
 
     }
 
@@ -175,7 +182,8 @@ public class VerwaltungTest {
         }
         Verwaltung.getBuchungen().remove(buchung);
 
-        /*
+        */
+/*
         //prüfen, ob richtige Buchungen zurückkommen
 
         anwender.getBuchungen().add(new Buchung(7, flug, anwender, 3, gepaeck, 178, false));
@@ -211,8 +219,9 @@ public class VerwaltungTest {
         anwenderArrayList.add(new Anwender());
         anwenderArrayList.add(new Anwender());
         assertEquals(anwenderArrayList, Verwaltung.getAnwenderByAngestelltenID(10));
-        */
+        *//*
+
     }
 
 
-}
+}*/

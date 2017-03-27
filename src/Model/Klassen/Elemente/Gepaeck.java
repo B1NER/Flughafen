@@ -15,6 +15,7 @@ public class Gepaeck {
         setGewicht(gewicht);
     }
 
+
     public double getGewicht() {
         return gewicht;
     }

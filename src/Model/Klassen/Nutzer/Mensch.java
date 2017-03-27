@@ -4,6 +4,7 @@ package Model.Klassen.Nutzer;
  * Created by knoll on 14.03.2017.
  */
 public class Mensch {
+
     private String vorname;
     private String nachname;
     private String geburtsdatum;

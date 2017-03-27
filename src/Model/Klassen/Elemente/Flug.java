@@ -29,6 +29,7 @@ public class Flug {
         setFlugID(ID);
     }
 
+
     public void setAbflugort(String abflugort) {
         this.abflugort = abflugort;
     }
@@ -63,15 +64,6 @@ public class Flug {
 
     public void setPreisProPerson(double preisProPerson) {
         this.preisProPerson = preisProPerson;
-    }
-
-    public boolean isVerfallen() {
-        if(ankunftszeit.before(abflugzeit)){
-            return true;
-        }
-        else{
-            return false;
-        }
     }
 
 
