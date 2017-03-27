@@ -29,7 +29,7 @@ public class VerwaltungTest {
     @Before
     public void before() {
         //prüfen, ob anwender, angestellte und admins richtig eingelesen werden
-        //Für Test müssen zuerst neue Anwenderm, Angestellten und Admins erstellt werden
+        //Für Test müssen zuerst neue Anwenderm, Angestellte und Admins erstellt werden
         //Weitere Vorraussetzung: es müssen immer nur 2 Elemente in den Listen sein
         //,da davon ausgegangen wird, dass das die Methoder für beliebig viele Elemen
         //funktionieren, wenn sie für 2 Elemente funktionieren
@@ -54,7 +54,7 @@ public class VerwaltungTest {
             assertEquals(Verwaltung.getAnwender().get(i).getPasswort(), anwender.get(i).getPasswort());
         }
 
-        //Angestellten
+        //Angestellte
         ArrayList <Angestellter> angestellte = new ArrayList<Angestellter>();
         angestellte.add(new Angestellter(1,"Matthias","Obergasser", "23.09.1999",8274, "matti.climb@gmail.com", "mattrivals1999"));
         angestellte.add(new Angestellter(2, "Jonas", "Pfeifhofer", "06.11.1999", 3948, "jonas.pfeifhofer99@gmail.com", "jonaspf127"));

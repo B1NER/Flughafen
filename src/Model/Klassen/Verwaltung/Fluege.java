@@ -29,6 +29,10 @@ public abstract class Fluege {
         return new ArrayList<>();
     }
 
+    public ArrayList<Flug> getVerfalleneFluege() {
+        return new ArrayList<>();
+    }
+
     public boolean isVerfallen(Flug flug) {
         if (flug.getAnkunftszeit().before(flug.getAbflugzeit())) {
             return true;
@@ -38,6 +42,7 @@ public abstract class Fluege {
     }
 
     public ArrayList<Buchung> getAnwenderBuchungen(Anwender anwender) {
+
         return new ArrayList<Buchung>();
     }
 

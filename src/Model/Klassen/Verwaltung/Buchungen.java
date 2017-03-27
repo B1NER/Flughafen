@@ -48,7 +48,6 @@ public abstract class Buchungen {
         Buchungen.buchungsCounter = buchungsCounter;
     }
 
-
     public static ArrayList<Buchung> getBuchungen() {
         return buchungen;
     }

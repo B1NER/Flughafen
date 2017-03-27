@@ -14,10 +14,17 @@ public abstract class Gepaecke {
     private static int gepaeckecounter;
 
 
-    public void gepeckBearbeiten(Gepaeck gepaeck, double neuesGewicht) {
-
+    public static void gepeckBearbeiten(Gepaeck gepaeck, double neuesGewicht) {
+        if (neuesGewicht < 20) {
+            gepaeck.setGewicht(neuesGewicht);
+        } else {
+            //Throw new ToMuchGewichtException();
+        }
     }
 
+    public static void getGepaeckByID(int gepaeckID){
+
+    }
 
     public static ArrayList<Gepaeck> getGepaecke() {
         return gepaecke;

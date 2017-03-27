@@ -26,6 +26,17 @@ public abstract class Verwaltung {
 
 
     public static void init() {
+        try{
+            fluegeEinlesen("");
+            administratorenEinlesen("");
+            angestellteEinlesen("");
+            anwenderEinlesen("");
+            angestellteAnwenderEinlesen("");
+            buchungenEinlesen("");
+        }
+        catch(IOException e){
+            System.out.println("File not Found");
+        }
     }
 
 
@@ -43,6 +54,7 @@ public abstract class Verwaltung {
     }
 
     public static void buchungenEinlesen(String pfad) throws IOException {
+        //Wichtig --> getByID + Liest zusätzlich noch Gepäck ein
         Scanner s = new Scanner(new BufferedReader(new FileReader(pfad)));
         while (s.hasNext()) {
             String zeile = s.nextLine();
@@ -78,7 +90,7 @@ public abstract class Verwaltung {
             String zeile = s.nextLine();
             String zs[] = zeile.split(";");
             Angestellter eingelesenerAngestellter = new Angestellter(Integer.parseInt(zs[0]), zs[1], zs[2], zs[3], Integer.parseInt(zs[4]), zs[5], zs[6]);
-            Angestellten.addAngestellter(eingelesenerAngestellter);
+            Angestellte.addAngestellter(eingelesenerAngestellter);
         }
         s.close();
     }
@@ -154,23 +166,23 @@ public abstract class Verwaltung {
 
     public static void angestelltenSpeichern(String pfad) throws IOException {
         BufferedWriter bw = new BufferedWriter(new FileWriter(pfad));
-        for (int i = 0; i < Angestellten.getAngestellte().size(); i++) {
-            bw.write(String.valueOf(Angestellten.getAngestellte().get(i).getAngestelltenID()));
+        for (int i = 0; i < Angestellte.getAngestellte().size(); i++) {
+            bw.write(String.valueOf(Angestellte.getAngestellte().get(i).getAngestelltenID()));
             bw.write(';');
-            bw.write(Angestellten.getAngestellte().get(i).getVorname());
+            bw.write(Angestellte.getAngestellte().get(i).getVorname());
             bw.write(';');
-            bw.write(Angestellten.getAngestellte().get(i).getNachname());
+            bw.write(Angestellte.getAngestellte().get(i).getNachname());
             bw.write(';');
-            bw.write(Angestellten.getAngestellte().get(i).getGeburtsdatum());
+            bw.write(Angestellte.getAngestellte().get(i).getGeburtsdatum());
             bw.write(';');
-            bw.write(String.valueOf(Angestellten.getAngestellte().get(i).getPassnummer()));
+            bw.write(String.valueOf(Angestellte.getAngestellte().get(i).getPassnummer()));
             bw.write(';');
-            bw.write(Angestellten.getAngestellte().get(i).geteMail());
+            bw.write(Angestellte.getAngestellte().get(i).geteMail());
             bw.write(';');
-            bw.write(Angestellten.getAngestellte().get(i).getPasswort());
+            bw.write(Angestellte.getAngestellte().get(i).getPasswort());
             bw.write(';');
             bw.write('\n');
-            System.out.println(Angestellten.getAngestellte().get(i));
+            System.out.println(Angestellte.getAngestellte().get(i));
         }
         bw.close();
     }
@@ -204,13 +216,11 @@ public abstract class Verwaltung {
 
 
     //Funktionelle Methoden
-
     public static void buchungErstellen() {
 
     }
 
     public static void anwenderErstellen(String vorname, String nachname, String geburtsdatum, int passnummer, String eMail, String passwort) throws InvalidEmailException, EmailIsAlreadyUsedException {
-
         Pattern pattern = Pattern.compile("^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$");
         Matcher matcher = pattern.matcher(eMail);
 
@@ -218,13 +228,23 @@ public abstract class Verwaltung {
             throw new InvalidEmailException();
         }
 
+        for (int i = 0; i < Administratoren.getAdministratoren().size(); i++) {
+            if (Administratoren.getAdministratoren().get(i).geteMail().equals(eMail)) {
+                throw new EmailIsAlreadyUsedException();
+            }
+        }
+        for (int i = 0; i < Angestellte.getAngestellte().size(); i++) {
+            if (Angestellte.getAngestellte().get(i).geteMail().equals(eMail)) {
+                throw new EmailIsAlreadyUsedException();
+            }
+        }
         for (int i = 0; i < Anwenders.getAnwenders().size(); i++) {
             if (Anwenders.getAnwenders().get(i).geteMail().equals(eMail)) {
                 throw new EmailIsAlreadyUsedException();
             }
         }
         Anwenders.addAnwender(new Anwender(vorname, nachname, geburtsdatum, passnummer, eMail, passwort));
-        System.out.println(vorname + " " + nachname + " " + " added\t -->" + eMail);
+        System.out.println("Anwender:" + vorname + " " + nachname + " " + " added\t -->" + eMail);
     }
 
     public static void adminErstellten() throws InvalidEmailException, EmailIsAlreadyUsedException {
@@ -248,9 +268,9 @@ public abstract class Verwaltung {
             }
         }
         if (angemeldeter == null) {
-            for (int i = 0; i < Angestellten.getAngestellte().size(); i++) {
-                if (Angestellten.getAngestellte().get(i).geteMail().equals(eMail) && Angestellten.getAngestellte().get(i).getPasswort().equals(password)) {
-                    angemeldeter = Angestellten.getAngestellte().get(i);
+            for (int i = 0; i < Angestellte.getAngestellte().size(); i++) {
+                if (Angestellte.getAngestellte().get(i).geteMail().equals(eMail) && Angestellte.getAngestellte().get(i).getPasswort().equals(password)) {
+                    angemeldeter = Angestellte.getAngestellte().get(i);
                     System.out.println("Erfolgreich Angemeldet:" + angemeldeter);
                     return;
                 }
@@ -269,8 +289,23 @@ public abstract class Verwaltung {
         throw new NutzerDoesNotExistException();
     }
 
+    public static void anmelden(Anwender anwender){
+        //Sobald anwender auf registrieren klickt und er sich registriert sollte er direkt danach auch angemeldet sein
+        //Diese Funktion erleichtert den GUI Programmierern das Registrieren/Anmelden
+        //*Klick* Registrieren --> anwenderErstellen --> erstellten Anwender dieser Funktion übergeben
+        angemeldeter = anwender;
+    }
+
+    public static void addBuchung(Flug hinflug, Flug rueckflug, Anwender anwender, int anzahlSitzplaetze, Gepaeck gepaeck, double buchungspreis, boolean createdByAnwender) {
+        Buchungen.addBuchung(new Buchung(hinflug, rueckflug, anwender, anzahlSitzplaetze, gepaeck, buchungspreis, createdByAnwender));
+    }
+
+    public static void addBuchung(Flug hinflug, Anwender anwender, int anzahlSitzplaetze, Gepaeck gepaeck, double buchungspreis, boolean createdByAnwender) {
+        Buchungen.addBuchung(new Buchung(hinflug, anwender, anzahlSitzplaetze, gepaeck, buchungspreis, createdByAnwender));
+    }
 
 
+    //Getter
     public static HashMap<Angestellter, Anwender> getAngestelltenAnwender() {
         return angestelltenAnwender;
     }
