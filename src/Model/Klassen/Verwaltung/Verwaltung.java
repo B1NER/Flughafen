@@ -1,6 +1,7 @@
 package Model.Klassen.Verwaltung;
 
 
+import Model.Enums.Gepaecktypen;
 import Model.Exceptions.*;
 import Model.Klassen.Elemente.Buchung;
 import Model.Klassen.Elemente.Flug;
@@ -226,7 +227,7 @@ public abstract class Verwaltung {
 
 
     //Funktionelle Methoden
-    public static void gepaeckErstellen() throws ToHighWeightException {
+    public static void gepaeckErstellen(double gewicht, Gepaecktypen) throws ToHighWeightException {
 
     }
 

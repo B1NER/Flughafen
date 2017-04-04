@@ -1,15 +1,17 @@
 package Model.Klassen.Elemente;
 
+import Model.Enums.Gepaecktypen;
+
 /**
  * Created by knoll on 17.03.2017.
  */
 public class Gepaeck {
 
     private int gepaeckID;
-    private String gepaeckTyp;
+    private Gepaecktypen gepaeckTyp;
     private double gewicht;
 
-    public Gepaeck(int gepaeckID, double gewicht, String gepaeckTyp) {
+    public Gepaeck(int gepaeckID, double gewicht, Gepaecktypen gepaeckTyp) {
         setGepaeckID(gepaeckID);
         setGepaeckTyp(gepaeckTyp);
         setGewicht(gewicht);
@@ -24,7 +26,7 @@ public class Gepaeck {
         return gepaeckID;
     }
 
-    public String getGepaeckTyp() {
+    public Gepaecktypen getGepaeckTyp() {
         return gepaeckTyp;
     }
 
@@ -32,7 +34,7 @@ public class Gepaeck {
         this.gepaeckID = gepaeckID;
     }
 
-    public void setGepaeckTyp(String gepaeckTyp) {
+    public void setGepaeckTyp(Gepaecktypen gepaeckTyp) {
         this.gepaeckTyp = gepaeckTyp;
     }
 
