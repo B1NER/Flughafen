@@ -28,13 +28,13 @@ public abstract class Verwaltung {
 
     public static void init() {
         try{
-            fluegeEinlesen("");
-            administratorenEinlesen("");
-            angestellteEinlesen("");
-            anwenderEinlesen("");
+            fluegeEinlesen("Model/Daten/Fluege/Flugliste.csv");
+            administratorenEinlesen("Model/Daten/Menschen/Admin.csv");
+            angestellteEinlesen("Model/Daten/Menschen/Angestellter.csv");
+            anwenderEinlesen("Model/Daten/Menschen/Anwender.csv");
             angestellteAnwenderEinlesen("");
             gepaeckEinlesen("");
-            buchungenEinlesen("");
+            buchungenEinlesen("Model/Daten/Buchungen/Buchungen.csv");
         }
         catch(IOException e){
             System.out.println("File not Found");
@@ -113,6 +113,7 @@ public abstract class Verwaltung {
     }
 
     public static void gepaeckEinlesen(String pfad) throws IOException {
+
     }
 
 
@@ -220,6 +221,7 @@ public abstract class Verwaltung {
     }
 
     public static void gepaeckSpeichern(String pfad) throws IOException {
+
     }
 
 
