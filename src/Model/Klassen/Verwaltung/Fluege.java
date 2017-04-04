@@ -102,10 +102,6 @@ public abstract class Fluege {
         }
     }
 
-    public ArrayList<Flug> sortFluegeBy(String eigenschaft) {
-        return new ArrayList<>();
-    }
-
 
     public static int getFluegecounter() {
         return fluegecounter;

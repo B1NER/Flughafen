@@ -23,6 +23,10 @@ public abstract class Buchungen {
         buchungen.add(buchung);
     }
 
+    public static void buchungBearbeiten(Buchung buchung) {
+
+    }
+
     public static void removeBuchung(Buchung buchung) {
         buchungen.remove(buchung);
     }

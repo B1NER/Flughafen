@@ -11,6 +11,7 @@ import Model.Klassen.Nutzer.Anwender;
 import Model.Klassen.Nutzer.Mensch;
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -32,6 +33,7 @@ public abstract class Verwaltung {
             angestellteEinlesen("");
             anwenderEinlesen("");
             angestellteAnwenderEinlesen("");
+            gepaeckEinlesen("");
             buchungenEinlesen("");
         }
         catch(IOException e){
@@ -108,6 +110,9 @@ public abstract class Verwaltung {
 
     public static void angestellteAnwenderEinlesen(String pfad) throws IOException {
 
+    }
+
+    public static void gepaeckEinlesen(String pfad) throws IOException {
     }
 
 
@@ -214,9 +219,12 @@ public abstract class Verwaltung {
 
     }
 
+    public static void gepaeckSpeichern(String pfad) throws IOException {
+    }
+
 
     //Funktionelle Methoden
-    public static void buchungErstellen() {
+    public static void gepaeckErstellen() throws ToHighWeightException {
 
     }
 
@@ -252,10 +260,6 @@ public abstract class Verwaltung {
     }
 
     public static void angestellterErstellen() throws InvalidEmailException, EmailIsAlreadyUsedException {
-
-    }
-
-    public static void gepaeckErstellen() throws ToHighWeightException {
 
     }
 
@@ -296,12 +300,26 @@ public abstract class Verwaltung {
         angemeldeter = anwender;
     }
 
-    public static void addBuchung(Flug hinflug, Flug rueckflug, Anwender anwender, int anzahlSitzplaetze, Gepaeck gepaeck, double buchungspreis, boolean createdByAnwender) {
+    public static void buchungErstellen(Flug hinflug, Flug rueckflug, Anwender anwender, int anzahlSitzplaetze, Gepaeck gepaeck, double buchungspreis, boolean createdByAnwender) {
         Buchungen.addBuchung(new Buchung(hinflug, rueckflug, anwender, anzahlSitzplaetze, gepaeck, buchungspreis, createdByAnwender));
     }
 
-    public static void addBuchung(Flug hinflug, Anwender anwender, int anzahlSitzplaetze, Gepaeck gepaeck, double buchungspreis, boolean createdByAnwender) {
+    public static void buchungErstellen(Flug hinflug, Anwender anwender, int anzahlSitzplaetze, Gepaeck gepaeck, double buchungspreis, boolean createdByAnwender) {
         Buchungen.addBuchung(new Buchung(hinflug, anwender, anzahlSitzplaetze, gepaeck, buchungspreis, createdByAnwender));
+    }
+
+    public static ArrayList<Anwender> getAngestelltenByAnwender(Angestellter angestellter) {
+        ArrayList<Anwender> l = new ArrayList<Anwender>();
+        for (HashMap.Entry<Angestellter, Anwender> h : angestelltenAnwender.entrySet()) {
+            if (h.getKey().equals(angestellter)) {
+                l.add(h.getValue());
+            }
+        }
+        return l;
+    }
+
+    public static boolean isAngemeldet() {
+        return angemeldeter != null;
     }
 
 
@@ -314,6 +332,8 @@ public abstract class Verwaltung {
         return angemeldeter;
     }
 
+
+    //Setter
     public static void setAngemeldeter(Mensch angemeldeter) {
         Verwaltung.angemeldeter = angemeldeter;
     }
