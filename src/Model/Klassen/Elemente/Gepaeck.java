@@ -50,4 +50,13 @@ public class Gepaeck {
         this.gewicht = gewicht;
     }
 
+
+    @Override
+    public String toString() {
+        return "Gepaeck{" +
+                "gepaeckID=" + gepaeckID +
+                ", gepaeckTyp=" + gepaeckTyp +
+                ", gewicht=" + gewicht +
+                '}';
+    }
 }

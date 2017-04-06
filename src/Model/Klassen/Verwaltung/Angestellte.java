@@ -45,10 +45,6 @@ public abstract class Angestellte {
         return angestelltenCounter;
     }
 
-    public static ArrayList<Anwender> getAgestelltenAnwenders(Angestellter angestellter) {
-        return new ArrayList<>();
-    }
-
 
     public static void setAngestellte(ArrayList<Angestellter> angestellte) {
         Angestellte.angestellte = angestellte;

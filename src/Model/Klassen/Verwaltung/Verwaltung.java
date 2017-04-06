@@ -33,7 +33,7 @@ public abstract class Verwaltung {
             angestellteEinlesen("Model/Daten/Menschen/Angestellter.csv");
             anwenderEinlesen("Model/Daten/Menschen/Anwender.csv");
             angestellteAnwenderEinlesen("");
-            gepaeckEinlesen("");
+            gepaeckEinlesen("Model/Daten/Gepaeck/Gepaecke.csv");
             buchungenEinlesen("Model/Daten/Buchungen/Buchungen.csv");
         } catch (IOException e) {
             System.out.println("File not Found");
@@ -42,6 +42,22 @@ public abstract class Verwaltung {
         } catch (GepaeckDoesNotExist e) {
             System.out.println("Gepaeck Does not Exist");
         }
+    }
+
+    public static void exit() {
+        try {
+            buchungenSpeichern("Model/Daten/Buchungen/Buchungen.csv");
+            administratorenSpeichern("Model/Daten/Menschen/Admin.csv");
+            angestelltenSpeichern("Model/Daten/Menschen/Angestellter.csv");
+            anwenderSpeichern("Model/Daten/Menschen/Anwender.csv");
+            angestelltenAnwenderSpeichern("");
+            gepaeckSpeichern("Model/Daten/Gepaeck/Gepaecke.csv");
+
+        } catch (IOException e) {
+            System.out.println("File not Found");
+        }
+        System.out.println("Alle Daten wurden erfolgreich gespeichert.\n\nDas Programm wird nun beendet!");
+        System.exit(0);
     }
 
 
@@ -59,20 +75,30 @@ public abstract class Verwaltung {
     }
 
     public static void buchungenEinlesen(String pfad) throws IOException, NutzerDoesNotExistException, GepaeckDoesNotExist {
-        //Wichtig --> getByID + Liest zusätzlich noch Gepäck ein
         Scanner s = new Scanner(new BufferedReader(new FileReader(pfad)));
         while (s.hasNext()) {
             String zeile = s.nextLine();
             String zs[] = zeile.split(";");
             Buchung eingeleseneBuchung;
-            if (zs[7].equals("0")) {
-                eingeleseneBuchung = new Buchung(Integer.parseInt(zs[0]), Fluege.getFlugByID(Integer.parseInt(zs[1])), Fluege.getFlugByID(Integer.parseInt(zs[2])), Anwenders.getAnwenderByID(Integer.parseInt(zs[3])), Integer.parseInt(zs[4]), Gepaecke.getGepaeckByID(Integer.parseInt(zs[5])), Double.parseDouble(zs[6]), true);
-            } else {
-                eingeleseneBuchung = new Buchung(Integer.parseInt(zs[0]), Fluege.getFlugByID(Integer.parseInt(zs[1])), Fluege.getFlugByID(Integer.parseInt(zs[2])), Anwenders.getAnwenderByID(Integer.parseInt(zs[3])), Integer.parseInt(zs[4]), Gepaecke.getGepaeckByID(Integer.parseInt(zs[5])), Double.parseDouble(zs[6]), true);
+            if (zs.length == 8) { //Mit Rueckflug
+                if (zs[7].equals("0")) {
+                    eingeleseneBuchung = new Buchung(Integer.parseInt(zs[0]), Fluege.getFlugByID(Integer.parseInt(zs[1])), Fluege.getFlugByID(Integer.parseInt(zs[2])), Anwenders.getAnwenderByID(Integer.parseInt(zs[3])), Integer.parseInt(zs[4]), Gepaecke.getGepaeckByID(Integer.parseInt(zs[5])), Double.parseDouble(zs[6]), false);
+                } else {
+                    eingeleseneBuchung = new Buchung(Integer.parseInt(zs[0]), Fluege.getFlugByID(Integer.parseInt(zs[1])), Fluege.getFlugByID(Integer.parseInt(zs[2])), Anwenders.getAnwenderByID(Integer.parseInt(zs[3])), Integer.parseInt(zs[4]), Gepaecke.getGepaeckByID(Integer.parseInt(zs[5])), Double.parseDouble(zs[6]), true);
+                }
+            } else { //Ohne Rueckflug
+                if (zs[6].equals("0")) {
+                    eingeleseneBuchung = new Buchung(Integer.parseInt(zs[0]), Fluege.getFlugByID(Integer.parseInt(zs[1])), Fluege.getFlugByID(Integer.parseInt(zs[2])), Anwenders.getAnwenderByID(Integer.parseInt(zs[3])), Integer.parseInt(zs[4]), Gepaecke.getGepaeckByID(Integer.parseInt(zs[5])), Double.parseDouble(zs[6]), false);
+                } else {
+                    eingeleseneBuchung = new Buchung(Integer.parseInt(zs[0]), Fluege.getFlugByID(Integer.parseInt(zs[1])), Fluege.getFlugByID(Integer.parseInt(zs[2])), Anwenders.getAnwenderByID(Integer.parseInt(zs[3])), Integer.parseInt(zs[4]), Gepaecke.getGepaeckByID(Integer.parseInt(zs[5])), Double.parseDouble(zs[6]), true);
+                }
             }
+
+
             Buchungen.addBuchung(eingeleseneBuchung);
         }
         s.close();
+        Buchungen.setBuchungsCounter(getBiggestID("Buchung"));
     }
 
     public static void administratorenEinlesen(String pfad) throws IOException {
@@ -84,6 +110,7 @@ public abstract class Verwaltung {
             Administratoren.addAndministrator(eingelesenerAdministrator);
         }
         s.close();
+        Administratoren.setAdminCounter(getBiggestID("Administrator"));
     }
 
     public static void angestellteEinlesen(String pfad) throws IOException {
@@ -95,6 +122,7 @@ public abstract class Verwaltung {
             Angestellte.addAngestellter(eingelesenerAngestellter);
         }
         s.close();
+        Angestellte.setAngestelltenCounter(getBiggestID("Angestellter"));
     }
 
     public static void anwenderEinlesen(String pfad) throws IOException {
@@ -106,6 +134,7 @@ public abstract class Verwaltung {
             Anwenders.addAnwender(eingelesenerAnwender);
         }
         s.close();
+        Anwenders.setAnwenderCounter(getBiggestID("Anwender"));
     }
 
     public static void angestellteAnwenderEinlesen(String pfad) throws IOException, NutzerDoesNotExistException {
@@ -126,6 +155,7 @@ public abstract class Verwaltung {
             //gepaeckErstellen();
         }
         s.close();
+        Gepaecke.setGepaeckecounter(getBiggestID("Gepaeck"));
     }
 
 
@@ -380,8 +410,8 @@ public abstract class Verwaltung {
         Buchungen.addBuchung(new Buchung(hinflug, anwender, anzahlSitzplaetze, gepaeck, buchungspreis, createdByAnwender));
     }
 
-    public static ArrayList<Anwender> getAngestelltenByAnwender(Angestellter angestellter) {
-        ArrayList<Anwender> l = new ArrayList<Anwender>();
+    public static ArrayList<Anwender> getAnwenderByAngestellten(Angestellter angestellter) {
+        ArrayList<Anwender> l = new ArrayList<>();
         for (HashMap.Entry<Angestellter, Anwender> h : angestelltenAnwender.entrySet()) {
             if (h.getKey().equals(angestellter)) {
                 l.add(h.getValue());
@@ -445,27 +475,3 @@ public abstract class Verwaltung {
         Verwaltung.angestelltenAnwender = angestelltenAnwender;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

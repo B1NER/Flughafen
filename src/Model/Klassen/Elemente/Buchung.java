@@ -20,52 +20,47 @@ public class Buchung {
 
 
     public Buchung(int buchungsID, Flug hinflug, Flug rueckflug, Anwender anwender, int anzahlSitzplaetze, Gepaeck gepaeck, double buchungspreis, boolean createdByAnwender){
-        setBuchungsID(buchungsID);
-        setAnwender(anwender);
-        setAnzahlSitzplaetze(anzahlSitzplaetze);
-        setBuchungsID(buchungsID);
-        setBuchungspreis(buchungspreis);
-        setHinflug(hinflug);
-        setRueckflug(rueckflug);
-        setGepaeck(gepaeck);
-        setCreatedByAnwender(createdByAnwender);
+        this.buchungsID = buchungsID;
+        this.anwender = anwender;
+        this.anzahlSitzplaetze = anzahlSitzplaetze;
+        this.buchungspreis = buchungspreis;
+        this.hinflug = hinflug;
+        this.rueckflug = rueckflug;
+        this.gepaeck = gepaeck;
+        this.createdByAnwender = createdByAnwender;
     }
 
     public Buchung(Flug hinflug, Flug rueckflug, Anwender anwender, int anzahlSitzplaetze, Gepaeck gepaeck, double buchungspreis, boolean createdByAnwender){
         Buchungen.setBuchungsCounter(Buchungen.getBuchungsCounter() + 1);
         setBuchungsID(Buchungen.getBuchungsCounter());
-        setAnwender(anwender);
-        setAnzahlSitzplaetze(anzahlSitzplaetze);
-        setBuchungsID(buchungsID);
-        setBuchungspreis(buchungspreis);
-        setHinflug(hinflug);
-        setRueckflug(rueckflug);
-        setGepaeck(gepaeck);
-        setCreatedByAnwender(createdByAnwender);
+        this.anwender = anwender;
+        this.anzahlSitzplaetze = anzahlSitzplaetze;
+        this.buchungspreis = buchungspreis;
+        this.hinflug = hinflug;
+        this.rueckflug = rueckflug;
+        this.gepaeck = gepaeck;
+        this.createdByAnwender = createdByAnwender;
     }
 
     public Buchung(int buchungsID, Flug hinflug, Anwender anwender, int anzahlSitzplaetze, Gepaeck gepaeck, double buchungspreis, boolean createdByAnwender) {
-        setBuchungsID(buchungsID);
-        setAnwender(anwender);
-        setAnzahlSitzplaetze(anzahlSitzplaetze);
-        setBuchungsID(buchungsID);
-        setBuchungspreis(buchungspreis);
-        setHinflug(hinflug);
-        setRueckflug(rueckflug);
-        setGepaeck(gepaeck);
-        setCreatedByAnwender(createdByAnwender);
+        this.buchungsID = buchungsID;
+        this.anwender = anwender;
+        this.anzahlSitzplaetze = anzahlSitzplaetze;
+        this.buchungspreis = buchungspreis;
+        this.hinflug = hinflug;
+        this.gepaeck = gepaeck;
+        this.createdByAnwender = createdByAnwender;
     }
 
     public Buchung(Flug hinflug, Anwender anwender, int anzahlSitzplaetze, Gepaeck gepaeck, double buchungspreis, boolean createdByAnwender){
         Buchungen.setBuchungsCounter(Buchungen.getBuchungsCounter() + 1);
         setBuchungsID(Buchungen.getBuchungsCounter());
-        setAnwender(anwender);
-        setAnzahlSitzplaetze(anzahlSitzplaetze);
-        setBuchungsID(buchungsID);
-        setBuchungspreis(buchungspreis);
-        setHinflug(hinflug);
-        setGepaeck(gepaeck);
-        setCreatedByAnwender(createdByAnwender);
+        this.anwender = anwender;
+        this.anzahlSitzplaetze = anzahlSitzplaetze;
+        this.buchungspreis = buchungspreis;
+        this.hinflug = hinflug;
+        this.gepaeck = gepaeck;
+        this.createdByAnwender = createdByAnwender;
     }
 
 
@@ -132,5 +127,20 @@ public class Buchung {
 
     public void setRueckflug(Flug rueckflug) {
         this.rueckflug = rueckflug;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Buchung{" +
+                "buchungsID=" + buchungsID +
+                ", hinflug=" + hinflug +
+                ", rueckflug=" + rueckflug +
+                ", anwender=" + anwender +
+                ", anzahlSitzplaetze=" + anzahlSitzplaetze +
+                ", gepaeck=" + gepaeck +
+                ", buchungspreis=" + buchungspreis +
+                ", createdByAnwender=" + createdByAnwender +
+                '}';
     }
 }

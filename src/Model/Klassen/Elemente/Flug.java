@@ -17,16 +17,16 @@ public class Flug {
     private Date ankunftszeit;
     private double preisProPerson;
 
-    public Flug(String ID, String flugGesellschaft, String abflugort,String ankunftsort,int anzahlPlaetze, int gepaeckskapazitaet,Date abflugzeit, Date ankunftszeit, double preisProPerson){
-        setAbflugort(abflugort);
-        setAbflugzeit(abflugzeit);
-        setAnkunftszeit(ankunftszeit);
-        setAnkunftsort(ankunftsort);
-        setAnzahlPlaetze(anzahlPlaetze);
-        setFlugGesellschaft(flugGesellschaft);
-        setGepaeckskapazitaet(gepaeckskapazitaet);
-        setPreisProPerson(preisProPerson);
-        setFlugID(ID);
+    public Flug(String FlugID, String flugGesellschaft, String abflugort, String ankunftsort, int anzahlPlaetze, int gepaeckskapazitaet, Date abflugzeit, Date ankunftszeit, double preisProPerson) {
+        this.FlugID = FlugID;
+        this.flugGesellschaft = flugGesellschaft;
+        this.abflugort = abflugort;
+        this.ankunftsort = ankunftsort;
+        this.anzahlPlaetze = anzahlPlaetze;
+        this.gepaeckskapazitaet = gepaeckskapazitaet;
+        this.abflugzeit = abflugzeit;
+        this.ankunftszeit = ankunftszeit;
+        this.preisProPerson = preisProPerson;
     }
 
 
@@ -103,4 +103,19 @@ public class Flug {
         return FlugID;
     }
 
+
+    @Override
+    public String toString() {
+        return "Flug{" +
+                "FlugID='" + FlugID + '\'' +
+                ", flugGesellschaft='" + flugGesellschaft + '\'' +
+                ", abflugort='" + abflugort + '\'' +
+                ", ankunftsort='" + ankunftsort + '\'' +
+                ", anzahlPlaetze=" + anzahlPlaetze +
+                ", gepaeckskapazitaet=" + gepaeckskapazitaet +
+                ", abflugzeit=" + abflugzeit +
+                ", ankunftszeit=" + ankunftszeit +
+                ", preisProPerson=" + preisProPerson +
+                '}';
+    }
 }
