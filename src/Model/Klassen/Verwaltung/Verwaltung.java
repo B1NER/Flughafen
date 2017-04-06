@@ -27,22 +27,19 @@ public abstract class Verwaltung {
 
 
     public static void init() {
-        try{
-            fluegeEinlesen("");
-            administratorenEinlesen("");
-            angestellteEinlesen("");
-            anwenderEinlesen("");
+        try {
+            fluegeEinlesen("Model/Daten/Fluege/Flugliste.csv");
+            administratorenEinlesen("Model/Daten/Menschen/Admin.csv");
+            angestellteEinlesen("Model/Daten/Menschen/Angestellter.csv");
+            anwenderEinlesen("Model/Daten/Menschen/Anwender.csv");
             angestellteAnwenderEinlesen("");
             gepaeckEinlesen("");
-            buchungenEinlesen("");
-        }
-        catch(IOException e){
+            buchungenEinlesen("Model/Daten/Buchungen/Buchungen.csv");
+        } catch (IOException e) {
             System.out.println("File not Found");
-        }
-        catch(NutzerDoesNotExistException e){
+        } catch (NutzerDoesNotExistException e) {
             System.out.println("User Does not Exist");
-        }
-        catch(GepaeckDoesNotExist e){
+        } catch (GepaeckDoesNotExist e) {
             System.out.println("Gepaeck Does not Exist");
         }
     }
@@ -68,10 +65,9 @@ public abstract class Verwaltung {
             String zeile = s.nextLine();
             String zs[] = zeile.split(";");
             Buchung eingeleseneBuchung;
-            if(zs[7].equals("0")){
-                eingeleseneBuchung = new Buchung(Integer.parseInt(zs[0]), Fluege.getFlugByID(Integer.parseInt(zs[1])), Fluege.getFlugByID(Integer.parseInt(zs[2])), Anwenders.getAnwenderByID(Integer.parseInt(zs[3])), Integer.parseInt(zs[4]), Gepaecke.getGepaeckByID(Integer.parseInt(zs[5])), Double.parseDouble(zs[6]),true);
-            }
-            else {
+            if (zs[7].equals("0")) {
+                eingeleseneBuchung = new Buchung(Integer.parseInt(zs[0]), Fluege.getFlugByID(Integer.parseInt(zs[1])), Fluege.getFlugByID(Integer.parseInt(zs[2])), Anwenders.getAnwenderByID(Integer.parseInt(zs[3])), Integer.parseInt(zs[4]), Gepaecke.getGepaeckByID(Integer.parseInt(zs[5])), Double.parseDouble(zs[6]), true);
+            } else {
                 eingeleseneBuchung = new Buchung(Integer.parseInt(zs[0]), Fluege.getFlugByID(Integer.parseInt(zs[1])), Fluege.getFlugByID(Integer.parseInt(zs[2])), Anwenders.getAnwenderByID(Integer.parseInt(zs[3])), Integer.parseInt(zs[4]), Gepaecke.getGepaeckByID(Integer.parseInt(zs[5])), Double.parseDouble(zs[6]), true);
             }
             Buchungen.addBuchung(eingeleseneBuchung);
@@ -117,7 +113,7 @@ public abstract class Verwaltung {
         while (s.hasNext()) {
             String zeile = s.nextLine();
             String zs[] = zeile.split(";");
-            angestelltenAnwender.put(Angestellte.getAngestelltenByID(Integer.parseInt(zs[0])),Anwenders.getAnwenderByID(Integer.parseInt(zs[0])));
+            angestelltenAnwender.put(Angestellte.getAngestelltenByID(Integer.parseInt(zs[0])), Anwenders.getAnwenderByID(Integer.parseInt(zs[0])));
         }
         s.close();
     }
@@ -235,7 +231,7 @@ public abstract class Verwaltung {
     public static void angestelltenAnwenderSpeichern(String pfad) throws IOException {
         BufferedWriter bw = new BufferedWriter(new FileWriter(pfad));
         for (HashMap.Entry<Angestellter, Anwender> h : angestelltenAnwender.entrySet()) {
-            bw.write(h.getKey().getAngestelltenID()+";"+h.getValue().getAnwenderID());
+            bw.write(h.getKey().getAngestelltenID() + ";" + h.getValue().getAnwenderID());
         }
     }
 
@@ -246,7 +242,7 @@ public abstract class Verwaltung {
             bw.write(";");
             bw.write(String.valueOf(Gepaecke.getGepaecke().get(i).getGewicht()));
             bw.write(";");
-            bw.write(Gepaecke.getGepaecke().get(i).getGepaeckTyp());
+            bw.write(Gepaecke.getGepaecke().get(i).getGepaeckTyp().toString());
         }
     }
 
@@ -283,12 +279,60 @@ public abstract class Verwaltung {
         System.out.println("Anwender:" + vorname + " " + nachname + " " + " added\t -->" + eMail);
     }
 
-    public static void adminErstellten() throws InvalidEmailException, EmailIsAlreadyUsedException {
+    public static void adminErstellten(String vorname, String nachname, String geburtsdatum, int passnummer, String eMail, String passwort) throws InvalidEmailException, EmailIsAlreadyUsedException {
+        assert !(angemeldeter instanceof Administrator);
+        Pattern pattern = Pattern.compile("^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$");
+        Matcher matcher = pattern.matcher(eMail);
 
+        if (!matcher.matches()) {
+            throw new InvalidEmailException();
+        }
+
+        for (int i = 0; i < Administratoren.getAdministratoren().size(); i++) {
+            if (Administratoren.getAdministratoren().get(i).geteMail().equals(eMail)) {
+                throw new EmailIsAlreadyUsedException();
+            }
+        }
+        for (int i = 0; i < Angestellte.getAngestellte().size(); i++) {
+            if (Angestellte.getAngestellte().get(i).geteMail().equals(eMail)) {
+                throw new EmailIsAlreadyUsedException();
+            }
+        }
+        for (int i = 0; i < Anwenders.getAnwenders().size(); i++) {
+            if (Anwenders.getAnwenders().get(i).geteMail().equals(eMail)) {
+                throw new EmailIsAlreadyUsedException();
+            }
+        }
+        Administratoren.addAndministrator(new Administrator(vorname, nachname, geburtsdatum, passnummer, eMail, passwort));
+        System.out.println("Administrator:" + vorname + " " + nachname + " " + " added\t -->" + eMail);
     }
 
-    public static void angestellterErstellen() throws InvalidEmailException, EmailIsAlreadyUsedException {
+    public static void angestellterErstellen(String vorname, String nachname, String geburtsdatum, int passnummer, String eMail, String passwort) throws InvalidEmailException, EmailIsAlreadyUsedException {
+        assert !(angemeldeter instanceof Administrator);
+        Pattern pattern = Pattern.compile("^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$");
+        Matcher matcher = pattern.matcher(eMail);
 
+        if (!matcher.matches()) {
+            throw new InvalidEmailException();
+        }
+
+        for (int i = 0; i < Administratoren.getAdministratoren().size(); i++) {
+            if (Administratoren.getAdministratoren().get(i).geteMail().equals(eMail)) {
+                throw new EmailIsAlreadyUsedException();
+            }
+        }
+        for (int i = 0; i < Angestellte.getAngestellte().size(); i++) {
+            if (Angestellte.getAngestellte().get(i).geteMail().equals(eMail)) {
+                throw new EmailIsAlreadyUsedException();
+            }
+        }
+        for (int i = 0; i < Anwenders.getAnwenders().size(); i++) {
+            if (Anwenders.getAnwenders().get(i).geteMail().equals(eMail)) {
+                throw new EmailIsAlreadyUsedException();
+            }
+        }
+        Angestellte.addAngestellter(new Angestellter(vorname, nachname, geburtsdatum, passnummer, eMail, passwort));
+        System.out.println("Angestellter:" + vorname + " " + nachname + " " + " added\t -->" + eMail);
     }
 
     public static void anmelden(String eMail, String password) throws NutzerDoesNotExistException {
@@ -321,7 +365,7 @@ public abstract class Verwaltung {
         throw new NutzerDoesNotExistException();
     }
 
-    public static void anmelden(Anwender anwender){
+    public static void anmelden(Anwender anwender) {
         //Sobald anwender auf registrieren klickt und er sich registriert sollte er direkt danach auch angemeldet sein
         //Diese Funktion erleichtert den GUI Programmierern das Registrieren/Anmelden
         //*Klick* Registrieren --> anwenderErstellen --> erstellten Anwender dieser Funktion übergeben
@@ -348,6 +392,37 @@ public abstract class Verwaltung {
 
     public static boolean isAngemeldet() {
         return angemeldeter != null;
+    }
+
+    public static int getBiggestID(String eigenschaft) {
+        int biggestID = 0;
+        if (eigenschaft.equals("Gepaeck")) {
+            for (int i = 0; i < Gepaecke.getGepaecke().size(); i++) {
+                if (Gepaecke.getGepaecke().get(i).getGepaeckID() > biggestID)
+                    biggestID = Gepaecke.getGepaecke().get(i).getGepaeckID();
+            }
+        } else if (eigenschaft.equals("Buchung")) {
+            for (int i = 0; i < Buchungen.getBuchungen().size(); i++) {
+                if (Buchungen.getBuchungen().get(i).getBuchungsID() > biggestID)
+                    biggestID = Buchungen.getBuchungen().get(i).getBuchungsID();
+            }
+        } else if (eigenschaft.equals("Administrator")) {
+            for (int i = 0; i < Administratoren.getAdministratoren().size(); i++) {
+                if (Administratoren.getAdministratoren().get(i).getAdminID() > biggestID)
+                    biggestID = Administratoren.getAdministratoren().get(i).getAdminID();
+            }
+        } else if (eigenschaft.equals("Angestellter")) {
+            for (int i = 0; i < Angestellte.getAngestellte().size(); i++) {
+                if (Angestellte.getAngestellte().get(i).getAngestelltenID() > biggestID)
+                    biggestID = Angestellte.getAngestellte().get(i).getAngestelltenID();
+            }
+        } else if (eigenschaft.equals("Anwender")) {
+            for (int i = 0; i < Anwenders.getAnwenders().size(); i++) {
+                if (Anwenders.getAnwenders().get(i).getAnwenderID() > biggestID)
+                    biggestID = Anwenders.getAnwenders().get(i).getAnwenderID();
+            }
+        }
+        return biggestID;
     }
 
 
