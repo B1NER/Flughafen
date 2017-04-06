@@ -29,7 +29,6 @@ public class Flug {
         this.preisProPerson = preisProPerson;
     }
 
-
     public void setAbflugort(String abflugort) {
         this.abflugort = abflugort;
     }

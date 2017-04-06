@@ -73,13 +73,6 @@ public class Mensch {
     }
 
     public String toString() {
-        return "Mensch{" +
-                vorname + ',' +
-                nachname + ',' +
-                geburtsdatum + ',' +
-                passnummer + ',' +
-                eMail + ',' +
-                passwort +
-                '}';
+        return vorname + ',' + nachname + ',' + geburtsdatum + ',' + passnummer + ',' + eMail + ',' + passwort + '}';
     }
 }

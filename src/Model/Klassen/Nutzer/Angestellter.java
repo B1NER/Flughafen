@@ -1,10 +1,7 @@
 package Model.Klassen.Nutzer;
 
-import Model.Klassen.Elemente.Buchung;
-import Model.Klassen.Elemente.Flug;
 import Model.Klassen.Verwaltung.Angestellte;
 
-import java.util.ArrayList;
 
 /**
  * Created by knoll on 14.03.2017.

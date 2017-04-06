@@ -1,17 +1,6 @@
 package Model.Klassen.Nutzer;
 
-
-
-import Model.Exceptions.FlugNotFoundException;
-import Model.Klassen.Elemente.Buchung;
-import Model.Klassen.Elemente.Flug;
-import Model.Klassen.Elemente.Gepaeck;
-import Model.Klassen.Nutzer.Mensch;
 import Model.Klassen.Verwaltung.Anwenders;
-import Model.Klassen.Verwaltung.Verwaltung;
-
-import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Created by knoll on 14.03.2017.
@@ -38,5 +27,10 @@ public class Anwender extends Mensch {
 
     public void setAnwenderID(int anwenderID) {
         this.anwenderID = anwenderID;
+    }
+
+    @Override
+    public String toString() {
+        return "Angestellter: "+super.toString() + "angestelltenID=" + anwenderID;
     }
 }

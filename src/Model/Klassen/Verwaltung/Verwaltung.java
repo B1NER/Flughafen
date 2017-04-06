@@ -11,7 +11,6 @@ import Model.Klassen.Nutzer.Anwender;
 import Model.Klassen.Nutzer.Mensch;
 
 import java.io.*;
-import java.lang.reflect.Array;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -70,6 +69,7 @@ public abstract class Verwaltung {
             Date ankunftdatum = new Date(Integer.parseInt(zeile[6].split("\\.")[2]) - 1900, Integer.parseInt(zeile[6].split("\\.")[1]) - 1, Integer.parseInt(zeile[6].split("\\.")[0]), Integer.parseInt(zeile[7].split(":")[0]), Integer.parseInt(zeile[7].split(":")[1]));
             Flug eingelesenerFlug = new Flug(zeile[0], zeile[1], zeile[2], zeile[3], Integer.parseInt(zeile[8]), Integer.parseInt(zeile[9]), abflugdatum, ankunftdatum, 100);
             Fluege.addFlug(eingelesenerFlug);
+            System.out.println("Fluege angelegt:" + eingelesenerFlug);
         }
         s.close();
     }
@@ -96,6 +96,7 @@ public abstract class Verwaltung {
 
 
             Buchungen.addBuchung(eingeleseneBuchung);
+            System.out.println("Buchung angelegt:" + eingeleseneBuchung);
         }
         s.close();
         Buchungen.setBuchungsCounter(getBiggestID("Buchung"));
@@ -108,6 +109,7 @@ public abstract class Verwaltung {
             String zs[] = zeile.split(";");
             Administrator eingelesenerAdministrator = new Administrator(Integer.parseInt(zs[0]), zs[1], zs[2], zs[3], Integer.parseInt(zs[4]), zs[5], zs[6]);
             Administratoren.addAndministrator(eingelesenerAdministrator);
+            System.out.println("Administrator angelegt:" + eingelesenerAdministrator);
         }
         s.close();
         Administratoren.setAdminCounter(getBiggestID("Administrator"));
@@ -120,6 +122,7 @@ public abstract class Verwaltung {
             String zs[] = zeile.split(";");
             Angestellter eingelesenerAngestellter = new Angestellter(Integer.parseInt(zs[0]), zs[1], zs[2], zs[3], Integer.parseInt(zs[4]), zs[5], zs[6]);
             Angestellte.addAngestellter(eingelesenerAngestellter);
+            System.out.println("Angestellter angelegt:" + eingelesenerAngestellter);
         }
         s.close();
         Angestellte.setAngestelltenCounter(getBiggestID("Angestellter"));
@@ -132,6 +135,7 @@ public abstract class Verwaltung {
             String zs[] = zeile.split(";");
             Anwender eingelesenerAnwender = new Anwender(zs[1], zs[2], zs[3], Integer.parseInt(zs[4]), zs[5], zs[6]);
             Anwenders.addAnwender(eingelesenerAnwender);
+            System.out.println("Anwender angelegt:" + eingelesenerAnwender);
         }
         s.close();
         Anwenders.setAnwenderCounter(getBiggestID("Anwender"));
@@ -143,6 +147,7 @@ public abstract class Verwaltung {
             String zeile = s.nextLine();
             String zs[] = zeile.split(";");
             angestelltenAnwender.put(Angestellte.getAngestelltenByID(Integer.parseInt(zs[0])), Anwenders.getAnwenderByID(Integer.parseInt(zs[0])));
+            System.out.println(Angestellte.getAngestelltenByID(Integer.parseInt(zs[0]))+" legte "+Anwenders.getAnwenderByID(Integer.parseInt(zs[0]))+" an");
         }
         s.close();
     }
@@ -153,6 +158,8 @@ public abstract class Verwaltung {
             String zeile = s.nextLine();
             String zs[] = zeile.split(";");
             //gepaeckErstellen();
+            //System.out.println("Gepaeck angelegt:" + eingelesenesGepaeck);
+
         }
         s.close();
         Gepaecke.setGepaeckecounter(getBiggestID("Gepaeck"));
@@ -184,7 +191,7 @@ public abstract class Verwaltung {
             }
             bw.write(';');
             bw.write('\n');
-            System.out.println(Buchungen.getBuchungen().get(i));
+            System.out.println("Speichern: "+Buchungen.getBuchungen().get(i));
         }
         bw.close();
     }
@@ -207,7 +214,7 @@ public abstract class Verwaltung {
             bw.write(Administratoren.getAdministratoren().get(i).getPasswort());
             bw.write(';');
             bw.write('\n');
-            System.out.println(Administratoren.getAdministratoren().get(i));
+            System.out.println("Speichern: "+Administratoren.getAdministratoren().get(i));
         }
         bw.close();
     }
@@ -230,7 +237,7 @@ public abstract class Verwaltung {
             bw.write(Angestellte.getAngestellte().get(i).getPasswort());
             bw.write(';');
             bw.write('\n');
-            System.out.println(Angestellte.getAngestellte().get(i));
+            System.out.println("Speichern: "+Administratoren.getAdministratoren().get(i));
         }
         bw.close();
     }
@@ -253,7 +260,7 @@ public abstract class Verwaltung {
             bw.write(Anwenders.getAnwenders().get(i).getPasswort());
             bw.write(';');
             bw.write('\n');
-            System.out.println(Anwenders.getAnwenders().get(i));
+            System.out.println("Speichern: "+Administratoren.getAdministratoren().get(i));
         }
         bw.close();
     }
@@ -262,6 +269,7 @@ public abstract class Verwaltung {
         BufferedWriter bw = new BufferedWriter(new FileWriter(pfad));
         for (HashMap.Entry<Angestellter, Anwender> h : angestelltenAnwender.entrySet()) {
             bw.write(h.getKey().getAngestelltenID() + ";" + h.getValue().getAnwenderID());
+            System.out.println("Speichern: " + h.getValue() + " " + h.getKey());
         }
     }
 
@@ -273,6 +281,7 @@ public abstract class Verwaltung {
             bw.write(String.valueOf(Gepaecke.getGepaecke().get(i).getGewicht()));
             bw.write(";");
             bw.write(Gepaecke.getGepaecke().get(i).getGepaeckTyp().toString());
+            System.out.println("Speichern: "+Administratoren.getAdministratoren().get(i));
         }
     }
 
@@ -411,7 +420,7 @@ public abstract class Verwaltung {
     }
 
     public static ArrayList<Anwender> getAnwenderByAngestellten(Angestellter angestellter) {
-        ArrayList<Anwender> l = new ArrayList<>();
+        ArrayList<Anwender> l = new ArrayList<Anwender>();
         for (HashMap.Entry<Angestellter, Anwender> h : angestelltenAnwender.entrySet()) {
             if (h.getKey().equals(angestellter)) {
                 l.add(h.getValue());
