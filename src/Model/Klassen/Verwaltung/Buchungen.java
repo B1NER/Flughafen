@@ -17,13 +17,14 @@ public abstract class Buchungen {
     public static ArrayList<Buchung> getBuchungenByAnwender(Anwender anwender) {
         ArrayList<Buchung> l = new ArrayList<>();
         for (int i = 0; i < buchungen.size(); i++) {
-            if(buchungen.get(i).getAnwender().equals(anwender) && !buchungen.get(i).isCreatedByAnwender()){
             if (buchungen.get(i).getAnwender().equals(anwender) && !buchungen.get(i).isCreatedByAnwender()) {
                 l.add(buchungen.get(i));
             }
         }
         return l;
     }
+
+
 
     public static void addBuchung(Buchung buchung) {
         buchungen.add(buchung);

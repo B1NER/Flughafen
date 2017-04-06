@@ -1,6 +1,7 @@
 package Model.Klassen.Verwaltung;
 
 
+import Model.Enums.Gepaecktypen;
 import Model.Exceptions.*;
 import Model.Klassen.Elemente.Buchung;
 import Model.Klassen.Elemente.Flug;
@@ -157,8 +158,23 @@ public abstract class Verwaltung {
         while (s.hasNext()) {
             String zeile = s.nextLine();
             String zs[] = zeile.split(";");
-            //gepaeckErstellen();
-            //System.out.println("Gepaeck angelegt:" + eingelesenesGepaeck);
+            Gepaeck eingelesenesGepaeck;
+
+            if(zs[3].equals(Gepaecktypen.Handgepaeck.toString())){
+                eingelesenesGepaeck = new Gepaeck(Integer.parseInt(zs[1]), Double.parseDouble(zs[2]), Gepaecktypen.Handgepaeck);
+            }
+            else if(zs[3].equals(Gepaecktypen.Sportgepaeck.toString())){
+                eingelesenesGepaeck = new Gepaeck(Integer.parseInt(zs[1]), Double.parseDouble(zs[2]), Gepaecktypen.Sportgepaeck);
+            }
+            else if(zs[3].equals(Gepaecktypen.Tasche.toString())){
+                eingelesenesGepaeck = new Gepaeck(Integer.parseInt(zs[1]), Double.parseDouble(zs[2]), Gepaecktypen.Tasche);
+            }
+            else{
+                eingelesenesGepaeck = new Gepaeck(Integer.parseInt(zs[1]), Double.parseDouble(zs[2]), Gepaecktypen.Koffer);
+            }
+
+            Gepaecke.addGepaeck(eingelesenesGepaeck);
+            System.out.println("Gepaeck angelegt:" + eingelesenesGepaeck);
 
         }
         s.close();
@@ -288,7 +304,6 @@ public abstract class Verwaltung {
 
     //Funktionelle Methoden
     public static void gepaeckErstellen() throws ToHighWeightException {
-
     }
 
     public static void anwenderErstellen(String vorname, String nachname, String geburtsdatum, int passnummer, String eMail, String passwort) throws InvalidEmailException, EmailIsAlreadyUsedException {
@@ -314,8 +329,9 @@ public abstract class Verwaltung {
                 throw new EmailIsAlreadyUsedException();
             }
         }
-        Anwenders.addAnwender(new Anwender(vorname, nachname, geburtsdatum, passnummer, eMail, passwort));
-        System.out.println("Anwender:" + vorname + " " + nachname + " " + " added\t -->" + eMail);
+        Anwender a = new Anwender(vorname, nachname, geburtsdatum, passnummer, eMail, passwort);
+        Anwenders.addAnwender(a);
+        System.out.println("Anwender angelegt:" + a);
     }
 
     public static void adminErstellten(String vorname, String nachname, String geburtsdatum, int passnummer, String eMail, String passwort) throws InvalidEmailException, EmailIsAlreadyUsedException {
@@ -342,8 +358,9 @@ public abstract class Verwaltung {
                 throw new EmailIsAlreadyUsedException();
             }
         }
-        Administratoren.addAndministrator(new Administrator(vorname, nachname, geburtsdatum, passnummer, eMail, passwort));
-        System.out.println("Administrator:" + vorname + " " + nachname + " " + " added\t -->" + eMail);
+        Administrator a = new Administrator(vorname, nachname, geburtsdatum, passnummer, eMail, passwort);
+        Administratoren.addAndministrator(a);
+        System.out.println("Administrator angelegt:" + a);
     }
 
     public static void angestellterErstellen(String vorname, String nachname, String geburtsdatum, int passnummer, String eMail, String passwort) throws InvalidEmailException, EmailIsAlreadyUsedException {
@@ -370,8 +387,21 @@ public abstract class Verwaltung {
                 throw new EmailIsAlreadyUsedException();
             }
         }
-        Angestellte.addAngestellter(new Angestellter(vorname, nachname, geburtsdatum, passnummer, eMail, passwort));
-        System.out.println("Angestellter:" + vorname + " " + nachname + " " + " added\t -->" + eMail);
+        Angestellter a = new Angestellter(vorname, nachname, geburtsdatum, passnummer, eMail, passwort);
+        Angestellte.addAngestellter(a);
+        System.out.println("Angestellter angelegt:" + a);
+    }
+
+    public static void buchungErstellen(Flug hinflug, Flug rueckflug, Anwender anwender, int anzahlSitzplaetze, Gepaeck gepaeck, double buchungspreis, boolean createdByAnwender) {
+        Buchung b = new Buchung(hinflug, rueckflug, anwender, anzahlSitzplaetze, gepaeck, buchungspreis, createdByAnwender);
+        Buchungen.addBuchung(b);
+        System.out.println("Buchung angelegt: " + b);
+    }
+
+    public static void buchungErstellen(Flug hinflug, Anwender anwender, int anzahlSitzplaetze, Gepaeck gepaeck, double buchungspreis, boolean createdByAnwender) {
+        Buchung b = new Buchung(hinflug, anwender, anzahlSitzplaetze, gepaeck, buchungspreis, createdByAnwender);
+        Buchungen.addBuchung(b);
+        System.out.println("Buchung angelegt: " + b);
     }
 
     public static void anmelden(String eMail, String password) throws NutzerDoesNotExistException {
@@ -409,14 +439,7 @@ public abstract class Verwaltung {
         //Diese Funktion erleichtert den GUI Programmierern das Registrieren/Anmelden
         //*Klick* Registrieren --> anwenderErstellen --> erstellten Anwender dieser Funktion übergeben
         angemeldeter = anwender;
-    }
-
-    public static void buchungErstellen(Flug hinflug, Flug rueckflug, Anwender anwender, int anzahlSitzplaetze, Gepaeck gepaeck, double buchungspreis, boolean createdByAnwender) {
-        Buchungen.addBuchung(new Buchung(hinflug, rueckflug, anwender, anzahlSitzplaetze, gepaeck, buchungspreis, createdByAnwender));
-    }
-
-    public static void buchungErstellen(Flug hinflug, Anwender anwender, int anzahlSitzplaetze, Gepaeck gepaeck, double buchungspreis, boolean createdByAnwender) {
-        Buchungen.addBuchung(new Buchung(hinflug, anwender, anzahlSitzplaetze, gepaeck, buchungspreis, createdByAnwender));
+        System.out.println("Erfolgreich Angemeldet:" + angemeldeter);
     }
 
     public static ArrayList<Anwender> getAnwenderByAngestellten(Angestellter angestellter) {
