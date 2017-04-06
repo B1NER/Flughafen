@@ -1,6 +1,7 @@
 package Model.Klassen.Verwaltung;
 
 import Model.Exceptions.GepaeckDoesNotExist;
+import Model.Exceptions.ToHighWeightException;
 import Model.Klassen.Elemente.Buchung;
 import Model.Klassen.Elemente.Gepaeck;
 import Model.Klassen.Nutzer.Anwender;
@@ -23,11 +24,11 @@ public abstract class Gepaecke {
         gepaecke.remove(gepaeck);
     }
 
-    public static void gepeckBearbeiten(Gepaeck gepaeck, double neuesGewicht) {
+    public static void gepeckBearbeiten(Gepaeck gepaeck, double neuesGewicht) throws ToHighWeightException {
         if (neuesGewicht < 20) {
             gepaeck.setGewicht(neuesGewicht);
         } else {
-            //Throw new ToMuchGewichtException();
+            throw new ToHighWeightException();
         }
     }
 

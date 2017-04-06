@@ -24,14 +24,12 @@ public abstract class Buchungen {
         return l;
     }
 
-
-
     public static void addBuchung(Buchung buchung) {
         buchungen.add(buchung);
     }
 
     public static void buchungBearbeiten(Buchung buchung) {
-
+        //Zu implementieren TODO
     }
 
     public static void removeBuchung(Buchung buchung) {

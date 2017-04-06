@@ -23,7 +23,7 @@ public abstract class Administratoren {
     }
 
     public static void administratorBearbeiten(Administrator admin) {
-
+        //Zu implementieren TODO
     }
 
 

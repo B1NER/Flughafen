@@ -24,7 +24,7 @@ public abstract class Angestellte {
     }
 
     public static void angestellterBearbeiten(){
-
+        //Zu implementieren TODO
     }
 
 

@@ -35,12 +35,14 @@ public abstract class Verwaltung {
             angestellteAnwenderEinlesen("");
             gepaeckEinlesen("Model/Daten/Gepaeck/Gepaecke.csv");
             buchungenEinlesen("Model/Daten/Buchungen/Buchungen.csv");
-        } catch (IOException e) {
+        } catch (final IOException e) {
             System.out.println("File not Found");
-        } catch (NutzerDoesNotExistException e) {
+        } catch (final NutzerDoesNotExistException e) {
             System.out.println("User Does not Exist");
-        } catch (GepaeckDoesNotExist e) {
+        } catch (final GepaeckDoesNotExist e) {
             System.out.println("Gepaeck Does not Exist");
+        } catch (final FlugNotFoundException e) {
+            System.out.println("Flight not found!");
         }
     }
 
@@ -75,7 +77,7 @@ public abstract class Verwaltung {
         s.close();
     }
 
-    public static void buchungenEinlesen(String pfad) throws IOException, NutzerDoesNotExistException, GepaeckDoesNotExist {
+    public static void buchungenEinlesen(String pfad) throws IOException, NutzerDoesNotExistException, GepaeckDoesNotExist, FlugNotFoundException {
         Scanner s = new Scanner(new BufferedReader(new FileReader(pfad)));
         while (s.hasNext()) {
             String zeile = s.nextLine();

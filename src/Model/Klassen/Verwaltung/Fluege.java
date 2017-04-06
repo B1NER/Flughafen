@@ -21,8 +21,12 @@ public abstract class Fluege {
         fluege.add(flug);
     }
 
-    public static Flug getFlugByID(int flugID) {
-        return null;
+    public static Flug getFlugByID(int flugID) throws FlugNotFoundException {
+        for (int i = 0; i < fluege.size(); i++) {
+            if (fluege.get(i).getFlugID().equals(flugID))
+                return fluege.get(i);
+        }
+        throw new FlugNotFoundException();
     }
 
     public static ArrayList<Flug> getAktuelleFluege() {
