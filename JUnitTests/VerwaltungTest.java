@@ -1,4 +1,3 @@
-/*
 
 import Model.Exceptions.BuchungDoesNotExistException;
 import Model.Klassen.Elemente.Buchung;
@@ -7,7 +6,7 @@ import Model.Klassen.Elemente.Gepaeck;
 import Model.Klassen.Nutzer.Administrator;
 import Model.Klassen.Nutzer.Angestellter;
 import Model.Klassen.Nutzer.Anwender;
-import Model.Klassen.Verwaltung.Verwaltung;
+import Model.Klassen.Verwaltung.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,17 +16,19 @@ import org.junit.*;
 
 import static org.junit.Assert.*;
 
-*/
+
 /**
  * Created by jonas on 22.03.2017.
- *//*
+ */
 
 public class VerwaltungTest {
 
-    private ArrayList<Anwender> anwender = new ArrayList<Anwender>();
 
     @Before
     public void before() {
+
+        ArrayList<Anwender> anwender = new ArrayList<Anwender>();
+
         //prüfen, ob anwender, angestellte und admins richtig eingelesen werden
         //Für Test müssen zuerst neue Anwenderm, Angestellte und Admins erstellt werden
         //Weitere Vorraussetzung: es müssen immer nur 2 Elemente in den Listen sein
@@ -35,8 +36,8 @@ public class VerwaltungTest {
         //funktionieren, wenn sie für 2 Elemente funktionieren
 
         //Anwender erstellen, um dann zu vergleichen
-        anwender.add(new Anwender(1, "Max", "Mustermann", "01.01.2000",1111, "max.mustermann@test.com", "maxi123"));
-        anwender.add(new Anwender(2, "Martina", "Musterfrau", "03.02.2000", 2222, "martina.musterfrau@test.com", "martina123"));
+        anwender.add(new Anwender("Max", "Mustermann", "01.01.2000",1111, "max.mustermann@test.com", "maxi123"));
+        anwender.add(new Anwender("Martina", "Musterfrau", "03.02.2000", 2222, "martina.musterfrau@test.com", "martina123"));
 
         try {
             Verwaltung.anwenderEinlesen("src\\Model\\Daten\\Menschen\\Anwender.csv");
@@ -45,13 +46,13 @@ public class VerwaltungTest {
         }
 
         for (int i = 0; i < anwender.size(); i++) {
-            assertEquals(Verwaltung.getAnwender().get(i).getAnwenderID(), anwender.get(i).getAnwenderID());
-            assertEquals(Verwaltung.getAnwender().get(i).getVorname(), anwender.get(i).getVorname());
-            assertEquals(Verwaltung.getAnwender().get(i).getNachname(), anwender.get(i).getNachname());
-            assertEquals(Verwaltung.getAnwender().get(i).getGeburtsdatum(), anwender.get(i).getGeburtsdatum());
-            assertEquals(Verwaltung.getAnwender().get(i).getPassnummer(), anwender.get(i).getPassnummer());
-            assertEquals(Verwaltung.getAnwender().get(i).geteMail(), anwender.get(i).geteMail());
-            assertEquals(Verwaltung.getAnwender().get(i).getPasswort(), anwender.get(i).getPasswort());
+            //assertEquals(i, Anwenders.getAnwenders().get(i).getAnwenderID());
+            assertEquals(anwender.get(i).getVorname(), Anwenders.getAnwenders().get(i).getVorname());
+            assertEquals(anwender.get(i).getNachname(), Anwenders.getAnwenders().get(i).getNachname());
+            assertEquals(anwender.get(i).getGeburtsdatum(), Anwenders.getAnwenders().get(i).getGeburtsdatum());
+            assertEquals(anwender.get(i).getPassnummer(), Anwenders.getAnwenders().get(i).getPassnummer());
+            assertEquals(anwender.get(i).geteMail(), Anwenders.getAnwenders().get(i).geteMail());
+            assertEquals(anwender.get(i).getPasswort(), Anwenders.getAnwenders().get(i).getPasswort());
         }
 
         //Angestellte
@@ -66,13 +67,13 @@ public class VerwaltungTest {
         }
 
         for (int i = 0; i < angestellte.size(); i++) {
-            assertEquals(Verwaltung.getAngestellte().get(i).getAngestelltenID(), angestellte.get(i).getAngestelltenID());
-            assertEquals(Verwaltung.getAngestellte().get(i).getVorname(), angestellte.get(i).getVorname());
-            assertEquals(Verwaltung.getAngestellte().get(i).getNachname(), angestellte.get(i).getNachname());
-            assertEquals(Verwaltung.getAngestellte().get(i).getGeburtsdatum(), angestellte.get(i).getGeburtsdatum());
-            assertEquals(Verwaltung.getAngestellte().get(i).getPassnummer(), angestellte.get(i).getPassnummer());
-            assertEquals(Verwaltung.getAngestellte().get(i).geteMail(), angestellte.get(i).geteMail());
-            assertEquals(Verwaltung.getAngestellte().get(i).getPasswort(), angestellte.get(i).getPasswort());
+            //assertEquals(i, Angestellte.getAngestellte().get(i).getAngestelltenID());
+            assertEquals(angestellte.get(i).getVorname(), Angestellte.getAngestellte().get(i).getVorname());
+            assertEquals(angestellte.get(i).getNachname(), Angestellte.getAngestellte().get(i).getNachname());
+            assertEquals(angestellte.get(i).getGeburtsdatum(), Angestellte.getAngestellte().get(i).getGeburtsdatum());
+            assertEquals(angestellte.get(i).getPassnummer(), Angestellte.getAngestellte().get(i).getPassnummer());
+            assertEquals(angestellte.get(i).geteMail(), Angestellte.getAngestellte().get(i).geteMail());
+            assertEquals(angestellte.get(i).getPasswort(), Angestellte.getAngestellte().get(i).getPasswort());
         }
 
         //Administratoren
@@ -87,24 +88,23 @@ public class VerwaltungTest {
         }
 
         for (int i = 0; i < administratoren.size(); i++) {
-            assertEquals(Verwaltung.getAdministratoren().get(i).getAdminID(), administratoren.get(i).getAdminID());
-            assertEquals(Verwaltung.getAdministratoren().get(i).getVorname(), administratoren.get(i).getVorname());
-            assertEquals(Verwaltung.getAdministratoren().get(i).getNachname(), administratoren.get(i).getNachname());
-            assertEquals(Verwaltung.getAdministratoren().get(i).getGeburtsdatum(), administratoren.get(i).getGeburtsdatum());
-            assertEquals(Verwaltung.getAdministratoren().get(i).getPassnummer(), administratoren.get(i).getPassnummer());
-            assertEquals(Verwaltung.getAdministratoren().get(i).geteMail(), administratoren.get(i).geteMail());
-            assertEquals(Verwaltung.getAdministratoren().get(i).getPasswort(), administratoren.get(i).getPasswort());
+            //assertEquals(i, Administratoren.getAdministratoren().get(i).getAdminID());
+            assertEquals(administratoren.get(i).getVorname(), Administratoren.getAdministratoren().get(i).getVorname());
+            assertEquals(administratoren.get(i).getNachname(), Administratoren.getAdministratoren().get(i).getNachname());
+            assertEquals(administratoren.get(i).getGeburtsdatum(), Administratoren.getAdministratoren().get(i).getGeburtsdatum());
+            assertEquals(administratoren.get(i).getPassnummer(), Administratoren.getAdministratoren().get(i).getPassnummer());
+            assertEquals(administratoren.get(i).geteMail(), Administratoren.getAdministratoren().get(i).geteMail());
+            assertEquals(administratoren.get(i).getPasswort(), Administratoren.getAdministratoren().get(i).getPasswort());
         }
 
-        */
-/*
+        /* Problem: wie werden Buchungen eingelesen?
         //Buchungen
         ArrayList <Buchung> buchungen = new ArrayList<Buchung>();
         buchungen.add(new Buchung());
         buchungen.add(new Buchung());
 
         try {
-            Verwaltung.buchungenEinlesen("C:\\Users\\jonas\\Documents\\Schule\\4BT\\TP\\Projekt Flughafen\\Flughafen-B1NER\\src\\Daten\\Buchungen\\Buchungen.csv");
+            Verwaltung.buchungenEinlesen("src\\Model\\Daten\\Buchungen\\Buchungen.csv");
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -119,33 +119,32 @@ public class VerwaltungTest {
             //assertEquals(verwaltung.getBuchungen().get(i).getBuchungspreis(),buchungen.get(i).getBuchungspreis());
             assertEquals(verwaltung.getBuchungen().get(i).getAngestelltenID(),buchungen.get(i).getAngestelltenID());
 
-        }*//*
+        }*/
 
-        */
-/*
         //Flüge
         ArrayList <Flug> fluege = new ArrayList<Flug>();
-        fluege.add(new Flug("LH3428","Lufthansa", "München","Berlin",150,   20000, new Date(14:00), 21.03.2017", "	21.03.2017 15:10	150));
-        fluege.add(new Flug());
-        fluege.add(new Flug());
+        fluege.add(new Flug("LH3428", "Lufthansa", "München", "Berlin", 150, 20000, new Date(2017-1900,2,21,14,0),new Date(2017-1900,2,21,15,10), 150));
+        fluege.add(new Flug("EJ1221", "EasyJet", "London", "Innsbruck", 130, 17000, new Date(2017-1900,2,22,15,0),new Date(2017-1900,2,22,16,55), 150));
+        fluege.add(new Flug("EJ1222", "EasyJet", "Innsbruck", "London", 130, 17000, new Date(2017-1900,2,22,19,0),new Date(2017-1900,2,22,16,45), 150));
+
 
         try {
-            Verwaltung.fluegeEinlesen("C:\\Users\\jonas\\Documents\\Schule\\4BT\\TP\\Projekt Flughafen\\Flughafen-B1NER\\src\\Daten\\Fluege\\Flugliste.csv");
+            Verwaltung.fluegeEinlesen("src\\Model\\Daten\\Fluege\\Flugliste.csv");
         }catch (IOException e){
             e.printStackTrace();
         }
 
         for (int i = 0; i < fluege.size(); i++) {
-            assertEquals(verwaltung.getFluege().get(i).getFlugID(),fluege.get(i).getFlugID());
-            assertEquals(verwaltung.getFluege().get(i).getFlugGesellschaft(),fluege.get(i).getFlugGesellschaft());
-            assertEquals(verwaltung.getFluege().get(i).getAbflugort(),fluege.get(i).getAbflugort());
-            assertEquals(verwaltung.getFluege().get(i).getAnkunftsort(),fluege.get(i).getAnkunftsort());
-            assertEquals(verwaltung.getFluege().get(i).getAbflugzeit(),fluege.get(i).getAbflugzeit());
-            assertEquals(verwaltung.getFluege().get(i).getAnkunftszeit(),fluege.get(i).getAnkunftszeit());
-            assertEquals(verwaltung.getFluege().get(i).getAnzahlPlaetze(),fluege.get(i).getAnzahlPlaetze());
-            assertEquals(verwaltung.getFluege().get(i).getGepaeckskapazitaet(),fluege.get(i).getGepaeckskapazitaet());
-            assertEquals(verwaltung.getFluege().get(i).getPreisProPerson(),fluege.get(i).getPreisProPerson());
-        }*//*
+            assertEquals(fluege.get(i).getFlugID(), Fluege.getFluege().get(i).getFlugID() );
+            assertEquals(fluege.get(i).getFlugGesellschaft(), Fluege.getFluege().get(i).getFlugGesellschaft());
+            assertEquals(fluege.get(i).getAbflugort(), Fluege.getFluege().get(i).getAbflugort());
+            assertEquals(fluege.get(i).getAnkunftsort(), Fluege.getFluege().get(i).getAnkunftsort());
+            assertEquals(fluege.get(i).getAbflugzeit(), Fluege.getFluege().get(i).getAbflugzeit());
+            assertEquals(fluege.get(i).getAnkunftszeit(), Fluege.getFluege().get(i).getAnkunftszeit());
+            assertEquals(fluege.get(i).getAnzahlPlaetze(), Fluege.getFluege().get(i).getAnzahlPlaetze());
+            assertEquals(fluege.get(i).getGepaeckskapazitaet(), Fluege.getFluege().get(i).getGepaeckskapazitaet());
+            assertTrue(fluege.get(i).getPreisProPerson() == 150);
+        }
 
 
     }
@@ -157,7 +156,7 @@ public class VerwaltungTest {
 
     @Test
     public void test(){
-
+/*
         //testen der Funktionalitäten
         //prüfen, ob richtige Buchung zurückkommt
         Flug flug = new Flug("ID","B1nerGMBH", "Brixen", "Bozen", 140, 1000, new Date(2017,03,22), new Date(2017,04,22), 130);
@@ -182,8 +181,7 @@ public class VerwaltungTest {
         }
         Verwaltung.getBuchungen().remove(buchung);
 
-        */
-/*
+
         //prüfen, ob richtige Buchungen zurückkommen
 
         anwender.getBuchungen().add(new Buchung(7, flug, anwender, 3, gepaeck, 178, false));
@@ -219,9 +217,8 @@ public class VerwaltungTest {
         anwenderArrayList.add(new Anwender());
         anwenderArrayList.add(new Anwender());
         assertEquals(anwenderArrayList, Verwaltung.getAnwenderByAngestelltenID(10));
-        *//*
-
+*/
     }
 
 
-}*/
+}

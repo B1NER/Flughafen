@@ -18,6 +18,19 @@ public class Buchung {
     private double buchungspreis;
     private boolean createdByAnwender; //1 = Anwender hat gbucht = true     0 = Angestellter hat gebucht = false
 
+
+    public Buchung(int buchungsID, Flug hinflug, Flug rueckflug, Anwender anwender, int anzahlSitzplaetze, Gepaeck gepaeck, double buchungspreis, boolean createdByAnwender){
+        setBuchungsID(buchungsID);
+        setAnwender(anwender);
+        setAnzahlSitzplaetze(anzahlSitzplaetze);
+        setBuchungsID(buchungsID);
+        setBuchungspreis(buchungspreis);
+        setHinflug(hinflug);
+        setRueckflug(rueckflug);
+        setGepaeck(gepaeck);
+        setCreatedByAnwender(createdByAnwender);
+    }
+
     public Buchung(Flug hinflug, Flug rueckflug, Anwender anwender, int anzahlSitzplaetze, Gepaeck gepaeck, double buchungspreis, boolean createdByAnwender){
         Buchungen.setBuchungsCounter(Buchungen.getBuchungsCounter() + 1);
         setBuchungsID(Buchungen.getBuchungsCounter());
