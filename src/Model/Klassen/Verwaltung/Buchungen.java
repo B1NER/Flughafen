@@ -1,6 +1,5 @@
 package Model.Klassen.Verwaltung;
 
-import Model.Exceptions.InvalidEmailException;
 import Model.Klassen.Elemente.Buchung;
 import Model.Klassen.Nutzer.Anwender;
 
@@ -16,7 +15,13 @@ public abstract class Buchungen {
 
 
     public static ArrayList<Buchung> getBuchungenByAnwender(Anwender anwender) {
-        return new ArrayList<Buchung>();
+        ArrayList<Buchung> l = new ArrayList<>();
+        for (int i = 0; i < buchungen.size(); i++) {
+            if(buchungen.get(i).getAnwender().equals(anwender)){
+                l.add(buchungen.get(i));
+            }
+        }
+        return l;
     }
 
     public static void addBuchung(Buchung buchung) {

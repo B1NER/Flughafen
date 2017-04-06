@@ -1,5 +1,6 @@
 package Model.Klassen.Verwaltung;
 
+import Model.Exceptions.GepaeckDoesNotExist;
 import Model.Klassen.Elemente.Buchung;
 import Model.Klassen.Elemente.Gepaeck;
 import Model.Klassen.Nutzer.Anwender;
@@ -22,8 +23,13 @@ public abstract class Gepaecke {
         }
     }
 
-    public static void getGepaeckByID(int gepaeckID){
-
+    public static Gepaeck getGepaeckByID(int gepaeckID)throws GepaeckDoesNotExist{
+        for (int i = 0; i < gepaecke.size(); i++) {
+            if(gepaecke.get(i).getGepaeckID() == gepaeckID){
+                return gepaecke.get(i);
+            }
+        }
+        throw new GepaeckDoesNotExist();
     }
 
     public static ArrayList<Gepaeck> getGepaecke() {
