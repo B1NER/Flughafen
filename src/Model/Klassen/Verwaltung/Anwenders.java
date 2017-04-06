@@ -16,7 +16,7 @@ import java.util.Date;
 public abstract class Anwenders {
 
     private static ArrayList<Anwender> anwenders = new ArrayList<>();
-    private static int anwenderCounter;
+    private static int anwenderCounter = 0;
 
 
     public static void addAnwender(Anwender anwender) {

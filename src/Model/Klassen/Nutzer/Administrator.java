@@ -2,6 +2,7 @@ package Model.Klassen.Nutzer;
 
 import Model.Klassen.Elemente.Buchung;
 import Model.Klassen.Elemente.Flug;
+import Model.Klassen.Verwaltung.Administratoren;
 import Model.Klassen.Verwaltung.Verwaltung;
 
 import java.util.ArrayList;
@@ -17,6 +18,12 @@ public class Administrator extends Mensch {
     public Administrator(int adminID, String vorname, String nachname, String geburtsdatum, int passnummer, String eMail, String passwort) {
         super(vorname, nachname, geburtsdatum, passnummer, eMail, passwort);
         setAdminID(adminID);
+    }
+
+    public Administrator(String vorname, String nachname, String geburtsdatum, int passnummer, String eMail, String passwort) {
+        super(vorname, nachname, geburtsdatum, passnummer, eMail, passwort);
+        Administratoren.setAdminCounter(Administratoren.getAdminCounter() + 1);
+        setAdminID(Administratoren.getAdminCounter());
     }
 
 

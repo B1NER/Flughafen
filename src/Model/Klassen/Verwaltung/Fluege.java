@@ -14,7 +14,7 @@ import java.util.Date;
 public abstract class Fluege {
 
     private static ArrayList<Flug> fluege = new ArrayList<>();
-    private static int fluegecounter;
+    private static int fluegecounter = 0;
 
 
     public static void addFlug(Flug flug) {

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public abstract class Administratoren {
 
     private static ArrayList<Administrator> administratoren = new ArrayList<>();
-    private static int adminCounter;
+    private static int adminCounter = 0;
 
 
     public static void addAndministrator(Administrator administrator) {

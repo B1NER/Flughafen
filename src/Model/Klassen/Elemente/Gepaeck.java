@@ -1,6 +1,7 @@
 package Model.Klassen.Elemente;
 
 import Model.Enums.Gepaecktypen;
+import Model.Klassen.Verwaltung.Gepaecke;
 
 /**
  * Created by knoll on 17.03.2017.
@@ -12,9 +13,16 @@ public class Gepaeck {
     private double gewicht;
 
     public Gepaeck(int gepaeckID, double gewicht, Gepaecktypen gepaeckTyp) {
-        setGepaeckID(gepaeckID);
-        setGepaeckTyp(gepaeckTyp);
-        setGewicht(gewicht);
+        this.gepaeckID = gepaeckID;
+        this.gepaeckTyp = gepaeckTyp;
+        this.gewicht = gewicht;
+    }
+
+    public Gepaeck(double gewicht, Gepaecktypen gepaeckTyp) {
+        Gepaecke.setGepaeckecounter(Gepaecke.getGepaeckecounter() + 1);
+        this.gepaeckID = Gepaecke.getGepaeckecounter();
+        this.gepaeckTyp = gepaeckTyp;
+        this.gewicht = gewicht;
     }
 
 

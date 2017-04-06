@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public abstract class Angestellte {
 
     private static ArrayList<Angestellter> angestellte = new ArrayList<>();
-    private static int angestelltenCounter;
+    private static int angestelltenCounter = 0;
 
 
     public static void addAngestellter(Angestellter angestellter) {

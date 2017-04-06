@@ -2,6 +2,7 @@ package Model.Klassen.Nutzer;
 
 import Model.Klassen.Elemente.Buchung;
 import Model.Klassen.Elemente.Flug;
+import Model.Klassen.Verwaltung.Angestellte;
 
 import java.util.ArrayList;
 
@@ -14,6 +15,12 @@ public class Angestellter extends Mensch {
     public Angestellter(int angestelltenID, String vorname, String nachname, String geburtsdatum, int passnummer, String eMail, String passwort) {
         super(vorname, nachname, geburtsdatum, passnummer, eMail, passwort);
         setAngestelltenID(angestelltenID);
+    }
+
+    public Angestellter(String vorname, String nachname, String geburtsdatum, int passnummer, String eMail, String passwort) {
+        super(vorname, nachname, geburtsdatum, passnummer, eMail, passwort);
+        Angestellte.setAngestelltenCounter(Angestellte.getAngestelltenCounter() + 1);
+        setAngestelltenID(Angestellte.getAngestelltenCounter());
     }
 
 

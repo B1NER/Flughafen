@@ -12,8 +12,12 @@ import java.util.ArrayList;
  */
 public abstract class Gepaecke {
     private static ArrayList<Gepaeck> gepaecke = new ArrayList<>();
-    private static int gepaeckecounter;
+    private static int gepaeckecounter = 0;
 
+
+    public static void addGepaeck(Gepaeck gepaeck) {
+        gepaecke.add(gepaeck);
+    }
 
     public static void gepeckBearbeiten(Gepaeck gepaeck, double neuesGewicht) {
         if (neuesGewicht < 20) {

@@ -44,6 +44,18 @@ public class Buchung {
         setCreatedByAnwender(createdByAnwender);
     }
 
+    public Buchung(int buchungsID, Flug hinflug, Anwender anwender, int anzahlSitzplaetze, Gepaeck gepaeck, double buchungspreis, boolean createdByAnwender) {
+        setBuchungsID(buchungsID);
+        setAnwender(anwender);
+        setAnzahlSitzplaetze(anzahlSitzplaetze);
+        setBuchungsID(buchungsID);
+        setBuchungspreis(buchungspreis);
+        setHinflug(hinflug);
+        setRueckflug(rueckflug);
+        setGepaeck(gepaeck);
+        setCreatedByAnwender(createdByAnwender);
+    }
+
     public Buchung(Flug hinflug, Anwender anwender, int anzahlSitzplaetze, Gepaeck gepaeck, double buchungspreis, boolean createdByAnwender){
         Buchungen.setBuchungsCounter(Buchungen.getBuchungsCounter() + 1);
         setBuchungsID(Buchungen.getBuchungsCounter());
