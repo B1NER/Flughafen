@@ -19,6 +19,10 @@ public abstract class Gepaecke {
         gepaecke.add(gepaeck);
     }
 
+    public static void removeGepaeck(Gepaeck gepaeck) {
+        gepaecke.remove(gepaeck);
+    }
+
     public static void gepeckBearbeiten(Gepaeck gepaeck, double neuesGewicht) {
         if (neuesGewicht < 20) {
             gepaeck.setGewicht(neuesGewicht);
@@ -26,6 +30,7 @@ public abstract class Gepaecke {
             //Throw new ToMuchGewichtException();
         }
     }
+
 
     public static Gepaeck getGepaeckByID(int gepaeckID)throws GepaeckDoesNotExist{
         for (int i = 0; i < gepaecke.size(); i++) {

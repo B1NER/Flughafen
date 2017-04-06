@@ -303,7 +303,8 @@ public abstract class Verwaltung {
 
 
     //Funktionelle Methoden
-    public static void gepaeckErstellen() throws ToHighWeightException {
+    public static void gepaeckErstellen(double gewicht, Gepaecktypen gepaeckTyp) throws ToHighWeightException {
+        Gepaecke.addGepaeck(new Gepaeck(gewicht, gepaeckTyp));
     }
 
     public static void anwenderErstellen(String vorname, String nachname, String geburtsdatum, int passnummer, String eMail, String passwort) throws InvalidEmailException, EmailIsAlreadyUsedException {
@@ -392,16 +393,28 @@ public abstract class Verwaltung {
         System.out.println("Angestellter angelegt:" + a);
     }
 
-    public static void buchungErstellen(Flug hinflug, Flug rueckflug, Anwender anwender, int anzahlSitzplaetze, Gepaeck gepaeck, double buchungspreis, boolean createdByAnwender) {
-        Buchung b = new Buchung(hinflug, rueckflug, anwender, anzahlSitzplaetze, gepaeck, buchungspreis, createdByAnwender);
-        Buchungen.addBuchung(b);
-        System.out.println("Buchung angelegt: " + b);
+    public static void anwenderLoeschen(Anwender anwender) {
+        for (int i = 0; i < Buchungen.getBuchungenByAnwender(anwender).size(); i++) {
+            Gepaecke.removeGepaeck(Buchungen.getBuchungenByAnwender(anwender).get(i).getGepaeck());
+            Buchungen.getBuchungen().remove(Buchungen.getBuchungenByAnwender(anwender).get(i));
+        }
+        for (HashMap.Entry<Angestellter, Anwender> h : angestelltenAnwender.entrySet()) {
+            if (h.getValue().equals(anwender)) {
+                angestelltenAnwender.remove(h.getKey());
+            }
+        }
+        Anwenders.getAnwenders().remove(anwender);
     }
 
-    public static void buchungErstellen(Flug hinflug, Anwender anwender, int anzahlSitzplaetze, Gepaeck gepaeck, double buchungspreis, boolean createdByAnwender) {
-        Buchung b = new Buchung(hinflug, anwender, anzahlSitzplaetze, gepaeck, buchungspreis, createdByAnwender);
-        Buchungen.addBuchung(b);
-        System.out.println("Buchung angelegt: " + b);
+    public static void adminLoeschen(Administrator administrator) {
+        Administratoren.getAdministratoren().remove(administrator);
+    }
+
+    public static void angestelltenLoeschen(Angestellter angestellter) {
+        for (int i = 0; i < Verwaltung.getAnwenderByAngestellten(angestellter).size(); i++) {
+            angestelltenAnwender.remove(angestellter, Verwaltung.getAnwenderByAngestellten(angestellter).get(i));
+        }
+        Angestellte.getAngestellte().remove(angestellter);
     }
 
     public static void anmelden(String eMail, String password) throws NutzerDoesNotExistException {
@@ -440,6 +453,18 @@ public abstract class Verwaltung {
         //*Klick* Registrieren --> anwenderErstellen --> erstellten Anwender dieser Funktion übergeben
         angemeldeter = anwender;
         System.out.println("Erfolgreich Angemeldet:" + angemeldeter);
+    }
+
+    public static void buchungErstellen(Flug hinflug, Flug rueckflug, Anwender anwender, int anzahlSitzplaetze, Gepaeck gepaeck, double buchungspreis, boolean createdByAnwender) {
+        Buchung b = new Buchung(hinflug, rueckflug, anwender, anzahlSitzplaetze, gepaeck, buchungspreis, createdByAnwender);
+        Buchungen.addBuchung(b);
+        System.out.println("Buchung angelegt: " + b);
+    }
+
+    public static void buchungErstellen(Flug hinflug, Anwender anwender, int anzahlSitzplaetze, Gepaeck gepaeck, double buchungspreis, boolean createdByAnwender) {
+        Buchung b = new Buchung(hinflug, anwender, anzahlSitzplaetze, gepaeck, buchungspreis, createdByAnwender);
+        Buchungen.addBuchung(b);
+        System.out.println("Buchung angelegt: " + b);
     }
 
     public static ArrayList<Anwender> getAnwenderByAngestellten(Angestellter angestellter) {

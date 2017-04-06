@@ -10,5 +10,6 @@ import java.io.IOException;
 public class MAIN {
     public static void main(String[] args) {
         Verwaltung.init();
+        Verwaltung.exit();
     }
 }
