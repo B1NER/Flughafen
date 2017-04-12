@@ -1,6 +1,8 @@
 package Model.Klassen.Verwaltung;
 
 import Model.Klassen.Elemente.Buchung;
+import Model.Klassen.Elemente.Flug;
+import Model.Klassen.Elemente.Gepaeck;
 import Model.Klassen.Nutzer.Anwender;
 
 import java.util.ArrayList;
@@ -28,8 +30,13 @@ public abstract class Buchungen {
         buchungen.add(buchung);
     }
 
-    public static void buchungBearbeiten(Buchung buchung) {
-        //Zu implementieren TODO
+    public static void buchungBearbeiten(Buchung buchung, Flug hinflug, Flug rueckflug, Anwender anwender, int anzahlSitzplaetze, Gepaeck gepaeck, double buchungspreis) {
+        buchung.setHinflug(hinflug);
+        buchung.setRueckflug(rueckflug);
+        buchung.setAnwender(anwender);
+        buchung.setAnzahlSitzplaetze(anzahlSitzplaetze);
+        buchung.setGepaeck(gepaeck);
+        buchung.setBuchungspreis(buchungspreis);
     }
 
     public static void removeBuchung(Buchung buchung) {

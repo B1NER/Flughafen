@@ -1,5 +1,6 @@
 package Model.Klassen.Verwaltung;
 import Model.Exceptions.NutzerDoesNotExistException;
+import Model.Exceptions.WrongPasswordException;
 import Model.Klassen.Nutzer.Administrator;
 
 
@@ -22,8 +23,17 @@ public abstract class Administratoren {
         administratoren.remove(admin);
     }
 
-    public static void administratorBearbeiten(Administrator admin) {
-        //Zu implementieren TODO
+    public static void administratorBearbeiten(Administrator admin, String vorname, String nachname, String geburtsdatum, String passwort, String bestaetigungsPasswort) throws WrongPasswordException {
+        Administrator a = admin;
+        admin.setVorname(vorname);
+        admin.setNachname(nachname);
+        admin.setGeburtsdatum(geburtsdatum);
+        if (passwort.equals(bestaetigungsPasswort)) {
+            admin.setPasswort(passwort);
+        } else {
+            throw new WrongPasswordException();
+        }
+        System.out.println(a + "zu" + admin + " bearbeitet!");
     }
 
 

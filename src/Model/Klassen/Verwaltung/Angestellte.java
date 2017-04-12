@@ -1,6 +1,7 @@
 package Model.Klassen.Verwaltung;
 
 import Model.Exceptions.NutzerDoesNotExistException;
+import Model.Exceptions.WrongPasswordException;
 import Model.Klassen.Nutzer.Angestellter;
 import Model.Klassen.Nutzer.Anwender;
 
@@ -23,8 +24,17 @@ public abstract class Angestellte {
         angestellte.remove(angestellter);
     }
 
-    public static void angestellterBearbeiten(){
-        //Zu implementieren TODO
+    public static void angestelltenBearbeiten(Angestellter angestellter, String vorname, String nachname, String geburtsdatum, String passwort, String bestaetigungsPasswort) throws WrongPasswordException {
+        Angestellter a = angestellter;
+        angestellter.setVorname(vorname);
+        angestellter.setNachname(nachname);
+        angestellter.setGeburtsdatum(geburtsdatum);
+        if (passwort.equals(bestaetigungsPasswort)) {
+            angestellter.setPasswort(passwort);
+        } else {
+            throw new WrongPasswordException();
+        }
+        System.out.println(a + "zu" + angestellter + " bearbeitet!");
     }
 
 

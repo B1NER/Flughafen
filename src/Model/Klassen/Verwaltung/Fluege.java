@@ -21,7 +21,7 @@ public abstract class Fluege {
         fluege.add(flug);
     }
 
-    public static Flug getFlugByID(int flugID) throws FlugNotFoundException {
+    public static Flug getFlugByID(String flugID) throws FlugNotFoundException {
         for (int i = 0; i < fluege.size(); i++) {
             if (fluege.get(i).getFlugID().equals(flugID))
                 return fluege.get(i);
@@ -113,6 +113,25 @@ public abstract class Fluege {
         }
     }
 
+    public static int getVerfuegbarePlaetze(Flug flug) {
+        int verfuegbarePlaetze = flug.getAnzahlPlaetze();
+        for (int i = 0; i < Buchungen.getBuchungen().size(); i++) {
+            if (flug.equals(Buchungen.getBuchungen().get(i).getHinflug()) || flug.equals(Buchungen.getBuchungen().get(i).getHinflug())) {
+                verfuegbarePlaetze -= Buchungen.getBuchungen().get(i).getAnzahlSitzplaetze();
+            }
+        }
+        return verfuegbarePlaetze;
+    }
+
+    public static int getVerfuegbaresGewicht(Flug flug) {
+        int verfuegbaresGewicht = flug.getGepaeckskapazitaet();
+        for (int i = 0; i < Buchungen.getBuchungen().size(); i++) {
+            if (flug.equals(Buchungen.getBuchungen().get(i).getHinflug()) || flug.equals(Buchungen.getBuchungen().get(i).getHinflug())) {
+                verfuegbaresGewicht -= Buchungen.getBuchungen().get(i).getGepaeck().getGewicht();
+            }
+        }
+        return verfuegbaresGewicht;
+    }
 
     public static int getFluegecounter() {
         return fluegecounter;

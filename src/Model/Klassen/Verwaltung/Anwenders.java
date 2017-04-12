@@ -1,14 +1,10 @@
 package Model.Klassen.Verwaltung;
 
-import Model.Exceptions.FlugNotFoundException;
 import Model.Exceptions.NutzerDoesNotExistException;
-import Model.Klassen.Elemente.Buchung;
-import Model.Klassen.Elemente.Flug;
-import Model.Klassen.Elemente.Gepaeck;
+import Model.Exceptions.WrongPasswordException;
 import Model.Klassen.Nutzer.Anwender;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Created by knoll on 27.03.2017.
@@ -27,10 +23,18 @@ public abstract class Anwenders {
         anwenders.remove(anwender);
     }
 
-    public static void anwenderBearbeiten(Anwender anwender) {
-        //Zu implementieren TODO
+    public static void angestelltenBearbeiten(Anwender anwender, String vorname, String nachname, String geburtsdatum, String passwort, String bestaetigungsPasswort) throws WrongPasswordException {
+        Anwender a = anwender;
+        anwender.setVorname(vorname);
+        anwender.setNachname(nachname);
+        anwender.setGeburtsdatum(geburtsdatum);
+        if (passwort.equals(bestaetigungsPasswort)) {
+            anwender.setPasswort(passwort);
+        } else {
+            throw new WrongPasswordException();
+        }
+        System.out.println(a + "zu" + anwender + " bearbeitet!");
     }
-
 
     public static Anwender getAnwenderByID(int anwenderID) throws NutzerDoesNotExistException{
         for (int i = 0; i < anwenders.size(); i++) {

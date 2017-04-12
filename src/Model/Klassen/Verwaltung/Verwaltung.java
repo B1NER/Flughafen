@@ -85,15 +85,15 @@ public abstract class Verwaltung {
             Buchung eingeleseneBuchung;
             if (zs.length == 8) { //Mit Rueckflug
                 if (zs[7].equals("0")) {
-                    eingeleseneBuchung = new Buchung(Integer.parseInt(zs[0]), Fluege.getFlugByID(Integer.parseInt(zs[1])), Fluege.getFlugByID(Integer.parseInt(zs[2])), Anwenders.getAnwenderByID(Integer.parseInt(zs[3])), Integer.parseInt(zs[4]), Gepaecke.getGepaeckByID(Integer.parseInt(zs[5])), Double.parseDouble(zs[6]), false);
+                    eingeleseneBuchung = new Buchung(Integer.parseInt(zs[0]), Fluege.getFlugByID(zs[1]), Fluege.getFlugByID(zs[2]), Anwenders.getAnwenderByID(Integer.parseInt(zs[3])), Integer.parseInt(zs[4]), Gepaecke.getGepaeckByID(Integer.parseInt(zs[5])), Double.parseDouble(zs[6]), false);
                 } else {
-                    eingeleseneBuchung = new Buchung(Integer.parseInt(zs[0]), Fluege.getFlugByID(Integer.parseInt(zs[1])), Fluege.getFlugByID(Integer.parseInt(zs[2])), Anwenders.getAnwenderByID(Integer.parseInt(zs[3])), Integer.parseInt(zs[4]), Gepaecke.getGepaeckByID(Integer.parseInt(zs[5])), Double.parseDouble(zs[6]), true);
+                    eingeleseneBuchung = new Buchung(Integer.parseInt(zs[0]), Fluege.getFlugByID(zs[1]), Fluege.getFlugByID(zs[2]), Anwenders.getAnwenderByID(Integer.parseInt(zs[3])), Integer.parseInt(zs[4]), Gepaecke.getGepaeckByID(Integer.parseInt(zs[5])), Double.parseDouble(zs[6]), true);
                 }
             } else { //Ohne Rueckflug
                 if (zs[6].equals("0")) {
-                    eingeleseneBuchung = new Buchung(Integer.parseInt(zs[0]), Fluege.getFlugByID(Integer.parseInt(zs[1])), Fluege.getFlugByID(Integer.parseInt(zs[2])), Anwenders.getAnwenderByID(Integer.parseInt(zs[3])), Integer.parseInt(zs[4]), Gepaecke.getGepaeckByID(Integer.parseInt(zs[5])), Double.parseDouble(zs[6]), false);
+                    eingeleseneBuchung = new Buchung(Integer.parseInt(zs[0]), Fluege.getFlugByID(zs[1]), Fluege.getFlugByID(zs[2]), Anwenders.getAnwenderByID(Integer.parseInt(zs[3])), Integer.parseInt(zs[4]), Gepaecke.getGepaeckByID(Integer.parseInt(zs[5])), Double.parseDouble(zs[6]), false);
                 } else {
-                    eingeleseneBuchung = new Buchung(Integer.parseInt(zs[0]), Fluege.getFlugByID(Integer.parseInt(zs[1])), Fluege.getFlugByID(Integer.parseInt(zs[2])), Anwenders.getAnwenderByID(Integer.parseInt(zs[3])), Integer.parseInt(zs[4]), Gepaecke.getGepaeckByID(Integer.parseInt(zs[5])), Double.parseDouble(zs[6]), true);
+                    eingeleseneBuchung = new Buchung(Integer.parseInt(zs[0]), Fluege.getFlugByID(zs[1]), Fluege.getFlugByID(zs[2]), Anwenders.getAnwenderByID(Integer.parseInt(zs[3])), Integer.parseInt(zs[4]), Gepaecke.getGepaeckByID(Integer.parseInt(zs[5])), Double.parseDouble(zs[6]), true);
                 }
             }
 
@@ -457,13 +457,25 @@ public abstract class Verwaltung {
         System.out.println("Erfolgreich Angemeldet:" + angemeldeter);
     }
 
-    public static void buchungErstellen(Flug hinflug, Flug rueckflug, Anwender anwender, int anzahlSitzplaetze, Gepaeck gepaeck, double buchungspreis, boolean createdByAnwender) {
+    public static void buchungErstellen(Flug hinflug, Flug rueckflug, Anwender anwender, int anzahlSitzplaetze, Gepaeck gepaeck, double buchungspreis, boolean createdByAnwender) throws NoSpaceLeftException, ToHighWeightException {
+        if (anzahlSitzplaetze > Fluege.getVerfuegbarePlaetze(rueckflug) || anzahlSitzplaetze > Fluege.getVerfuegbarePlaetze(hinflug)) {
+            throw new NoSpaceLeftException();
+        }
+        if (gepaeck.getGewicht() > Fluege.getVerfuegbaresGewicht(rueckflug) || anzahlSitzplaetze > Fluege.getVerfuegbaresGewicht(hinflug)) {
+            throw new ToHighWeightException();
+        }
         Buchung b = new Buchung(hinflug, rueckflug, anwender, anzahlSitzplaetze, gepaeck, buchungspreis, createdByAnwender);
         Buchungen.addBuchung(b);
         System.out.println("Buchung angelegt: " + b);
     }
 
-    public static void buchungErstellen(Flug hinflug, Anwender anwender, int anzahlSitzplaetze, Gepaeck gepaeck, double buchungspreis, boolean createdByAnwender) {
+    public static void buchungErstellen(Flug hinflug, Anwender anwender, int anzahlSitzplaetze, Gepaeck gepaeck, double buchungspreis, boolean createdByAnwender) throws NoSpaceLeftException, ToHighWeightException {
+        if (anzahlSitzplaetze > Fluege.getVerfuegbarePlaetze(hinflug)) {
+            throw new NoSpaceLeftException();
+        }
+        if (anzahlSitzplaetze > Fluege.getVerfuegbaresGewicht(hinflug)) {
+            throw new ToHighWeightException();
+        }
         Buchung b = new Buchung(hinflug, anwender, anzahlSitzplaetze, gepaeck, buchungspreis, createdByAnwender);
         Buchungen.addBuchung(b);
         System.out.println("Buchung angelegt: " + b);
