@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0"
+      prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="Controller.BuchungszusammenfassungController">
+    <children>
+        <StackPane prefHeight="1024.0" prefWidth="1280.0">
+            <children>
+                <ImageView fitHeight="1024.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true" scaleY="1.44">
+                    <image>
+                        <Image url="@Grafiken/Background.jpg"/>
+                    </image>
+                </ImageView>
+                <VBox alignment="CENTER" prefHeight="1024.0" prefWidth="1280.0">
+                    <children>
+                        <Label fx:id="ZusammenfassungText" text="Zusammenfassung" textFill="WHITE">
+                            <font>
+                                <Font size="51.0"/>
+                            </font>
+                        </Label>
+                        <GridPane alignment="CENTER" prefHeight="671.0" prefWidth="988.0">
+                            <children>
+                                <Label fx:id="NachnameText" text="Nachname: " textFill="#fffafa"
+                                       GridPane.columnIndex="2"/>
+                                <Label id="lblEndbestaetigungNachname" fx:id="NachnameFeld" prefHeight="45.0"
+                                       prefWidth="214.0" textFill="#fffafa" GridPane.columnIndex="3"/>
+                                <Label fx:id="VornameText" text="Vorname" textFill="#fffafa"/>
+                                <Label id="lblEndbestaetigungVorname" fx:id="VornameFeld" prefHeight="45.0"
+                                       prefWidth="244.0" textFill="#fffafa" GridPane.columnIndex="1"/>
+                                <Label fx:id="BuchungsIDText" text="Buchungs ID: " textFill="#fffafa"
+                                       GridPane.rowIndex="1"/>
+                                <Label id="lblEndbestaetigungBuchungsID" fx:id="BuchungsIDFeld" prefHeight="45.0"
+                                       prefWidth="240.0" textFill="#fffafa" GridPane.columnIndex="1"
+                                       GridPane.rowIndex="1"/>
+                                <Label fx:id="HinflugText" text="Hinflug: " textFill="#fffafa" GridPane.rowIndex="2"/>
+                                <Label id="lblEndbestaetigungHinflug" fx:id="HinflugFeld" prefHeight="45.0"
+                                       prefWidth="232.0" textFill="#fffafa" GridPane.columnIndex="1"
+                                       GridPane.rowIndex="2"/>
+                                <Label fx:id="RuckflugText" text="Rückflug" textFill="#f8f8f8" GridPane.rowIndex="3"/>
+                                <Label id="lblEndbestaetigungRueckflug" fx:id="RuckflugFeld" prefHeight="45.0"
+                                       prefWidth="242.0" textFill="#f8f8f8" GridPane.columnIndex="1"
+                                       GridPane.rowIndex="3"/>
+                                <Label fx:id="StartdatumText" text="Startdatum: " textFill="#f8f8f8"
+                                       GridPane.rowIndex="4"/>
+                                <Label id="lblEndbestaetigungStartDatum" fx:id="StartdatumFeld" prefHeight="45.0"
+                                       prefWidth="225.0" textFill="#f8f8f8" GridPane.columnIndex="1"
+                                       GridPane.rowIndex="4"/>
+                                <Label fx:id="StartortText" text="Startort: " textFill="#f8f8f8"
+                                       GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                                <Label id="lblEndbestaetigungStartort" fx:id="StartortFeld" prefHeight="45.0"
+                                       prefWidth="240.0" textFill="#f8f8f8" GridPane.columnIndex="3"
+                                       GridPane.rowIndex="1"/>
+                                <Label fx:id="ZielortText" text="Zielort" textFill="#f8f8f8" GridPane.columnIndex="2"
+                                       GridPane.rowIndex="2"/>
+                                <Label id="lblEndbestaetigungZielort" fx:id="ZielortFeld" prefHeight="45.0"
+                                       prefWidth="234.0" textFill="#f8f8f8" GridPane.columnIndex="3"
+                                       GridPane.rowIndex="2"/>
+                                <Label id="lblEndbestaetigungPreis" fx:id="PreisText" text="Preis: " textFill="#f8f8f8"
+                                       GridPane.rowIndex="6">
+                                    <font>
+                                        <Font size="39.0"/>
+                                    </font>
+                                </Label>
+                                <Label fx:id="AnkunftsdatumText" text="Ankunftsdatum: " textFill="#f8f8f8"
+                                       GridPane.rowIndex="5"/>
+                                <Label id="lblEndbestaetigungAnkunftsDatum" fx:id="AnkunftsdatumFeld" prefHeight="45.0"
+                                       prefWidth="242.0" textFill="#f8f8f8" GridPane.columnIndex="1"
+                                       GridPane.rowIndex="5"/>
+                                <Label fx:id="SitzplatzText" text="Sitzplatz: " textFill="#f8f8f8"
+                                       GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+                                <Label id="lblEndbestaetigungSitzplatz" fx:id="SitzplatzFeld" prefHeight="45.0"
+                                       prefWidth="251.0" textFill="#f8f8f8" GridPane.columnIndex="3"
+                                       GridPane.rowIndex="3"/>
+                                <Label fx:id="GepackText" text="Gepäck: " textFill="WHITE" GridPane.columnIndex="2"
+                                       GridPane.rowIndex="4"/>
+                                <Label id="lblEndbestaetigungGebaeck" fx:id="GepackFeld" prefHeight="45.0"
+                                       prefWidth="263.0" textFill="WHITE" GridPane.columnIndex="3"
+                                       GridPane.rowIndex="4"/>
+                                <Label id="lblEndbestaetigungPreis" fx:id="PreisFeld" prefHeight="32.0"
+                                       prefWidth="220.0" textFill="WHITE" GridPane.columnIndex="1"
+                                       GridPane.rowIndex="6">
+                                    <font>
+                                        <Font size="22.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="245.0" minWidth="10.0"
+                                                   prefWidth="221.45997619628906"/>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="248.70196533203125" minWidth="10.0"
+                                                   prefWidth="210.08056640625"/>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="415.0" minWidth="10.0"
+                                                   prefWidth="255.3077392578125"/>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="415.0" minWidth="10.0"
+                                                   prefWidth="244.6922607421875"/>
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints maxHeight="85.90385437011719" minHeight="10.0"
+                                                prefHeight="85.11116027832031" vgrow="SOMETIMES"/>
+                                <RowConstraints maxHeight="135.66009521484375" minHeight="10.0"
+                                                prefHeight="82.88883972167969" vgrow="SOMETIMES"/>
+                                <RowConstraints maxHeight="152.36822509765625" minHeight="10.0"
+                                                prefHeight="94.33990478515625" vgrow="SOMETIMES"/>
+                                <RowConstraints maxHeight="188.46609497070312" minHeight="10.0"
+                                                prefHeight="98.63177490234375" vgrow="SOMETIMES"/>
+                                <RowConstraints maxHeight="204.41802978515625" minHeight="10.0"
+                                                prefHeight="103.53390502929688" vgrow="SOMETIMES"/>
+                                <RowConstraints maxHeight="246.61370849609375" minHeight="10.0"
+                                                prefHeight="105.58197021484375" vgrow="SOMETIMES"/>
+                                <RowConstraints maxHeight="221.34161376953125" minHeight="10.0"
+                                                prefHeight="89.61846923828125" vgrow="SOMETIMES"/>
+                            </rowConstraints>
+                            <VBox.margin>
+                                <Insets left="200.0"/>
+                            </VBox.margin>
+                        </GridPane>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1280.0" spacing="20.0">
+                            <children>
+                                <Button id="btnEndbestaetignugBestaetigen" fx:id="BestatigenButton" alignment="CENTER"
+                                        mnemonicParsing="false" onAction="#BestatigenAction" prefWidth="200.0"
+                                        text="Bestätigen"/>
+                                <Button id="btnEndbestaetignugAendern" fx:id="AndernButton" mnemonicParsing="false"
+                                        onAction="#AndernAction" prefWidth="200.0" text="Ändern"/>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </children>
+        </StackPane>
+    </children>
+</Pane>
