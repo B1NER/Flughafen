@@ -96,8 +96,6 @@ public abstract class Verwaltung {
                     eingeleseneBuchung = new Buchung(Integer.parseInt(zs[0]), Fluege.getFlugByID(zs[1]), Fluege.getFlugByID(zs[2]), Anwenders.getAnwenderByID(Integer.parseInt(zs[3])), Integer.parseInt(zs[4]), Gepaecke.getGepaeckByID(Integer.parseInt(zs[5])), Double.parseDouble(zs[6]), true);
                 }
             }
-
-
             Buchungen.addBuchung(eingeleseneBuchung);
             System.out.println("Buchung angelegt:" + eingeleseneBuchung);
         }
@@ -334,6 +332,9 @@ public abstract class Verwaltung {
         }
         Anwender a = new Anwender(vorname, nachname, geburtsdatum, passnummer, eMail, passwort);
         Anwenders.addAnwender(a);
+        if(angemeldeter instanceof Angestellter){
+            angestelltenAnwender.put((Angestellter) angemeldeter,a);
+        }
         System.out.println("Anwender angelegt:" + a);
     }
 

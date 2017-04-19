@@ -1,5 +1,7 @@
 package Model.Klassen.Verwaltung;
 
+import Model.Exceptions.BuchungDoesNotExistException;
+import Model.Exceptions.NutzerDoesNotExistException;
 import Model.Klassen.Elemente.Buchung;
 import Model.Klassen.Elemente.Flug;
 import Model.Klassen.Elemente.Gepaeck;
@@ -19,7 +21,7 @@ public abstract class Buchungen {
     public static ArrayList<Buchung> getBuchungenByAnwender(Anwender anwender) {
         ArrayList<Buchung> l = new ArrayList<>();
         for (int i = 0; i < buchungen.size(); i++) {
-            if (buchungen.get(i).getAnwender().equals(anwender) && !buchungen.get(i).isCreatedByAnwender()) {
+            if (buchungen.get(i).getAnwender().equals(anwender)) {
                 l.add(buchungen.get(i));
             }
         }
@@ -51,8 +53,13 @@ public abstract class Buchungen {
         }
     }
 
-    public static Buchung getBuchungByID(int buchungsID) {
-        return null;
+    public static Buchung getBuchungByID(int buchungsID)throws BuchungDoesNotExistException {
+        for (int i = 0; i < buchungen.size(); i++) {
+            if(buchungen.get(i).getBuchungsID() == buchungsID){
+                return buchungen.get(i);
+            }
+        }
+        throw new BuchungDoesNotExistException();
     }
 
 
