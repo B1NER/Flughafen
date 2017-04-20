@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Klassen.MAIN;
+import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -75,6 +76,10 @@ public class BuchenController {
     public MAIN main;
 
     public void setMain(MAIN main) {
+        if(Verwaltung.isAngemeldet()){
+            AnmeldenButton.setVisible(false);
+            RegistrierenButton.setVisible(false);
+        }
         this.main = main;
     }
 

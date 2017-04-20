@@ -2,6 +2,8 @@ package Controller;
 
 import Model.Klassen.Elemente.Buchung;
 import Model.Klassen.MAIN;
+import Model.Klassen.Nutzer.Administrator;
+import Model.Klassen.Nutzer.Angestellter;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -60,7 +62,15 @@ public class BuchungBearbeitenController {
 
     @FXML
     void ZuruckAction(ActionEvent event) {
-
+        if(Verwaltung.getAngemeldeter() instanceof Administrator){
+            //ProfilBearbeiten
+        }
+        else if(Verwaltung.getAngemeldeter() instanceof Angestellter){
+            //ProfilBearbeiten
+        }
+        else{
+            //KundenProfil
+        }
     }
 
     @FXML

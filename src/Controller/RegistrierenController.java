@@ -83,18 +83,21 @@ public class RegistrierenController {
 
         if (Verwaltung.isAngemeldet()) {
             if (Verwaltung.getAngemeldeter() instanceof Administrator) { //admin kann alles erstellen
+                RegistrierenText.setText("Nutzer anlegen");
                 AnwenderRbutton.setSelected(false);
                 AnwenderRbutton.setVisible(true);
                 AdminRButton.setVisible(true);
                 AngestellterRButton.setVisible(true);
             }
             if (Verwaltung.getAngemeldeter() instanceof Angestellter) { //angestellter kann nur Anwender erstellen
+                RegistrierenText.setText("Nutzer anlegen");
                 AnwenderRbutton.setSelected(true);
                 AnwenderRbutton.setVisible(false);
                 AdminRButton.setVisible(false);
                 AngestellterRButton.setVisible(false);
             }
         } else { //falls keiner angemeldet ist, meldet sich ein Anwender an
+            RegistrierenText.setText("Registrieren");
             AnwenderRbutton.setSelected(true);
             AnwenderRbutton.setVisible(false);
             AdminRButton.setVisible(false);
@@ -131,6 +134,44 @@ public class RegistrierenController {
         if (AnwenderRbutton.isSelected()) {
             try {
                 Verwaltung.anwenderErstellen(VornameFeld.getText(), NachnameFeld.getText(), GeburtsdatumFeld.getAccessibleText(), 777, EmailFeld.getText(), PasswordFeld.getText());
+                try {
+                    Verwaltung.anmelden(EmailFeld.getText(), PasswordFeld.getText());
+                } catch (NutzerDoesNotExistException e) {
+                    //wird nie der Fall sein, da er gerade erstellt wurde
+                    e.printStackTrace();
+                }
+                main.buchen();
+            } catch (EmailIsAlreadyUsedException e) {
+                EmailFeld.setPromptText("Diese Email wird bereits verwendet!");
+                EmailFeld.setText("");
+            } catch (InvalidEmailException e) {
+                EmailFeld.setText("");
+                EmailFeld.setPromptText("Keine gültige Email!");
+            }
+
+        }
+        if (AdminRButton.isSelected()) {
+            try {
+                Verwaltung.adminErstellten(VornameFeld.getText(), NachnameFeld.getText(), GeburtsdatumFeld.getAccessibleText(), 777, EmailFeld.getText(), PasswordFeld.getText());
+                try {
+                    Verwaltung.anmelden(EmailFeld.getText(), PasswordFeld.getText());
+                } catch (NutzerDoesNotExistException e) {
+                    //wird nie der Fall sein, da er gerade erstellt wurde
+                    e.printStackTrace();
+                }
+                main.buchen();
+            } catch (EmailIsAlreadyUsedException e) {
+                EmailFeld.setPromptText("Diese Email wird bereits verwendet!");
+                EmailFeld.setText("");
+            } catch (InvalidEmailException e) {
+                EmailFeld.setText("");
+                EmailFeld.setPromptText("Keine gültige Email!");
+            }
+
+        }
+        if (AngestellterRButton.isSelected()) {
+            try {
+                Verwaltung.angestellterErstellen(VornameFeld.getText(), NachnameFeld.getText(), GeburtsdatumFeld.getAccessibleText(), 777, EmailFeld.getText(), PasswordFeld.getText());
                 try {
                     Verwaltung.anmelden(EmailFeld.getText(), PasswordFeld.getText());
                 } catch (NutzerDoesNotExistException e) {
