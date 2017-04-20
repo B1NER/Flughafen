@@ -32,7 +32,7 @@ public class MAIN extends Application {
 
             Scene scene = new Scene(pane);
 
-            primaryStage.setFullScreen(true);
+            primaryStage.setFullScreen(false);
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (final java.io.IOException e) {
@@ -50,9 +50,10 @@ public class MAIN extends Application {
 
             Scene scene = new Scene(pane);
 
-            primaryStage.setFullScreen(true);
+            primaryStage.setFullScreen(false);
             primaryStage.setScene(scene);
             primaryStage.show();
+
         } catch (final java.io.IOException e) {
             System.out.println("Exception");
         }
