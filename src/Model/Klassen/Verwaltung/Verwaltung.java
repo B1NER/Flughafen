@@ -521,6 +521,41 @@ public abstract class Verwaltung {
         return biggestID;
     }
 
+    public static void buchungBearbeiten(Buchung buchung, Flug hinflug, Flug rueckflug, Anwender anwender, int anzahlSitzplaetze, Gepaeck gepaeck, double buchungspreis){
+        Buchungen.buchungBearbeiten(buchung, hinflug, rueckflug, anwender, anzahlSitzplaetze, gepaeck, buchungspreis);
+    }
+
+    public static void flugFinden(String abflugort, String ankunftsort, Date abflugzeit){
+        try{
+            Fluege.getZutreffendeFluege(abflugort,ankunftsort,abflugzeit);
+        }catch(FlugNotFoundException e){
+            System.out.println("Keine Flüge dieser Wahl gefunden");
+        }
+    }
+
+    public static void flugFinden(String abflugort, String ankunftsort, String fluggesellschaft){
+        try{
+            Fluege.getZutreffendeFluege(abflugort,ankunftsort,fluggesellschaft);
+        }catch(FlugNotFoundException e){
+            System.out.println("Keine Flüge dieser Wahl gefunden");
+        }
+    }
+
+    public static void flugFinden(String abflugort, String ankunftsort, Date abflugzeit, String fluggesellschaft){
+        try{
+            Fluege.getZutreffendeFluege(abflugort,ankunftsort,abflugzeit,fluggesellschaft);
+        }catch(FlugNotFoundException e){
+            System.out.println("Keine Flüge dieser Wahl gefunden");
+        }
+    }
+
+    public static void flugFinden(String abflugort, String ankunftsort){
+        try{
+            Fluege.getZutreffendeFluege(abflugort,ankunftsort);
+        }catch(FlugNotFoundException e){
+            System.out.println("Keine Flüge dieser Wahl gefunden");
+        }
+    }
 
     //Getter
     public static HashMap<Anwender, Angestellter> getAngestelltenAnwender() {

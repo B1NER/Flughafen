@@ -1,6 +1,8 @@
 package Controller;
 
+import Model.Exceptions.NutzerDoesNotExistException;
 import Model.Klassen.MAIN;
+import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -39,19 +41,20 @@ public class AnmeldenController {
     }
 
     @FXML
-    void EmailFeldAction(ActionEvent event) {
-
-    }
+    void EmailFeldAction(ActionEvent event) {}
 
 
     @FXML
-    void PasswordFeldAction(ActionEvent event) {
-
-    }
+    void PasswordFeldAction(ActionEvent event) {}
 
     @FXML
     void AnmeldenAction(ActionEvent event) {
-
+        try {
+            Verwaltung.anmelden(EmailFeld.getText(), PasswordFeld.getText());
+        }
+        catch(NutzerDoesNotExistException e){
+            e.printStackTrace();
+        }
     }
 
 }
