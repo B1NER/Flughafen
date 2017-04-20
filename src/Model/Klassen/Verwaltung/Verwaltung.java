@@ -525,6 +525,14 @@ public abstract class Verwaltung {
         Buchungen.buchungBearbeiten(buchung, hinflug, rueckflug, anwender, anzahlSitzplaetze, gepaeck, buchungspreis);
     }
 
+    public static void flugFinden(String abflugort, String ankunftsort) {
+        try {
+            Fluege.getZutreffendeFluege(abflugort, ankunftsort);
+        } catch (FlugNotFoundException e) {
+            System.out.println("Keine Flüge dieser Wahl gefunden");
+        }
+    }
+
     public static void flugFinden(String abflugort, String ankunftsort, Date abflugzeit){
         try{
             Fluege.getZutreffendeFluege(abflugort,ankunftsort,abflugzeit);
@@ -549,13 +557,6 @@ public abstract class Verwaltung {
         }
     }
 
-    public static void flugFinden(String abflugort, String ankunftsort){
-        try{
-            Fluege.getZutreffendeFluege(abflugort,ankunftsort);
-        }catch(FlugNotFoundException e){
-            System.out.println("Keine Flüge dieser Wahl gefunden");
-        }
-    }
 
     //Getter
     public static HashMap<Anwender, Angestellter> getAngestelltenAnwender() {
