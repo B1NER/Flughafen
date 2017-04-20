@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Klassen.MAIN;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -30,6 +31,12 @@ public class AnmeldenController {
 
     @FXML
     private MediaView MediaView;
+
+    public MAIN main;
+
+    public void setMain(MAIN main) {
+        this.main = main;
+    }
 
     @FXML
     void EmailFeldAction(ActionEvent event) {

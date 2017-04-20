@@ -203,9 +203,9 @@ public class VerwaltungTest {
         buchungs.add(new Buchung(3, flug, anwender, 4, gepaeck, 134, true));
         buchungs.add(new Buchung(4, flug, anwender, 5, gepaeck, 147, true));
 
-        Verwaltung.buchungErstellen(flug, anwender, 3, gepaeck, 178, false);
+        /*Verwaltung.buchungErstellen(flug, anwender, 3, gepaeck, 178, false);
         Verwaltung.buchungErstellen(flug, anwender, 4, gepaeck, 134, true);
-        Verwaltung.buchungErstellen(flug, anwender, 5, gepaeck, 147, true);
+        Verwaltung.buchungErstellen(flug, anwender, 5, gepaeck, 147, true);*/
 
         //Bei Flug, Anwender und Gepäck reicht nur der Vergleich der IDs
         for (int i = 0; i < buchungs.size(); i++) {

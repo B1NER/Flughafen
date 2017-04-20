@@ -8,7 +8,6 @@
 <?import javafx.scene.media.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0"
@@ -21,7 +20,9 @@
                 <mediaPlayer>
                     <MediaPlayer autoPlay="true">
                         <media>
-                            <Media source="file:///C:/Users/Daniel/Desktop/Schule/Informatik/Flughafen/src/Grafiken/Cloud%20-%202142.mp4" />
+                            <Media source="file:\\src\\View\\Grafiken\\Cloud - 2142.mp4"/>&ndash;&gt;
+                            <Media source="file:///C:/Users/Daniel/Desktop/Schule/Informatik/Flughafen/src/Grafiken/Cloud%20-%202142.mp4" />&ndash;&gt;
+                            <Media source=""/>
                         </media>
                     </MediaPlayer>
                 </mediaPlayer>

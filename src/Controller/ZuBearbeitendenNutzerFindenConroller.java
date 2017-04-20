@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Klassen.MAIN;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -51,6 +52,12 @@ public class ZuBearbeitendenNutzerFindenConroller {
     @FXML
     private Button SuchenButton;
 
+    public MAIN main;
+
+    public void setMain(MAIN main) {
+        this.main = main;
+    }
+
 
     @FXML
     void SuchenAction(ActionEvent event) {
@@ -71,5 +78,4 @@ public class ZuBearbeitendenNutzerFindenConroller {
     void ZuruckAction(ActionEvent event) {
 
     }
-
 }

@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Klassen.MAIN;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -70,24 +71,31 @@ public class BuchenController {
     @FXML
     private Button FlugSuchenButton;
 
+
+    public MAIN main;
+
+    public void setMain(MAIN main) {
+        this.main = main;
+    }
+
     @FXML
     void RegistrierenAction(ActionEvent event) {
-
+        main.registrieren();
     }
 
     @FXML
     void AnmeldenAction(ActionEvent event) {
-
+        main.anmelden();
     }
 
     @FXML
     void minusAction(ActionEvent event) {
-
+        AnzahlFeld.setText("" + (Integer.parseInt(AnzahlFeld.getText()) - 1));
     }
 
     @FXML
     void plusAction(ActionEvent event) {
-
+        AnzahlFeld.setText("" + (Integer.parseInt(AnzahlFeld.getText()) + 1));
     }
 
     @FXML

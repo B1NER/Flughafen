@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Klassen.MAIN;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -106,6 +107,12 @@ public class KundenProfilControler {
 
     @FXML
     private Label HinflugText;
+
+    public MAIN main;
+
+    public void setMain(MAIN main) {
+        this.main = main;
+    }
 
 
     @FXML
