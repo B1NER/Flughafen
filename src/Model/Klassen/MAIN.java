@@ -1,6 +1,9 @@
 package Model.Klassen;
 
 import Controller.*;
+import Model.Klassen.Nutzer.Anwender;
+import Model.Klassen.Verwaltung.Angestellte;
+import Model.Klassen.Verwaltung.Anwenders;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +14,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * Created by knoll on 21.03.2017.
+ * Created by knöll on 21.03.2017.
  */
 public class MAIN extends Application {
 
@@ -26,6 +29,7 @@ public class MAIN extends Application {
         Verwaltung.init();
         launch(args);
         Verwaltung.exit();
+
     }
 
 
@@ -175,7 +179,7 @@ public class MAIN extends Application {
 
     public void kundenProfil() {
         try {
-            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/Anmelden.fxml"));
+            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/KundenProfil.fxml"));
             Pane pane = loader.load();
 
             KundenProfilControler kundenProfilControler = loader.getController();
@@ -211,7 +215,7 @@ public class MAIN extends Application {
 
     public void registrieren() {
         try {
-            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/Anmelden.fxml"));
+            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/Registrieren.fxml"));
             Pane pane = loader.load();
 
             RegistrierenController registrierenController = loader.getController();

@@ -16,17 +16,15 @@
     <children>
         <StackPane prefHeight="1024.0" prefWidth="1280.0">
             <children>
-                <!--<MediaView fx:id="MediaView" fitHeight="1024.0" fitWidth="1280.0" scaleY="1.44">
+                <MediaView fx:id="MediaView" fitHeight="1024.0" fitWidth="1280.0" scaleY="1.44">
                 <mediaPlayer>
-                    <MediaPlayer autoPlay="true">
+                    <!--<MediaPlayer autoPlay="true">
                         <media>
-                            <Media source="file:\\src\\View\\Grafiken\\Cloud - 2142.mp4"/>&ndash;&gt;
-                            <Media source="file:///C:/Users/Daniel/Desktop/Schule/Informatik/Flughafen/src/Grafiken/Cloud%20-%202142.mp4" />&ndash;&gt;
-                            <Media source=""/>
+                            <Media source="https://pixabay.com/de/videos/wolken-cloudscape-himmel-luft-1154/"/>
                         </media>
-                    </MediaPlayer>
+                    </MediaPlayer>-->
                 </mediaPlayer>
-                </MediaView>-->
+                </MediaView>
                 <AnchorPane prefHeight="119.0" prefWidth="1280.0">
                     <children>
                         <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="386.0" spacing="20.0"

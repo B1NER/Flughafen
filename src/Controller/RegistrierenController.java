@@ -18,6 +18,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 
+import java.time.ZoneId;
+import java.util.Date;
+
 public class RegistrierenController {
 
     @FXML
@@ -78,8 +81,6 @@ public class RegistrierenController {
 
     public void setMain(MAIN main) {
         this.main = main;
-        System.out.println(Verwaltung.getAngemeldeter());
-        System.out.println(Verwaltung.isAngemeldet());
 
         if (Verwaltung.isAngemeldet()) {
             if (Verwaltung.getAngemeldeter() instanceof Administrator) { //admin kann alles erstellen
@@ -109,19 +110,28 @@ public class RegistrierenController {
 
     @FXML
     void AbbrechenAction(ActionEvent event) {
-
+        if(Verwaltung.getAngemeldeter() instanceof Administrator){
+            //todo main.adminStartseite();
+        }else if(Verwaltung.getAngemeldeter() instanceof Angestellter){
+            //todo main.angestellterStartseite();
+        }else{
+            main.buchen();
+        }
     }
 
     @FXML
     void RegistrierenAction(ActionEvent event) {
 
-        if (PasswordFeld2.getText().equals("") || PasswordFeld.getText().equals("") || !(PasswordFeld.getText().equals(PasswordFeld2.getText()))) {
+        if (PasswordFeld2.getText().equals("") || PasswordFeld.getText().equals("")) {
+            PasswordFeld.setPromptText("Geben Sie ein gültiges Passwort ein!");
+        }
+        if (!(PasswordFeld.getText().equals(PasswordFeld2.getText()))) {
             PasswordFeld.setPromptText("Die Passwörter stimmen nicht überein!");
             PasswordFeld.setText("");
             PasswordFeld2.setText("");
             PasswordFeld2.setPromptText("Die Passwörter stimmen nicht überein!");
+            return;
         }
-
         if (VornameFeld.getText().equals("")) {
             VornameFeld.setPromptText("Geben Sie einen Vornamen ein!");
         }
@@ -129,11 +139,9 @@ public class RegistrierenController {
             NachnameFeld.setPromptText("Geben Sie einen Nachnamen ein!");
         }
 
-        //TODO abprüfen ob datum stimmt
-
         if (AnwenderRbutton.isSelected()) {
             try {
-                Verwaltung.anwenderErstellen(VornameFeld.getText(), NachnameFeld.getText(), GeburtsdatumFeld.getAccessibleText(), 777, EmailFeld.getText(), PasswordFeld.getText());
+                Verwaltung.anwenderErstellen(VornameFeld.getText(), NachnameFeld.getText(), Date.from(GeburtsdatumFeld.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()).toString(), 777, EmailFeld.getText(), PasswordFeld.getText());
                 try {
                     Verwaltung.anmelden(EmailFeld.getText(), PasswordFeld.getText());
                 } catch (NutzerDoesNotExistException e) {
@@ -153,13 +161,7 @@ public class RegistrierenController {
         if (AdminRButton.isSelected()) {
             try {
                 Verwaltung.adminErstellten(VornameFeld.getText(), NachnameFeld.getText(), GeburtsdatumFeld.getAccessibleText(), 777, EmailFeld.getText(), PasswordFeld.getText());
-                try {
-                    Verwaltung.anmelden(EmailFeld.getText(), PasswordFeld.getText());
-                } catch (NutzerDoesNotExistException e) {
-                    //wird nie der Fall sein, da er gerade erstellt wurde
-                    e.printStackTrace();
-                }
-                main.buchen();
+                //main.buchen();
             } catch (EmailIsAlreadyUsedException e) {
                 EmailFeld.setPromptText("Diese Email wird bereits verwendet!");
                 EmailFeld.setText("");
@@ -172,13 +174,7 @@ public class RegistrierenController {
         if (AngestellterRButton.isSelected()) {
             try {
                 Verwaltung.angestellterErstellen(VornameFeld.getText(), NachnameFeld.getText(), GeburtsdatumFeld.getAccessibleText(), 777, EmailFeld.getText(), PasswordFeld.getText());
-                try {
-                    Verwaltung.anmelden(EmailFeld.getText(), PasswordFeld.getText());
-                } catch (NutzerDoesNotExistException e) {
-                    //wird nie der Fall sein, da er gerade erstellt wurde
-                    e.printStackTrace();
-                }
-                main.buchen();
+                //main.buchen();
             } catch (EmailIsAlreadyUsedException e) {
                 EmailFeld.setPromptText("Diese Email wird bereits verwendet!");
                 EmailFeld.setText("");

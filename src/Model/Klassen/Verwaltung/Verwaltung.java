@@ -28,13 +28,13 @@ public abstract class Verwaltung {
 
     public static void init() {
         try {
-            fluegeEinlesen("Model/Daten/Fluege/Flugliste.csv");
-            administratorenEinlesen("Model/Daten/Menschen/Admin.csv");
-            angestellteEinlesen("Model/Daten/Menschen/Angestellter.csv");
-            anwenderEinlesen("Model/Daten/Menschen/Anwender.csv");
-            angestellteAnwenderEinlesen("");
-            gepaeckEinlesen("Model/Daten/Gepaeck/Gepaecke.csv");
-            buchungenEinlesen("Model/Daten/Buchungen/Buchungen.csv");
+            fluegeEinlesen("src\\Model\\Daten\\Fluege\\Flugliste.csv");
+            administratorenEinlesen("src\\Model\\Daten\\Menschen\\Admin.csv");
+            angestellteEinlesen("src\\Model\\Daten\\Menschen\\Angestellter.csv");
+            anwenderEinlesen("src\\Model\\Daten\\Menschen\\Anwender.csv");
+            //angestellteAnwenderEinlesen("");
+            gepaeckEinlesen("src\\Model\\Daten\\Gepaeck\\Gepaecke.csv");
+            buchungenEinlesen("src\\Model\\Daten\\Buchungen\\Buchungen.csv");
         } catch (final IOException e) {
             System.out.println("File not Found");
         } catch (final NutzerDoesNotExistException e) {
@@ -48,12 +48,12 @@ public abstract class Verwaltung {
 
     public static void exit() {
         try {
-            buchungenSpeichern("Model/Daten/Buchungen/Buchungen.csv");
-            administratorenSpeichern("Model/Daten/Menschen/Admin.csv");
-            angestelltenSpeichern("Model/Daten/Menschen/Angestellter.csv");
-            anwenderSpeichern("Model/Daten/Menschen/Anwender.csv");
-            angestelltenAnwenderSpeichern("");
-            gepaeckSpeichern("Model/Daten/Gepaeck/Gepaecke.csv");
+            buchungenSpeichern("src\\Model\\Daten\\Buchungen\\Buchungen.csv");
+            administratorenSpeichern("src\\Model\\Daten\\Menschen\\Admin.csv");
+            angestelltenSpeichern("src\\Model\\Daten\\Menschen\\Angestellter.csv");
+            anwenderSpeichern("src\\Model\\Daten\\Menschen\\Anwender.csv");
+            //angestelltenAnwenderSpeichern("");
+            gepaeckSpeichern("src\\Model\\Daten\\Gepaeck\\Gepaecke.csv");
 
         } catch (IOException e) {
             System.out.println("File not Found");
@@ -161,14 +161,14 @@ public abstract class Verwaltung {
             String zs[] = zeile.split(";");
             Gepaeck eingelesenesGepaeck;
 
-            if (zs[3].equals(Gepaecktypen.Handgepaeck.toString())) {
-                eingelesenesGepaeck = new Gepaeck(Integer.parseInt(zs[1]), Double.parseDouble(zs[2]), Gepaecktypen.Handgepaeck);
-            } else if (zs[3].equals(Gepaecktypen.Sportgepaeck.toString())) {
-                eingelesenesGepaeck = new Gepaeck(Integer.parseInt(zs[1]), Double.parseDouble(zs[2]), Gepaecktypen.Sportgepaeck);
-            } else if (zs[3].equals(Gepaecktypen.Tasche.toString())) {
-                eingelesenesGepaeck = new Gepaeck(Integer.parseInt(zs[1]), Double.parseDouble(zs[2]), Gepaecktypen.Tasche);
+            if (zs[2].equals(Gepaecktypen.Handgepaeck.toString())) {
+                eingelesenesGepaeck = new Gepaeck(Integer.parseInt(zs[0]), Double.parseDouble(zs[1]), Gepaecktypen.Handgepaeck);
+            } else if (zs[2].equals(Gepaecktypen.Sportgepaeck.toString())) {
+                eingelesenesGepaeck = new Gepaeck(Integer.parseInt(zs[0]), Double.parseDouble(zs[1]), Gepaecktypen.Sportgepaeck);
+            } else if (zs[2].equals(Gepaecktypen.Tasche.toString())) {
+                eingelesenesGepaeck = new Gepaeck(Integer.parseInt(zs[0]), Double.parseDouble(zs[1]), Gepaecktypen.Tasche);
             } else {
-                eingelesenesGepaeck = new Gepaeck(Integer.parseInt(zs[1]), Double.parseDouble(zs[2]), Gepaecktypen.Koffer);
+                eingelesenesGepaeck = new Gepaeck(Integer.parseInt(zs[0]), Double.parseDouble(zs[1]), Gepaecktypen.Koffer);
             }
 
             Gepaecke.addGepaeck(eingelesenesGepaeck);
@@ -251,7 +251,7 @@ public abstract class Verwaltung {
             bw.write(Angestellte.getAngestellte().get(i).getPasswort());
             bw.write(';');
             bw.write('\n');
-            System.out.println("Speichern: " + Administratoren.getAdministratoren().get(i));
+            System.out.println("Speichern: " + Angestellte.getAngestellte().get(i));
         }
         bw.close();
     }
@@ -274,7 +274,7 @@ public abstract class Verwaltung {
             bw.write(Anwenders.getAnwenders().get(i).getPasswort());
             bw.write(';');
             bw.write('\n');
-            System.out.println("Speichern: " + Administratoren.getAdministratoren().get(i));
+            System.out.println("Speichern: " + Anwenders.getAnwenders().get(i));
         }
         bw.close();
     }
@@ -296,7 +296,7 @@ public abstract class Verwaltung {
             bw.write(String.valueOf(Gepaecke.getGepaecke().get(i).getGewicht()));
             bw.write(";");
             bw.write(Gepaecke.getGepaecke().get(i).getGepaeckTyp().toString());
-            System.out.println("Speichern: " + Administratoren.getAdministratoren().get(i));
+            System.out.println("Speichern: " + Gepaecke.getGepaecke().get(i));
         }
     }
 

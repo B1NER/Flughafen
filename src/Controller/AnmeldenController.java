@@ -51,10 +51,14 @@ public class AnmeldenController {
     void AnmeldenAction(ActionEvent event) {
         try {
             Verwaltung.anmelden(EmailFeld.getText(), PasswordFeld.getText());
+            main.kundenProfil();
         }
         catch(NutzerDoesNotExistException e){
-            e.printStackTrace();
+            EmailFeld.setText("");
+            EmailFeld.setPromptText("Email oder Passwort falsch!");
+            PasswordFeld.setText("");
         }
     }
 
+    //todo abbrechenbutton
 }
