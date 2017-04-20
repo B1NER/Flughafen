@@ -13,15 +13,18 @@
     <children>
         <StackPane prefHeight="1024.0" prefWidth="1280.0">
             <children>
+                <!--
                 <MediaView fx:id="MediaView" fitHeight="1024.0" fitWidth="1280.0" scaleY="1.5">
                     <mediaPlayer>
                         <MediaPlayer autoPlay="true">
                             <media>
                                 <Media source="file:///C:/Users/Daniel/Desktop/Schule/Informatik/Flughafen/src/View.Grafiken/Cloud%20-%202142.mp4"/>
+
                             </media>
                         </MediaPlayer>
                     </mediaPlayer>
                 </MediaView>
+                -->
                 <StackPane prefHeight="150.0" prefWidth="200.0">
                     <children>
                         <Rectangle arcHeight="40.0" arcWidth="40.0" fill="#0632d680" height="453.0" stroke="TRANSPARENT"

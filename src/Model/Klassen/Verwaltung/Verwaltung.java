@@ -21,7 +21,7 @@ import java.util.regex.Pattern;
 
 public abstract class Verwaltung {
 
-    private static HashMap<Angestellter, Anwender> angestelltenAnwender = new HashMap<>();
+    private static HashMap<Anwender, Angestellter> angestelltenAnwender = new HashMap<>();
     private static Mensch angemeldeter;
 
 
@@ -142,11 +142,12 @@ public abstract class Verwaltung {
     }
 
     public static void angestellteAnwenderEinlesen(String pfad) throws IOException, NutzerDoesNotExistException {
+        //AnwenderAngestellter umgeändert
         Scanner s = new Scanner(new BufferedReader(new FileReader(pfad)));
         while (s.hasNext()) {
             String zeile = s.nextLine();
             String zs[] = zeile.split(";");
-            angestelltenAnwender.put(Angestellte.getAngestelltenByID(Integer.parseInt(zs[0])), Anwenders.getAnwenderByID(Integer.parseInt(zs[0])));
+            angestelltenAnwender.put(Anwenders.getAnwenderByID(Integer.parseInt(zs[0])), Angestellte.getAngestelltenByID(Integer.parseInt(zs[0])));
             System.out.println(Angestellte.getAngestelltenByID(Integer.parseInt(zs[0]))+" legte "+Anwenders.getAnwenderByID(Integer.parseInt(zs[0]))+" an");
         }
         s.close();
@@ -281,9 +282,10 @@ public abstract class Verwaltung {
     }
 
     public static void angestelltenAnwenderSpeichern(String pfad) throws IOException {
+        //AngesteltenAnwender ausgebessert
         BufferedWriter bw = new BufferedWriter(new FileWriter(pfad));
-        for (HashMap.Entry<Angestellter, Anwender> h : angestelltenAnwender.entrySet()) {
-            bw.write(h.getKey().getAngestelltenID() + ";" + h.getValue().getAnwenderID());
+        for (HashMap.Entry<Anwender, Angestellter> h : angestelltenAnwender.entrySet()) {
+            bw.write(h.getKey().getAnwenderID() + ";" + h.getValue().getAngestelltenID());
             System.out.println("Speichern: " + h.getValue() + " " + h.getKey());
         }
     }
@@ -307,6 +309,7 @@ public abstract class Verwaltung {
     }
 
     public static void anwenderErstellen(String vorname, String nachname, String geburtsdatum, int passnummer, String eMail, String passwort) throws InvalidEmailException, EmailIsAlreadyUsedException {
+        //AnwenderAngestellte umgeändert
         Pattern pattern = Pattern.compile("^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$");
         Matcher matcher = pattern.matcher(eMail);
 
@@ -332,7 +335,7 @@ public abstract class Verwaltung {
         Anwender a = new Anwender(vorname, nachname, geburtsdatum, passnummer, eMail, passwort);
         Anwenders.addAnwender(a);
         if(angemeldeter instanceof Angestellter){
-            angestelltenAnwender.put((Angestellter) angemeldeter,a);
+            angestelltenAnwender.put(a,(Angestellter) angemeldeter);
         }
         System.out.println("Anwender angelegt:" + a);
     }
@@ -396,12 +399,13 @@ public abstract class Verwaltung {
     }
 
     public static void anwenderLoeschen(Anwender anwender) {
+        //AnwenderAngestellter geändert
         for (int i = 0; i < Buchungen.getBuchungenByAnwender(anwender).size(); i++) {
             Gepaecke.removeGepaeck(Buchungen.getBuchungenByAnwender(anwender).get(i).getGepaeck());
             Buchungen.getBuchungen().remove(Buchungen.getBuchungenByAnwender(anwender).get(i));
         }
-        for (HashMap.Entry<Angestellter, Anwender> h : angestelltenAnwender.entrySet()) {
-            if (h.getValue().equals(anwender)) {
+        for (HashMap.Entry<Anwender, Angestellter> h : angestelltenAnwender.entrySet()) {
+            if (h.getKey().equals(anwender)) {
                 angestelltenAnwender.remove(h.getKey());
             }
         }
@@ -413,8 +417,10 @@ public abstract class Verwaltung {
     }
 
     public static void angestelltenLoeschen(Angestellter angestellter) {
+        //AnwenderAngetsellter geändert
         for (int i = 0; i < Verwaltung.getAnwenderByAngestellten(angestellter).size(); i++) {
-            angestelltenAnwender.remove(angestellter, Verwaltung.getAnwenderByAngestellten(angestellter).get(i));
+            angestelltenAnwender.remove(Verwaltung.getAnwenderByAngestellten(angestellter).get(i),angestellter);
+
         }
         Angestellte.getAngestellte().remove(angestellter);
     }
@@ -470,10 +476,11 @@ public abstract class Verwaltung {
     }
 
     public static ArrayList<Anwender> getAnwenderByAngestellten(Angestellter angestellter) {
+        //AnwenderAngetsellten geändert
         ArrayList<Anwender> l = new ArrayList<Anwender>();
-        for (HashMap.Entry<Angestellter, Anwender> h : angestelltenAnwender.entrySet()) {
-            if (h.getKey().equals(angestellter)) {
-                l.add(h.getValue());
+        for (HashMap.Entry<Anwender, Angestellter> h : angestelltenAnwender.entrySet()) {
+            if (h.getValue().equals(angestellter)) {
+                l.add(h.getKey());
             }
         }
         return l;
@@ -516,7 +523,7 @@ public abstract class Verwaltung {
 
 
     //Getter
-    public static HashMap<Angestellter, Anwender> getAngestelltenAnwender() {
+    public static HashMap<Anwender, Angestellter> getAngestelltenAnwender() {
         return angestelltenAnwender;
     }
 
@@ -530,7 +537,7 @@ public abstract class Verwaltung {
         Verwaltung.angemeldeter = angemeldeter;
     }
 
-    public static void setAngestelltenAnwender(HashMap<Angestellter, Anwender> angestelltenAnwender) {
+    public static void setAngestelltenAnwender(HashMap<Anwender,Angestellter> angestelltenAnwender) {
         Verwaltung.angestelltenAnwender = angestelltenAnwender;
     }
 }

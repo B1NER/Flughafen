@@ -1,4 +1,3 @@
-
 import Model.Enums.Gepaecktypen;
 import Model.Exceptions.*;
 import Model.Klassen.Elemente.Buchung;
@@ -345,6 +344,5 @@ public class VerwaltungTest {
         //getAnwenderByAngestellten(); SCHEISS KEY VALUE ZU ANWENDER; ANGESTELLTER TAUSCHEN DIO CANE
         anmelden();
     }
-
 
 }

@@ -10,8 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
 /**
  * Created by knoll on 21.03.2017.
  */
