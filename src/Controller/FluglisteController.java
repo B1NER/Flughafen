@@ -1,6 +1,8 @@
 package Controller;
 
+import Model.Exceptions.FlugNotFoundException;
 import Model.Klassen.MAIN;
+import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -8,7 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 
-public class FluglisteController {
+public class FluglisteController {  //TODO Felder auf die Suchkriterien setzen
 
     @FXML
     private Label IhreSucheText;
@@ -20,7 +22,7 @@ public class FluglisteController {
     private TableColumn<?, ?> SpalteFlug;
 
     @FXML
-    private TextField DazumHinflugFeld;
+    private TextField DazumHinflugFeld; //TODO Date und nicht Textfield
 
     @FXML
     private TextField PersonenanzahlFeld;
@@ -48,7 +50,25 @@ public class FluglisteController {
 
     @FXML
     void FlugfindenAction(ActionEvent event) {
+        try {
+            if (FlugabFeld.getText().equals("") && FlugnachFeld.getText().equals("")) {
+                FlugabFeld.setText("Pflichtfeld!");
+                FlugnachFeld.setText("Pflichtfeld");
 
+            } else {
+                if (!FlugabFeld.getText().equals("") && !FlugnachFeld.getText().equals("")) {
+                    Verwaltung.flugFinden(FlugabFeld.getText(), FlugnachFeld.getText());
+                } else if (!FlugabFeld.getText().equals("") && !FlugnachFeld.getText().equals("")) {
+                    //TODO wenn Date auf Date gesetzt wurde
+                } else if (!FlugabFeld.getText().equals("") && !FlugnachFeld.getText().equals("")) {
+                    //TODO wenn Date auf Date gesetzt wurde
+                } else if (!FlugabFeld.getText().equals("") && !FlugnachFeld.getText().equals("")) {
+                    //TODO wenn Fluggesellschaft geadded wurde
+                }
+            }
+        } catch (final FlugNotFoundException e) {
+            System.out.println("Flug wurde nicht gefunden");
+        }
     }
 
 }

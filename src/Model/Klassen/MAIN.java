@@ -17,6 +17,7 @@ public class MAIN extends Application {
 
     static private Stage primaryStage;
 
+
     public void start(Stage primaryStage) {
         MAIN.primaryStage = primaryStage;
         buchen();
@@ -31,7 +32,7 @@ public class MAIN extends Application {
 
     public void adminStartseite() {
         try {
-            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/Anmelden.fxml"));
+            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/AdminStartseite.fxml"));
             Pane pane = loader.load();
 
             AdminStartseiteController adminStartseiteController = loader.getController();
@@ -49,7 +50,7 @@ public class MAIN extends Application {
 
     public void angestellterStartseite() {
         try {
-            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/Anmelden.fxml"));
+            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/AngestellterStartseite.fxml"));
             Pane pane = loader.load();
 
             AngestellterStartseiteController angestellterStartseiteController = loader.getController();
@@ -103,7 +104,7 @@ public class MAIN extends Application {
 
     public void buchungBearbeiten() {
         try {
-            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/Anmelden.fxml"));
+            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/BuchungBearbeiten.fxml"));
             Pane pane = loader.load();
 
             BuchungBearbeitenController buchungBearbeitenController = loader.getController();
@@ -121,7 +122,7 @@ public class MAIN extends Application {
 
     public void buchungszusammenfassung() {
         try {
-            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/Anmelden.fxml"));
+            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/Buchungszusammenfassung.fxml"));
             Pane pane = loader.load();
 
             BuchungszusammenfassungController buchungszusammenfassungController = loader.getController();
@@ -139,7 +140,7 @@ public class MAIN extends Application {
 
     public void flugliste() {
         try {
-            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/Anmelden.fxml"));
+            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/Flugliste.fxml"));
             Pane pane = loader.load();
 
             FluglisteController fluglisteController = loader.getController();
@@ -157,7 +158,7 @@ public class MAIN extends Application {
 
     public void gepaeckBearbeiten() {
         try {
-            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/Anmelden.fxml"));
+            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/GepaeckBearbeiten.fxml"));
             Pane pane = loader.load();
 
             GepaeckBearbeitenController gepaeckBearbeitenController = loader.getController();
@@ -175,7 +176,7 @@ public class MAIN extends Application {
 
     public void kundenProfil() {
         try {
-            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/Anmelden.fxml"));
+            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/KundenProfil.fxml"));
             Pane pane = loader.load();
 
             KundenProfilControler kundenProfilControler = loader.getController();
@@ -193,7 +194,7 @@ public class MAIN extends Application {
 
     public void profilBearbeiten() {
         try {
-            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/Anmelden.fxml"));
+            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/ProfilBearbeiten.fxml"));
             Pane pane = loader.load();
 
             ProfilBearbeitenController profilBearbeitenController = loader.getController();
@@ -211,7 +212,7 @@ public class MAIN extends Application {
 
     public void registrieren() {
         try {
-            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/Anmelden.fxml"));
+            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/Registrieren.fxml"));
             Pane pane = loader.load();
 
             RegistrierenController registrierenController = loader.getController();
@@ -229,7 +230,7 @@ public class MAIN extends Application {
 
     public void zahlung() {
         try {
-            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/Anmelden.fxml"));
+            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/Zahlung.fxml"));
             Pane pane = loader.load();
 
             ZahlungController zahlungController = loader.getController();
@@ -247,7 +248,7 @@ public class MAIN extends Application {
 
     public void zuBearbeitendeBuchungFinden() {
         try {
-            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/Anmelden.fxml"));
+            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/ZuBearbeitendeBuchungFinden.fxml"));
             Pane pane = loader.load();
 
             ZuBearbeitendeBuchungFindenConroller zuBearbeitendeBuchungFindenConroller = loader.getController();
@@ -265,7 +266,7 @@ public class MAIN extends Application {
 
     public void zuBearbeitendenNutzerFinden() {
         try {
-            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/Anmelden.fxml"));
+            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/ZuBearbeitendenNutzerFinden.fxml"));
             Pane pane = loader.load();
 
             ZuBearbeitendenNutzerFindenConroller zuBearbeitendenNutzerFindenConroller = loader.getController();
