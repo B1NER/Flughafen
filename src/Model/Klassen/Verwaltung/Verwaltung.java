@@ -1,5 +1,6 @@
 
 package Model.Klassen.Verwaltung;
+
 import Model.Enums.Gepaecktypen;
 import Model.Exceptions.*;
 import Model.Klassen.Elemente.Buchung;
@@ -148,7 +149,7 @@ public abstract class Verwaltung {
             String zeile = s.nextLine();
             String zs[] = zeile.split(";");
             angestelltenAnwender.put(Anwenders.getAnwenderByID(Integer.parseInt(zs[0])), Angestellte.getAngestelltenByID(Integer.parseInt(zs[0])));
-            System.out.println(Angestellte.getAngestelltenByID(Integer.parseInt(zs[0]))+" legte "+Anwenders.getAnwenderByID(Integer.parseInt(zs[0]))+" an");
+            System.out.println(Angestellte.getAngestelltenByID(Integer.parseInt(zs[0])) + " legte " + Anwenders.getAnwenderByID(Integer.parseInt(zs[0])) + " an");
         }
         s.close();
     }
@@ -160,16 +161,13 @@ public abstract class Verwaltung {
             String zs[] = zeile.split(";");
             Gepaeck eingelesenesGepaeck;
 
-            if(zs[3].equals(Gepaecktypen.Handgepaeck.toString())){
+            if (zs[3].equals(Gepaecktypen.Handgepaeck.toString())) {
                 eingelesenesGepaeck = new Gepaeck(Integer.parseInt(zs[1]), Double.parseDouble(zs[2]), Gepaecktypen.Handgepaeck);
-            }
-            else if(zs[3].equals(Gepaecktypen.Sportgepaeck.toString())){
+            } else if (zs[3].equals(Gepaecktypen.Sportgepaeck.toString())) {
                 eingelesenesGepaeck = new Gepaeck(Integer.parseInt(zs[1]), Double.parseDouble(zs[2]), Gepaecktypen.Sportgepaeck);
-            }
-            else if(zs[3].equals(Gepaecktypen.Tasche.toString())){
+            } else if (zs[3].equals(Gepaecktypen.Tasche.toString())) {
                 eingelesenesGepaeck = new Gepaeck(Integer.parseInt(zs[1]), Double.parseDouble(zs[2]), Gepaecktypen.Tasche);
-            }
-            else{
+            } else {
                 eingelesenesGepaeck = new Gepaeck(Integer.parseInt(zs[1]), Double.parseDouble(zs[2]), Gepaecktypen.Koffer);
             }
 
@@ -207,7 +205,7 @@ public abstract class Verwaltung {
             }
             bw.write(';');
             bw.write('\n');
-            System.out.println("Speichern: "+Buchungen.getBuchungen().get(i));
+            System.out.println("Speichern: " + Buchungen.getBuchungen().get(i));
         }
         bw.close();
     }
@@ -230,7 +228,7 @@ public abstract class Verwaltung {
             bw.write(Administratoren.getAdministratoren().get(i).getPasswort());
             bw.write(';');
             bw.write('\n');
-            System.out.println("Speichern: "+Administratoren.getAdministratoren().get(i));
+            System.out.println("Speichern: " + Administratoren.getAdministratoren().get(i));
         }
         bw.close();
     }
@@ -253,7 +251,7 @@ public abstract class Verwaltung {
             bw.write(Angestellte.getAngestellte().get(i).getPasswort());
             bw.write(';');
             bw.write('\n');
-            System.out.println("Speichern: "+Administratoren.getAdministratoren().get(i));
+            System.out.println("Speichern: " + Administratoren.getAdministratoren().get(i));
         }
         bw.close();
     }
@@ -276,7 +274,7 @@ public abstract class Verwaltung {
             bw.write(Anwenders.getAnwenders().get(i).getPasswort());
             bw.write(';');
             bw.write('\n');
-            System.out.println("Speichern: "+Administratoren.getAdministratoren().get(i));
+            System.out.println("Speichern: " + Administratoren.getAdministratoren().get(i));
         }
         bw.close();
     }
@@ -298,7 +296,7 @@ public abstract class Verwaltung {
             bw.write(String.valueOf(Gepaecke.getGepaecke().get(i).getGewicht()));
             bw.write(";");
             bw.write(Gepaecke.getGepaecke().get(i).getGepaeckTyp().toString());
-            System.out.println("Speichern: "+Administratoren.getAdministratoren().get(i));
+            System.out.println("Speichern: " + Administratoren.getAdministratoren().get(i));
         }
     }
 
@@ -334,8 +332,8 @@ public abstract class Verwaltung {
         }
         Anwender a = new Anwender(vorname, nachname, geburtsdatum, passnummer, eMail, passwort);
         Anwenders.addAnwender(a);
-        if(angemeldeter instanceof Angestellter){
-            angestelltenAnwender.put(a,(Angestellter) angemeldeter);
+        if (angemeldeter instanceof Angestellter) {
+            angestelltenAnwender.put(a, (Angestellter) angemeldeter);
         }
         System.out.println("Anwender angelegt:" + a);
     }
@@ -419,7 +417,7 @@ public abstract class Verwaltung {
     public static void angestelltenLoeschen(Angestellter angestellter) {
         //AnwenderAngetsellter geändert
         for (int i = 0; i < Verwaltung.getAnwenderByAngestellten(angestellter).size(); i++) {
-            angestelltenAnwender.remove(Verwaltung.getAnwenderByAngestellten(angestellter).get(i),angestellter);
+            angestelltenAnwender.remove(Verwaltung.getAnwenderByAngestellten(angestellter).get(i), angestellter);
 
         }
         Angestellte.getAngestellte().remove(angestellter);
@@ -521,42 +519,25 @@ public abstract class Verwaltung {
         return biggestID;
     }
 
-    public static void buchungBearbeiten(Buchung buchung, Flug hinflug, Flug rueckflug, Anwender anwender, int anzahlSitzplaetze, Gepaeck gepaeck, double buchungspreis){
+    public static void buchungBearbeiten(Buchung buchung, Flug hinflug, Flug rueckflug, Anwender anwender, int anzahlSitzplaetze, Gepaeck gepaeck, double buchungspreis) {
         Buchungen.buchungBearbeiten(buchung, hinflug, rueckflug, anwender, anzahlSitzplaetze, gepaeck, buchungspreis);
     }
 
-    public static void flugFinden(String abflugort, String ankunftsort) {
-        try {
-            Fluege.getZutreffendeFluege(abflugort, ankunftsort);
-        } catch (FlugNotFoundException e) {
-            System.out.println("Keine Flüge dieser Wahl gefunden");
-        }
+    public static ArrayList<Flug> flugFinden(String abflugort, String ankunftsort, Date abflugzeit) throws FlugNotFoundException {
+        return Fluege.getZutreffendeFluege(abflugort, ankunftsort, abflugzeit);
     }
 
-    public static void flugFinden(String abflugort, String ankunftsort, Date abflugzeit){
-        try{
-            Fluege.getZutreffendeFluege(abflugort,ankunftsort,abflugzeit);
-        }catch(FlugNotFoundException e){
-            System.out.println("Keine Flüge dieser Wahl gefunden");
-        }
+    public static ArrayList<Flug> flugFinden(String abflugort, String ankunftsort, String fluggesellschaft) throws FlugNotFoundException {
+        return Fluege.getZutreffendeFluege(abflugort, ankunftsort, fluggesellschaft);
     }
 
-    public static void flugFinden(String abflugort, String ankunftsort, String fluggesellschaft){
-        try{
-            Fluege.getZutreffendeFluege(abflugort,ankunftsort,fluggesellschaft);
-        }catch(FlugNotFoundException e){
-            System.out.println("Keine Flüge dieser Wahl gefunden");
-        }
+    public static ArrayList<Flug> flugFinden(String abflugort, String ankunftsort, Date abflugzeit, String fluggesellschaft) throws FlugNotFoundException {
+        return Fluege.getZutreffendeFluege(abflugort, ankunftsort, abflugzeit, fluggesellschaft);
     }
 
-    public static void flugFinden(String abflugort, String ankunftsort, Date abflugzeit, String fluggesellschaft){
-        try{
-            Fluege.getZutreffendeFluege(abflugort,ankunftsort,abflugzeit,fluggesellschaft);
-        }catch(FlugNotFoundException e){
-            System.out.println("Keine Flüge dieser Wahl gefunden");
-        }
+    public static ArrayList<Flug> flugFinden(String abflugort, String ankunftsort) throws FlugNotFoundException {
+        return Fluege.getZutreffendeFluege(abflugort, ankunftsort);
     }
-
 
     //Getter
     public static HashMap<Anwender, Angestellter> getAngestelltenAnwender() {
@@ -573,7 +554,7 @@ public abstract class Verwaltung {
         Verwaltung.angemeldeter = angemeldeter;
     }
 
-    public static void setAngestelltenAnwender(HashMap<Anwender,Angestellter> angestelltenAnwender) {
+    public static void setAngestelltenAnwender(HashMap<Anwender, Angestellter> angestelltenAnwender) {
         Verwaltung.angestelltenAnwender = angestelltenAnwender;
     }
 }
