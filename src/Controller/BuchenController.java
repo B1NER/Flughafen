@@ -83,6 +83,7 @@ public class BuchenController {
     public MAIN main;
 
     public void setMain(MAIN main) {
+        this.main = main;
         if (Verwaltung.isAngemeldet()) {
             AnmeldenButton.setVisible(false);
             RegistrierenButton.setVisible(false);
@@ -93,8 +94,6 @@ public class BuchenController {
 
         DatumHinflug.setEditable(false);
         DatumHinflug2.setEditable(false);
-
-        this.main = main;
     }
 
     @FXML
