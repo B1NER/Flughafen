@@ -111,13 +111,15 @@ public class VerwaltungTest {
 
         try {
             Verwaltung.buchungenEinlesen("src\\Model\\Daten\\Buchungen\\Buchungen.csv");
-        } catch (NutzerDoesNotExistException e) {
+        }catch (NutzerDoesNotExistException e){
             e.printStackTrace();
-        } catch (GepaeckDoesNotExist e) {
+        }
+        catch (GepaeckDoesNotExist e){
             e.printStackTrace();
-        } catch (FlugNotFoundException e) {
+        }
+        catch (FlugNotFoundException e){
             e.printStackTrace();
-        } catch (IOException e) {
+        }catch (IOException e){
             e.printStackTrace();
         }
 
@@ -125,10 +127,10 @@ public class VerwaltungTest {
         assertTrue(b.getBuchungsID() == Buchungen.getBuchungen().get(0).getBuchungsID());
 
         //Flug
-        assertEquals(f.getFlugID(), Buchungen.getBuchungen().get(0).getHinflug().getFlugID());
-        assertEquals(f.getFlugGesellschaft(), Buchungen.getBuchungen().get(0).getHinflug().getFlugGesellschaft());
-        assertEquals(f.getAbflugort(), Buchungen.getBuchungen().get(0).getHinflug().getAbflugort());
-        assertEquals(f.getAnkunftsort(), Buchungen.getBuchungen().get(0).getHinflug().getAnkunftsort());
+        assertEquals(f.getFlugID(),Buchungen.getBuchungen().get(0).getHinflug().getFlugID());
+        assertEquals(f.getFlugGesellschaft(),Buchungen.getBuchungen().get(0).getHinflug().getFlugGesellschaft());
+        assertEquals(f.getAbflugort(),Buchungen.getBuchungen().get(0).getHinflug().getAbflugort());
+        assertEquals(f.getAnkunftsort(),Buchungen.getBuchungen().get(0).getHinflug().getAnkunftsort());
         assertTrue(f.getAnzahlPlaetze() == Buchungen.getBuchungen().get(0).getHinflug().getAnzahlPlaetze());
         assertTrue(f.getGepaeckskapazitaet() == Buchungen.getBuchungen().get(0).getHinflug().getGepaeckskapazitaet());
         assertTrue(f.getAbflugzeit() == Buchungen.getBuchungen().get(0).getHinflug().getAbflugzeit());
@@ -136,12 +138,12 @@ public class VerwaltungTest {
         assertTrue(f.getPreisProPerson() == Buchungen.getBuchungen().get(0).getHinflug().getPreisProPerson());
 
         //Anwender
-        assertEquals(a.getVorname(), Buchungen.getBuchungen().get(0).getAnwender().getVorname());
-        assertEquals(a.getNachname(), Buchungen.getBuchungen().get(0).getAnwender().getNachname());
-        assertEquals(a.getGeburtsdatum(), Buchungen.getBuchungen().get(0).getAnwender().getGeburtsdatum());
+        assertEquals(a.getVorname(),Buchungen.getBuchungen().get(0).getAnwender().getVorname());
+        assertEquals(a.getNachname(),Buchungen.getBuchungen().get(0).getAnwender().getNachname());
+        assertEquals(a.getGeburtsdatum(),Buchungen.getBuchungen().get(0).getAnwender().getGeburtsdatum());
         assertTrue(a.getPassnummer() == Buchungen.getBuchungen().get(0).getAnwender().getPassnummer());
-        assertEquals(a.geteMail(), Buchungen.getBuchungen().get(0).getAnwender().geteMail());
-        assertEquals(a.getPasswort(), Buchungen.getBuchungen().get(0).getAnwender().getPasswort());
+        assertEquals(a.geteMail(),Buchungen.getBuchungen().get(0).getAnwender().geteMail());
+        assertEquals(a.getPasswort(),Buchungen.getBuchungen().get(0).getAnwender().getPasswort());
 
         //Anzahl Sitzplätze
         assertTrue(b.getAnzahlSitzplaetze() == Buchungen.getBuchungen().get(0).getAnzahlSitzplaetze());
@@ -156,6 +158,7 @@ public class VerwaltungTest {
 
         //Created by Anwender
         assertTrue(b.isCreatedByAnwender() == Buchungen.getBuchungen().get(0).isCreatedByAnwender());
+
 
 
     }
@@ -239,6 +242,7 @@ public class VerwaltungTest {
         Verwaltung.buchungErstellen(flug, anwender, 3, gepaeck, 178, false);
         Verwaltung.buchungErstellen(flug, anwender, 4, gepaeck, 134, true);
         Verwaltung.buchungErstellen(flug, anwender, 5, gepaeck, 147, true);
+
 
 
         //Bei Flug, Anwender und Gepäck reicht nur der Vergleich der IDs

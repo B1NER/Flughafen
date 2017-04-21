@@ -1,31 +1,45 @@
 package Controller;
 
 import Model.Exceptions.FlugNotFoundException;
+import Model.Klassen.Elemente.Flug;
 import Model.Klassen.MAIN;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+
+import java.time.ZoneId;
+import java.util.Date;
 
 public class FluglisteController {  //TODO Felder auf die Suchkriterien setzen
+
 
     @FXML
     private Label IhreSucheText;
 
     @FXML
-    private TextField FlugnachFeld;
+    private TextField FlugNachFeld;
+
+    @FXML
+    private TextField fluggesellschaft;
 
     @FXML
     private TableColumn<?, ?> SpalteFlug;
 
     @FXML
-    private TextField DazumHinflugFeld; //TODO Date und nicht Textfield
+    private TableColumn<?, ?> SpaltePreis;
 
     @FXML
-    private TextField PersonenanzahlFeld;
+    private DatePicker DatumHinflug;
+
+    @FXML
+    private DatePicker DatumRueckflug;
+
+    @FXML
+    private TextField anzahlPersonen;
+
+    @FXML
+    private TextField anzahlPersonen2;
 
     @FXML
     private Label FlugauswahlText;
@@ -34,10 +48,7 @@ public class FluglisteController {  //TODO Felder auf die Suchkriterien setzen
     private TextField DazumRuckflugFeld;
 
     @FXML
-    private TableColumn<?, ?> SpaltePreis;
-
-    @FXML
-    private TextField FlugabFeld;
+    private TextField FlugAbTextFeld;
 
     @FXML
     private Button FlugfindenButton;
@@ -49,26 +60,44 @@ public class FluglisteController {  //TODO Felder auf die Suchkriterien setzen
     }
 
     @FXML
-    void FlugfindenAction(ActionEvent event) {
-        try {
-            if (FlugabFeld.getText().equals("") && FlugnachFeld.getText().equals("")) {
-                FlugabFeld.setText("Pflichtfeld!");
-                FlugnachFeld.setText("Pflichtfeld");
+    public void FlugfindenAction(ActionEvent event) {
+        /*try {
+            if (FlugAbFeld.getText().equals("") && FlugNachFeld.getText().equals("")) {
+                FlugAbFeld.setText("Pflichtfeld!");
+                FlugNachFeld.setText("Pflichtfeld");
 
             } else {
-                if (!FlugabFeld.getText().equals("") && !FlugnachFeld.getText().equals("")) {
-                    Verwaltung.flugFinden(FlugabFeld.getText(), FlugnachFeld.getText());
-                } else if (!FlugabFeld.getText().equals("") && !FlugnachFeld.getText().equals("")) {
+                if (!FlugAbFeld.getText().equals("") && !FlugNachFeld.getText().equals("")) {
+                    Verwaltung.flugFinden(FlugAbFeld.getText(), FlugNachFeld.getText(), Integer.parseInt(anzahlPersonen.getText()));
+                } else if (!FlugAbFeld.getText().equals("") && !FlugNachFeld.getText().equals("")) {
                     //TODO wenn Date auf Date gesetzt wurde
-                } else if (!FlugabFeld.getText().equals("") && !FlugnachFeld.getText().equals("")) {
+                } else if (!FlugAbFeld.getText().equals("") && !FlugNachFeld.getText().equals("")) {
                     //TODO wenn Date auf Date gesetzt wurde
-                } else if (!FlugabFeld.getText().equals("") && !FlugnachFeld.getText().equals("")) {
+                } else if (!FlugAbFeld.getText().equals("") && !FlugNachFeld.getText().equals("")) {
                     //TODO wenn Fluggesellschaft geadded wurde
                 }
             }
         } catch (final FlugNotFoundException e) {
             System.out.println("Flug wurde nicht gefunden");
-        }
+        }*/
     }
+
+    public void setFluege(String flugAb, String flugNach, Date datumHinflug, int personen){
+        FlugAbTextFeld.setText(flugAb);
+        FlugNachFeld.setText(flugNach);
+        DatumHinflug.setValue(datumHinflug.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+        anzahlPersonen.setText("" + personen);
+    }
+
+    public void setFluege(String flugAb, String flugNach, Date datumHinflug, String fluggesellschaft){
+
+
+    }
+
+    public void setFluege(String flugAb, String flugNach, Date datumHinflug, Date datumRueckflug, String fluggesellschaft){
+
+
+    }
+
 
 }

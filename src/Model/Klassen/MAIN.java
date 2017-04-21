@@ -99,7 +99,7 @@ public class MAIN extends Application {
 
             Scene scene = new Scene(pane);
 
-            primaryStage.setFullScreen(true);
+            primaryStage.setFullScreen(false);
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (final IOException e) {
@@ -153,7 +153,7 @@ public class MAIN extends Application {
 
             Scene scene = new Scene(pane);
 
-            primaryStage.setFullScreen(true);
+            primaryStage.setFullScreen(false);
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (final IOException e) {

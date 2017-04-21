@@ -1,20 +1,12 @@
 package Controller;
 
-import Model.Exceptions.FlugNotFoundException;
-import Model.Klassen.Elemente.Flug;
 import Model.Klassen.MAIN;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import org.omg.CORBA.DATA_CONVERSION;
+import javafx.scene.control.*;
 
 import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -24,9 +16,6 @@ public class BuchenController {
 
     @FXML
     private Button RegistrierenButton;
-
-    @FXML
-    private TextField FlugAbFeld;
 
     @FXML
     private DatePicker DatumRueckflug;
@@ -77,8 +66,16 @@ public class BuchenController {
     private TextField FlugAbFeld2;
 
     @FXML
-    private Button FlugSuchenButton;
+    private Button MitRuecksflugSuchenButton;
 
+    @FXML
+    private Button NurHinflugSuchenButton;
+
+    @FXML
+    private TabPane tabPaneMitRueckflug;
+
+    @FXML
+    private TabPane tabPaneOhneRueckflug;
 
     public MAIN main;
 
@@ -118,39 +115,27 @@ public class BuchenController {
     }
 
     @FXML
-    void FlugSuchenAction(ActionEvent event) {
+    void FlugSuchenAction(ActionEvent event){
 
-        if(FlugAbFeld.getText().equals("")){
-            FlugAbFeld.setPromptText("Stadt eingeben");
-        }
-        if(FlugAbFeld2.getText().equals("")){
-            FlugAbFeld.setPromptText("Stadt eingeben");
-        }
-        if(FlugNachFeld.getText().equals("")){
-            FlugAbFeld.setPromptText("Stadt eingeben");
-        }
-        if(FlugNachFeld2.getText().equals("")) {
-            FlugAbFeld.setPromptText("Stadt eingeben");
+    }
+
+    @FXML
+    void NurHinflugFlugSuchenAction(ActionEvent event) {
+
+        //Nur Hinflug
+        if (FlugAbFeld2.getText().equals("")) {
+            FlugAbFeld2.setPromptText("Stadt eingeben");
         }
 
-
-        if(DatumRueckflug == null || DatumHinflug == null){
-            try {
-                ArrayList <Flug> gefundeneFluege = Verwaltung.flugFinden(FlugAbFeld.getText(), FlugNachFeld.getText(), Date.from(DatumHinflug.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
-
-            }catch (FlugNotFoundException e){
-
-            }
-
-        }else{
-            try {
-                Verwaltung.flugFinden(FlugAbFeld.getText(), FlugNachFeld.getText(), Date.from(DatumHinflug.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
-            }catch (FlugNotFoundException e){
-                e.printStackTrace();
-            }
+        if (FlugNachFeld2.getText().equals("")) {
+            FlugAbFeld2.setPromptText("Stadt eingeben");
         }
 
 
+        main.flugliste();
+
+        FluglisteController fc = new FluglisteController();
+        //fc.setFluege(FlugAbFeld2.getText(), FlugNachFeld2.getText(), Date.from(DatumHinflug2.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()), Integer.valueOf(NurHinflugAnzahlFeld.getText()));
 
     }
 
