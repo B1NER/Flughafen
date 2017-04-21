@@ -32,7 +32,7 @@ public abstract class Fluege {
     public static ArrayList<Flug> getAktuelleFluege() {
         ArrayList<Flug> l = new ArrayList<>();
         for (int i = 0; i < fluege.size(); i++) {
-            if(!Fluege.isVerfallen(fluege.get(i))){
+            if (!Fluege.isVerfallen(fluege.get(i))) {
                 l.add(fluege.get(i));
             }
         }
@@ -42,7 +42,7 @@ public abstract class Fluege {
     public static ArrayList<Flug> getVerfalleneFluege() {
         ArrayList<Flug> l = new ArrayList<>();
         for (int i = 0; i < fluege.size(); i++) {
-            if(Fluege.isVerfallen(fluege.get(i))){
+            if (Fluege.isVerfallen(fluege.get(i))) {
                 l.add(fluege.get(i));
             }
         }
@@ -50,17 +50,13 @@ public abstract class Fluege {
     }
 
     public static boolean isVerfallen(Flug flug) {
-        if (flug.getAnkunftszeit().before(flug.getAbflugzeit())) {
-            return true;
-        } else {
-            return false;
-        }
+        return flug.getAnkunftszeit().before(flug.getAbflugzeit());
     }
 
-    public static ArrayList<Flug> getZutreffendeFluege(String abflugort, String ankunftsort, Date abflugzeit) throws FlugNotFoundException {
+    public static ArrayList<Flug> getZutreffendeFluege(String abflugort, String ankunftsort, Date abflugzeit, int anzahlSitzplaetze) throws FlugNotFoundException {
         ArrayList<Flug> zutreffendeFluege = new ArrayList<>();
         for (int i = 0; i < Fluege.getFluege().size(); i++) {
-            if (Fluege.getFluege().get(i).getAbflugort().equals(abflugort) && Fluege.getFluege().get(i).getAnkunftsort().equals(ankunftsort) && Fluege.getFluege().get(i).getAbflugzeit().equals(abflugzeit)) {
+            if (Fluege.getFluege().get(i).getAbflugort().equals(abflugort) && Fluege.getFluege().get(i).getAnkunftsort().equals(ankunftsort) && Fluege.getFluege().get(i).getAbflugzeit().equals(abflugzeit) && Fluege.getVerfuegbarePlaetze(Fluege.getFluege().get(i)) > anzahlSitzplaetze) {
                 zutreffendeFluege.add(Fluege.getFluege().get(i));
             }
         }
@@ -71,10 +67,10 @@ public abstract class Fluege {
         }
     }
 
-    public static ArrayList<Flug> getZutreffendeFluege(String abflugort, String ankunftsort, String fluggesellschaft) throws FlugNotFoundException {
+    public static ArrayList<Flug> getZutreffendeFluege(String abflugort, String ankunftsort, String fluggesellschaft, int anzahlSitzplaetze) throws FlugNotFoundException {
         ArrayList<Flug> zutreffendeFluege = new ArrayList<>();
         for (int i = 0; i < Fluege.getFluege().size(); i++) {
-            if (Fluege.getFluege().get(i).getAbflugort().equals(abflugort) && Fluege.getFluege().get(i).getAnkunftsort().equals(ankunftsort) && Fluege.getFluege().get(i).getFlugGesellschaft().equals(fluggesellschaft)) {
+            if (Fluege.getFluege().get(i).getAbflugort().equals(abflugort) && Fluege.getFluege().get(i).getAnkunftsort().equals(ankunftsort) && Fluege.getFluege().get(i).getFlugGesellschaft().equals(fluggesellschaft) && Fluege.getVerfuegbarePlaetze(Fluege.getFluege().get(i)) > anzahlSitzplaetze) {
                 zutreffendeFluege.add(Fluege.getFluege().get(i));
             }
         }
@@ -85,10 +81,10 @@ public abstract class Fluege {
         }
     }
 
-    public static ArrayList<Flug> getZutreffendeFluege(String abflugort, String ankunftsort, Date abflugzeit, String fluggesellschaft) throws FlugNotFoundException {
+    public static ArrayList<Flug> getZutreffendeFluege(String abflugort, String ankunftsort, Date abflugzeit, String fluggesellschaft, int anzahlSitzplaetze) throws FlugNotFoundException {
         ArrayList<Flug> zutreffendeFluege = new ArrayList<>();
         for (int i = 0; i < Fluege.getFluege().size(); i++) {
-            if (Fluege.getFluege().get(i).getAbflugort().equals(abflugort) && Fluege.getFluege().get(i).getAnkunftsort().equals(ankunftsort) && Fluege.getFluege().get(i).getAbflugzeit().equals(abflugzeit) && Fluege.getFluege().get(i).getFlugGesellschaft().equals(fluggesellschaft)) {
+            if (Fluege.getFluege().get(i).getAbflugort().equals(abflugort) && Fluege.getFluege().get(i).getAnkunftsort().equals(ankunftsort) && Fluege.getFluege().get(i).getAbflugzeit().equals(abflugzeit) && Fluege.getFluege().get(i).getFlugGesellschaft().equals(fluggesellschaft) && Fluege.getVerfuegbarePlaetze(Fluege.getFluege().get(i)) > anzahlSitzplaetze) {
                 zutreffendeFluege.add(Fluege.getFluege().get(i));
             }
         }
@@ -99,10 +95,10 @@ public abstract class Fluege {
         }
     }
 
-    public static ArrayList<Flug> getZutreffendeFluege(String abflugort, String ankunftsort) throws FlugNotFoundException {
+    public static ArrayList<Flug> getZutreffendeFluege(String abflugort, String ankunftsort, int anzahlSitzplaetze) throws FlugNotFoundException {
         ArrayList<Flug> zutreffendeFluege = new ArrayList<>();
         for (int i = 0; i < Fluege.getFluege().size(); i++) {
-            if (Fluege.getFluege().get(i).getAbflugort().equals(abflugort) && Fluege.getFluege().get(i).getAnkunftsort().equals(ankunftsort)) {
+            if (Fluege.getFluege().get(i).getAbflugort().equals(abflugort) && Fluege.getFluege().get(i).getAnkunftsort().equals(ankunftsort) && Fluege.getVerfuegbarePlaetze(Fluege.getFluege().get(i)) > anzahlSitzplaetze) {
                 zutreffendeFluege.add(Fluege.getFluege().get(i));
             }
         }

@@ -551,20 +551,20 @@ public abstract class Verwaltung {
         Buchungen.buchungBearbeiten(buchung, hinflug, rueckflug, anwender, anzahlSitzplaetze, gepaeck, buchungspreis);
     }
 
-    public static ArrayList<Flug> flugFinden(String abflugort, String ankunftsort, Date abflugzeit) throws FlugNotFoundException {
-        return Fluege.getZutreffendeFluege(abflugort, ankunftsort, abflugzeit);
+    public static ArrayList<Flug> flugFinden(String abflugort, String ankunftsort, Date abflugzeit, int anzahlSitzplaetze) throws FlugNotFoundException {
+        return Fluege.getZutreffendeFluege(abflugort, ankunftsort, abflugzeit, anzahlSitzplaetze);
     }
 
-    public static ArrayList<Flug> flugFinden(String abflugort, String ankunftsort, String fluggesellschaft) throws FlugNotFoundException {
-        return Fluege.getZutreffendeFluege(abflugort, ankunftsort, fluggesellschaft);
+    public static ArrayList<Flug> flugFinden(String abflugort, String ankunftsort, String fluggesellschaft, int anzahlSitzplaetze) throws FlugNotFoundException {
+        return Fluege.getZutreffendeFluege(abflugort, ankunftsort, fluggesellschaft, anzahlSitzplaetze);
     }
 
-    public static ArrayList<Flug> flugFinden(String abflugort, String ankunftsort, Date abflugzeit, String fluggesellschaft) throws FlugNotFoundException {
-        return Fluege.getZutreffendeFluege(abflugort, ankunftsort, abflugzeit, fluggesellschaft);
+    public static ArrayList<Flug> flugFinden(String abflugort, String ankunftsort, Date abflugzeit, String fluggesellschaft, int anzahlSitzplaetze) throws FlugNotFoundException {
+        return Fluege.getZutreffendeFluege(abflugort, ankunftsort, abflugzeit, fluggesellschaft, anzahlSitzplaetze);
     }
 
-    public static ArrayList<Flug> flugFinden(String abflugort, String ankunftsort) throws FlugNotFoundException {
-        return Fluege.getZutreffendeFluege(abflugort, ankunftsort);
+    public static ArrayList<Flug> flugFinden(String abflugort, String ankunftsort, int anzahlSitzplaetze) throws FlugNotFoundException {
+        return Fluege.getZutreffendeFluege(abflugort, ankunftsort, anzahlSitzplaetze);
     }
 
     //Getter
