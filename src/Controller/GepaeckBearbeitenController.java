@@ -1,6 +1,10 @@
 package Controller;
 
+import Model.Klassen.Elemente.Gepaeck;
 import Model.Klassen.MAIN;
+import Model.Klassen.Nutzer.Administrator;
+import Model.Klassen.Nutzer.Angestellter;
+import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -23,18 +27,33 @@ public class GepaeckBearbeitenController {
 
     public MAIN main;
 
+    private static Gepaeck gepaeck;
+
+    public static void setGepaeck(Gepaeck gepaeck) {
+        GepaeckBearbeitenController.gepaeck = gepaeck;
+    }
+
     public void setMain(MAIN main) {
         this.main = main;
     }
 
     @FXML
     void AbbrechenAction(ActionEvent event) {
-
+        if(Verwaltung.getAngemeldeter() instanceof Angestellter){
+            main.zuBearbeitendeBuchungFinden();
+        }else{
+            main.kundenProfil();
+        }
     }
 
     @FXML
     void BestatigenAction(ActionEvent event) {
-
+        //Verwaltung.gepaeckBearbeiten(gepaeck,GewichtFeld.getText(),); todo enum gepaecktyp ??
+        if(Verwaltung.getAngemeldeter() instanceof Angestellter){
+            main.zuBearbeitendeBuchungFinden();
+        }else{
+            main.kundenProfil();
+        }
     }
 
 }

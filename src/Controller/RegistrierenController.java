@@ -111,9 +111,9 @@ public class RegistrierenController {
     @FXML
     void AbbrechenAction(ActionEvent event) {
         if(Verwaltung.getAngemeldeter() instanceof Administrator){
-            //todo main.adminStartseite();
+            main.adminStartseite();
         }else if(Verwaltung.getAngemeldeter() instanceof Angestellter){
-            //todo main.angestellterStartseite();
+            main.angestellterStartseite();
         }else{
             main.buchen();
         }

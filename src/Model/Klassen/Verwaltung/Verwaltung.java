@@ -36,13 +36,13 @@ public abstract class Verwaltung {
             gepaeckEinlesen("src\\Model\\Daten\\Gepaeck\\Gepaecke.csv");
             buchungenEinlesen("src\\Model\\Daten\\Buchungen\\Buchungen.csv");
         } catch (final IOException e) {
-            System.out.println("File not Found");
+            e.printStackTrace();
         } catch (final NutzerDoesNotExistException e) {
-            System.out.println("User Does not Exist");
+            e.printStackTrace();
         } catch (final GepaeckDoesNotExist e) {
-            System.out.println("Gepaeck Does not Exist");
+            e.printStackTrace();
         } catch (final FlugNotFoundException e) {
-            System.out.println("Flight not found!");
+            e.printStackTrace();
         }
     }
 
@@ -91,9 +91,9 @@ public abstract class Verwaltung {
                 }
             } else { //Ohne Rueckflug
                 if (zs[6].equals("0")) {
-                    eingeleseneBuchung = new Buchung(Integer.parseInt(zs[0]), Fluege.getFlugByID((zs[1])), Anwenders.getAnwenderByID(Integer.parseInt(zs[3])), Integer.parseInt(zs[4]), Gepaecke.getGepaeckByID(Integer.parseInt(zs[5])), Double.parseDouble(zs[6]), false);
+                    eingeleseneBuchung = new Buchung(Integer.parseInt(zs[0]), Fluege.getFlugByID((zs[1])), Anwenders.getAnwenderByID(Integer.parseInt(zs[2])), Integer.parseInt(zs[3]), Gepaecke.getGepaeckByID(Integer.parseInt(zs[4])), Double.parseDouble(zs[5]), false);
                 } else {
-                    eingeleseneBuchung = new Buchung(Integer.parseInt(zs[0]), Fluege.getFlugByID((zs[1])), Anwenders.getAnwenderByID(Integer.parseInt(zs[3])), Integer.parseInt(zs[4]), Gepaecke.getGepaeckByID(Integer.parseInt(zs[5])), Double.parseDouble(zs[6]), true);
+                    eingeleseneBuchung = new Buchung(Integer.parseInt(zs[0]), Fluege.getFlugByID((zs[1])), Anwenders.getAnwenderByID(Integer.parseInt(zs[2])), Integer.parseInt(zs[3]), Gepaecke.getGepaeckByID(Integer.parseInt(zs[4])), Double.parseDouble(zs[5]), true);
                 }
             }
             Buchungen.addBuchung(eingeleseneBuchung);
@@ -184,27 +184,50 @@ public abstract class Verwaltung {
     public static void buchungenSpeichern(String pfad) throws IOException {
         BufferedWriter bw = new BufferedWriter(new FileWriter(pfad));
         for (int i = 0; i < Buchungen.getBuchungen().size(); i++) {
-            bw.write(String.valueOf(Buchungen.getBuchungen().get(i).getBuchungsID()));
-            bw.write(';');
-            bw.write(Buchungen.getBuchungen().get(i).getHinflug().getFlugID());
-            bw.write(';');
-            bw.write(Buchungen.getBuchungen().get(i).getRueckflug().getFlugID());
-            bw.write(';');
-            bw.write(String.valueOf(Buchungen.getBuchungen().get(i).getAnwender().getAnwenderID()));
-            bw.write(';');
-            bw.write(String.valueOf(Buchungen.getBuchungen().get(i).getAnzahlSitzplaetze()));
-            bw.write(';');
-            bw.write(String.valueOf(Buchungen.getBuchungen().get(i).getGepaeck().getGepaeckID()));
-            bw.write(';');
-            bw.write(String.valueOf(Buchungen.getBuchungen().get(i).getBuchungspreis()));
-            bw.write(';');
-            if (Buchungen.getBuchungen().get(i).isCreatedByAnwender()) {
-                bw.write(String.valueOf(0));
-            } else {
-                bw.write(String.valueOf(1));
+            if(Buchungen.isRueckflug(Buchungen.getBuchungen().get(i))) {
+                bw.write(String.valueOf(Buchungen.getBuchungen().get(i).getBuchungsID()));
+                bw.write(';');
+                bw.write(Buchungen.getBuchungen().get(i).getHinflug().getFlugID());
+                bw.write(';');
+                bw.write(Buchungen.getBuchungen().get(i).getRueckflug().getFlugID());
+                bw.write(';');
+                bw.write(String.valueOf(Buchungen.getBuchungen().get(i).getAnwender().getAnwenderID()));
+                bw.write(';');
+                bw.write(String.valueOf(Buchungen.getBuchungen().get(i).getAnzahlSitzplaetze()));
+                bw.write(';');
+                bw.write(String.valueOf(Buchungen.getBuchungen().get(i).getGepaeck().getGepaeckID()));
+                bw.write(';');
+                bw.write(String.valueOf(Buchungen.getBuchungen().get(i).getBuchungspreis()));
+                bw.write(';');
+                if (Buchungen.getBuchungen().get(i).isCreatedByAnwender()) {
+                    bw.write(String.valueOf(0));
+                } else {
+                    bw.write(String.valueOf(1));
+                }
+                bw.write(';');
+                bw.write('\n');
             }
-            bw.write(';');
-            bw.write('\n');
+            else{
+                bw.write(String.valueOf(Buchungen.getBuchungen().get(i).getBuchungsID()));
+                bw.write(';');
+                bw.write(Buchungen.getBuchungen().get(i).getHinflug().getFlugID());
+                bw.write(';');
+                bw.write(String.valueOf(Buchungen.getBuchungen().get(i).getAnwender().getAnwenderID()));
+                bw.write(';');
+                bw.write(String.valueOf(Buchungen.getBuchungen().get(i).getAnzahlSitzplaetze()));
+                bw.write(';');
+                bw.write(String.valueOf(Buchungen.getBuchungen().get(i).getGepaeck().getGepaeckID()));
+                bw.write(';');
+                bw.write(String.valueOf(Buchungen.getBuchungen().get(i).getBuchungspreis()));
+                bw.write(';');
+                if (Buchungen.getBuchungen().get(i).isCreatedByAnwender()) {
+                    bw.write(String.valueOf(0));
+                } else {
+                    bw.write(String.valueOf(1));
+                }
+                bw.write(';');
+                bw.write('\n');
+            }
             System.out.println("Speichern: " + Buchungen.getBuchungen().get(i));
         }
         bw.close();
@@ -291,19 +314,24 @@ public abstract class Verwaltung {
     public static void gepaeckSpeichern(String pfad) throws IOException {
         BufferedWriter bw = new BufferedWriter(new FileWriter(pfad));
         for (int i = 0; i < Gepaecke.getGepaecke().size(); i++) {
-            bw.write(Gepaecke.getGepaecke().get(i).getGepaeckID());
+            bw.write(String.valueOf(Gepaecke.getGepaecke().get(i).getGepaeckID()));
             bw.write(";");
             bw.write(String.valueOf(Gepaecke.getGepaecke().get(i).getGewicht()));
             bw.write(";");
             bw.write(Gepaecke.getGepaecke().get(i).getGepaeckTyp().toString());
             System.out.println("Speichern: " + Gepaecke.getGepaecke().get(i));
         }
+        bw.close();
     }
 
 
     //Funktionelle Methoden
     public static void gepaeckErstellen(double gewicht, Gepaecktypen gepaeckTyp) throws ToHighWeightException {
         Gepaecke.addGepaeck(new Gepaeck(gewicht, gepaeckTyp));
+    }
+
+    public static void gepaeckBearbeiten(Gepaeck gepaeck, int neuesGewicht, Gepaecktypen gepaecktyp) throws ToHighWeightException{
+        Gepaecke.gepeckBearbeiten(gepaeck,neuesGewicht,gepaecktyp);
     }
 
     public static void anwenderErstellen(String vorname, String nachname, String geburtsdatum, int passnummer, String eMail, String passwort) throws InvalidEmailException, EmailIsAlreadyUsedException {

@@ -1,6 +1,11 @@
 package Controller;
 
+import Model.Exceptions.BuchungDoesNotExistException;
+import Model.Klassen.Elemente.Buchung;
 import Model.Klassen.MAIN;
+import Model.Klassen.Nutzer.Anwender;
+import Model.Klassen.Verwaltung.Buchungen;
+import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -110,29 +115,49 @@ public class KundenProfilControler {
 
     public MAIN main;
 
+    private static Buchung buchung;
+
+    public static void setBuchung(Buchung buchung) {
+
+        KundenProfilControler.buchung = buchung;
+    }
+
     public void setMain(MAIN main) {
         this.main = main;
+
+        try {
+            buchung = Buchungen.getBuchungByID(1);      //todo Buchung setzten indem man von liste auswählt
+        }catch(BuchungDoesNotExistException e){         // in dem fall nur zum TEst
+            e.printStackTrace();
+        }
+
+        VornameFeld.setText(Verwaltung.getAngemeldeter().getVorname());
+        NachnameFeld.setText(Verwaltung.getAngemeldeter().getNachname());
+        GeburtsdatumFeld.setText(Verwaltung.getAngemeldeter().getGeburtsdatum());
     }
 
 
     @FXML
     void NeueBuchungAction(ActionEvent event) {
-
+        main.buchen(); //todo dieses fenster oder nächstes??
     }
 
     @FXML
     void GepackbearbeitenAction(ActionEvent event) {
-
+        GepaeckBearbeitenController.setGepaeck(buchung.getGepaeck());
+        main.gepaeckBearbeiten();
     }
 
     @FXML
     void ProfilBearbeitenAction(ActionEvent event) {
-
+        ProfilBearbeitenController.setZuBearbeitenderMensch(Verwaltung.getAngemeldeter());
+        main.profilBearbeiten();
     }
 
     @FXML
     void AbmeldenAction(ActionEvent event) {
-
+        Verwaltung.setAngemeldeter(null);
+        main.buchen();
     }
 
 }

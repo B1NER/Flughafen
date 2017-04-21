@@ -63,13 +63,13 @@ public class BuchungBearbeitenController {
     @FXML
     void ZuruckAction(ActionEvent event) {
         if(Verwaltung.getAngemeldeter() instanceof Administrator){
-            //todo ProfilBearbeiten
+            main.profilBearbeiten();
         }
         else if(Verwaltung.getAngemeldeter() instanceof Angestellter){
-            //todo ProfilBearbeiten
+            main.profilBearbeiten();
         }
         else{
-            //todo KundenProfil
+            main.kundenProfil();
         }
     }
 

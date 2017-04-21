@@ -48,7 +48,7 @@ public class MAIN extends Application {
             primaryStage.setFullScreen(true);
             primaryStage.setScene(scene);
             primaryStage.show();
-        } catch (final java.io.IOException e) {
+        } catch (final IOException e) {
             System.out.println("Exception");
         }
     }
@@ -66,7 +66,7 @@ public class MAIN extends Application {
             primaryStage.setFullScreen(true);
             primaryStage.setScene(scene);
             primaryStage.show();
-        } catch (final java.io.IOException e) {
+        } catch (final IOException e) {
             System.out.println("Exception");
         }
     }
@@ -84,7 +84,7 @@ public class MAIN extends Application {
             primaryStage.setFullScreen(true);
             primaryStage.setScene(scene);
             primaryStage.show();
-        } catch (final java.io.IOException e) {
+        } catch (final IOException e) {
             System.out.println("Exception");
         }
     }
@@ -102,7 +102,7 @@ public class MAIN extends Application {
             primaryStage.setFullScreen(true);
             primaryStage.setScene(scene);
             primaryStage.show();
-        } catch (final java.io.IOException e) {
+        } catch (final IOException e) {
             e.printStackTrace();
         }
     }
@@ -120,7 +120,7 @@ public class MAIN extends Application {
             primaryStage.setFullScreen(true);
             primaryStage.setScene(scene);
             primaryStage.show();
-        } catch (final java.io.IOException e) {
+        } catch (final IOException e) {
             System.out.println("Exception");
         }
     }
@@ -138,7 +138,7 @@ public class MAIN extends Application {
             primaryStage.setFullScreen(true);
             primaryStage.setScene(scene);
             primaryStage.show();
-        } catch (final java.io.IOException e) {
+        } catch (final IOException e) {
             System.out.println("Exception");
         }
     }
@@ -156,7 +156,7 @@ public class MAIN extends Application {
             primaryStage.setFullScreen(true);
             primaryStage.setScene(scene);
             primaryStage.show();
-        } catch (final java.io.IOException e) {
+        } catch (final IOException e) {
             System.out.println("Exception");
         }
     }
@@ -174,7 +174,7 @@ public class MAIN extends Application {
             primaryStage.setFullScreen(true);
             primaryStage.setScene(scene);
             primaryStage.show();
-        } catch (final java.io.IOException e) {
+        } catch (final IOException e) {
             System.out.println("Exception");
         }
     }
@@ -192,7 +192,7 @@ public class MAIN extends Application {
             primaryStage.setFullScreen(true);
             primaryStage.setScene(scene);
             primaryStage.show();
-        } catch (final java.io.IOException e) {
+        } catch (final IOException e) {
             System.out.println("Exception");
         }
     }
@@ -210,7 +210,7 @@ public class MAIN extends Application {
             primaryStage.setFullScreen(true);
             primaryStage.setScene(scene);
             primaryStage.show();
-        } catch (final java.io.IOException e) {
+        } catch (final IOException e) {
             System.out.println("Exception");
         }
     }
@@ -229,7 +229,8 @@ public class MAIN extends Application {
             primaryStage.setScene(scene);
             primaryStage.show();
             primaryStage.setFullScreen(true);
-        } catch (final java.io.IOException e) {
+        }
+        catch (final IOException e) {
             System.out.println("Exception");
         }
     }
@@ -247,7 +248,7 @@ public class MAIN extends Application {
             primaryStage.setFullScreen(true);
             primaryStage.setScene(scene);
             primaryStage.show();
-        } catch (final java.io.IOException e) {
+        } catch (final IOException e) {
             System.out.println("Exception");
         }
     }
@@ -265,7 +266,7 @@ public class MAIN extends Application {
             primaryStage.setFullScreen(true);
             primaryStage.setScene(scene);
             primaryStage.show();
-        } catch (final java.io.IOException e) {
+        } catch (final IOException e) {
             System.out.println("Exception");
         }
     }
@@ -283,7 +284,7 @@ public class MAIN extends Application {
             primaryStage.setFullScreen(true);
             primaryStage.setScene(scene);
             primaryStage.show();
-        } catch (final java.io.IOException e) {
+        } catch (final IOException e) {
             System.out.println("Exception");
         }
     }
