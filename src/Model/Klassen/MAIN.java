@@ -1,6 +1,7 @@
 package Model.Klassen;
 
 import Controller.*;
+import Model.Enums.Views;
 import Model.Klassen.Nutzer.Anwender;
 import Model.Klassen.Verwaltung.Angestellte;
 import Model.Klassen.Verwaltung.Anwenders;
@@ -13,279 +14,106 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 /**
- * Created by knöll on 21.03.2017.
+ * Created by knoll on 21.03.2017.
  */
 public class MAIN extends Application {
 
     static private Stage primaryStage;
+    static private HashMap<Views, String> viewPfad = new HashMap<>();
 
 
     public void start(Stage primaryStage) {
         MAIN.primaryStage = primaryStage;
-        buchen();
+        hashmapsFuellen();
+        MAIN.fensterOeffnen(Views.Buchen);
     }
 
     public static void main(String[] args) {
-        Verwaltung.init();
+        //Verwaltung.init();
         launch(args);
-        Verwaltung.exit();
-
+        //Verwaltung.exit();
     }
 
 
-    public void adminStartseite() {
-        try {
-            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/AdminStartseite.fxml"));
-            Pane pane = loader.load();
-
-            AdminStartseiteController adminStartseiteController = loader.getController();
-            adminStartseiteController.setMain(this);
-
-            Scene scene = new Scene(pane);
-
-            primaryStage.setFullScreen(true);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (final IOException e) {
-            System.out.println("Exception");
-        }
+    public void hashmapsFuellen() {
+        viewPfad.put(Views.AdminStartseite, "/View/AdminStartseite.fxml");
+        viewPfad.put(Views.AngestellterStartseite, "/View/AngestellterStartseite.fxml");
+        viewPfad.put(Views.Anmelden, "/View/Anmelden.fxml");
+        viewPfad.put(Views.Buchen, "/View/Buchen.fxml");
+        viewPfad.put(Views.BuchungBearbeiten, "/View/BuchungBearbeiten.fxml");
+        viewPfad.put(Views.Buchungszusammenfassung, "/View/Buchungszusammenfassung.fxml");
+        viewPfad.put(Views.Flugliste, "/View/Flugliste.fxml");
+        viewPfad.put(Views.GepaeckBearbeiten, "/View/GepaeckBearbeiten.fxml");
+        viewPfad.put(Views.KundenProfil, "/View/KundenProfil.fxml");
+        viewPfad.put(Views.ProfilBearbeiten, "/View/ProfilBearbeiten.fxml");
+        viewPfad.put(Views.Registrieren, "/View/Registrieren.fxml");
+        viewPfad.put(Views.Zahlung, "/View/Zahlung.fxml");
+        viewPfad.put(Views.ZuBearbeitendeBuchungFinden, "/View/ZuBearbeitendeBuchungFinden.fxml");
+        viewPfad.put(Views.ZuBearbeitendenNutzerFinden, "/View/ZuBearbeitendenNutzerFinden.fxml");
     }
 
-    public void angestellterStartseite() {
+
+    public static void fensterOeffnen(Views view) {
         try {
-            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/AngestellterStartseite.fxml"));
+
+            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource(viewPfad.get(view)));
             Pane pane = loader.load();
 
-            AngestellterStartseiteController angestellterStartseiteController = loader.getController();
-            angestellterStartseiteController.setMain(this);
-
-            Scene scene = new Scene(pane);
-
-            primaryStage.setFullScreen(true);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (final IOException e) {
-            System.out.println("Exception");
-        }
-    }
-
-    public void anmelden() {
-        try {
-            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/Anmelden.fxml"));
-            Pane pane = loader.load();
-
-            AnmeldenController anmeldenController = loader.getController();
-            anmeldenController.setMain(this);
-
-            Scene scene = new Scene(pane);
-
-            primaryStage.setFullScreen(true);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (final IOException e) {
-            System.out.println("Exception");
-        }
-    }
-
-    public void buchen() {
-        try {
-            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/Buchen.fxml"));
-            Pane pane = loader.load();
-
-            BuchenController buchenController = loader.getController();
-            buchenController.setMain(this);
+            if (view.toString().equals("AdminStartseiteController")) {
+                AdminStartseiteController controller = loader.getController();
+                //controller.setMain(main);
+            } else if (view.toString().equals("AngestellterStartseiteController")) {
+                AngestellterStartseiteController controller = loader.getController();
+                //controller.setMain(main);
+            } else if (view.toString().equals("AnmeldenController")) {
+                AnmeldenController controller = loader.getController();
+                //controller.setMain(main);
+            } else if (view.toString().equals("BuchenController")) {
+                BuchenController controller = loader.getController();
+                //controller.setMain(main);
+            } else if (view.toString().equals("BuchungBearbeitenController")) {
+                BuchungBearbeitenController controller = loader.getController();
+                //controller.setMain(main);
+            } else if (view.toString().equals("BuchungszusammenfassungController")) {
+                BuchungszusammenfassungController controller = loader.getController();
+                //controller.setMain(main);
+            } else if (view.toString().equals("FluglisteController")) {
+                FluglisteController controller = loader.getController();
+                //controller.setMain(main);
+            } else if (view.toString().equals("GepaeckBearbeitenController")) {
+                GepaeckBearbeitenController controller = loader.getController();
+                //controller.setMain(main);
+            } else if (view.toString().equals("KundenProfilControler")) {
+                KundenProfilControler controller = loader.getController();
+                //controller.setMain(main);
+            } else if (view.toString().equals("ProfilBearbeitenController")) {
+                ProfilBearbeitenController controller = loader.getController();
+                //controller.setMain(main);
+            } else if (view.toString().equals("RegistrierenController")) {
+                RegistrierenController controller = loader.getController();
+                //controller.setMain(main);
+            } else if (view.toString().equals("ZahlungController")) {
+                ZahlungController controller = loader.getController();
+                //controller.setMain(main);
+            } else if (view.toString().equals("ZuBearbeitendeBuchungFindenConroller")) {
+                ZuBearbeitendeBuchungFindenConroller controller = loader.getController();
+                //controller.setMain(main);
+            } else if (view.toString().equals("ZuBearbeitendenNutzerFindenConroller")) {
+                ZuBearbeitendenNutzerFindenConroller controller = loader.getController();
+                //controller.setMain(main);
+            }
 
             Scene scene = new Scene(pane);
 
             primaryStage.setFullScreen(false);
             primaryStage.setScene(scene);
             primaryStage.show();
-        } catch (final IOException e) {
+        } catch (final java.io.IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void buchungBearbeiten() {
-        try {
-            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/BuchungBearbeiten.fxml"));
-            Pane pane = loader.load();
-
-            BuchungBearbeitenController buchungBearbeitenController = loader.getController();
-            buchungBearbeitenController.setMain(this);
-
-            Scene scene = new Scene(pane);
-
-            primaryStage.setFullScreen(true);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (final IOException e) {
-            System.out.println("Exception");
-        }
-    }
-
-    public void buchungszusammenfassung() {
-        try {
-            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/Buchungszusammenfassung.fxml"));
-            Pane pane = loader.load();
-
-            BuchungszusammenfassungController buchungszusammenfassungController = loader.getController();
-            buchungszusammenfassungController.setMain(this);
-
-            Scene scene = new Scene(pane);
-
-            primaryStage.setFullScreen(true);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (final IOException e) {
-            System.out.println("Exception");
-        }
-    }
-
-    public void flugliste() {
-        try {
-            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/Flugliste.fxml"));
-            Pane pane = loader.load();
-
-            FluglisteController fluglisteController = loader.getController();
-            fluglisteController.setMain(this);
-
-            Scene scene = new Scene(pane);
-
-            primaryStage.setFullScreen(false);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (final IOException e) {
-            System.out.println("Exception");
-        }
-    }
-
-    public void gepaeckBearbeiten() {
-        try {
-            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/GepaeckBearbeiten.fxml"));
-            Pane pane = loader.load();
-
-            GepaeckBearbeitenController gepaeckBearbeitenController = loader.getController();
-            gepaeckBearbeitenController.setMain(this);
-
-            Scene scene = new Scene(pane);
-
-            primaryStage.setFullScreen(true);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (final IOException e) {
-            System.out.println("Exception");
-        }
-    }
-
-    public void kundenProfil() {
-        try {
-            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/KundenProfil.fxml"));
-            Pane pane = loader.load();
-
-            KundenProfilControler kundenProfilControler = loader.getController();
-            kundenProfilControler.setMain(this);
-
-            Scene scene = new Scene(pane);
-
-            primaryStage.setFullScreen(true);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (final IOException e) {
-            System.out.println("Exception");
-        }
-    }
-
-    public void profilBearbeiten() {
-        try {
-            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/ProfilBearbeiten.fxml"));
-            Pane pane = loader.load();
-
-            ProfilBearbeitenController profilBearbeitenController = loader.getController();
-            profilBearbeitenController.setMain(this);
-
-            Scene scene = new Scene(pane);
-
-            primaryStage.setFullScreen(true);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (final IOException e) {
-            System.out.println("Exception");
-        }
-    }
-
-    public void registrieren() {
-        try {
-            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/Registrieren.fxml"));
-            Pane pane = loader.load();
-
-            RegistrierenController registrierenController = loader.getController();
-            registrierenController.setMain(this);
-
-            Scene scene = new Scene(pane);
-
-
-            primaryStage.setScene(scene);
-            primaryStage.show();
-            primaryStage.setFullScreen(true);
-        }
-        catch (final IOException e) {
-            System.out.println("Exception");
-        }
-    }
-
-    public void zahlung() {
-        try {
-            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/Zahlung.fxml"));
-            Pane pane = loader.load();
-
-            ZahlungController zahlungController = loader.getController();
-            zahlungController.setMain(this);
-
-            Scene scene = new Scene(pane);
-
-            primaryStage.setFullScreen(true);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (final IOException e) {
-            System.out.println("Exception");
-        }
-    }
-
-    public void zuBearbeitendeBuchungFinden() {
-        try {
-            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/ZuBearbeitendeBuchungFinden.fxml"));
-            Pane pane = loader.load();
-
-            ZuBearbeitendeBuchungFindenConroller zuBearbeitendeBuchungFindenConroller = loader.getController();
-            zuBearbeitendeBuchungFindenConroller.setMain(this);
-
-            Scene scene = new Scene(pane);
-
-            primaryStage.setFullScreen(true);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (final IOException e) {
-            System.out.println("Exception");
-        }
-    }
-
-    public void zuBearbeitendenNutzerFinden() {
-        try {
-            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource("/View/ZuBearbeitendenNutzerFinden.fxml"));
-            Pane pane = loader.load();
-
-            ZuBearbeitendenNutzerFindenConroller zuBearbeitendenNutzerFindenConroller = loader.getController();
-            zuBearbeitendenNutzerFindenConroller.setMain(this);
-
-            Scene scene = new Scene(pane);
-
-            primaryStage.setFullScreen(true);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (final IOException e) {
-            System.out.println("Exception");
-        }
-    }
 }

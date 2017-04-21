@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Enums.Views;
 import Model.Klassen.MAIN;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.event.ActionEvent;
@@ -95,12 +96,12 @@ public class BuchenController {
 
     @FXML
     void RegistrierenAction(ActionEvent event) {
-        main.registrieren();
+        MAIN.fensterOeffnen(Views.Registrieren);
     }
 
     @FXML
     void AnmeldenAction(ActionEvent event) {
-        main.anmelden();
+        MAIN.fensterOeffnen(Views.Anmelden);
     }
 
     @FXML
@@ -132,9 +133,9 @@ public class BuchenController {
         }
 
 
-        main.flugliste();
+        MAIN.fensterOeffnen(Views.Flugliste);
 
-        FluglisteController fc = new FluglisteController();
+        //FluglisteController fc = new FluglisteController();
         //fc.setFluege(FlugAbFeld2.getText(), FlugNachFeld2.getText(), Date.from(DatumHinflug2.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()), Integer.valueOf(NurHinflugAnzahlFeld.getText()));
 
     }

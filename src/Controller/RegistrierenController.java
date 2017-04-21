@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Enums.Views;
 import Model.Exceptions.EmailIsAlreadyUsedException;
 import Model.Exceptions.InvalidEmailException;
 import Model.Exceptions.NutzerDoesNotExistException;
@@ -111,11 +112,11 @@ public class RegistrierenController {
     @FXML
     void AbbrechenAction(ActionEvent event) {
         if(Verwaltung.getAngemeldeter() instanceof Administrator){
-            main.adminStartseite();
+            MAIN.fensterOeffnen(Views.AdminStartseite);
         }else if(Verwaltung.getAngemeldeter() instanceof Angestellter){
-            main.angestellterStartseite();
+            MAIN.fensterOeffnen(Views.AngestellterStartseite);
         }else{
-            main.buchen();
+            MAIN.fensterOeffnen(Views.Buchen);
         }
     }
 
@@ -148,7 +149,7 @@ public class RegistrierenController {
                     //wird nie der Fall sein, da er gerade erstellt wurde
                     e.printStackTrace();
                 }
-                main.buchen();
+                MAIN.fensterOeffnen(Views.Buchen);
             } catch (EmailIsAlreadyUsedException e) {
                 EmailFeld.setPromptText("Diese Email wird bereits verwendet!");
                 EmailFeld.setText("");

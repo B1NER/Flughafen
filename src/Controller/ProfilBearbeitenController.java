@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Enums.Views;
 import Model.Klassen.MAIN;
 import Model.Klassen.Nutzer.Administrator;
 import Model.Klassen.Nutzer.Angestellter;
@@ -75,11 +76,11 @@ public class ProfilBearbeitenController {
     @FXML
     void AbbrechenAction(ActionEvent event) {
         if(Verwaltung.getAngemeldeter() instanceof Administrator){
-            main.zuBearbeitendenNutzerFinden();
+            MAIN.fensterOeffnen(Views.ZuBearbeitendenNutzerFinden);
         }else if(Verwaltung.getAngemeldeter() instanceof Angestellter){
-            main.zuBearbeitendenNutzerFinden();
+            MAIN.fensterOeffnen(Views.ZuBearbeitendenNutzerFinden);
         }else{
-            main.kundenProfil();
+            MAIN.fensterOeffnen(Views.KundenProfil);
         }
     }
 
@@ -91,11 +92,11 @@ public class ProfilBearbeitenController {
             //todo keine ahnung mit geb datum wia tian --> zuBearbeitenderMensch.setGeburtsdatum(GeburtsdatumFeld.);
             zuBearbeitenderMensch.setPasswort(Password.getText());
             if(Verwaltung.getAngemeldeter() instanceof Administrator){
-                main.zuBearbeitendenNutzerFinden();
+                MAIN.fensterOeffnen(Views.ZuBearbeitendenNutzerFinden);
             }else if(Verwaltung.getAngemeldeter() instanceof Angestellter){
-                main.zuBearbeitendenNutzerFinden();
+                MAIN.fensterOeffnen(Views.ZuBearbeitendenNutzerFinden);
             }else{
-                main.kundenProfil();
+                MAIN.fensterOeffnen(Views.KundenProfil);
             }
         }else{
             Password.setText("");

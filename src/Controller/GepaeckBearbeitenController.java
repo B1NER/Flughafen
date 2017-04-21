@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Enums.Views;
 import Model.Klassen.Elemente.Gepaeck;
 import Model.Klassen.MAIN;
 import Model.Klassen.Nutzer.Administrator;
@@ -40,9 +41,9 @@ public class GepaeckBearbeitenController {
     @FXML
     void AbbrechenAction(ActionEvent event) {
         if(Verwaltung.getAngemeldeter() instanceof Angestellter){
-            main.zuBearbeitendeBuchungFinden();
+            MAIN.fensterOeffnen(Views.ZuBearbeitendeBuchungFinden);
         }else{
-            main.kundenProfil();
+            MAIN.fensterOeffnen(Views.KundenProfil);
         }
     }
 
@@ -50,9 +51,9 @@ public class GepaeckBearbeitenController {
     void BestatigenAction(ActionEvent event) {
         //Verwaltung.gepaeckBearbeiten(gepaeck,GewichtFeld.getText(),); todo enum gepaecktyp ??
         if(Verwaltung.getAngemeldeter() instanceof Angestellter){
-            main.zuBearbeitendeBuchungFinden();
+            MAIN.fensterOeffnen(Views.ZuBearbeitendeBuchungFinden);
         }else{
-            main.kundenProfil();
+            MAIN.fensterOeffnen(Views.KundenProfil);
         }
     }
 

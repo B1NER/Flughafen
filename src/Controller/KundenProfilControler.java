@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Enums.Views;
 import Model.Exceptions.BuchungDoesNotExistException;
 import Model.Klassen.Elemente.Buchung;
 import Model.Klassen.MAIN;
@@ -139,25 +140,25 @@ public class KundenProfilControler {
 
     @FXML
     void NeueBuchungAction(ActionEvent event) {
-        main.buchen(); //todo dieses fenster oder nächstes??
+        MAIN.fensterOeffnen(Views.Buchen); //todo dieses fenster oder nächstes??
     }
 
     @FXML
     void GepackbearbeitenAction(ActionEvent event) {
         GepaeckBearbeitenController.setGepaeck(buchung.getGepaeck());
-        main.gepaeckBearbeiten();
+        MAIN.fensterOeffnen(Views.GepaeckBearbeiten);
     }
 
     @FXML
     void ProfilBearbeitenAction(ActionEvent event) {
         ProfilBearbeitenController.setZuBearbeitenderMensch(Verwaltung.getAngemeldeter());
-        main.profilBearbeiten();
+        MAIN.fensterOeffnen(Views.ProfilBearbeiten);
     }
 
     @FXML
     void AbmeldenAction(ActionEvent event) {
         Verwaltung.setAngemeldeter(null);
-        main.buchen();
+        MAIN.fensterOeffnen(Views.Buchen);
     }
 
 }

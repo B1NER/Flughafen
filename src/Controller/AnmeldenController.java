@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Enums.Views;
 import Model.Exceptions.NutzerDoesNotExistException;
 import Model.Klassen.MAIN;
 import Model.Klassen.Verwaltung.Verwaltung;
@@ -51,7 +52,7 @@ public class AnmeldenController {
     void AnmeldenAction(ActionEvent event) {
         try {
             Verwaltung.anmelden(EmailFeld.getText(), PasswordFeld.getText());
-            main.kundenProfil();
+            MAIN.fensterOeffnen(Views.KundenProfil);
         }
         catch(NutzerDoesNotExistException e){
             EmailFeld.setText("");

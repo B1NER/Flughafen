@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Enums.Views;
 import Model.Klassen.Elemente.Buchung;
 import Model.Klassen.MAIN;
 import Model.Klassen.Nutzer.Administrator;
@@ -63,13 +64,13 @@ public class BuchungBearbeitenController {
     @FXML
     void ZuruckAction(ActionEvent event) {
         if(Verwaltung.getAngemeldeter() instanceof Administrator){
-            main.profilBearbeiten();
+            MAIN.fensterOeffnen(Views.ProfilBearbeiten);
         }
         else if(Verwaltung.getAngemeldeter() instanceof Angestellter){
-            main.profilBearbeiten();
+            MAIN.fensterOeffnen(Views.ProfilBearbeiten);
         }
         else{
-            main.kundenProfil();
+            MAIN.fensterOeffnen(Views.KundenProfil);
         }
     }
 
