@@ -8,6 +8,7 @@ import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -98,11 +99,11 @@ public class MAIN extends Application {
 
             Scene scene = new Scene(pane);
 
-            primaryStage.setFullScreen(false);
+            primaryStage.setFullScreen(true);
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (final java.io.IOException e) {
-            System.out.println("Exception");
+            e.printStackTrace();
         }
     }
 
@@ -224,9 +225,10 @@ public class MAIN extends Application {
 
             Scene scene = new Scene(pane);
 
-            primaryStage.setFullScreen(true);
+
             primaryStage.setScene(scene);
             primaryStage.show();
+            primaryStage.setFullScreen(true);
         } catch (final java.io.IOException e) {
             System.out.println("Exception");
         }

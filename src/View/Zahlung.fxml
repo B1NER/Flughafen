@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0"
@@ -54,29 +56,61 @@
                                     </rowConstraints>
                                     <children>
                                         <Label fx:id="ZalungsartText" text="Zahlungsart" textFill="#f8f7f7"
-                                               GridPane.rowIndex="2"/>
+                                               GridPane.rowIndex="2">
+                                            <font>
+                                                <Font size="25.0"/>
+                                            </font>
+                                        </Label>
                                         <ChoiceBox fx:id="ZahlungsartFeld" prefHeight="65.0" prefWidth="387.0"
                                                    GridPane.rowIndex="3"/>
-                                        <Label fx:id="NameText" text="Name" textFill="#f8f7f7" GridPane.rowIndex="4"/>
+                                        <Label fx:id="NameText" text="Name" textFill="#f8f7f7" GridPane.rowIndex="4">
+                                            <font>
+                                                <Font size="25.0"/>
+                                            </font>
+                                        </Label>
                                         <Label fx:id="NachnameText" text="Nachname" textFill="#f8f7f7"
-                                               GridPane.columnIndex="2" GridPane.rowIndex="4"/>
+                                               GridPane.columnIndex="2" GridPane.rowIndex="4">
+                                            <font>
+                                                <Font size="25.0"/>
+                                            </font>
+                                        </Label>
                                         <TextField fx:id="NachnameFeld" prefHeight="65.0" prefWidth="320.0"
                                                    GridPane.columnIndex="2" GridPane.rowIndex="5"/>
                                         <TextField fx:id="NameFeld" prefHeight="65.0" prefWidth="300.0"
                                                    GridPane.rowIndex="5"/>
                                         <Label fx:id="KreditkartennummerText" text="Kreditkartennummer"
-                                               textFill="#f8f7f7" GridPane.rowIndex="6"/>
+                                               textFill="#f8f7f7" GridPane.rowIndex="6">
+                                            <font>
+                                                <Font size="25.0"/>
+                                            </font>
+                                        </Label>
                                         <Label fx:id="CSVText" text="CSV" textFill="#f8f7f7" GridPane.columnIndex="2"
-                                               GridPane.rowIndex="6"/>
+                                               GridPane.rowIndex="6">
+                                            <font>
+                                                <Font size="25.0"/>
+                                            </font>
+                                        </Label>
                                         <TextField fx:id="CSVFeld" prefHeight="65.0" prefWidth="315.0"
-                                                   GridPane.columnIndex="2" GridPane.rowIndex="7"/>
+                                                   GridPane.columnIndex="2" GridPane.rowIndex="7">
+                                            <font>
+                                                <Font size="30.0"/>
+                                            </font>
+                                        </TextField>
                                         <TextField fx:id="KreditkartennummerFeld" prefHeight="65.0" prefWidth="300.0"
                                                    GridPane.rowIndex="7"/>
-                                        <Label fx:id="GepackText" text="Gepäck" textFill="#f8f7f7"/>
+                                        <Label fx:id="GepackText" text="Gepäck" textFill="#f8f7f7">
+                                            <font>
+                                                <Font size="25.0"/>
+                                            </font>
+                                        </Label>
                                         <ChoiceBox fx:id="GepackFeld" prefHeight="65.0" prefWidth="387.0"
                                                    GridPane.rowIndex="1"/>
                                         <Label fx:id="GewichtText" text="Gewicht" textFill="#f8f7f7"
-                                               GridPane.columnIndex="2"/>
+                                               GridPane.columnIndex="2">
+                                            <font>
+                                                <Font size="25.0"/>
+                                            </font>
+                                        </Label>
                                         <TextField fx:id="GewichtFeld" prefHeight="65.0" prefWidth="320.0"
                                                    GridPane.columnIndex="2" GridPane.rowIndex="1"/>
                                     </children>
@@ -85,20 +119,52 @@
                                     <children>
                                         <VBox prefHeight="230.0" prefWidth="263.0">
                                             <children>
-                                                <Label text="Ihr Preis" textFill="#fcfafa"/>
+                                                <Label text="Ihr Preis" textFill="#fcfafa">
+                                                    <font>
+                                                        <Font size="30.0"/>
+                                                    </font>
+                                                </Label>
                                                 <Label fx:id="PreisproPersonText" text="Preis pro Person:"
-                                                       textFill="#fcfafa"/>
+                                                       textFill="#fcfafa">
+                                                    <font>
+                                                        <Font size="30.0"/>
+                                                    </font>
+                                                </Label>
                                                 <Label fx:id="PreisproGepackText" text="Preis pro Gepäck"
-                                                       textFill="#fcfafa"/>
-                                                <Label fx:id="GesamtpreisText" text="Gesamtpreis: " textFill="#fcfafa"/>
+                                                       textFill="#fcfafa">
+                                                    <font>
+                                                        <Font size="30.0"/>
+                                                    </font>
+                                                </Label>
+                                                <Label fx:id="GesamtpreisText" text="Gesamtpreis: " textFill="#fcfafa">
+                                                    <font>
+                                                        <Font size="30.0"/>
+                                                    </font>
+                                                </Label>
                                             </children>
                                         </VBox>
                                         <VBox prefHeight="230.0" prefWidth="65.0">
                                             <children>
-                                                <Label fx:id="PreisFeld" text="10 " textFill="#f8f8f8"/>
-                                                <Label fx:id="PreisproPersonFeld" text="11" textFill="#f8f8f8"/>
-                                                <Label fx:id="PreisproGepackFeld" text="12" textFill="#f8f8f8"/>
-                                                <Label fx:id="GesamtpreisFeld" text="35" textFill="#f8f8f8"/>
+                                                <Label fx:id="PreisFeld" text="10 " textFill="#f8f8f8">
+                                                    <font>
+                                                        <Font size="30.0"/>
+                                                    </font>
+                                                </Label>
+                                                <Label fx:id="PreisproPersonFeld" text="11" textFill="#f8f8f8">
+                                                    <font>
+                                                        <Font size="30.0"/>
+                                                    </font>
+                                                </Label>
+                                                <Label fx:id="PreisproGepackFeld" text="12" textFill="#f8f8f8">
+                                                    <font>
+                                                        <Font size="30.0"/>
+                                                    </font>
+                                                </Label>
+                                                <Label fx:id="GesamtpreisFeld" text="35" textFill="#f8f8f8">
+                                                    <font>
+                                                        <Font size="30.0"/>
+                                                    </font>
+                                                </Label>
                                             </children>
                                         </VBox>
                                     </children>
@@ -113,6 +179,9 @@
                             <VBox.margin>
                                 <Insets left="550.0"/>
                             </VBox.margin>
+                            <font>
+                                <Font size="20.0"/>
+                            </font>
                         </Button>
                     </children>
                     <padding>

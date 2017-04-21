@@ -4,6 +4,7 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.layout.*?>
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0"
@@ -35,16 +36,20 @@
                                         <Insets/>
                                     </HBox.margin>
                                 </Label>
-                                <TextField fx:id="NameFeld">
+                                <TextField fx:id="NameFeld" prefHeight="30.0" prefWidth="150.0">
                                     <HBox.margin>
                                         <Insets/>
                                     </HBox.margin>
                                 </TextField>
                                 <Button fx:id="SuchenButton" mnemonicParsing="false" onAction="#SuchenAction"
-                                        text="suchen"/>
+                                        prefHeight="40.0" prefWidth="100.0" text="Suchen">
+                                    <font>
+                                        <Font size="15.0"/>
+                                    </font>
+                                </Button>
                             </children>
                         </HBox>
-                        <TableView fx:id="Tabelle" prefHeight="754.0" prefWidth="1280.0">
+                        <TableView fx:id="Tabelle" prefHeight="700.0" prefWidth="1280.0">
                             <columnResizePolicy>
                                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
                             </columnResizePolicy>
@@ -63,18 +68,27 @@
                                     <HBox.margin>
                                         <Insets/>
                                     </HBox.margin>
+                                    <font>
+                                        <Font size="20.0"/>
+                                    </font>
                                 </Button>
                                 <Button fx:id="BearbeitenButton" mnemonicParsing="false" onAction="#BearbeitenAction"
-                                        prefWidth="200.0" text="Bearbeiten">
+                                        prefHeight="65.0" prefWidth="200.0" text="Bearbeiten">
                                     <HBox.margin>
                                         <Insets/>
                                     </HBox.margin>
+                                    <font>
+                                        <Font size="20.0"/>
+                                    </font>
                                 </Button>
                                 <Button fx:id="ZuruckButton" mnemonicParsing="false" onAction="#ZuruckAction"
-                                        prefWidth="200.0" text="Zurück">
+                                        prefHeight="65.0" prefWidth="200.0" text="Zurück">
                                     <HBox.margin>
                                         <Insets/>
                                     </HBox.margin>
+                                    <font>
+                                        <Font size="20.0"/>
+                                    </font>
                                 </Button>
                             </children>
                         </HBox>

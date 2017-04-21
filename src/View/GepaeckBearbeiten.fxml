@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
+<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0"
@@ -10,8 +14,15 @@
     <children>
         <VBox layoutX="88.0" layoutY="111.0" prefHeight="236.0" prefWidth="310.0" spacing="30.0">
             <children>
-                <Label fx:id="GepackbearbeitenText" text="Gepäck bearbeiten"/>
-                <TextField fx:id="GewichtFeld" promptText="Gewicht in kg"/>
+                <Label fx:id="GepackbearbeitenText" alignment="CENTER" text="Gepäck bearbeiten">
+                    <font>
+                        <Font size="30.0"/>
+                    </font>
+                    <VBox.margin>
+                        <Insets left="30.0"/>
+                    </VBox.margin>
+                </Label>
+                <TextField fx:id="GewichtFeld" prefHeight="65.0" prefWidth="310.0" promptText="Gewicht in kg"/>
                 <HBox prefHeight="100.0" prefWidth="466.0" spacing="10.0">
                     <children>
                         <Button fx:id="AbbrechenButton" mnemonicParsing="false" onAction="#AbbrechenAction"

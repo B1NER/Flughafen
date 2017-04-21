@@ -2,8 +2,11 @@
 
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="1024.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FluglisteController">
@@ -26,15 +29,28 @@
                             <children>
                                 <VBox prefHeight="500.0" prefWidth="300.0" spacing="20.0">
                                     <children>
-                                        <Label fx:id="IhreSucheText" text="Ihre Suche" textFill="WHITE"/>
-                                        <TextField fx:id="FlugabFeld" promptText="Flug ab"/>
-                                        <TextField fx:id="FlugnachFeld" promptText="Flug nach"/>
-                                        <TextField fx:id="DazumHinflugFeld" promptText="Datum Hinflug"/>
-                                        <TextField fx:id="DazumRuckflugFeld" promptText="Datum Rückflug"/>
-                                        <TextField fx:id="PersonenanzahlFeld" promptText="Personen anzahl"/>
+                                        <Label fx:id="IhreSucheText" text="Ihre Suche" textFill="WHITE">
+                                            <font>
+                                                <Font size="30.0"/>
+                                            </font>
+                                        </Label>
+                                        <TextField fx:id="FlugabFeld" prefHeight="65.0" prefWidth="300.0"
+                                                   promptText="Flug ab"/>
+                                        <TextField fx:id="FlugnachFeld" prefHeight="65.0" prefWidth="300.0"
+                                                   promptText="Flug nach"/>
+                                        <TextField fx:id="DazumHinflugFeld" prefHeight="65.0" prefWidth="300.0"
+                                                   promptText="Datum Hinflug"/>
+                                        <TextField fx:id="DazumRuckflugFeld" prefHeight="65.0" prefWidth="300.0"
+                                                   promptText="Datum Rückflug"/>
+                                        <TextField fx:id="PersonenanzahlFeld" prefHeight="65.0" prefWidth="300.0"
+                                                   promptText="Personen anzahl"/>
                                         <Button fx:id="FlugfindenButton" mnemonicParsing="false"
-                                                onAction="#FlugfindenAction" prefHeight="65.0" prefWidth="320.0"
-                                                text="Flug finden"/>
+                                                onAction="#FlugfindenAction" prefHeight="65.0" prefWidth="300.0"
+                                                text="Flug finden">
+                                            <font>
+                                                <Font size="20.0"/>
+                                            </font>
+                                        </Button>
                                     </children>
                                 </VBox>
                                 <TableView prefHeight="811.0" prefWidth="901.0">

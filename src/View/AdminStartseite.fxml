@@ -3,12 +3,13 @@
 <?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0"
-           prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="Controller.AdminStartseiteController">
+           prefWidth="1280.0" stylesheets="@CSSFiles/Style.css" xmlns="http://javafx.com/javafx/8"
+           xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AdminStartseiteController">
     <children>
         <ImageView fitHeight="1024.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true" scaleY="1.44">
             <image>
@@ -50,17 +51,33 @@
                             <children>
                                 <Button fx:id="AngestelltehinzufugenButton" mnemonicParsing="false"
                                         onAction="#AngestelltehinzufugenAction" prefHeight="65.0" prefWidth="350.0"
-                                        text="Nutzer erstellen"/>
+                                        text="Nutzer erstellen">
+                                    <font>
+                                        <Font size="20.0"/>
+                                    </font>
+                                </Button>
                                 <Button fx:id="BenutzerBearbeitenButton" mnemonicParsing="false"
                                         onAction="#BenutzerBearbeitenAction" prefHeight="65.0" prefWidth="350.0"
-                                        text="Nutzer bearbeiten"/>
+                                        text="Nutzer bearbeiten">
+                                    <font>
+                                        <Font size="20.0"/>
+                                    </font>
+                                </Button>
                                 <Button fx:id="BuchungBearbeitenButton" alignment="CENTER" mnemonicParsing="false"
                                         onAction="#BuchungBearbeitenAction" prefHeight="65.0" prefWidth="350.0"
-                                        text="Buchungen bearbeiten"/>
+                                        text="Buchungen bearbeiten">
+                                    <font>
+                                        <Font size="20.0"/>
+                                    </font>
+                                </Button>
                             </children>
                         </HBox>
                         <Button fx:id="AnmeldenButton" alignment="CENTER" mnemonicParsing="false"
-                                onAction="#AnmeldenAction" prefHeight="65.0" prefWidth="350.0" text="Abmelden"/>
+                                onAction="#AnmeldenAction" prefHeight="65.0" prefWidth="350.0" text="Abmelden">
+                            <font>
+                                <Font size="20.0"/>
+                            </font>
+                        </Button>
                     </children>
                     <padding>
                         <Insets top="50.0"/>
