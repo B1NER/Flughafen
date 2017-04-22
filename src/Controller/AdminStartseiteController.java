@@ -50,7 +50,7 @@ public class AdminStartseiteController {
     @FXML
     private TableColumn<?, ?> SpalteFlugID;
 
-    public void initialize(MAIN main) {
+    public void initialize() {
     }
 
 

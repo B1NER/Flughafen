@@ -59,46 +59,33 @@ public class MAIN extends Application {
 
             if (view.toString().equals("AdminStartseiteController")) {
                 AdminStartseiteController controller = loader.getController();
-                //controller.setMain();
             } else if (view.toString().equals("AngestellterStartseiteController")) {
                 AngestellterStartseiteController controller = loader.getController();
-                //controller.setMain(main);
             } else if (view.toString().equals("AnmeldenController")) {
                 AnmeldenController controller = loader.getController();
-                //controller.setMain(main);
             } else if (view.toString().equals("BuchenController")) {
                 BuchenController controller = loader.getController();
-                //controller.setMain(main);
             } else if (view.toString().equals("BuchungBearbeitenController")) {
                 BuchungBearbeitenController controller = loader.getController();
-                //controller.setMain(main);
             } else if (view.toString().equals("BuchungszusammenfassungController")) {
                 BuchungszusammenfassungController controller = loader.getController();
-                //controller.setMain(main);
             } else if (view.toString().equals("FluglisteController")) {
                 FluglisteController controller = loader.getController();
-                //controller.setMain(main);
             } else if (view.toString().equals("GepaeckBearbeitenController")) {
                 GepaeckBearbeitenController controller = loader.getController();
-                //controller.setMain(main);
             } else if (view.toString().equals("KundenProfilControler")) {
                 KundenProfilControler controller = loader.getController();
-                //controller.setMain();
             } else if (view.toString().equals("ProfilBearbeitenController")) {
                 ProfilBearbeitenController controller = loader.getController();
-                controller.setMain();
             } else if (view.toString().equals("RegistrierenController")) {
                 RegistrierenController controller = loader.getController();
                 //controller.setMain(main);
             } else if (view.toString().equals("ZahlungController")) {
                 ZahlungController controller = loader.getController();
-                //controller.setMain(main);
             } else if (view.toString().equals("ZuBearbeitendeBuchungFindenConroller")) {
                 ZuBearbeitendeBuchungFindenConroller controller = loader.getController();
-                //controller.setMain(main);
             } else if (view.toString().equals("ZuBearbeitendenNutzerFindenConroller")) {
                 ZuBearbeitendenNutzerFindenConroller controller = loader.getController();
-                //controller.setMain(main);
             }
 
             Scene scene = new Scene(pane);
@@ -110,5 +97,4 @@ public class MAIN extends Application {
             e.printStackTrace();
         }
     }
-
 }

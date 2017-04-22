@@ -35,7 +35,7 @@ public class AnmeldenController {
     @FXML
     private MediaView MediaView;
 
-    public void initialize(MAIN main) {
+    public void initialize() {
 
     }
 

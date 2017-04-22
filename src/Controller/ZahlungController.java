@@ -86,7 +86,7 @@ public class ZahlungController {
     @FXML
     private ChoiceBox<?> GepackFeld;
 
-    public void initialize(MAIN main) {
+    public void initialize() {
 
     }
 
