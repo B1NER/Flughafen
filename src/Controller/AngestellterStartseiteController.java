@@ -105,7 +105,7 @@ public class AngestellterStartseiteController {
 
     @FXML
     void KundebearbeitenAction(ActionEvent event) {
-
+        MAIN.fensterOeffnen(Views.ZuBearbeitendenNutzerFinden);
     }
 
     @FXML

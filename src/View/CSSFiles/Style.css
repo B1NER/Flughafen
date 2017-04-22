@@ -38,28 +38,19 @@
     -fx-opacity: 0;
 }
 
-/* Admin Startseite */
-
 .table-view {
     -fx-background-color: transparent;
-    -fx-text-fill: black;
-}
-
-.table-view:focused {
-    -fx-background-color: transparent;
-}
-
-/* Spaltenk�pfe
-    Struktur column-header-background -> column-header */
-
-.table-view .column-header-background {
-    /*-fx-background-color: linear-gradient(green 33%, white 33%,red 33%);*/
-    -fx-background-color: red;
 }
 
 .table-view .column-header-background .label {
+    -fx-background-color: rgba(14, 0, 86, 0.25);
+    -fx-text-fill: white;
+}
+
+.table-view .column-header-background {
+    -fx-border-color: #f5fff5;
+    -fx-border-width: 0.5px;
     -fx-background-color: transparent;
-    -fx-text-fill: black;
 }
 
 .table-view .column-header {
@@ -67,31 +58,31 @@
 }
 
 .table-view .table-cell {
-    -fx-text-fill: black;
+    -fx-text-fill: white;
+    -fx-border-color: #f5fff5;
+    -fx-border-width: 0.5px;
 }
 
-/*
 .table-row-cell{
-    -fx-background-color: -fx-table-cell-border-color, #616161;
+    -fx-background-color: transparent;
     -fx-background-insets: 0, 0 0 1 0;
-    -fx-padding: 0.0em; 
+    -fx-padding: 0.0em;
 }
 
 .table-row-cell:odd{
-    -fx-background-color: -fx-table-cell-border-color, #424242;
+    -fx-background-color: rgba(88, 122, 145, 0.25);
     -fx-background-insets: 0, 0 0 1 0;
-    -fx-padding: 0.0em;  
-}*/
-
-.table-row-cell:selected {
-    -fx-background-color: red;
-    -fx-background-insets: 0;
-    -fx-background-radius: 1;
+    -fx-padding: 0.0em;
 }
 
+.table-row-cell:even {
+    -fx-background-color: rgba(164, 224, 255, 0.25);
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
 
-
-	
-
-
-
+#keineFluegeGefunden {
+    -fx-font-size: 40px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}

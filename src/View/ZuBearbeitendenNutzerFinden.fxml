@@ -46,7 +46,7 @@
                                         <Insets/>
                                     </HBox.margin>
                                 </Label>
-                                <TextField fx:id="VornameFeld" alignment="TOP_CENTER" prefHeight="50.0">
+                                <TextField fx:id="VornameFeld" alignment="CENTER" prefHeight="50.0">
                                     <HBox.margin>
                                         <Insets/>
                                     </HBox.margin>
@@ -60,7 +60,7 @@
                                         <Insets/>
                                     </HBox.margin>
                                 </Label>
-                                <TextField fx:id="NachnameFeld" alignment="TOP_CENTER" prefHeight="50.0">
+                                <TextField fx:id="NachnameFeld" alignment="CENTER" prefHeight="50.0">
                                     <HBox.margin>
                                         <Insets/>
                                     </HBox.margin>

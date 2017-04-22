@@ -23,6 +23,14 @@ public class MAIN extends Application {
     public void start(Stage primaryStage) {
         MAIN.primaryStage = primaryStage;
         hashmapsFuellen();
+        /*try {
+            Verwaltung.anmelden(Anwenders.getAnwenderByID(2));
+        }catch (final Exception e){
+
+        }
+
+        MAIN.fensterOeffnen(Views.KundenProfil);*/
+
         MAIN.fensterOeffnen(Views.Buchen);
     }
 
