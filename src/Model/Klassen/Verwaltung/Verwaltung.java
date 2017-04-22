@@ -12,7 +12,10 @@ import Model.Klassen.Nutzer.Anwender;
 import Model.Klassen.Nutzer.Mensch;
 
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -326,6 +329,8 @@ public abstract class Verwaltung {
 
 
     //Funktionelle Methoden
+
+    //Gepaeck
     public static void gepaeckErstellen(double gewicht, Gepaecktypen gepaeckTyp) throws ToHighWeightException {
         Gepaecke.addGepaeck(new Gepaeck(gewicht, gepaeckTyp));
     }
@@ -334,6 +339,7 @@ public abstract class Verwaltung {
         Gepaecke.gepeckBearbeiten(gepaeck,neuesGewicht,gepaecktyp);
     }
 
+    //Nutzer erstellen
     public static void anwenderErstellen(String vorname, String nachname, String geburtsdatum, int passnummer, String eMail, String passwort) throws InvalidEmailException, EmailIsAlreadyUsedException {
         //AnwenderAngestellte umgeändert
         Pattern pattern = Pattern.compile("^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$");
@@ -424,6 +430,7 @@ public abstract class Verwaltung {
         System.out.println("Angestellter angelegt:" + a);
     }
 
+    //Nutzer löschen
     public static void anwenderLoeschen(Anwender anwender) {
         //AnwenderAngestellter geändert
         for (int i = 0; i < Buchungen.getBuchungenByAnwender(anwender).size(); i++) {
@@ -451,6 +458,7 @@ public abstract class Verwaltung {
         Angestellte.getAngestellte().remove(angestellter);
     }
 
+    //Anmelden
     public static void anmelden(String eMail, String password) throws NutzerDoesNotExistException {
         for (int i = 0; i < Administratoren.getAdministratoren().size(); i++) {
             if (Administratoren.getAdministratoren().get(i).geteMail().equals(eMail) && Administratoren.getAdministratoren().get(i).getPasswort().equals(password)) {
@@ -489,6 +497,7 @@ public abstract class Verwaltung {
         System.out.println("Erfolgreich Angemeldet:" + angemeldeter);
     }
 
+    //Buchungen
     public static void buchungErstellen(Flug hinflug, Flug rueckflug, Anwender anwender, int anzahlSitzplaetze, Gepaeck gepaeck, double buchungspreis, boolean createdByAnwender) {
         Buchung b = new Buchung(hinflug, rueckflug, anwender, anzahlSitzplaetze, gepaeck, buchungspreis, createdByAnwender);
         Buchungen.addBuchung(b);
@@ -501,6 +510,11 @@ public abstract class Verwaltung {
         System.out.println("Buchung angelegt: " + b);
     }
 
+    public static void buchungBearbeiten(Buchung buchung, Flug hinflug, Flug rueckflug, Anwender anwender, int anzahlSitzplaetze, Gepaeck gepaeck, double buchungspreis) {
+        Buchungen.buchungBearbeiten(buchung, hinflug, rueckflug, anwender, anzahlSitzplaetze, gepaeck, buchungspreis);
+    }
+
+    //Nutzer Getter
     public static ArrayList<Anwender> getAnwenderByAngestellten(Angestellter angestellter) {
         //AnwenderAngetsellten geändert
         ArrayList<Anwender> l = new ArrayList<Anwender>();
@@ -511,6 +525,39 @@ public abstract class Verwaltung {
         }
         return l;
     }
+
+    public static ArrayList<Mensch> getNutzerByAdministrator() {
+        ArrayList<Mensch> l = new ArrayList<Mensch>();
+        for (int i = 0; i < Administratoren.getAdministratoren().size(); i++) {
+            l.add(Administratoren.getAdministratoren().get(i));
+        }
+        for (int i = 0; i < Angestellte.getAngestellte().size(); i++) {
+            l.add(Angestellte.getAngestellte().get(i));
+        }
+        for (int i = 0; i < Anwenders.getAnwenders().size(); i++) {
+            l.add(Anwenders.getAnwenders().get(i));
+        }
+        return l;
+    }
+
+
+    //Fluege finden
+    public static ArrayList<Flug> flugFinden(String abflugort, String ankunftsort, Date abflugzeit, int anzahlSitzplaetze) throws FlugNotFoundException {
+        return Fluege.getZutreffendeFluege(abflugort, ankunftsort, abflugzeit, anzahlSitzplaetze);
+    }
+
+    public static ArrayList<Flug> flugFinden(String abflugort, String ankunftsort, String fluggesellschaft, int anzahlSitzplaetze) throws FlugNotFoundException {
+        return Fluege.getZutreffendeFluege(abflugort, ankunftsort, fluggesellschaft, anzahlSitzplaetze);
+    }
+
+    public static ArrayList<Flug> flugFinden(String abflugort, String ankunftsort, Date abflugzeit, String fluggesellschaft, int anzahlSitzplaetze) throws FlugNotFoundException {
+        return Fluege.getZutreffendeFluege(abflugort, ankunftsort, abflugzeit, fluggesellschaft, anzahlSitzplaetze);
+    }
+
+    public static ArrayList<Flug> flugFinden(String abflugort, String ankunftsort, int anzahlSitzplaetze) throws FlugNotFoundException {
+        return Fluege.getZutreffendeFluege(abflugort, ankunftsort, anzahlSitzplaetze);
+    }
+
 
     public static boolean isAngemeldet() {
         return angemeldeter != null;
@@ -545,26 +592,6 @@ public abstract class Verwaltung {
             }
         }
         return biggestID;
-    }
-
-    public static void buchungBearbeiten(Buchung buchung, Flug hinflug, Flug rueckflug, Anwender anwender, int anzahlSitzplaetze, Gepaeck gepaeck, double buchungspreis) {
-        Buchungen.buchungBearbeiten(buchung, hinflug, rueckflug, anwender, anzahlSitzplaetze, gepaeck, buchungspreis);
-    }
-
-    public static ArrayList<Flug> flugFinden(String abflugort, String ankunftsort, Date abflugzeit, int anzahlSitzplaetze) throws FlugNotFoundException {
-        return Fluege.getZutreffendeFluege(abflugort, ankunftsort, abflugzeit, anzahlSitzplaetze);
-    }
-
-    public static ArrayList<Flug> flugFinden(String abflugort, String ankunftsort, String fluggesellschaft, int anzahlSitzplaetze) throws FlugNotFoundException {
-        return Fluege.getZutreffendeFluege(abflugort, ankunftsort, fluggesellschaft, anzahlSitzplaetze);
-    }
-
-    public static ArrayList<Flug> flugFinden(String abflugort, String ankunftsort, Date abflugzeit, String fluggesellschaft, int anzahlSitzplaetze) throws FlugNotFoundException {
-        return Fluege.getZutreffendeFluege(abflugort, ankunftsort, abflugzeit, fluggesellschaft, anzahlSitzplaetze);
-    }
-
-    public static ArrayList<Flug> flugFinden(String abflugort, String ankunftsort, int anzahlSitzplaetze) throws FlugNotFoundException {
-        return Fluege.getZutreffendeFluege(abflugort, ankunftsort, anzahlSitzplaetze);
     }
 
     //Getter
