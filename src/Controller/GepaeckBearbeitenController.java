@@ -1,14 +1,16 @@
 package Controller;
 
+import Model.Enums.Gepaecktypen;
 import Model.Enums.Views;
+import Model.Exceptions.ToHighWeightException;
 import Model.Klassen.Elemente.Gepaeck;
 import Model.Klassen.MAIN;
-import Model.Klassen.Nutzer.Administrator;
 import Model.Klassen.Nutzer.Angestellter;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
@@ -24,32 +26,51 @@ public class GepaeckBearbeitenController {
     private Label GepackbearbeitenText;
 
     @FXML
+    private ComboBox GepaeckTyp;
+
+    @FXML
     private Button AbbrechenButton;
 
     private static Gepaeck gepaeck;
+    private static int gewicht;
 
-    public static void setGepaeck(Gepaeck gepaeck) {
+    public static void setGepaeck(Gepaeck gepaeck, int gewicht) {
         GepaeckBearbeitenController.gepaeck = gepaeck;
+        GepaeckBearbeitenController.gewicht = gewicht;
     }
 
     public void initialize() {
+        GepaeckTyp.getItems().addAll(
+                "Handgepäck",
+                "Koffer",
+                "Tasche",
+                "Sprotgepäck");
     }
 
     @FXML
     void AbbrechenAction(ActionEvent event) {
-        if(Verwaltung.getAngemeldeter() instanceof Angestellter){
+        if (Verwaltung.getAngemeldeter() instanceof Angestellter) {
             MAIN.fensterOeffnen(Views.ZuBearbeitendeBuchungFinden);
-        }else{
+        } else {
             MAIN.fensterOeffnen(Views.KundenProfil);
         }
     }
 
     @FXML
     void BestatigenAction(ActionEvent event) {
-        //Verwaltung.gepaeckBearbeiten(gepaeck,GewichtFeld.getText(),); todo enum gepaecktyp ??
-        if(Verwaltung.getAngemeldeter() instanceof Angestellter){
+        boolean x = false;
+        while (!x) {
+            try {
+                Verwaltung.gepaeckBearbeiten(gepaeck, Integer.parseInt(GewichtFeld.getText()), (Gepaecktypen) GepaeckTyp.getValue());
+                x = true;
+            } catch (final ToHighWeightException e) {
+                GewichtFeld.setText("Zu hohes Gewicht!");
+            }
+        }
+
+        if (Verwaltung.getAngemeldeter() instanceof Angestellter) {
             MAIN.fensterOeffnen(Views.ZuBearbeitendeBuchungFinden);
-        }else{
+        } else {
             MAIN.fensterOeffnen(Views.KundenProfil);
         }
     }

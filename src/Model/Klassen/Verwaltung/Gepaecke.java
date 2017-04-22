@@ -1,11 +1,10 @@
 package Model.Klassen.Verwaltung;
 
 import Model.Enums.Gepaecktypen;
+import Model.Exceptions.FlugNotFoundException;
 import Model.Exceptions.GepaeckDoesNotExist;
 import Model.Exceptions.ToHighWeightException;
-import Model.Klassen.Elemente.Buchung;
 import Model.Klassen.Elemente.Gepaeck;
-import Model.Klassen.Nutzer.Anwender;
 
 import java.util.ArrayList;
 
@@ -27,19 +26,26 @@ public abstract class Gepaecke {
 
     public static void gepeckBearbeiten(Gepaeck gepaeck, double neuesGewicht, Gepaecktypen gepaeckTyp) throws ToHighWeightException {
         gepaeck.setGepaeckTyp(gepaeckTyp);
+        String flugID = "";
 
         int anzahlPersonen = 1;     //Auf 1 gesetzt, sollte aus irgend einem Grund die Buchung nicht gefunden werden, würde bei 20* anzPErsonen mit 0 multipliziert und das neue geicht dürfte nicht über 0 sein
         for (int i = 0; i < Buchungen.getBuchungen().size(); i++) {
             if (Buchungen.getBuchungen().get(i).getGepaeck().equals(gepaeck)) {
                 anzahlPersonen = Buchungen.getBuchungen().get(i).getAnzahlSitzplaetze();
+                flugID = Buchungen.getBuchungen().get(i).getHinflug().getFlugID();
             }
         }
 
-        if (neuesGewicht < 20 * anzahlPersonen) {
-            gepaeck.setGewicht(neuesGewicht);
-        } else {
-            throw new ToHighWeightException();
+        try {
+            if (neuesGewicht < 20 * anzahlPersonen && neuesGewicht * anzahlPersonen < Fluege.getVerfuegbarePlaetze(Fluege.getFlugByID(flugID))) {
+                gepaeck.setGewicht(neuesGewicht);
+            } else {
+                throw new ToHighWeightException();
+            }
+        } catch (final FlugNotFoundException e) {
+
         }
+
     }
 
 

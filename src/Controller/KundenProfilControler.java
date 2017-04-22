@@ -4,7 +4,6 @@ import Model.Enums.Views;
 import Model.Exceptions.BuchungDoesNotExistException;
 import Model.Klassen.Elemente.Buchung;
 import Model.Klassen.MAIN;
-import Model.Klassen.Nutzer.Anwender;
 import Model.Klassen.Verwaltung.Buchungen;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.event.ActionEvent;
@@ -135,12 +134,12 @@ public class KundenProfilControler {
 
     @FXML
     void NeueBuchungAction(ActionEvent event) {
-        MAIN.fensterOeffnen(Views.Buchen); //todo dieses fenster oder nächstes??
+        MAIN.fensterOeffnen(Views.Flugliste);
     }
 
     @FXML
     void GepackbearbeitenAction(ActionEvent event) {
-        GepaeckBearbeitenController.setGepaeck(buchung.getGepaeck());
+        //GepaeckBearbeitenController.setGepaeck(buchung.getGepaeck());
         MAIN.fensterOeffnen(Views.GepaeckBearbeiten);
     }
 

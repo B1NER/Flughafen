@@ -23,7 +23,8 @@ public class MAIN extends Application {
     public void start(Stage primaryStage) {
         MAIN.primaryStage = primaryStage;
         hashmapsFuellen();
-        MAIN.fensterOeffnen(Views.Buchen);
+        MAIN.fensterOeffnen(Views.GepaeckBearbeiten);
+        //MAIN.fensterOeffnen(Views.Buchen);
     }
 
     public static void main(String[] args) {

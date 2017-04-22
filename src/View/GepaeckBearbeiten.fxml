@@ -20,8 +20,8 @@
                         <Insets left="30.0"/>
                     </VBox.margin>
                 </Label>
-                <ComboBox prefHeight="65.0" prefWidth="310.0" promptText="Gepäck Typ"/>
-                <TextField fx:id="GewichtFeld" prefHeight="65.0" prefWidth="310.0" promptText="Gewicht in kg"/>
+                <ComboBox fx:id="GepaeckTyp" prefHeight="80.0" prefWidth="310.0" promptText="Gepäck Typ"/>
+                <TextField fx:id="GewichtFeld" prefHeight="80.0" prefWidth="310.0" promptText="Gewicht in kg"/>
                 <HBox prefHeight="100.0" prefWidth="466.0" spacing="10.0">
                     <children>
                         <Button fx:id="AbbrechenButton" mnemonicParsing="false" onAction="#AbbrechenAction"
