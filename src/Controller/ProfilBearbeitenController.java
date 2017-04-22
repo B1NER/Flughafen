@@ -98,7 +98,7 @@ public class ProfilBearbeitenController {
         }else{
             Password.setText("");
             Password2Feld.setText("");
-            Password.setPromptText("Die Passwörter müssen überein stimmen");//todo Rechtschreibung ??
+            Password.setPromptText("Die Passwörter stimmen nicht überein!");
         }
     }
 
