@@ -57,7 +57,7 @@ public class AdminStartseiteController {
 
 
     @FXML
-    void AngestelltehinzufugenAction(ActionEvent event) {
+    void NutzerHinzufugenAction(ActionEvent event) {
         MAIN.fensterOeffnen(Views.Registrieren);
     }
 

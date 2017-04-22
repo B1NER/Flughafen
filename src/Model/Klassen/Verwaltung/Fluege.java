@@ -1,9 +1,7 @@
 package Model.Klassen.Verwaltung;
 
 import Model.Exceptions.FlugNotFoundException;
-import Model.Klassen.Elemente.Buchung;
 import Model.Klassen.Elemente.Flug;
-import Model.Klassen.Nutzer.Anwender;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -60,7 +58,7 @@ public abstract class Fluege {
                 zutreffendeFluege.add(Fluege.getFluege().get(i));
             }
         }
-        if (zutreffendeFluege.size() < 0) {
+        if (zutreffendeFluege.size() > 0) {
             return zutreffendeFluege;
         } else {
             throw new FlugNotFoundException();
@@ -74,7 +72,7 @@ public abstract class Fluege {
                 zutreffendeFluege.add(Fluege.getFluege().get(i));
             }
         }
-        if (zutreffendeFluege.size() < 0) {
+        if (zutreffendeFluege.size() > 0) {
             return zutreffendeFluege;
         } else {
             throw new FlugNotFoundException();
@@ -88,7 +86,7 @@ public abstract class Fluege {
                 zutreffendeFluege.add(Fluege.getFluege().get(i));
             }
         }
-        if (zutreffendeFluege.size() < 0) {
+        if (zutreffendeFluege.size() > 0) {
             return zutreffendeFluege;
         } else {
             throw new FlugNotFoundException();
@@ -102,7 +100,7 @@ public abstract class Fluege {
                 zutreffendeFluege.add(Fluege.getFluege().get(i));
             }
         }
-        if (zutreffendeFluege.size() < 0) {
+        if (zutreffendeFluege.size() > 0) {
             return zutreffendeFluege;
         } else {
             throw new FlugNotFoundException();

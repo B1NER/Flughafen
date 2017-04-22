@@ -137,7 +137,7 @@ public abstract class Verwaltung {
         while (s.hasNext()) {
             String zeile = s.nextLine();
             String zs[] = zeile.split(";");
-            Anwender eingelesenerAnwender = new Anwender(Integer.parseInt(zs[0]),zs[1], zs[2], zs[3], Integer.parseInt(zs[4]), zs[5], zs[6]);
+            Anwender eingelesenerAnwender = new Anwender(Integer.parseInt(zs[0]), zs[1], zs[2], zs[3], Integer.parseInt(zs[4]), zs[5], zs[6]);
             Anwenders.addAnwender(eingelesenerAnwender);
             System.out.println("Anwender angelegt:" + eingelesenerAnwender);
         }
@@ -187,7 +187,7 @@ public abstract class Verwaltung {
     public static void buchungenSpeichern(String pfad) throws IOException {
         BufferedWriter bw = new BufferedWriter(new FileWriter(pfad));
         for (int i = 0; i < Buchungen.getBuchungen().size(); i++) {
-            if(Buchungen.isRueckflug(Buchungen.getBuchungen().get(i))) {
+            if (Buchungen.isRueckflug(Buchungen.getBuchungen().get(i))) {
                 bw.write(String.valueOf(Buchungen.getBuchungen().get(i).getBuchungsID()));
                 bw.write(';');
                 bw.write(Buchungen.getBuchungen().get(i).getHinflug().getFlugID());
@@ -209,8 +209,7 @@ public abstract class Verwaltung {
                 }
                 bw.write(';');
                 bw.write('\n');
-            }
-            else{
+            } else {
                 bw.write(String.valueOf(Buchungen.getBuchungen().get(i).getBuchungsID()));
                 bw.write(';');
                 bw.write(Buchungen.getBuchungen().get(i).getHinflug().getFlugID());
@@ -335,8 +334,8 @@ public abstract class Verwaltung {
         Gepaecke.addGepaeck(new Gepaeck(gewicht, gepaeckTyp));
     }
 
-    public static void gepaeckBearbeiten(Gepaeck gepaeck, int neuesGewicht, Gepaecktypen gepaecktyp) throws ToHighWeightException{
-        Gepaecke.gepeckBearbeiten(gepaeck,neuesGewicht,gepaecktyp);
+    public static void gepaeckBearbeiten(Gepaeck gepaeck, int neuesGewicht, Gepaecktypen gepaecktyp) throws ToHighWeightException {
+        Gepaecke.gepeckBearbeiten(gepaeck, neuesGewicht, gepaecktyp);
     }
 
     //Nutzer erstellen
@@ -540,6 +539,30 @@ public abstract class Verwaltung {
         return l;
     }
 
+    public static int getNutzerIDByEmail() throws NutzerDoesNotExistException {
+        for (int i = 0; i < Administratoren.getAdministratoren().size(); i++) {
+            if (angemeldeter.geteMail().equals(Administratoren.getAdministratoren().get(i).geteMail()))
+                return Administratoren.getAdministratoren().get(i).getAdminID();
+        }
+        for (int i = 0; i < Angestellte.getAngestellte().size(); i++) {
+            if (angemeldeter.geteMail().equals(Angestellte.getAngestellte().get(i).geteMail()))
+                return Angestellte.getAngestellte().get(i).getAngestelltenID();
+        }
+        for (int i = 0; i < Anwenders.getAnwenders().size(); i++) {
+            if (angemeldeter.geteMail().equals(Anwenders.getAnwenders().get(i).geteMail()))
+                return (Anwenders.getAnwenders().get(i)).getAnwenderID();
+        }
+        throw new NutzerDoesNotExistException();
+    }
+
+    public static Angestellter getAngestelltenByAngemeldeten() throws NutzerDoesNotExistException {
+        return Angestellte.getAngestelltenByID(Verwaltung.getNutzerIDByEmail());
+    }
+
+    public static Anwender getAnwenderByID(int anwenderID) throws NutzerDoesNotExistException {
+        return Anwenders.getAnwenderByID(anwenderID);
+    }
+
 
     //Fluege finden
     public static ArrayList<Flug> flugFinden(String abflugort, String ankunftsort, Date abflugzeit, int anzahlSitzplaetze) throws FlugNotFoundException {
@@ -558,7 +581,7 @@ public abstract class Verwaltung {
         return Fluege.getZutreffendeFluege(abflugort, ankunftsort, anzahlSitzplaetze);
     }
 
-
+    //Funktionelle Methoden
     public static boolean isAngemeldet() {
         return angemeldeter != null;
     }

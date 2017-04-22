@@ -53,7 +53,7 @@
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                             <children>
                                 <Button fx:id="AngestelltehinzufugenButton" mnemonicParsing="false"
-                                        onAction="#AngestelltehinzufugenAction" prefHeight="65.0" prefWidth="350.0"
+                                        onAction="#NutzerHinzufugenAction" prefHeight="65.0" prefWidth="350.0"
                                         text="Nutzer erstellen">
                                     <font>
                                         <Font size="20.0"/>
