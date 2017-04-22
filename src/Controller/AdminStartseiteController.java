@@ -11,8 +11,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.VBox;
 
-import javax.swing.text.View;
-
 public class AdminStartseiteController {
 
     @FXML
@@ -28,7 +26,7 @@ public class AdminStartseiteController {
     private Label FlugListeText;
 
     @FXML
-    private Button AnmeldenButton;
+    private Button AbmeldenButton;
 
     @FXML
     private TableColumn<?, ?> SpalteStartOrt;
@@ -74,7 +72,7 @@ public class AdminStartseiteController {
     }
 
     @FXML
-    void AnmeldenAction(ActionEvent event) {
+    void AbmeldenAction(ActionEvent event) {
         Verwaltung.setAngemeldeter(null);
         MAIN.fensterOeffnen(Views.Buchen);
     }

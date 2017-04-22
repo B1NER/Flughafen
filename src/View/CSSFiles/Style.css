@@ -7,21 +7,21 @@
 /* Buchen */
 
 #FlugSuchenButton {
-    -fx-background-color: #ff0066;
+    -fx-background-color: #ffd364;
     -fx-font-weight: bold;
 }
 
 #FlugSuchenButton2 {
-    -fx-background-color: #ff0066;
+    -fx-background-color: #ffd364;
     -fx-font-weight: bold;
 }
 
 #FlugSuchenButton:hover {
-    -fx-background-color: #cc0066;
+    -fx-background-color: #ffd364;
 }
 
 #FlugSuchenButton2:hover {
-    -fx-background-color: #cc0066;
+    -fx-background-color: #ffd364;
 }
 
 #plusButton {

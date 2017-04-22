@@ -75,8 +75,8 @@
                                 </Button>
                             </children>
                         </HBox>
-                        <Button fx:id="AnmeldenButton" alignment="CENTER" mnemonicParsing="false"
-                                onAction="#AnmeldenAction" prefHeight="65.0" prefWidth="350.0" text="Abmelden">
+                        <Button fx:id="AbmeldenButton" alignment="CENTER" mnemonicParsing="false"
+                                onAction="#AbmeldenAction" prefHeight="65.0" prefWidth="350.0" text="Abmelden">
                             <font>
                                 <Font size="20.0"/>
                             </font>

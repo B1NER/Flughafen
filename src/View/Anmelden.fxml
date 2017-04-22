@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.*?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0"
             prefWidth="1280.0" stylesheets="@../View/CSSFiles/Style.css" xmlns="http://javafx.com/javafx/8"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AnmeldenController">
@@ -22,22 +22,40 @@
                 </MediaView-->
                 <StackPane prefHeight="150.0" prefWidth="200.0">
                     <children>
-                        <Rectangle arcHeight="40.0" arcWidth="40.0" fill="#0632d680" height="453.0" stroke="TRANSPARENT"
+                        <Rectangle arcHeight="40.0" arcWidth="40.0" fill="#0632d680" height="550.0" stroke="TRANSPARENT"
                                    strokeType="INSIDE" width="655.0"/>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="50.0" spacing="10.0">
                             <children>
                                 <Label fx:id="AnmeldenText" text="Anmelden" textFill="#f2eded">
                                     <font>
-                                        <Font size="50.0"/>
+                                        <Font size="64.0"/>
                                     </font>
                                 </Label>
                                 <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
                                     <children>
-                                        <Label fx:id="EmaliText" alignment="TOP_LEFT" text="E-Mail" textFill="#fcf5f5"/>
-                                        <TextField fx:id="EmailFeld" onAction="#EmailFeldAction" prefHeight="65.0"
-                                                   prefWidth="601.0"/>
-                                        <Label fx:id="PasswordText" text="Password" textFill="#f8f5f5"/>
-                                        <PasswordField fx:id="PasswordFeld" onAction="#PasswordFeldAction"/>
+                                        <Label fx:id="EmaliText" alignment="TOP_LEFT" text="E-Mail" textFill="#fcf5f5">
+                                            <font>
+                                                <Font size="36.0"/>
+                                            </font>
+                                        </Label>
+                                        <TextField fx:id="EmailFeld" onAction="#EmailFeldAction" prefHeight="80.0"
+                                                   prefWidth="601.0" promptText="beispiel@beispiel.com">
+                                            <font>
+                                                <Font size="36.0"/>
+                                            </font>
+                                        </TextField>
+                                        <Label fx:id="PasswordText" text="Password" textFill="#f8f5f5">
+                                            <font>
+                                                <Font size="36.0"/>
+                                            </font>
+                                        </Label>
+                                        <PasswordField fx:id="PasswordFeld" onAction="#PasswordFeldAction"
+                                                       prefHeight="80.0" prefWidth="601.0"
+                                                       promptText="Beispielpasswort">
+                                            <font>
+                                                <Font size="36.0"/>
+                                            </font>
+                                        </PasswordField>
                                     </children>
                                     <padding>
                                         <Insets left="340.0" right="340.0"/>
@@ -46,15 +64,29 @@
                                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                                     <children>
                                         <Button fx:id="AnmeldenButton" mnemonicParsing="false"
-                                                onAction="#AnmeldenAction" text="Anmelden"/>
+                                                onAction="#AnmeldenAction" prefHeight="65.0" prefWidth="150.0"
+                                                text="Anmelden">
+                                            <font>
+                                                <Font size="25.0"/>
+                                            </font>
+                                        </Button>
                                         <Button fx:id="RegistrierenButton" alignment="CENTER" mnemonicParsing="false"
-                                                onAction="#RegistrierenAction" text="Registrieren">
+                                                onAction="#RegistrierenAction" prefHeight="65.0" prefWidth="170.0"
+                                                text="Registrieren">
                                             <HBox.margin>
                                                 <Insets/>
                                             </HBox.margin>
+                                            <font>
+                                                <Font size="25.0"/>
+                                            </font>
                                         </Button>
                                         <Button fx:id="AbbrechenButton" mnemonicParsing="false"
-                                                onAction="#AbbrechenAction" text="Abbrechen"/>
+                                                onAction="#AbbrechenAction" prefHeight="65.0" prefWidth="180.0"
+                                                text="Abbrechen">
+                                            <font>
+                                                <Font size="25.0"/>
+                                            </font>
+                                        </Button>
                                     </children>
                                 </HBox>
                             </children>
