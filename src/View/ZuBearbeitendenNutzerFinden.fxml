@@ -29,7 +29,7 @@
                         <Label fx:id="SuchenText" alignment="TOP_LEFT" prefHeight="47.0" prefWidth="132.0"
                                text="Suchen:" textFill="#fffefe">
                             <font>
-                                <Font size="32.0"/>
+                                <Font size="36.0"/>
                             </font>
                             <VBox.margin>
                                 <Insets left="70.0"/>
@@ -38,10 +38,10 @@
                         <HBox alignment="CENTER" fillHeight="false" layoutY="20.0" prefHeight="50.0" prefWidth="1278.0"
                               spacing="10.0">
                             <children>
-                                <Label fx:id="VornameText" alignment="TOP_CENTER" prefHeight="50.0" text="Vorname"
+                                <Label fx:id="VornameText" alignment="TOP_CENTER" prefHeight="50.0" text="Vorname:"
                                        textFill="#fffefe">
                                     <font>
-                                        <Font size="17.0"/>
+                                        <Font size="36.0"/>
                                     </font>
                                     <HBox.margin>
                                         <Insets/>
@@ -52,10 +52,10 @@
                                         <Insets/>
                                     </HBox.margin>
                                 </TextField>
-                                <Label fx:id="NachnameText" alignment="TOP_CENTER" prefHeight="50.0" text="Nachname"
+                                <Label fx:id="NachnameText" alignment="TOP_CENTER" prefHeight="50.0" text="Nachname:"
                                        textFill="#fffefe">
                                     <font>
-                                        <Font size="17.0"/>
+                                        <Font size="36.0"/>
                                     </font>
                                     <HBox.margin>
                                         <Insets/>

@@ -42,7 +42,7 @@
                                     </HBox.margin>
                                 </TextField>
                                 <Button fx:id="SuchenButton" mnemonicParsing="false" onAction="#SuchenAction"
-                                        prefHeight="40.0" prefWidth="100.0" text="Suchen">
+                                        prefHeight="50.0" prefWidth="130.0" text="Suchen">
                                     <font>
                                         <Font size="15.0"/>
                                     </font>

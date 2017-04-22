@@ -22,15 +22,12 @@
                     <children>
                         <HBox alignment="CENTER" prefHeight="75.0" prefWidth="1280.0" spacing="30.0">
                             <children>
-                                <Button fx:id="FlugauswahlButton" disable="true" mnemonicParsing="false"
-                                        onAction="#FlugauswahlAction" prefHeight="65.0" prefWidth="220.0"
-                                        text="Flugauswahl"/>
-                                <Button fx:id="MeineDatenButton" disable="true" mnemonicParsing="false"
-                                        onAction="#MeineDatenAction" prefHeight="65.0" prefWidth="380.0"
-                                        text="Meine Daten &amp; Optionen"/>
-                                <Button fx:id="ZusammenfassungButton" disable="true" mnemonicParsing="false"
-                                        onAction="#ZusammenfassungAction" prefHeight="65.0" prefWidth="450.0"
-                                        text="Zusammenfassung &amp; Buchung"/>
+                                <Label alignment="CENTER" prefHeight="65.0" prefWidth="300.0" text="Zahlung"
+                                       textFill="WHITE">
+                                    <font>
+                                        <Font size="60.0"/>
+                                    </font>
+                                </Label>
                             </children>
                         </HBox>
                         <HBox prefHeight="646.0" prefWidth="1280.0" spacing="50.0">

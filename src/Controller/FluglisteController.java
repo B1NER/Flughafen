@@ -113,5 +113,4 @@ public class FluglisteController {  //TODO Felder auf die Suchkriterien setzen
 
 
     }
-
 }
