@@ -81,6 +81,12 @@
     -fx-padding: 0.0em;
 }
 
+.table-row-cell:selected {
+    -fx-background-color: rgba(16, 21, 29, 0.5);
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
+
 #keineFluegeGefunden {
     -fx-font-size: 40px;
     -fx-font-weight: bold;
