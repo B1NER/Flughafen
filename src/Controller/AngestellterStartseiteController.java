@@ -57,7 +57,7 @@ public class AngestellterStartseiteController {
     private TableColumn<?, ?> SpalteNachname;
 
 
-    public void initialize(MAIN main) {
+    public void initialize() {
     }
 
 

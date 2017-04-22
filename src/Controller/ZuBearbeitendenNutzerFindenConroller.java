@@ -53,7 +53,7 @@ public class ZuBearbeitendenNutzerFindenConroller {
     private Button SuchenButton;
 
 
-    public void initialize(MAIN main) {
+    public void initialize() {
     }
 
 
