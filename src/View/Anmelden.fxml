@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.media.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0" prefWidth="1280.0" stylesheets="@../../../../../View/CSSFiles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AnmeldenController">
+    <children>
+      <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="1280.0">
+         <children>
+            <Button fx:id="RegistrierenButton" alignment="CENTER" mnemonicParsing="false" onAction="#RegistrierenAction" text="Registrieren">
+               <HBox.margin>
+                  <Insets right="10.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+        <StackPane prefHeight="1024.0" prefWidth="1280.0">
+            <children>
+                <!--MediaView fx:id="MediaView" fitHeight="1024.0" fitWidth="1280.0" scaleY="1.5">
+                    <mediaPlayer>
+                        <MediaPlayer autoPlay="true">
+                            <media>
+                                <Media source="file:///C:/Users/Daniel/Desktop/Schule/Informatik/Flughafen/src/View.Grafiken/Cloud%20-%202142.mp4"/>
+                            </media>
+                        </MediaPlayer>
+                    </mediaPlayer>
+                </MediaView-->
+                <StackPane prefHeight="150.0" prefWidth="200.0">
+                    <children>
+                        <Rectangle arcHeight="40.0" arcWidth="40.0" fill="#0632d680" height="453.0" stroke="TRANSPARENT" strokeType="INSIDE" width="655.0" />
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="50.0" spacing="10.0">
+                            <children>
+                                <Label fx:id="AnmeldenText" text="Anmelden" textFill="#f2eded">
+                                    <font>
+                                        <Font size="50.0" />
+                                    </font>
+                                </Label>
+                                <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                                    <children>
+                                        <Label fx:id="EmaliText" alignment="TOP_LEFT" text="E-Mail" textFill="#fcf5f5" />
+                                        <TextField fx:id="EmailFeld" onAction="#EmailFeldAction" prefHeight="65.0" prefWidth="601.0" />
+                                        <Label fx:id="PasswordText" text="Password" textFill="#f8f5f5" />
+                                        <PasswordField fx:id="PasswordFeld" onAction="#PasswordFeldAction" />
+                                    </children>
+                                    <padding>
+                                        <Insets left="340.0" right="340.0" />
+                                    </padding>
+                                </VBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                           <children>
+                                      <Button fx:id="AnmeldenButton" mnemonicParsing="false" onAction="#AnmeldenAction" text="Anmelden" />
+                              <Button fx:id="AbbrechenButton" mnemonicParsing="false" onAction="#AbbrechenAction" text="Abbrechen" />
+                           </children>
+                        </HBox>
+                            </children>
+                        </VBox>
+                    </children>
+                </StackPane>
+            </children>
+        </StackPane>
+    </children>
+</AnchorPane>

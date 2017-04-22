@@ -24,7 +24,13 @@ public class AnmeldenController {
     private PasswordField PasswordFeld;
 
     @FXML
+    private Button RegistrierenButton;
+
+    @FXML
     private Button AnmeldenButton;
+
+    @FXML
+    private Button AbbrechenButton;
 
     @FXML
     private Label EmaliText;
@@ -57,6 +63,16 @@ public class AnmeldenController {
             EmailFeld.setPromptText("Email oder Passwort falsch!");
             PasswordFeld.setText("");
         }
+    }
+
+    @FXML
+    void AbbrechenAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void RegistrierenAction(ActionEvent event) {
+
     }
 
     //todo abbrechenbutton

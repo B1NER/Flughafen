@@ -73,4 +73,5 @@ public class AdminStartseiteController {
     void AnmeldenAction(ActionEvent event) {
 
     }
+
 }
