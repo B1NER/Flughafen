@@ -3,6 +3,8 @@ package Controller;
 import Model.Enums.Views;
 import Model.Exceptions.NutzerDoesNotExistException;
 import Model.Klassen.MAIN;
+import Model.Klassen.Nutzer.Administrator;
+import Model.Klassen.Nutzer.Angestellter;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -56,7 +58,14 @@ public class AnmeldenController {
     void AnmeldenAction(ActionEvent event) {
         try {
             Verwaltung.anmelden(EmailFeld.getText(), PasswordFeld.getText());
-            MAIN.fensterOeffnen(Views.KundenProfil);
+
+            if(Verwaltung.getAngemeldeter() instanceof Administrator){
+                MAIN.fensterOeffnen(Views.AdminStartseite);
+            }else if(Verwaltung.getAngemeldeter() instanceof Angestellter){
+                MAIN.fensterOeffnen(Views.AngestellterStartseite);
+            }else{
+                MAIN.fensterOeffnen(Views.KundenProfil);
+            }
         }
         catch(NutzerDoesNotExistException e){
             EmailFeld.setText("");
@@ -67,13 +76,12 @@ public class AnmeldenController {
 
     @FXML
     void AbbrechenAction(ActionEvent event) {
-
+        MAIN.fensterOeffnen(Views.Buchen);
     }
 
     @FXML
     void RegistrierenAction(ActionEvent event) {
-
+        MAIN.fensterOeffnen(Views.Registrieren);
     }
 
-    //todo abbrechenbutton
 }

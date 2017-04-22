@@ -1,6 +1,8 @@
 package Controller;
 
+import Model.Enums.Views;
 import Model.Klassen.MAIN;
+import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -8,6 +10,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.VBox;
+
+import javax.swing.text.View;
 
 public class AdminStartseiteController {
 
@@ -56,22 +60,23 @@ public class AdminStartseiteController {
 
     @FXML
     void AngestelltehinzufugenAction(ActionEvent event) {
-
+        MAIN.fensterOeffnen(Views.Registrieren);
     }
 
     @FXML
     void BenutzerBearbeitenAction(ActionEvent event) {
-
+        MAIN.fensterOeffnen(Views.ZuBearbeitendenNutzerFinden);
     }
 
     @FXML
     void BuchungBearbeitenAction(ActionEvent event) {
-
+        MAIN.fensterOeffnen(Views.ZuBearbeitendeBuchungFinden);
     }
 
     @FXML
     void AnmeldenAction(ActionEvent event) {
-
+        Verwaltung.setAngemeldeter(null);
+        MAIN.fensterOeffnen(Views.Buchen);
     }
 
 }

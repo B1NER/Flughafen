@@ -7,8 +7,6 @@ import Model.Exceptions.NutzerDoesNotExistException;
 import Model.Klassen.MAIN;
 import Model.Klassen.Nutzer.Administrator;
 import Model.Klassen.Nutzer.Angestellter;
-import Model.Klassen.Nutzer.Anwender;
-import Model.Klassen.Verwaltung.Angestellte;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -34,7 +32,7 @@ public class RegistrierenController {
     private PasswordField PasswordFeld;
 
     @FXML
-    private PasswordField PasswordFeld2;
+    private PasswordField Password2Feld;
 
     @FXML
     private Label GeburtsdatumText;
@@ -120,14 +118,14 @@ public class RegistrierenController {
     @FXML
     void RegistrierenAction(ActionEvent event) {
 
-        if (PasswordFeld2.getText().equals("") || PasswordFeld.getText().equals("")) {
+        if (Password2Feld.getText().equals("") || PasswordFeld.getText().equals("")) {
             PasswordFeld.setPromptText("Geben Sie ein gültiges Passwort ein!");
         }
-        if (!(PasswordFeld.getText().equals(PasswordFeld2.getText()))) {
+        if (!(PasswordFeld.getText().equals(Password2Feld.getText()))) {
             PasswordFeld.setPromptText("Die Passwörter stimmen nicht überein!");
             PasswordFeld.setText("");
-            PasswordFeld2.setText("");
-            PasswordFeld2.setPromptText("Die Passwörter stimmen nicht überein!");
+            Password2Feld.setText("");
+            Password2Feld.setPromptText("Die Passwörter stimmen nicht überein!");
             return;
         }
         if (VornameFeld.getText().equals("")) {
@@ -140,13 +138,22 @@ public class RegistrierenController {
         if (AnwenderRbutton.isSelected()) {
             try {
                 Verwaltung.anwenderErstellen(VornameFeld.getText(), NachnameFeld.getText(), Date.from(GeburtsdatumFeld.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()).toString(), 777, EmailFeld.getText(), PasswordFeld.getText());
+                //todo registrieren fehlt noch passnummer
                 try {
-                    Verwaltung.anmelden(EmailFeld.getText(), PasswordFeld.getText());
+                    if(!(Verwaltung.getAngemeldeter() instanceof Administrator) && !(Verwaltung.getAngemeldeter() instanceof Angestellter)) {
+                        Verwaltung.anmelden(EmailFeld.getText(), PasswordFeld.getText());
+                        MAIN.fensterOeffnen(Views.Buchen);
+                    }
+                    else if(Verwaltung.getAngemeldeter() instanceof Administrator){
+                        MAIN.fensterOeffnen(Views.AdminStartseite);
+                    }else{
+                        MAIN.fensterOeffnen(Views.AngestellterStartseite);
+                    }
                 } catch (NutzerDoesNotExistException e) {
                     //wird nie der Fall sein, da er gerade erstellt wurde
                     e.printStackTrace();
                 }
-                MAIN.fensterOeffnen(Views.Buchen);
+
             } catch (EmailIsAlreadyUsedException e) {
                 EmailFeld.setPromptText("Diese Email wird bereits verwendet!");
                 EmailFeld.setText("");
@@ -156,23 +163,10 @@ public class RegistrierenController {
             }
 
         }
-        if (AdminRButton.isSelected()) {
+        if (AdminRButton.isSelected() || AngestellterRButton.isSelected()) {
             try {
                 Verwaltung.adminErstellten(VornameFeld.getText(), NachnameFeld.getText(), GeburtsdatumFeld.getAccessibleText(), 777, EmailFeld.getText(), PasswordFeld.getText());
-                //main.buchen();
-            } catch (EmailIsAlreadyUsedException e) {
-                EmailFeld.setPromptText("Diese Email wird bereits verwendet!");
-                EmailFeld.setText("");
-            } catch (InvalidEmailException e) {
-                EmailFeld.setText("");
-                EmailFeld.setPromptText("Keine gültige Email!");
-            }
-
-        }
-        if (AngestellterRButton.isSelected()) {
-            try {
-                Verwaltung.angestellterErstellen(VornameFeld.getText(), NachnameFeld.getText(), GeburtsdatumFeld.getAccessibleText(), 777, EmailFeld.getText(), PasswordFeld.getText());
-                //main.buchen();
+                MAIN.fensterOeffnen(Views.AdminStartseite);
             } catch (EmailIsAlreadyUsedException e) {
                 EmailFeld.setPromptText("Diese Email wird bereits verwendet!");
                 EmailFeld.setText("");

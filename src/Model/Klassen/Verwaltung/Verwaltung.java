@@ -134,7 +134,7 @@ public abstract class Verwaltung {
         while (s.hasNext()) {
             String zeile = s.nextLine();
             String zs[] = zeile.split(";");
-            Anwender eingelesenerAnwender = new Anwender(zs[1], zs[2], zs[3], Integer.parseInt(zs[4]), zs[5], zs[6]);
+            Anwender eingelesenerAnwender = new Anwender(Integer.parseInt(zs[0]),zs[1], zs[2], zs[3], Integer.parseInt(zs[4]), zs[5], zs[6]);
             Anwenders.addAnwender(eingelesenerAnwender);
             System.out.println("Anwender angelegt:" + eingelesenerAnwender);
         }
