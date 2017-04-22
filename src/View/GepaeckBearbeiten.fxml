@@ -8,33 +8,29 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0"
-            prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="Controller.GepaeckBearbeitenController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" stylesheets="@../../../../../View/CSSFiles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GepaeckBearbeitenController">
     <children>
-        <VBox layoutX="88.0" layoutY="111.0" prefHeight="236.0" prefWidth="310.0" spacing="30.0">
+        <VBox layoutX="100.0" layoutY="90.0" prefHeight="236.0" prefWidth="310.0" spacing="30.0">
             <children>
                 <Label fx:id="GepackbearbeitenText" alignment="CENTER" text="Gepäck bearbeiten">
-                    <font>
-                        <Font size="30.0"/>
-                    </font>
-                    <VBox.margin>
-                        <Insets left="30.0"/>
-                    </VBox.margin>
-                </Label>
-                <TextField fx:id="GewichtFeld" prefHeight="65.0" prefWidth="310.0" promptText="Gewicht in kg"/>
+               <font>
+                  <Font size="30.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin></Label>
+            <ComboBox prefHeight="65.0" prefWidth="310.0" promptText="Gepäck Typ" />
+                <TextField fx:id="GewichtFeld" prefHeight="65.0" prefWidth="310.0" promptText="Gewicht in kg" />
                 <HBox prefHeight="100.0" prefWidth="466.0" spacing="10.0">
                     <children>
-                        <Button fx:id="AbbrechenButton" mnemonicParsing="false" onAction="#AbbrechenAction"
-                                prefHeight="65.0" prefWidth="150.0" text="Abbrechen">
+                        <Button fx:id="AbbrechenButton" mnemonicParsing="false" onAction="#AbbrechenAction" prefHeight="65.0" prefWidth="150.0" text="Abbrechen">
                             <font>
-                                <Font size="21.0"/>
+                                <Font size="21.0" />
                             </font>
                         </Button>
-                        <Button fx:id="BestatigenButton" mnemonicParsing="false" onAction="#BestatigenAction"
-                                prefHeight="65.0" prefWidth="150.0" text="Bestätigen">
+                        <Button fx:id="BestatigenButton" mnemonicParsing="false" onAction="#BestatigenAction" prefHeight="65.0" prefWidth="150.0" text="Bestätigen">
                             <font>
-                                <Font size="21.0"/>
+                                <Font size="21.0" />
                             </font>
                         </Button>
                     </children>

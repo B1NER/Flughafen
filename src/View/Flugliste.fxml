@@ -8,18 +8,18 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="1024.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FluglisteController">
+<AnchorPane prefHeight="1024.0" prefWidth="1280.0" stylesheets="@../../../../../View/CSSFiles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FluglisteController">
     <children>
         <StackPane prefHeight="1024.0" prefWidth="1280.0">
             <children>
                 <ImageView fitHeight="1024.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true" scaleY="1.44">
                     <image>
-                        <Image url="@Grafiken/Background.jpg" />
+                        <Image url="@../../../../../View/Grafiken/Background.jpg" />
                     </image>
                 </ImageView>
                 <VBox alignment="CENTER" prefHeight="1024.0" prefWidth="1280.0" spacing="20.0">
                     <children>
-                        <Label fx:id="FlugauswahlText" text="Hinflug finden" textFill="WHITE">
+                        <Label fx:id="FlugauswahlText" text="Flug auswählen" textFill="WHITE">
                             <font>
                                 <Font size="60.0" />
                             </font>
@@ -29,26 +29,24 @@
                                 <VBox prefHeight="500.0" prefWidth="300.0" spacing="20.0">
                                     <children>
                                         <Label fx:id="IhreSucheText" text="Ihre Suche" textFill="WHITE">
-                                            <font>
-                                                <Font size="30.0" />
-                                            </font>
-                                        </Label>
-                                        <TextField fx:id="FlugAbFeld" prefHeight="65.0" prefWidth="300.0" promptText="Flug ab" />
-                                        <TextField fx:id="FlugNachFeld" prefHeight="65.0" prefWidth="300.0" promptText="Flug nach" />
-                                        <TextField fx:id="fluggesellschaft" prefHeight="65.0" prefWidth="300.0" promptText="Fluggesellschaft" />
-                              <TextField fx:id="anzahlPersonen" prefHeight="65.0" prefWidth="300.0" promptText="Anzahl Personen" />
-                                        <DatePicker fx:id="DatumHinflug" prefHeight="65.0" prefWidth="300.0" promptText="Abflug Datum" />
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font></Label>
+                                        <TextField fx:id="FlugabFeld" prefHeight="65.0" prefWidth="300.0" promptText="Flug ab" />
+                                        <TextField fx:id="FlugnachFeld" prefHeight="65.0" prefWidth="300.0" promptText="Flug nach" />
+                              <DatePicker fx:id="DatumHinflug" promptText="Hinflug" />
+                              <DatePicker fx:id="DatumRuckflug" promptText="Rückflug" />
+                                        <TextField fx:id="PersonenanzahlFeld" prefHeight="65.0" prefWidth="300.0" promptText="Personen anzahl" />
                                         <Button fx:id="FlugfindenButton" mnemonicParsing="false" onAction="#FlugfindenAction" prefHeight="65.0" prefWidth="300.0" text="Flug finden">
-                                            <font>
-                                                <Font size="20.0" />
-                                            </font>
-                                        </Button>
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font></Button>
                                     </children>
                                 </VBox>
-                                <TableView prefHeight="390.0" prefWidth="901.0">
+                                <TableView prefHeight="811.0" prefWidth="901.0">
                                     <columns>
-                                        <TableColumn fx:id="SpalteFlug" prefWidth="736.0" text="Flug" />
-                                        <TableColumn fx:id="SpaltePreis" prefWidth="163.0" text="Preis" />
+                                        <TableColumn fx:id="SpalteFlug" prefWidth="191.0" text="Flug" />
+                                        <TableColumn fx:id="SpaltePreis" prefWidth="246.0" text="Preis" />
                                     </columns>
                                     <columnResizePolicy>
                                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
