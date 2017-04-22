@@ -7,10 +7,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
-
 /**
  * Created by knoll on 14.04.2017.
  */
@@ -121,6 +117,8 @@ public class BuchenController {
     void FlugSuchenAction(ActionEvent event){
         if (FlugAbFeld.getText().equals("")) {
             FlugAbFeld.setPromptText("Stadt eingeben");
+        }if (FlugNachFeld.getText().equals("")) {
+            FlugNachFeld.setPromptText("Stadt eingeben");
         }else {
             FluglisteController.setInfos(FlugAbFeld.getText(), FlugNachFeld.getText(), "", AnzahlFeld.getText(), DatumHinflug.getValue(), DatumRueckflug.getValue());
             MAIN.fensterOeffnen(Views.Flugliste);
@@ -131,6 +129,8 @@ public class BuchenController {
     void FlugSuchenAction2(ActionEvent event) {
         if (FlugAbFeld2.getText().equals("")) {
             FlugAbFeld2.setPromptText("Stadt eingeben");
+        }if (FlugNachFeld2.getText().equals("")) {
+            FlugNachFeld2.setPromptText("Stadt eingeben");
         }else {
             FluglisteController.setInfos(FlugAbFeld2.getText(), FlugNachFeld2.getText(), "", NurHinflugAnzahlFeld.getText(), DatumHinflug2.getValue());
             MAIN.fensterOeffnen(Views.Flugliste);

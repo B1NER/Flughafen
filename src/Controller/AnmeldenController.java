@@ -68,8 +68,7 @@ public class AnmeldenController {
             }
         }
         catch(NutzerDoesNotExistException e){
-            EmailFeld.setText("");
-            EmailFeld.setPromptText("Email oder Passwort falsch!");
+            PasswordFeld.setPromptText("Email oder Passwort falsch!");
             PasswordFeld.setText("");
         }
     }

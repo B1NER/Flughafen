@@ -54,7 +54,7 @@ public abstract class Fluege {
     public static ArrayList<Flug> getZutreffendeFluege(String abflugort, String ankunftsort, Date abflugzeit, int anzahlSitzplaetze) throws FlugNotFoundException {
         ArrayList<Flug> zutreffendeFluege = new ArrayList<>();
         for (int i = 0; i < Fluege.getFluege().size(); i++) {
-            if (Fluege.getFluege().get(i).getAbflugort().equals(abflugort) && Fluege.getFluege().get(i).getAnkunftsort().equals(ankunftsort) && Fluege.getFluege().get(i).getAbflugzeit().equals(abflugzeit) && Fluege.getVerfuegbarePlaetze(Fluege.getFluege().get(i)) > anzahlSitzplaetze) {
+            if (Fluege.getFluege().get(i).getAbflugort().equals(abflugort) && Fluege.getFluege().get(i).getAnkunftsort().equals(ankunftsort) && Fluege.getFluege().get(i).getAbflugzeit().getYear() == abflugzeit.getYear() && Fluege.getFluege().get(i).getAbflugzeit().getMonth() == abflugzeit.getMonth()  && Fluege.getFluege().get(i).getAbflugzeit().getDay() == abflugzeit.getDay() && Fluege.getVerfuegbarePlaetze(Fluege.getFluege().get(i)) > anzahlSitzplaetze) {
                 zutreffendeFluege.add(Fluege.getFluege().get(i));
             }
         }
@@ -82,7 +82,7 @@ public abstract class Fluege {
     public static ArrayList<Flug> getZutreffendeFluege(String abflugort, String ankunftsort, Date abflugzeit, String fluggesellschaft, int anzahlSitzplaetze) throws FlugNotFoundException {
         ArrayList<Flug> zutreffendeFluege = new ArrayList<>();
         for (int i = 0; i < Fluege.getFluege().size(); i++) {
-            if (Fluege.getFluege().get(i).getAbflugort().equals(abflugort) && Fluege.getFluege().get(i).getAnkunftsort().equals(ankunftsort) && Fluege.getFluege().get(i).getAbflugzeit().equals(abflugzeit) && Fluege.getFluege().get(i).getFlugGesellschaft().equals(fluggesellschaft) && Fluege.getVerfuegbarePlaetze(Fluege.getFluege().get(i)) > anzahlSitzplaetze) {
+            if (Fluege.getFluege().get(i).getAbflugort().equals(abflugort) && Fluege.getFluege().get(i).getAnkunftsort().equals(ankunftsort) && Fluege.getFluege().get(i).getAbflugzeit().getYear() == abflugzeit.getYear() && Fluege.getFluege().get(i).getAbflugzeit().getMonth() == abflugzeit.getMonth()  && Fluege.getFluege().get(i).getAbflugzeit().getDay() == abflugzeit.getDay() && Fluege.getFluege().get(i).getFlugGesellschaft().equals(fluggesellschaft) && Fluege.getVerfuegbarePlaetze(Fluege.getFluege().get(i)) > anzahlSitzplaetze) {
                 zutreffendeFluege.add(Fluege.getFluege().get(i));
             }
         }
@@ -110,7 +110,7 @@ public abstract class Fluege {
     public static int getVerfuegbarePlaetze(Flug flug) {
         int verfuegbarePlaetze = flug.getAnzahlPlaetze();
         for (int i = 0; i < Buchungen.getBuchungen().size(); i++) {
-            if (flug.equals(Buchungen.getBuchungen().get(i).getHinflug()) || flug.equals(Buchungen.getBuchungen().get(i).getHinflug())) {
+            if (flug.equals(Buchungen.getBuchungen().get(i).getHinflug()) || flug.equals(Buchungen.getBuchungen().get(i).getRueckflug())) {
                 verfuegbarePlaetze -= Buchungen.getBuchungen().get(i).getAnzahlSitzplaetze();
             }
         }
