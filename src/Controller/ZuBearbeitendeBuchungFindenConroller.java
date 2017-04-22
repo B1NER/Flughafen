@@ -59,10 +59,7 @@ public class ZuBearbeitendeBuchungFindenConroller {
     @FXML
     private Button FlugSuchenButton;
 
-    public MAIN main;
-
-    public void setMain(MAIN main) {
-        this.main = main;
+    public void initialize() {
     }
 
     @FXML

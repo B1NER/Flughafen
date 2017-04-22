@@ -123,9 +123,8 @@ public class KundenProfilControler {
         KundenProfilControler.buchung = buchung;
     }
 
-    public void setMain(MAIN main) {
-        this.main = main;
-
+    @FXML
+    public void initialize() {
         try {
             buchung = Buchungen.getBuchungByID(1);      //todo Buchung setzten indem man von liste auswählt
         }catch(BuchungDoesNotExistException e){         // in dem fall nur zum TEst
@@ -136,7 +135,6 @@ public class KundenProfilControler {
         NachnameFeld.setText(Verwaltung.getAngemeldeter().getNachname());
         GeburtsdatumFeld.setText(Verwaltung.getAngemeldeter().getGeburtsdatum());
     }
-
 
     @FXML
     void NeueBuchungAction(ActionEvent event) {

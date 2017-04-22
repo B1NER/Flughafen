@@ -53,10 +53,8 @@ public class FluglisteController {  //TODO Felder auf die Suchkriterien setzen
     @FXML
     private Button FlugfindenButton;
 
-    public MAIN main;
+    public void initialize() {
 
-    public void setMain(MAIN main) {
-        this.main = main;
     }
 
     @FXML

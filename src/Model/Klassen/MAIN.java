@@ -2,18 +2,13 @@ package Model.Klassen;
 
 import Controller.*;
 import Model.Enums.Views;
-import Model.Klassen.Nutzer.Anwender;
-import Model.Klassen.Verwaltung.Angestellte;
-import Model.Klassen.Verwaltung.Anwenders;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.util.HashMap;
 
 /**
@@ -32,9 +27,9 @@ public class MAIN extends Application {
     }
 
     public static void main(String[] args) {
-        //Verwaltung.init();
+        Verwaltung.init();
         launch(args);
-        //Verwaltung.exit();
+        Verwaltung.exit();
     }
 
 
@@ -64,7 +59,7 @@ public class MAIN extends Application {
 
             if (view.toString().equals("AdminStartseiteController")) {
                 AdminStartseiteController controller = loader.getController();
-                //controller.setMain(main);
+                //controller.setMain();
             } else if (view.toString().equals("AngestellterStartseiteController")) {
                 AngestellterStartseiteController controller = loader.getController();
                 //controller.setMain(main);
@@ -88,10 +83,10 @@ public class MAIN extends Application {
                 //controller.setMain(main);
             } else if (view.toString().equals("KundenProfilControler")) {
                 KundenProfilControler controller = loader.getController();
-                //controller.setMain(main);
+                //controller.setMain();
             } else if (view.toString().equals("ProfilBearbeitenController")) {
                 ProfilBearbeitenController controller = loader.getController();
-                //controller.setMain(main);
+                controller.setMain();
             } else if (view.toString().equals("RegistrierenController")) {
                 RegistrierenController controller = loader.getController();
                 //controller.setMain(main);

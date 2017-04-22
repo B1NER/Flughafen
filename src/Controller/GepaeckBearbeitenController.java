@@ -26,16 +26,13 @@ public class GepaeckBearbeitenController {
     @FXML
     private Button AbbrechenButton;
 
-    public MAIN main;
-
     private static Gepaeck gepaeck;
 
     public static void setGepaeck(Gepaeck gepaeck) {
         GepaeckBearbeitenController.gepaeck = gepaeck;
     }
 
-    public void setMain(MAIN main) {
-        this.main = main;
+    public void initialize() {
     }
 
     @FXML

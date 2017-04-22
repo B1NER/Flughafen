@@ -56,10 +56,8 @@ public class AngestellterStartseiteController {
     @FXML
     private TableColumn<?, ?> SpalteNachname;
 
-    public MAIN main;
 
-    public void setMain(MAIN main) {
-        this.main = main;
+    public void initialize(MAIN main) {
     }
 
 

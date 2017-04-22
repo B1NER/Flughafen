@@ -90,10 +90,7 @@ public class BuchungszusammenfassungController {
     @FXML
     private Label HinflugText;
 
-    public MAIN main;
-
-    public void setMain(MAIN main) {
-        this.main = main;
+    public void initialize() {
     }
 
 

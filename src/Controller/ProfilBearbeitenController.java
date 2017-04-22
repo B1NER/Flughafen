@@ -55,22 +55,19 @@ public class ProfilBearbeitenController {
     @FXML
     private PasswordField Password;
 
-    public MAIN main;
-
     private static Mensch zuBearbeitenderMensch;
 
     public static void setZuBearbeitenderMensch(Mensch zuBearbeitenderMensch) {
         ProfilBearbeitenController.zuBearbeitenderMensch = zuBearbeitenderMensch;
     }
 
-    public void setMain(MAIN main) {
+    public void initialize() {
         VornameFeld.setText(zuBearbeitenderMensch.getVorname());
         NachnameFeld.setText(zuBearbeitenderMensch.getNachname());
         String date[] = zuBearbeitenderMensch.getGeburtsdatum().split("\\.");
         GeburtsdatumFeld.setValue(LocalDate.of(Integer.parseInt(date[2]),Integer.parseInt(date[1]),Integer.parseInt(date[0])));
         Password.setText(zuBearbeitenderMensch.getPasswort());
         Password2Feld.setText(zuBearbeitenderMensch.getPasswort());
-        this.main = main;
     }
 
     @FXML

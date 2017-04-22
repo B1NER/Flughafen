@@ -78,10 +78,7 @@ public class RegistrierenController {
     @FXML
     private TextField EmailFeld;
 
-    public MAIN main;
-
-    public void setMain(MAIN main) {
-        this.main = main;
+    public void initialize() {
 
         if (Verwaltung.isAngemeldet()) {
             if (Verwaltung.getAngemeldeter() instanceof Administrator) { //admin kann alles erstellen

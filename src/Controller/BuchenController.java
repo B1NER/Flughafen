@@ -78,10 +78,8 @@ public class BuchenController {
     @FXML
     private TabPane tabPaneOhneRueckflug;
 
-    public MAIN main;
 
-    public void setMain(MAIN main) {
-        this.main = main;
+    public void initialize() {
         if (Verwaltung.isAngemeldet()) {
             AnmeldenButton.setVisible(false);
             RegistrierenButton.setVisible(false);
