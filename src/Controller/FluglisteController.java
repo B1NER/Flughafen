@@ -78,6 +78,7 @@ public class FluglisteController {  //TODO Felder auf die Suchkriterien setzen
     private static String fluggesellschaft;
     private static String anzahlPersonen;
     private static LocalDate abflugDatum;
+    private static LocalDate ankunftsDatum;
 
 
 
@@ -89,12 +90,22 @@ public class FluglisteController {  //TODO Felder auf die Suchkriterien setzen
         FluglisteController.abflugDatum = abflugDatum;
     }
 
+    public static void setInfos(String flugAb, String flugNach,String fluggesellschaft, String anzahlPersonen, LocalDate abflugDatum, LocalDate ankunftsDatum){
+        FluglisteController.flugAb = flugAb;
+        FluglisteController.flugNach = flugNach;
+        FluglisteController.fluggesellschaft = fluggesellschaft;
+        FluglisteController.anzahlPersonen = anzahlPersonen;
+        FluglisteController.abflugDatum = abflugDatum;
+        FluglisteController.ankunftsDatum = ankunftsDatum;
+    }
+
     public void initialize() {
         FlugabFeld.setText(flugAb);
         FlugnachFeld.setText(flugNach);
         fluggesellschaftFeld.setText(fluggesellschaft);
         PersonenanzahlFeld.setText(anzahlPersonen);
         DatumHinflug.setValue(abflugDatum);
+
         spalteAbflugsOrt.setCellValueFactory(new PropertyValueFactory<Flug, String>("abflugort"));
         spalteAnkunftsOrt.setCellValueFactory(new PropertyValueFactory<Flug, String>("ankunftsort"));
         spalteDatum.setCellValueFactory(new PropertyValueFactory<Flug, String>("abflugzeit"));

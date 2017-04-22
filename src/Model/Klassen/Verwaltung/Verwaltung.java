@@ -513,6 +513,10 @@ public abstract class Verwaltung {
         Buchungen.buchungBearbeiten(buchung, hinflug, rueckflug, anwender, anzahlSitzplaetze, gepaeck, buchungspreis);
     }
 
+    public static ArrayList<Buchung> getBuchungenByAnwender(Anwender anwender) {
+        return Buchungen.getBuchungenByAnwender(anwender);
+    }
+
     //Nutzer Getter
     public static ArrayList<Anwender> getAnwenderByAngestellten(Angestellter angestellter) {
         //AnwenderAngetsellten geändert

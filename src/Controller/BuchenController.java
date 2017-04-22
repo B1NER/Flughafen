@@ -122,7 +122,7 @@ public class BuchenController {
         if (FlugAbFeld.getText().equals("")) {
             FlugAbFeld.setPromptText("Stadt eingeben");
         }else {
-            FluglisteController.setInfos(FlugAbFeld.getText(), FlugNachFeld.getText(), "", AnzahlFeld.getText(), DatumHinflug.getValue());
+            FluglisteController.setInfos(FlugAbFeld.getText(), FlugNachFeld.getText(), "", AnzahlFeld.getText(), DatumHinflug.getValue(), DatumRueckflug.getValue());
             MAIN.fensterOeffnen(Views.Flugliste);
         }
     }
