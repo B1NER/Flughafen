@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 
@@ -67,6 +68,9 @@ public class BuchenController {
     private TextField FlugAbFeld2;
 
     @FXML
+    private TextField FlugAbFeld;
+
+    @FXML
     private Button MitRuecksflugSuchenButton;
 
     @FXML
@@ -87,7 +91,6 @@ public class BuchenController {
             AnmeldenButton.setVisible(true);
             RegistrierenButton.setVisible(true);
         }
-
         DatumHinflug.setEditable(false);
         DatumHinflug2.setEditable(false);
     }
@@ -115,27 +118,22 @@ public class BuchenController {
 
     @FXML
     void FlugSuchenAction(ActionEvent event){
-
+        if (FlugAbFeld.getText().equals("")) {
+            FlugAbFeld.setPromptText("Stadt eingeben");
+        }else {
+            FluglisteController.setInfos(FlugAbFeld.getText(), FlugNachFeld.getText(), "", AnzahlFeld.getText(), DatumHinflug.getValue());
+            MAIN.fensterOeffnen(Views.Flugliste);
+        }
     }
 
     @FXML
-    void NurHinflugFlugSuchenAction(ActionEvent event) {
-
-        //Nur Hinflug
+    void FlugSuchenAction2(ActionEvent event) {
         if (FlugAbFeld2.getText().equals("")) {
             FlugAbFeld2.setPromptText("Stadt eingeben");
+        }else {
+            FluglisteController.setInfos(FlugAbFeld2.getText(), FlugNachFeld2.getText(), "", NurHinflugAnzahlFeld.getText(), DatumHinflug2.getValue());
+            MAIN.fensterOeffnen(Views.Flugliste);
         }
-
-        if (FlugNachFeld2.getText().equals("")) {
-            FlugAbFeld2.setPromptText("Stadt eingeben");
-        }
-
-
-        MAIN.fensterOeffnen(Views.Flugliste);
-
-        //FluglisteController fc = new FluglisteController();
-        //fc.setFluege(FlugAbFeld2.getText(), FlugNachFeld2.getText(), Date.from(DatumHinflug2.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()), Integer.valueOf(NurHinflugAnzahlFeld.getText()));
-
     }
 
     @FXML
@@ -147,10 +145,5 @@ public class BuchenController {
     @FXML
     void NurHinflugplusAction(ActionEvent event) {
         NurHinflugAnzahlFeld.setText("" + (Integer.parseInt(NurHinflugAnzahlFeld.getText()) + 1));
-    }
-
-    @FXML
-    void FlugSuchenAction2(ActionEvent event) {
-
     }
 }

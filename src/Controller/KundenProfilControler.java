@@ -114,8 +114,6 @@ public class KundenProfilControler {
     @FXML
     private Label HinflugText;
 
-    public MAIN main;
-
     private static Buchung buchung;
 
     public static void setBuchung(Buchung buchung) {
