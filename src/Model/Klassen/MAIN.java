@@ -79,7 +79,6 @@ public class MAIN extends Application {
                 ProfilBearbeitenController controller = loader.getController();
             } else if (view.toString().equals("RegistrierenController")) {
                 RegistrierenController controller = loader.getController();
-                //controller.setMain(main);
             } else if (view.toString().equals("ZahlungController")) {
                 ZahlungController controller = loader.getController();
             } else if (view.toString().equals("ZuBearbeitendeBuchungFindenConroller")) {

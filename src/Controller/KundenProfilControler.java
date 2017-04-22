@@ -119,7 +119,6 @@ public class KundenProfilControler {
     private static Buchung buchung;
 
     public static void setBuchung(Buchung buchung) {
-
         KundenProfilControler.buchung = buchung;
     }
 
