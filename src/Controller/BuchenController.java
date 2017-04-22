@@ -82,6 +82,7 @@ public class BuchenController {
     @FXML
     private TabPane tabPaneOhneRueckflug;
 
+    public MAIN main;
 
     public void initialize() {
         if (Verwaltung.isAngemeldet()) {

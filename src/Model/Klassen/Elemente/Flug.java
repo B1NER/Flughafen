@@ -17,6 +17,11 @@ public class Flug {
     private Date ankunftszeit;
     private double preisProPerson;
 
+
+    public Flug(String abflugort){
+        this.abflugort = abflugort;
+    }
+
     public Flug(String FlugID, String flugGesellschaft, String abflugort, String ankunftsort, int anzahlPlaetze, int gepaeckskapazitaet, Date abflugzeit, Date ankunftszeit, double preisProPerson) {
         this.FlugID = FlugID;
         this.flugGesellschaft = flugGesellschaft;

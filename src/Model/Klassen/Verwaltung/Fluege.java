@@ -60,7 +60,7 @@ public abstract class Fluege {
                 zutreffendeFluege.add(Fluege.getFluege().get(i));
             }
         }
-        if (zutreffendeFluege.size() < 0) {
+        if (zutreffendeFluege.size() > 0) {
             return zutreffendeFluege;
         } else {
             throw new FlugNotFoundException();
@@ -74,7 +74,7 @@ public abstract class Fluege {
                 zutreffendeFluege.add(Fluege.getFluege().get(i));
             }
         }
-        if (zutreffendeFluege.size() < 0) {
+        if (zutreffendeFluege.size() > 0) {
             return zutreffendeFluege;
         } else {
             throw new FlugNotFoundException();
@@ -88,7 +88,7 @@ public abstract class Fluege {
                 zutreffendeFluege.add(Fluege.getFluege().get(i));
             }
         }
-        if (zutreffendeFluege.size() < 0) {
+        if (zutreffendeFluege.size() > 0) {
             return zutreffendeFluege;
         } else {
             throw new FlugNotFoundException();
@@ -102,7 +102,7 @@ public abstract class Fluege {
                 zutreffendeFluege.add(Fluege.getFluege().get(i));
             }
         }
-        if (zutreffendeFluege.size() < 0) {
+        if (zutreffendeFluege.size() > 0) {
             return zutreffendeFluege;
         } else {
             throw new FlugNotFoundException();
