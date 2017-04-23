@@ -489,11 +489,11 @@ public abstract class Verwaltung {
         throw new NutzerDoesNotExistException();
     }
 
-    public static void anmelden(Anwender anwender) {
+    public static void anmelden(Mensch anmelder) {
         //Sobald anwender auf registrieren klickt und er sich registriert sollte er direkt danach auch angemeldet sein
         //Diese Funktion erleichtert den GUI Programmierern das Registrieren/Anmelden
         //*Klick* Registrieren --> anwenderErstellen --> erstellten Anwender dieser Funktion übergeben
-        angemeldeter = anwender;
+        angemeldeter = anmelder;
         System.out.println("Erfolgreich Angemeldet:" + angemeldeter);
     }
 

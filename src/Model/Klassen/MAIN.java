@@ -1,6 +1,5 @@
 package Model.Klassen;
 
-import Controller.*;
 import Model.Enums.Views;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.application.Application;
@@ -9,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import javax.swing.text.View;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -29,7 +27,7 @@ public class MAIN extends Application {
         MAIN.primaryStage = primaryStage;
         hashmapsFuellen();
         /*try {
-            Verwaltung.anmelden(Anwenders.getAnwenderByID(2));
+            Verwaltung.anmelden(Angestellte.getAngestelltenByID(3));
         }catch (final Exception e){
 
         }

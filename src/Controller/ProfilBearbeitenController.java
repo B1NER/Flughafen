@@ -4,16 +4,11 @@ import Model.Enums.Views;
 import Model.Klassen.MAIN;
 import Model.Klassen.Nutzer.Administrator;
 import Model.Klassen.Nutzer.Angestellter;
-import Model.Klassen.Nutzer.Anwender;
 import Model.Klassen.Nutzer.Mensch;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.time.LocalDate;
 
@@ -75,7 +70,7 @@ public class ProfilBearbeitenController {
         if(Verwaltung.getAngemeldeter() instanceof Administrator){
             MAIN.fensterOeffnen(Views.ZuBearbeitendenNutzerFinden);
         }else if(Verwaltung.getAngemeldeter() instanceof Angestellter){
-            MAIN.fensterOeffnen(Views.ZuBearbeitendenNutzerFinden);
+            MAIN.fensterOeffnen(Views.AngestellterStartseite);
         }else{
             MAIN.fensterOeffnen(Views.KundenProfil);
         }

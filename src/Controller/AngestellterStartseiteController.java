@@ -71,17 +71,6 @@ public class AngestellterStartseiteController {
         SpalteGeburtsdatum.setCellValueFactory(new PropertyValueFactory<Anwender, String>("geburtsdatum"));
         SpalteEmail.setCellValueFactory(new PropertyValueFactory<Anwender, String>("eMail"));
 
-        Tabelle.setRowFactory(tv -> {
-            TableRow<Anwender> row = new TableRow<>();
-            row.setOnMouseClicked(event -> {
-                if (event.getClickCount() == 2 && (!row.isEmpty())) {
-                    Anwender klickedAnwender = row.getItem();
-                    ProfilBearbeitenController.setZuBearbeitenderMensch(klickedAnwender);
-                    MAIN.fensterOeffnen(Views.ProfilBearbeiten);
-                }
-            });
-            return row;
-        });
 
         try {
             observableList = FXCollections.observableList(Verwaltung.getAnwenderByAngestellten(Verwaltung.getAngestelltenByAngemeldeten()));
@@ -104,15 +93,15 @@ public class AngestellterStartseiteController {
         ArrayList<Anwender> zutreffendeAnwender = new ArrayList<>();
         try {
             if (!VornameFeld.getText().equals("")) {
-                if (!VornameFeld.getText().equals("")) {  //Vor- und Nachname
+                if (VornameFeld.getText().equals("")) {  //Vor- und Nachname
                     for (int i = 0; i < Verwaltung.getAnwenderByAngestellten(Verwaltung.getAngestelltenByAngemeldeten()).size(); i++) {
-                        if (Verwaltung.getAnwenderByAngestellten(Verwaltung.getAngestelltenByAngemeldeten()).get(i).getVorname().equals(VornameFeld.getText()) && Verwaltung.getAnwenderByAngestellten(Verwaltung.getAngestelltenByAngemeldeten()).get(i).getNachname().equals(NachnameText.getText())) {
+                        if (Verwaltung.getAnwenderByAngestellten(Verwaltung.getAngestelltenByAngemeldeten()).get(i).getVorname().equalsIgnoreCase(VornameFeld.getText()) && Verwaltung.getAnwenderByAngestellten(Verwaltung.getAngestelltenByAngemeldeten()).get(i).getNachname().equalsIgnoreCase(NachnameText.getText())) {
                             zutreffendeAnwender.add(Verwaltung.getAnwenderByAngestellten(Verwaltung.getAngestelltenByAngemeldeten()).get(i));
                         }
                     }
                 } else {  //Vorname
                     for (int i = 0; i < Verwaltung.getAnwenderByAngestellten(Verwaltung.getAngestelltenByAngemeldeten()).size(); i++) {
-                        if (Verwaltung.getAnwenderByAngestellten(Verwaltung.getAngestelltenByAngemeldeten()).get(i).getVorname().equals(VornameFeld.getText())) {
+                        if (Verwaltung.getAnwenderByAngestellten(Verwaltung.getAngestelltenByAngemeldeten()).get(i).getVorname().equalsIgnoreCase(VornameFeld.getText())) {
                             zutreffendeAnwender.add(Verwaltung.getAnwenderByAngestellten(Verwaltung.getAngestelltenByAngemeldeten()).get(i));
                         }
                     }
@@ -121,17 +110,22 @@ public class AngestellterStartseiteController {
                 VornameFeld.setText("Pflichtfeld!");
             }
         } catch (final NutzerDoesNotExistException e) {
-            observableList.clear();
-            Tabelle.setItems(observableList);
-
-            System.out.println("Es gibt keinen Anwender mit diesen Eigenschaften");
-            Label keineFluege = new Label("Keine Anwender gefunden!");
-            keineFluege.setId("keineFluegeGefunden");
-            Tabelle.setPlaceholder(keineFluege);
+            System.out.println("Nutzer nicht gefunden!");
         }
         observableList = FXCollections.observableList(zutreffendeAnwender);
-        Tabelle.setItems(observableList);
+        if (observableList.size() < 1) {
+            observableList.clear();
+            Tabelle.setItems(observableList);
+            System.out.println("Es gibt keinen Anwender mit diesen Eigenschaften");
+            Label keineAnwender = new Label("Keine Anwender gefunden!");
+            keineAnwender.setId("keineFluegeGefunden");
+            Tabelle.setPlaceholder(keineAnwender);
+        } else {
+            observableList = FXCollections.observableList(zutreffendeAnwender);
+            Tabelle.setItems(observableList);
+        }
     }
+
 
     @FXML
     void AbmeldenAction(ActionEvent event) {
