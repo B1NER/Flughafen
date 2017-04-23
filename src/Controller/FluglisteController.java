@@ -5,14 +5,12 @@ import Model.Exceptions.FlugNotFoundException;
 import Model.Klassen.Elemente.Flug;
 import Model.Klassen.MAIN;
 import Model.Klassen.Verwaltung.Verwaltung;
-import com.sun.rowset.internal.Row;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import sun.applet.Main;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -61,6 +59,12 @@ public class FluglisteController {  //TODO Felder auf die Suchkriterien setzen
 
     @FXML
     private Button FlugfindenButton;
+
+    @FXML
+    private Button zurueckButton1;
+
+    @FXML
+    private Button buchenButton;
 
     private static String flugAb;
     private static String flugNach;
@@ -162,5 +166,13 @@ public class FluglisteController {  //TODO Felder auf die Suchkriterien setzen
 
     }
 
+    @FXML
+    public void zurueckAction(ActionEvent event) {
 
+    }
+
+    @FXML
+    public void buchenAction(ActionEvent event) {
+
+    }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -31,11 +31,11 @@
                                 </Label>
                             </children>
                         </HBox>
-                        <TabPane prefHeight="2000.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+                        <TabPane prefHeight="1000.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE">
                             <tabs>
                                 <Tab fx:id="HinflugTab" text="Hinflug">
                                     <content>
-                                        <GridPane alignment="CENTER_LEFT" prefHeight="471.0" prefWidth="1446.0">
+                                        <GridPane alignment="CENTER_LEFT" prefHeight="471.0" prefWidth="1280.0">
                                             <children>
                                                 <Label fx:id="NameText1" text="Name" textFill="#f8f7f7"
                                                        GridPane.rowIndex="2">
@@ -92,12 +92,12 @@
                                                       GridPane.columnIndex="4">
                                                     <children>
                                                         <Label prefHeight="100.0" prefWidth="370.0"
-                                                               text="Hinflug Preis pro Person:" textFill="#fcfafa">
+                                                               text="Preis pro Person:" textFill="#fcfafa">
                                                             <font>
                                                                 <Font size="30.0"/>
                                                             </font>
                                                         </Label>
-                                                        <Label fx:id="HinflugPreisLabel1" prefHeight="45.0"
+                                                        <Label fx:id="PreisProPerson1" prefHeight="45.0"
                                                                prefWidth="100.0" textFill="#f8f8f8">
                                                             <font>
                                                                 <Font size="30.0"/>
@@ -108,14 +108,14 @@
                                                 <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0"
                                                       GridPane.columnIndex="4" GridPane.rowIndex="1">
                                                     <children>
-                                                        <Label fx:id="RueckFlugPreisProPersonText1" prefHeight="100.0"
-                                                               prefWidth="370.0" text="Rückflug Preis pro Person:"
+                                                        <Label fx:id="PreisproGepackText1" prefHeight="100.0"
+                                                               prefWidth="370.0" text="Gepäck Preis pro Kilo:"
                                                                textFill="#fcfafa">
                                                             <font>
                                                                 <Font size="30.0"/>
                                                             </font>
                                                         </Label>
-                                                        <Label fx:id="RueckflugPreisLabel1" prefHeight="45.0"
+                                                        <Label fx:id="GepaeckPreisProKilo1" prefHeight="45.0"
                                                                prefWidth="100.0" textFill="#f8f8f8">
                                                             <font>
                                                                 <Font size="30.0"/>
@@ -126,14 +126,14 @@
                                                 <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0"
                                                       GridPane.columnIndex="4" GridPane.rowIndex="2">
                                                     <children>
-                                                        <Label fx:id="PreisproGepackText1" prefHeight="100.0"
-                                                               prefWidth="370.0" text="Gepäck Preis pro Kilo:"
+                                                        <Label fx:id="PreisproGepackText11" prefHeight="100.0"
+                                                               prefWidth="370.0" text="Anzahl Personen:"
                                                                textFill="#fcfafa">
                                                             <font>
                                                                 <Font size="30.0"/>
                                                             </font>
                                                         </Label>
-                                                        <Label fx:id="GepaeckPreisProKiloLabel1" prefHeight="45.0"
+                                                        <Label fx:id="AnzahlPersonen1" prefHeight="45.0"
                                                                prefWidth="100.0" textFill="#f8f8f8">
                                                             <font>
                                                                 <Font size="30.0"/>
@@ -144,14 +144,14 @@
                                                 <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0"
                                                       GridPane.columnIndex="4" GridPane.rowIndex="3">
                                                     <children>
-                                                        <Label fx:id="PreisproGepackText11" prefHeight="100.0"
-                                                               prefWidth="370.0" text="Anzahl Personen:"
-                                                               textFill="#fcfafa">
+                                                        <Label fx:id="AnzahlPersonenLabel1" prefHeight="50.0"
+                                                               prefWidth="370.0" text="Hinflug Gesamt Preis:"
+                                                               textFill="#f8f8f8">
                                                             <font>
                                                                 <Font size="30.0"/>
                                                             </font>
                                                         </Label>
-                                                        <Label fx:id="AnzahlPersonenLabel1" prefHeight="45.0"
+                                                        <Label fx:id="HinflugGesamtPreis1" prefHeight="45.0"
                                                                prefWidth="100.0" textFill="#f8f8f8">
                                                             <font>
                                                                 <Font size="30.0"/>
@@ -169,8 +169,8 @@
                                                                 <Font size="30.0"/>
                                                             </font>
                                                         </Label>
-                                                        <Label fx:id="GesamtpreisText11" prefHeight="50.0"
-                                                               prefWidth="100.0" textFill="#fcfafa">
+                                                        <Label fx:id="Gesamtpreis1" prefHeight="50.0" prefWidth="100.0"
+                                                               textFill="#fcfafa">
                                                             <font>
                                                                 <Font size="30.0"/>
                                                             </font>
@@ -216,7 +216,7 @@
                                 </Tab>
                                 <Tab fx:id="RueckflugTab" text="Rückflug">
                                     <content>
-                                        <GridPane alignment="CENTER_LEFT" prefHeight="471.0" prefWidth="1446.0">
+                                        <GridPane alignment="CENTER_LEFT" prefHeight="471.0" prefWidth="1280.0">
                                             <children>
                                                 <Label fx:id="NameText11" text="Name" textFill="#f8f7f7"
                                                        GridPane.rowIndex="2">
@@ -273,12 +273,12 @@
                                                       GridPane.columnIndex="4">
                                                     <children>
                                                         <Label prefHeight="100.0" prefWidth="370.0"
-                                                               text="Hinflug Preis pro Person:" textFill="#fcfafa">
+                                                               text="Preis pro Person:" textFill="#fcfafa">
                                                             <font>
                                                                 <Font size="30.0"/>
                                                             </font>
                                                         </Label>
-                                                        <Label fx:id="HinflugPreisLabel2" prefHeight="45.0"
+                                                        <Label fx:id="PreisProPerson2" prefHeight="45.0"
                                                                prefWidth="100.0" textFill="#f8f8f8">
                                                             <font>
                                                                 <Font size="30.0"/>
@@ -289,14 +289,14 @@
                                                 <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0"
                                                       GridPane.columnIndex="4" GridPane.rowIndex="1">
                                                     <children>
-                                                        <Label fx:id="RueckFlugPreisProPersonText11" prefHeight="100.0"
-                                                               prefWidth="370.0" text="Rückflug Preis pro Person:"
+                                                        <Label fx:id="PreisproGepackText" prefHeight="100.0"
+                                                               prefWidth="370.0" text="Gepäck Preis pro Kilo:"
                                                                textFill="#fcfafa">
                                                             <font>
                                                                 <Font size="30.0"/>
                                                             </font>
                                                         </Label>
-                                                        <Label fx:id="RueckflugPreisLabel2" prefHeight="45.0"
+                                                        <Label fx:id="GepaeckPreisProKilo2" prefHeight="45.0"
                                                                prefWidth="100.0" textFill="#f8f8f8">
                                                             <font>
                                                                 <Font size="30.0"/>
@@ -307,32 +307,14 @@
                                                 <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0"
                                                       GridPane.columnIndex="4" GridPane.rowIndex="2">
                                                     <children>
-                                                        <Label fx:id="PreisproGepackText11" prefHeight="100.0"
-                                                               prefWidth="370.0" text="Gepäck Preis pro Kilo:"
-                                                               textFill="#fcfafa">
-                                                            <font>
-                                                                <Font size="30.0"/>
-                                                            </font>
-                                                        </Label>
-                                                        <Label fx:id="GepaeckPreisProKiloLabel2" prefHeight="45.0"
-                                                               prefWidth="100.0" textFill="#f8f8f8">
-                                                            <font>
-                                                                <Font size="30.0"/>
-                                                            </font>
-                                                        </Label>
-                                                    </children>
-                                                </HBox>
-                                                <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0"
-                                                      GridPane.columnIndex="4" GridPane.rowIndex="3">
-                                                    <children>
-                                                        <Label fx:id="PreisproGepackText111" prefHeight="100.0"
+                                                        <Label fx:id="PreisproGepackText2" prefHeight="100.0"
                                                                prefWidth="370.0" text="Anzahl Personen:"
                                                                textFill="#fcfafa">
                                                             <font>
                                                                 <Font size="30.0"/>
                                                             </font>
                                                         </Label>
-                                                        <Label fx:id="AnzahlPersonenLabel2" prefHeight="45.0"
+                                                        <Label fx:id="AnzahlPersonen2" prefHeight="45.0"
                                                                prefWidth="100.0" textFill="#f8f8f8">
                                                             <font>
                                                                 <Font size="30.0"/>
@@ -341,16 +323,16 @@
                                                     </children>
                                                 </HBox>
                                                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0"
-                                                      GridPane.columnIndex="4" GridPane.rowIndex="4">
+                                                      GridPane.columnIndex="4" GridPane.rowIndex="3">
                                                     <children>
-                                                        <Label fx:id="GesamtpreisText11" prefHeight="50.0"
-                                                               prefWidth="370.0" text="Gesamtpreis: "
-                                                               textFill="#fcfafa">
+                                                        <Label fx:id="AnzahlPersonenLabel11" prefHeight="50.0"
+                                                               prefWidth="370.0" text="Hinflug Gesamt Preis:"
+                                                               textFill="#f8f8f8">
                                                             <font>
                                                                 <Font size="30.0"/>
                                                             </font>
                                                         </Label>
-                                                        <Label fx:id="GesamtpreisText2" prefHeight="50.0"
+                                                        <Label fx:id="HinflugGesamtPreis2" prefHeight="50.0"
                                                                prefWidth="100.0" textFill="#fcfafa">
                                                             <font>
                                                                 <Font size="30.0"/>
@@ -371,6 +353,19 @@
                                                         </Button>
                                                     </children>
                                                 </HBox>
+                                                <Label fx:id="GesamtpreisText2" prefHeight="50.0" prefWidth="370.0"
+                                                       text="Gesamtpreis: " textFill="#fcfafa" GridPane.columnIndex="4"
+                                                       GridPane.rowIndex="4">
+                                                    <font>
+                                                        <Font size="30.0"/>
+                                                    </font>
+                                                </Label>
+                                                <Label fx:id="GesamtPreis2" prefHeight="50.0" prefWidth="100.0"
+                                                       textFill="#fcfafa">
+                                                    <font>
+                                                        <Font size="30.0"/>
+                                                    </font>
+                                                </Label>
                                             </children>
                                             <columnConstraints>
                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="297.57054138183594"
@@ -409,11 +404,15 @@
                                         <Insets/>
                                     </HBox.margin>
                                 </Button>
-                                <Button mnemonicParsing="false" prefWidth="300.0" text="Zurück">
+                                <Button fx:id="zurueckButton" mnemonicParsing="false" onAction="#zurueckButtonAction"
+                                        prefWidth="300.0" text="Zurück">
                                     <font>
                                         <Font size="30.0"/>
                                     </font>
-                        </Button>
+                                    <HBox.margin>
+                                        <Insets left="20.0"/>
+                                    </HBox.margin>
+                                </Button>
                             </children>
                         </HBox>
                     </children>

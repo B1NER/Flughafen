@@ -3,17 +3,14 @@ package Controller;
 import Model.Enums.Gepaecktypen;
 import Model.Enums.Views;
 import Model.Klassen.Elemente.Flug;
-import Model.Klassen.Elemente.Gepaeck;
 import Model.Klassen.MAIN;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-
-import javafx.scene.control.ChoiceBox;
-import sun.applet.Main;
 
 public class ZahlungController {
 
@@ -165,6 +162,11 @@ public class ZahlungController {
         }else {
             MAIN.fensterOeffnen(Views.Buchungszusammenfassung);
         }
+    }
+
+    @FXML
+    void zurueckButtonAction(ActionEvent event) {
+
     }
 
 }
