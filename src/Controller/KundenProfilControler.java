@@ -184,8 +184,10 @@ public class KundenProfilControler {
 
     @FXML
     void GepackbearbeitenAction(ActionEvent event) {
-        //GepaeckBearbeitenController.setGepaeck(buchung.getGepaeck());
-        MAIN.fensterOeffnen(Views.GepaeckBearbeiten);
+        if (tableBuchungen.getSelectionModel().getSelectedItem() != null) {
+            GepaeckBearbeitenController.setGepaeck(tableBuchungen.getSelectionModel().getSelectedItem().getGepaeck(), (int) tableBuchungen.getSelectionModel().getSelectedItem().getGepaeck().getGewicht());
+            MAIN.fensterOeffnen(Views.GepaeckBearbeiten);
+        }
     }
 
     @FXML

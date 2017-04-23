@@ -138,7 +138,7 @@ public abstract class Verwaltung {
             String zs[] = zeile.split(";");
             Anwender eingelesenerAnwender = new Anwender(Integer.parseInt(zs[0]), zs[1], zs[2], zs[3], Integer.parseInt(zs[4]), zs[5], zs[6]);
             Anwenders.addAnwender(eingelesenerAnwender);
-            System.out.println("Anwender angelegt:" + eingelesenerAnwender);
+            System.out.println("Anwender angelegt:" + eingelesenerAnwender.toStringLog());
         }
         s.close();
         Anwenders.setAnwenderCounter(getBiggestID("Anwender"));
@@ -150,7 +150,6 @@ public abstract class Verwaltung {
         while (s.hasNext()) {
             String zeile = s.nextLine();
             String zs[] = zeile.split(";");
-            System.out.println("diocane");
             anwenderAnestellten.put(Anwenders.getAnwenderByID(Integer.parseInt(zs[0])), Angestellte.getAngestelltenByID(Integer.parseInt(zs[1])));
             System.out.println("Angestellter: " + Angestellte.getAngestelltenByID(Integer.parseInt(zs[1])).getVorname() + " ID: " + Angestellte.getAngestelltenByID(Integer.parseInt(zs[1])).getAngestelltenID() + " legte Anwender: " + Anwenders.getAnwenderByID(Integer.parseInt(zs[0])).getVorname() + " ID: " + Anwenders.getAnwenderByID(Integer.parseInt(zs[0])).getAnwenderID() + " an");
         }

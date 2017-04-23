@@ -10,7 +10,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 public class ProfilBearbeitenController {
 
@@ -59,8 +60,6 @@ public class ProfilBearbeitenController {
     public void initialize() {
         VornameFeld.setText(zuBearbeitenderMensch.getVorname());
         NachnameFeld.setText(zuBearbeitenderMensch.getNachname());
-        String date[] = zuBearbeitenderMensch.getGeburtsdatum().split("\\.");
-//        GeburtsdatumFeld.setValue(LocalDate.of(Integer.parseInt(date[2]),Integer.parseInt(date[1]),Integer.parseInt(date[0])));
         Password.setText(zuBearbeitenderMensch.getPasswort());
         Password2Feld.setText(zuBearbeitenderMensch.getPasswort());
     }
@@ -81,7 +80,7 @@ public class ProfilBearbeitenController {
         if(Password.getText().equals(Password2Feld.getText())) {
             zuBearbeitenderMensch.setVorname(VornameFeld.getText());
             zuBearbeitenderMensch.setNachname(NachnameFeld.getText());
-            //todo keine ahnung mit geb datum wia tian --> zuBearbeitenderMensch.setGeburtsdatum(GeburtsdatumFeld.);
+            zuBearbeitenderMensch.setGeburtsdatum(Date.from(GeburtsdatumFeld.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()).toString());
             zuBearbeitenderMensch.setPasswort(Password.getText());
             if(Verwaltung.getAngemeldeter() instanceof Administrator){
                 MAIN.fensterOeffnen(Views.ZuBearbeitendenNutzerFinden);

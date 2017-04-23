@@ -151,8 +151,6 @@ public class ZahlungController {
             KreditkartennummerFeld.setPromptText("Pflichtfeld!");
         }else if (CSVFeld.getText().equals("")) {
             CSVFeld.setPromptText("Pflichtfeld!");
-        }else if(GepackFeld.getValue() == null){
-            //todo kann man kein gepäck auswählen?
         }else if(GewichtFeld.getText().equals("")){
             GewichtFeld.setPromptText("Gewicht in kg");
         }else if(NameFeld.getText().equals("")){
