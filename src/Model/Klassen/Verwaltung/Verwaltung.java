@@ -111,7 +111,14 @@ public abstract class Verwaltung {
             String zeile = s.nextLine();
             String zs[] = zeile.split(";");
             Administrator eingelesenerAdministrator = new Administrator(Integer.parseInt(zs[0]), zs[1], zs[2], zs[3], Integer.parseInt(zs[4]), zs[5], zs[6]);
-            Administratoren.addAndministrator(eingelesenerAdministrator);
+            try {
+                Verwaltung.adminErstellten(eingelesenerAdministrator);
+            }catch(EmailIsAlreadyUsedException e){
+                System.out.println(eingelesenerAdministrator + "Email bereits in Verwendung");
+            }
+            catch(InvalidEmailException e){
+                System.out.println(eingelesenerAdministrator + " ungültige Email");
+            }
             System.out.println("Administrator angelegt:" + eingelesenerAdministrator);
         }
         s.close();
@@ -124,7 +131,14 @@ public abstract class Verwaltung {
             String zeile = s.nextLine();
             String zs[] = zeile.split(";");
             Angestellter eingelesenerAngestellter = new Angestellter(Integer.parseInt(zs[0]), zs[1], zs[2], zs[3], Integer.parseInt(zs[4]), zs[5], zs[6]);
-            Angestellte.addAngestellter(eingelesenerAngestellter);
+            try {
+                Verwaltung.angestellterErstellen(eingelesenerAngestellter);
+            }catch(EmailIsAlreadyUsedException e){
+                System.out.println(eingelesenerAngestellter + "Email bereits in Verwendung");
+            }
+            catch(InvalidEmailException e){
+                System.out.println(eingelesenerAngestellter + " ungültige Email");
+            }
             System.out.println("Angestellter angelegt:" + eingelesenerAngestellter);
         }
         s.close();
@@ -137,8 +151,16 @@ public abstract class Verwaltung {
             String zeile = s.nextLine();
             String zs[] = zeile.split(";");
             Anwender eingelesenerAnwender = new Anwender(Integer.parseInt(zs[0]), zs[1], zs[2], zs[3], Integer.parseInt(zs[4]), zs[5], zs[6]);
-            Anwenders.addAnwender(eingelesenerAnwender);
-            System.out.println("Anwender angelegt:" + eingelesenerAnwender.toStringLog());
+            try {
+                Verwaltung.anwenderErstellen(eingelesenerAnwender);
+            }catch(EmailIsAlreadyUsedException e){
+                System.out.println(eingelesenerAnwender + "Email bereits in Verwendung");
+            }
+            catch(InvalidEmailException e){
+                System.out.println(eingelesenerAnwender + " ungültige Email");
+            }
+
+            System.out.println("Anwender angelegt:" + eingelesenerAnwender);
         }
         s.close();
         Anwenders.setAnwenderCounter(getBiggestID("Anwender"));
@@ -428,6 +450,94 @@ public abstract class Verwaltung {
         Angestellte.addAngestellter(a);
         System.out.println("Angestellter angelegt:" + a);
     }
+
+    public static void anwenderErstellen(Anwender anwender) throws InvalidEmailException, EmailIsAlreadyUsedException {
+        //AnwenderAngestellte umgeändert
+        Pattern pattern = Pattern.compile("^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$");
+        Matcher matcher = pattern.matcher(anwender.geteMail());
+
+        if (!matcher.matches()) {
+            throw new InvalidEmailException();
+        }
+
+        for (int i = 0; i < Administratoren.getAdministratoren().size(); i++) {
+            if (Administratoren.getAdministratoren().get(i).geteMail().equals(anwender.geteMail())) {
+                throw new EmailIsAlreadyUsedException();
+            }
+        }
+        for (int i = 0; i < Angestellte.getAngestellte().size(); i++) {
+            if (Angestellte.getAngestellte().get(i).geteMail().equals(anwender.geteMail())) {
+                throw new EmailIsAlreadyUsedException();
+            }
+        }
+        for (int i = 0; i < Anwenders.getAnwenders().size(); i++) {
+            if (Anwenders.getAnwenders().get(i).geteMail().equals(anwender.geteMail())) {
+                throw new EmailIsAlreadyUsedException();
+            }
+        }
+        Anwenders.addAnwender(anwender);
+        if (angemeldeter instanceof Angestellter) {
+            anwenderAnestellten.put(anwender, (Angestellter) angemeldeter);
+        }
+        System.out.println("Anwender angelegt:" + anwender.toStringLog());
+    }
+
+    public static void adminErstellten(Administrator administrator) throws InvalidEmailException, EmailIsAlreadyUsedException {
+        assert !(angemeldeter instanceof Administrator);
+        Pattern pattern = Pattern.compile("^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$");
+        Matcher matcher = pattern.matcher(administrator.geteMail());
+
+        if (!matcher.matches()) {
+            throw new InvalidEmailException();
+        }
+
+        for (int i = 0; i < Administratoren.getAdministratoren().size(); i++) {
+            if (Administratoren.getAdministratoren().get(i).geteMail().equals(administrator.geteMail())) {
+                throw new EmailIsAlreadyUsedException();
+            }
+        }
+        for (int i = 0; i < Angestellte.getAngestellte().size(); i++) {
+            if (Angestellte.getAngestellte().get(i).geteMail().equals(administrator.geteMail())) {
+                throw new EmailIsAlreadyUsedException();
+            }
+        }
+        for (int i = 0; i < Anwenders.getAnwenders().size(); i++) {
+            if (Anwenders.getAnwenders().get(i).geteMail().equals(administrator.geteMail())) {
+                throw new EmailIsAlreadyUsedException();
+            }
+        }
+        Administratoren.addAndministrator(administrator);
+        System.out.println("Administrator angelegt:" + administrator);
+    }
+
+    public static void angestellterErstellen(Angestellter angestellter) throws InvalidEmailException, EmailIsAlreadyUsedException {
+        assert !(angemeldeter instanceof Administrator);
+        Pattern pattern = Pattern.compile("^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$");
+        Matcher matcher = pattern.matcher(angestellter.geteMail());
+
+        if (!matcher.matches()) {
+            throw new InvalidEmailException();
+        }
+
+        for (int i = 0; i < Administratoren.getAdministratoren().size(); i++) {
+            if (Administratoren.getAdministratoren().get(i).geteMail().equals(angestellter.geteMail())) {
+                throw new EmailIsAlreadyUsedException();
+            }
+        }
+        for (int i = 0; i < Angestellte.getAngestellte().size(); i++) {
+            if (Angestellte.getAngestellte().get(i).geteMail().equals(angestellter.geteMail())) {
+                throw new EmailIsAlreadyUsedException();
+            }
+        }
+        for (int i = 0; i < Anwenders.getAnwenders().size(); i++) {
+            if (Anwenders.getAnwenders().get(i).geteMail().equals(angestellter.geteMail())) {
+                throw new EmailIsAlreadyUsedException();
+            }
+        }
+        Angestellte.addAngestellter(angestellter);
+        System.out.println("Angestellter angelegt:" + angestellter);
+    }
+
 
     //Nutzer löschen
     public static void anwenderLoeschen(Anwender anwender) {
