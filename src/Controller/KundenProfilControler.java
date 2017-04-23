@@ -136,7 +136,7 @@ public class KundenProfilControler {
         try {
             buchung = Buchungen.getBuchungByID(1);      //todo Buchung setzten indem man von liste auswählt
         }catch(BuchungDoesNotExistException e){         // in dem fall nur zum TEst
-            e.printStackTrace();
+            System.out.println("Buchung nicht gefunden!");
         }
 
         VornameFeld.setText(Verwaltung.getAngemeldeter().getVorname());

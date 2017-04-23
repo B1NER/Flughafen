@@ -564,6 +564,22 @@ public abstract class Verwaltung {
         throw new NutzerDoesNotExistException();
     }
 
+    public static int getNutzerIDByEmail(String email) throws NutzerDoesNotExistException {
+        for (int i = 0; i < Administratoren.getAdministratoren().size(); i++) {
+            if (email.equals(Administratoren.getAdministratoren().get(i).geteMail()))
+                return Administratoren.getAdministratoren().get(i).getAdminID();
+        }
+        for (int i = 0; i < Angestellte.getAngestellte().size(); i++) {
+            if (email.equals(Angestellte.getAngestellte().get(i).geteMail()))
+                return Angestellte.getAngestellte().get(i).getAngestelltenID();
+        }
+        for (int i = 0; i < Anwenders.getAnwenders().size(); i++) {
+            if (email.equals(Anwenders.getAnwenders().get(i).geteMail()))
+                return (Anwenders.getAnwenders().get(i)).getAnwenderID();
+        }
+        throw new NutzerDoesNotExistException();
+    }
+
     public static Angestellter getAngestelltenByAngemeldeten() throws NutzerDoesNotExistException {
         return Angestellte.getAngestelltenByID(Verwaltung.getNutzerIDByEmail());
     }
