@@ -60,7 +60,7 @@ public class ProfilBearbeitenController {
         VornameFeld.setText(zuBearbeitenderMensch.getVorname());
         NachnameFeld.setText(zuBearbeitenderMensch.getNachname());
         String date[] = zuBearbeitenderMensch.getGeburtsdatum().split("\\.");
-        GeburtsdatumFeld.setValue(LocalDate.of(Integer.parseInt(date[2]),Integer.parseInt(date[1]),Integer.parseInt(date[0])));
+//        GeburtsdatumFeld.setValue(LocalDate.of(Integer.parseInt(date[2]),Integer.parseInt(date[1]),Integer.parseInt(date[0])));
         Password.setText(zuBearbeitenderMensch.getPasswort());
         Password2Feld.setText(zuBearbeitenderMensch.getPasswort());
     }

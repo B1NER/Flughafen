@@ -1,5 +1,7 @@
 package Model.Klassen.Elemente;
 
+import Model.Klassen.Verwaltung.Fluege;
+
 import java.util.Date;
 
 /**
@@ -16,11 +18,7 @@ public class Flug {
     private Date abflugzeit;
     private Date ankunftszeit;
     private double preisProPerson;
-
-
-    public Flug(String abflugort){
-        this.abflugort = abflugort;
-    }
+    private String status;
 
     public Flug(String FlugID, String flugGesellschaft, String abflugort, String ankunftsort, int anzahlPlaetze, int gepaeckskapazitaet, Date abflugzeit, Date ankunftszeit, double preisProPerson) {
         this.FlugID = FlugID;
@@ -32,6 +30,11 @@ public class Flug {
         this.abflugzeit = abflugzeit;
         this.ankunftszeit = ankunftszeit;
         this.preisProPerson = preisProPerson;
+        if(Fluege.isVerfallen(this)){
+            this.status = "verfallen";
+        }else{
+            this.status = "aktuell";
+        }
     }
 
     public void setAbflugort(String abflugort) {
@@ -70,6 +73,9 @@ public class Flug {
         this.preisProPerson = preisProPerson;
     }
 
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public int getAnzahlPlaetze() {
         return anzahlPlaetze;
@@ -107,9 +113,17 @@ public class Flug {
         return FlugID;
     }
 
+    public String getStatus() {
+        return status;
+    }
 
     @Override
+
     public String toString() {
+        return abflugort +" - "+ ankunftsort;
+    }
+
+    public String toStringLog() {
         return "Flug{" +
                 "FlugID='" + FlugID + '\'' +
                 ", flugGesellschaft='" + flugGesellschaft + '\'' +
