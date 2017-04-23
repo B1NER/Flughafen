@@ -160,7 +160,7 @@ public abstract class Verwaltung {
                 System.out.println(eingelesenerAnwender + " ungültige Email");
             }
 
-            System.out.println("Anwender angelegt:" + eingelesenerAnwender);
+            System.out.println("Anwender eingelesen:" + eingelesenerAnwender.toStringLog());
         }
         s.close();
         Anwenders.setAnwenderCounter(getBiggestID("Anwender"));

@@ -109,6 +109,7 @@ public class RegistrierenController {
             MAIN.viewsChronik.pop();
             MAIN.fensterOeffnen(MAIN.viewsChronik.pop());
         }
+        //TODO Zurück zur Flugliste
     }
 
     @FXML

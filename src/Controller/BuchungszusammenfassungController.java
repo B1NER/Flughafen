@@ -1,6 +1,5 @@
 package Controller;
 
-import Model.Klassen.MAIN;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -97,12 +96,10 @@ public class BuchungszusammenfassungController {
 
     @FXML
     void BestatigenAction(ActionEvent event) {
-
     }
 
     @FXML
     void AndernAction(ActionEvent event) {
-
     }
 
 }

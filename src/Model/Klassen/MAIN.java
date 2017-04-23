@@ -7,12 +7,22 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+
 import java.util.HashMap;
 import java.util.Stack;
 
 /**
  * Created by knoll on 21.03.2017.
  */
+
+//TODO Größen anpassen
+//TODO Konsolenlog doppelte ausgabe fixxen (angelegt)
+//TODO Zahlung View Gröüen / zurück
+//TODO Zahlungszusammenfassung löschen
+//TODO Emails ausbessern (Angestelltensstartseite, Adminstartseite, ...)
+//TODO viesChronik --> Stack
+
+
 public class MAIN extends Application {
 
     static private Stage primaryStage;

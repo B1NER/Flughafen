@@ -1,7 +1,6 @@
 package Controller;
 
 import Model.Enums.Views;
-import Model.Exceptions.NutzerDoesNotExistException;
 import Model.Klassen.MAIN;
 import Model.Klassen.Nutzer.Administrator;
 import Model.Klassen.Nutzer.Angestellter;
@@ -20,7 +19,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.util.ArrayList;
 
-public class ZuBearbeitendenNutzerFindenConroller {
+public class ZuBearbeitendenNutzerFindenConroller { //TODO Nutzertyp in Liste anzeigen
+    //TODO Kein Kontent in Tabelle
 
     @FXML
     private Label NachnameText;
@@ -149,7 +149,10 @@ public class ZuBearbeitendenNutzerFindenConroller {
 
     @FXML
     void ZuruckAction(ActionEvent event) {
-        MAIN.viewsChronik.pop();
-        MAIN.fensterOeffnen(MAIN.viewsChronik.pop());
+        if (Verwaltung.getAngemeldeter() instanceof Administrator) {
+            MAIN.fensterOeffnen(Views.AdminStartseite);
+        } else {
+            MAIN.fensterOeffnen(Views.AngestellterStartseite);
+        }
     }
 }

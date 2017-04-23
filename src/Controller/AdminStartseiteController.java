@@ -113,8 +113,9 @@ public class AdminStartseiteController {
     @FXML
     void AbmeldenAction(ActionEvent event) {
         Verwaltung.setAngemeldeter(null);
-        MAIN.viewsChronik.pop();
-        MAIN.fensterOeffnen(MAIN.viewsChronik.pop());
+        MAIN.fensterOeffnen(Views.Buchen);
     }
+
+    //TODO Buchung durchfüren (Zu Bearbeitenden Nutzer finden --> Button Buchen)
 
 }

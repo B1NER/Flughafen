@@ -6,14 +6,14 @@ import Model.Exceptions.FlugNotFoundException;
 import Model.Klassen.Elemente.Buchung;
 import Model.Klassen.Elemente.Gepaeck;
 import Model.Klassen.MAIN;
-import Model.Klassen.Nutzer.Administrator;
-import Model.Klassen.Nutzer.Angestellter;
 import Model.Klassen.Verwaltung.Buchungen;
 import Model.Klassen.Verwaltung.Fluege;
-import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 public class BuchungBearbeitenController {
 
@@ -86,11 +86,10 @@ public class BuchungBearbeitenController {
 
     @FXML
     void BestatigenAction(ActionEvent event) {
-        // todo ParseInt -> wirft exception
-        buchung.setBuchungspreis(Integer.parseInt(PreisFeld.getText()));
-        buchung.setAnzahlSitzplaetze(Integer.parseInt(PreisFeld.getText()));
+        buchung.setBuchungspreis(Double.parseDouble(PreisFeld.getText()));
+        buchung.setAnzahlSitzplaetze(Integer.parseInt(AnzahlSitzplatzeFeld.getText()));
         Gepaeck g = buchung.getGepaeck();
-        g.setGewicht(Integer.parseInt(GewichtGepaeck.getText()));
+        g.setGewicht(Double.parseDouble(GewichtGepaeck.getText()));
         g.setGepaeckTyp(GepaeckTypChoiceBox.getValue());
         buchung.setGepaeck(g);
 
@@ -107,8 +106,7 @@ public class BuchungBearbeitenController {
         } catch (FlugNotFoundException e) {
             RuckflugFeld.setPromptText("Dieser Flug existiert nicht");
         }
-
-
+        MAIN.fensterOeffnen(Views.ZuBearbeitendeBuchungFinden);
     }
 
 }

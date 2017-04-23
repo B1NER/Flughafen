@@ -17,7 +17,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.util.ArrayList;
 
-public class KundenProfilControler {
+public class KundenProfilControler {    //TODO Kundenprofil View ausbessern
 
     @FXML
     private Label RuckflugFeld;
@@ -179,7 +179,7 @@ public class KundenProfilControler {
 
     @FXML
     void NeueBuchungAction(ActionEvent event) {
-        MAIN.fensterOeffnen(Views.Flugliste);
+        MAIN.fensterOeffnen(Views.Buchen);
     }
 
     @FXML
@@ -199,8 +199,7 @@ public class KundenProfilControler {
     @FXML
     void AbmeldenAction(ActionEvent event) {
         Verwaltung.setAngemeldeter(null);
-        MAIN.viewsChronik.pop();
-        MAIN.fensterOeffnen(MAIN.viewsChronik.pop());
+        MAIN.fensterOeffnen(Views.Buchen);
     }
 
 }

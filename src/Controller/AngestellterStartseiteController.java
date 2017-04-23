@@ -15,7 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.util.ArrayList;
 
-public class AngestellterStartseiteController {
+public class AngestellterStartseiteController {     //TODO Vorname, Nachname Größen
 
     @FXML
     private Label NachnameText;
@@ -133,8 +133,7 @@ public class AngestellterStartseiteController {
     @FXML
     void AbmeldenAction(ActionEvent event) {
         Verwaltung.setAngemeldeter(null);
-        MAIN.viewsChronik.pop();
-        MAIN.fensterOeffnen(MAIN.viewsChronik.pop());
+        MAIN.fensterOeffnen(Views.Buchen);
     }
 
     @FXML
@@ -144,8 +143,13 @@ public class AngestellterStartseiteController {
     }
 
     @FXML
+    void BuchungBearbeitenAction(ActionEvent event) {
+        //TODO BuchungBearbeiten
+    }
+
+    @FXML
     void BuchungdurchfurenAction(ActionEvent event) {
-        MAIN.fensterOeffnen(Views.ProfilBearbeiten);
+        //TODO Buchung durchführen
     }
 
     @FXML
