@@ -31,6 +31,6 @@ public class Anwender extends Mensch {
 
     @Override
     public String toString() {
-        return "Anwender: "+super.toString() + "angestelltenID=" + anwenderID;
+        return "Anwender: " + super.toString() + "anwenderID=" + anwenderID;
     }
 }

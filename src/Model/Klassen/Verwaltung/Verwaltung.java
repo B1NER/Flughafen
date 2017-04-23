@@ -25,19 +25,19 @@ import java.util.regex.Pattern;
 
 public abstract class Verwaltung {
 
-    private static HashMap<Anwender, Angestellter> angestelltenAnwender = new HashMap<>();
+    private static HashMap<Anwender, Angestellter> anwenderAnestellten = new HashMap<>();
     private static Mensch angemeldeter;
 
 
     public static void init() {
         try {
             fluegeEinlesen("src\\Model\\Daten\\Fluege\\Flugliste.csv");
+            anwenderEinlesen("src\\Model\\Daten\\Menschen\\Anwender.csv");
             administratorenEinlesen("src\\Model\\Daten\\Menschen\\Admin.csv");
             angestellteEinlesen("src\\Model\\Daten\\Menschen\\Angestellter.csv");
-            anwenderEinlesen("src\\Model\\Daten\\Menschen\\Anwender.csv");
-            //angestellteAnwenderEinlesen("");
             gepaeckEinlesen("src\\Model\\Daten\\Gepaeck\\Gepaecke.csv");
             buchungenEinlesen("src\\Model\\Daten\\Buchungen\\Buchungen.csv");
+            angestellteAnwenderEinlesen("src\\Model\\Daten\\AnwenderAngestellten\\AnwenderAngestellten.csv");
         } catch (final IOException e) {
             e.printStackTrace();
         } catch (final NutzerDoesNotExistException e) {
@@ -55,9 +55,8 @@ public abstract class Verwaltung {
             administratorenSpeichern("src\\Model\\Daten\\Menschen\\Admin.csv");
             angestelltenSpeichern("src\\Model\\Daten\\Menschen\\Angestellter.csv");
             anwenderSpeichern("src\\Model\\Daten\\Menschen\\Anwender.csv");
-            //angestelltenAnwenderSpeichern("");
             gepaeckSpeichern("src\\Model\\Daten\\Gepaeck\\Gepaecke.csv");
-
+            angestelltenAnwenderSpeichern("src\\Model\\Daten\\AnwenderAngestellten\\AnwenderAngestellten.csv");
         } catch (IOException e) {
             System.out.println("File not Found");
         }
@@ -151,8 +150,9 @@ public abstract class Verwaltung {
         while (s.hasNext()) {
             String zeile = s.nextLine();
             String zs[] = zeile.split(";");
-            angestelltenAnwender.put(Anwenders.getAnwenderByID(Integer.parseInt(zs[0])), Angestellte.getAngestelltenByID(Integer.parseInt(zs[0])));
-            System.out.println(Angestellte.getAngestelltenByID(Integer.parseInt(zs[0])) + " legte " + Anwenders.getAnwenderByID(Integer.parseInt(zs[0])) + " an");
+            System.out.println("diocane");
+            anwenderAnestellten.put(Anwenders.getAnwenderByID(Integer.parseInt(zs[0])), Angestellte.getAngestelltenByID(Integer.parseInt(zs[1])));
+            System.out.println("Angestellter: " + Angestellte.getAngestelltenByID(Integer.parseInt(zs[1])).getVorname() + " ID: " + Angestellte.getAngestelltenByID(Integer.parseInt(zs[1])).getAngestelltenID() + " legte Anwender: " + Anwenders.getAnwenderByID(Integer.parseInt(zs[0])).getVorname() + " ID: " + Anwenders.getAnwenderByID(Integer.parseInt(zs[0])).getAnwenderID() + " an");
         }
         s.close();
     }
@@ -305,12 +305,13 @@ public abstract class Verwaltung {
     }
 
     public static void angestelltenAnwenderSpeichern(String pfad) throws IOException {
-        //AngesteltenAnwender ausgebessert
         BufferedWriter bw = new BufferedWriter(new FileWriter(pfad));
-        for (HashMap.Entry<Anwender, Angestellter> h : angestelltenAnwender.entrySet()) {
-            bw.write(h.getKey().getAnwenderID() + ";" + h.getValue().getAngestelltenID());
-            System.out.println("Speichern: " + h.getValue() + " " + h.getKey());
+        for (HashMap.Entry<Anwender, Angestellter> h : anwenderAnestellten.entrySet()) {
+
+            bw.write(h.getKey().getAnwenderID() + ";" + h.getValue().getAngestelltenID() + "\n");
+            System.out.println("Speichern: Angestellter: " + h.getValue().getVorname() + " ID: " + h.getValue().getAngestelltenID() + " --> Anwender: " + h.getKey().getVorname() + " ID: " + h.getKey().getAnwenderID());
         }
+        bw.close();
     }
 
     public static void gepaeckSpeichern(String pfad) throws IOException {
@@ -366,7 +367,7 @@ public abstract class Verwaltung {
         Anwender a = new Anwender(vorname, nachname, geburtsdatum, passnummer, eMail, passwort);
         Anwenders.addAnwender(a);
         if (angemeldeter instanceof Angestellter) {
-            angestelltenAnwender.put(a, (Angestellter) angemeldeter);
+            anwenderAnestellten.put(a, (Angestellter) angemeldeter);
         }
         System.out.println("Anwender angelegt:" + a);
     }
@@ -436,9 +437,9 @@ public abstract class Verwaltung {
             Gepaecke.removeGepaeck(Buchungen.getBuchungenByAnwender(anwender).get(i).getGepaeck());
             Buchungen.getBuchungen().remove(Buchungen.getBuchungenByAnwender(anwender).get(i));
         }
-        for (HashMap.Entry<Anwender, Angestellter> h : angestelltenAnwender.entrySet()) {
+        for (HashMap.Entry<Anwender, Angestellter> h : anwenderAnestellten.entrySet()) {
             if (h.getKey().equals(anwender)) {
-                angestelltenAnwender.remove(h.getKey());
+                anwenderAnestellten.remove(h.getKey());
             }
         }
         Anwenders.getAnwenders().remove(anwender);
@@ -451,7 +452,7 @@ public abstract class Verwaltung {
     public static void angestelltenLoeschen(Angestellter angestellter) {
         //AnwenderAngetsellter geändert
         for (int i = 0; i < Verwaltung.getAnwenderByAngestellten(angestellter).size(); i++) {
-            angestelltenAnwender.remove(Verwaltung.getAnwenderByAngestellten(angestellter).get(i), angestellter);
+            anwenderAnestellten.remove(Verwaltung.getAnwenderByAngestellten(angestellter).get(i), angestellter);
 
         }
         Angestellte.getAngestellte().remove(angestellter);
@@ -521,7 +522,7 @@ public abstract class Verwaltung {
     public static ArrayList<Anwender> getAnwenderByAngestellten(Angestellter angestellter) {
         //AnwenderAngetsellten geändert
         ArrayList<Anwender> l = new ArrayList<Anwender>();
-        for (HashMap.Entry<Anwender, Angestellter> h : angestelltenAnwender.entrySet()) {
+        for (HashMap.Entry<Anwender, Angestellter> h : anwenderAnestellten.entrySet()) {
             if (h.getValue().equals(angestellter)) {
                 l.add(h.getKey());
             }
@@ -622,8 +623,8 @@ public abstract class Verwaltung {
     }
 
     //Getter
-    public static HashMap<Anwender, Angestellter> getAngestelltenAnwender() {
-        return angestelltenAnwender;
+    public static HashMap<Anwender, Angestellter> getAnwenderAnestellten() {
+        return anwenderAnestellten;
     }
 
     public static Mensch getAngemeldeter() {
@@ -636,7 +637,7 @@ public abstract class Verwaltung {
         Verwaltung.angemeldeter = angemeldeter;
     }
 
-    public static void setAngestelltenAnwender(HashMap<Anwender, Angestellter> angestelltenAnwender) {
-        Verwaltung.angestelltenAnwender = angestelltenAnwender;
+    public static void setAnwenderAnestellten(HashMap<Anwender, Angestellter> anwenderAnestellten) {
+        Verwaltung.anwenderAnestellten = anwenderAnestellten;
     }
 }

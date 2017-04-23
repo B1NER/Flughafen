@@ -5,9 +5,12 @@ import Model.Exceptions.NutzerDoesNotExistException;
 import Model.Klassen.MAIN;
 import Model.Klassen.Nutzer.Anwender;
 import Model.Klassen.Verwaltung.Verwaltung;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.util.ArrayList;
 
@@ -17,16 +20,16 @@ public class AngestellterStartseiteController {
     private Label NachnameText;
 
     @FXML
-    private TableColumn<?, ?> SpalteVorname;
+    private TableColumn<Anwender, String> SpalteVorname;
 
     @FXML
-    private TableColumn<?, ?> SpalteEmail;
+    private TableColumn<Anwender, String> SpalteEmail;
 
     @FXML
     private Button KundenanlegenButton;
 
     @FXML
-    private TableColumn<?, ?> SpalteGeburtsdatum;
+    private TableColumn<Anwender, String> SpalteGeburtsdatum;
 
     @FXML
     private Button KundenSuchenButton;
@@ -44,7 +47,7 @@ public class AngestellterStartseiteController {
     private Button KundebearbeitenButton;
 
     @FXML
-    private TableView<?> Tabelle;
+    private TableView<Anwender> Tabelle;
 
     @FXML
     private Button AbmeldenButton;
@@ -56,20 +59,48 @@ public class AngestellterStartseiteController {
     private Button BuchungdurchfurenButten;
 
     @FXML
-    private TableColumn<?, ?> SpalteNachname;
+    private TableColumn<Anwender, String> SpalteNachname;
+
+
+    private static ObservableList<Anwender> observableList = FXCollections.observableList(new ArrayList<>());
 
 
     public void initialize() {
+        SpalteVorname.setCellValueFactory(new PropertyValueFactory<Anwender, String>("vorname"));
+        SpalteNachname.setCellValueFactory(new PropertyValueFactory<Anwender, String>("nachname"));
+        SpalteGeburtsdatum.setCellValueFactory(new PropertyValueFactory<Anwender, String>("geburtsdatum"));
+        SpalteEmail.setCellValueFactory(new PropertyValueFactory<Anwender, String>("eMail"));
+
+        Tabelle.setRowFactory(tv -> {
+            TableRow<Anwender> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (!row.isEmpty())) {
+                    Anwender klickedAnwender = row.getItem();
+                    ProfilBearbeitenController.setZuBearbeitenderMensch(klickedAnwender);
+                    MAIN.fensterOeffnen(Views.ProfilBearbeiten);
+                }
+            });
+            return row;
+        });
+
         try {
-            Verwaltung.getAnwenderByAngestellten(Verwaltung.getAngestelltenByAngemeldeten()); //TODO Tabelle ausfüllen
+            observableList = FXCollections.observableList(Verwaltung.getAnwenderByAngestellten(Verwaltung.getAngestelltenByAngemeldeten()));
+            if (observableList.size() == 0) {
+                System.out.println("Der Anwender hat keine Kunden!");
+                Label keineFluege = new Label("Keine Anwender gefunden!");
+                keineFluege.setId("keineFluegeGefunden");
+                Tabelle.setPlaceholder(keineFluege);
+            }
+            Tabelle.setItems(observableList);
         } catch (final NutzerDoesNotExistException e) {
-            System.out.println("Angestellter hat keine Anwender! Angemeldeter: " + Verwaltung.getAngemeldeter());   //Angestellter hat keine Anwender
+            System.out.println("Nutzer does not exist!");
         }
     }
 
 
     @FXML
     void KundenSuchenAction(ActionEvent event) {
+
         ArrayList<Anwender> zutreffendeAnwender = new ArrayList<>();
         try {
             if (!VornameFeld.getText().equals("")) {
@@ -90,11 +121,16 @@ public class AngestellterStartseiteController {
                 VornameFeld.setText("Pflichtfeld!");
             }
         } catch (final NutzerDoesNotExistException e) {
+            observableList.clear();
+            Tabelle.setItems(observableList);
+
             System.out.println("Es gibt keinen Anwender mit diesen Eigenschaften");
-            VornameFeld.setText("Keine Übereinstimmung");
-            //TODO Tabelle leeren
+            Label keineFluege = new Label("Keine Anwender gefunden!");
+            keineFluege.setId("keineFluegeGefunden");
+            Tabelle.setPlaceholder(keineFluege);
         }
-        //TODO Tabelle mit zutreffendeAnwender füllen
+        observableList = FXCollections.observableList(zutreffendeAnwender);
+        Tabelle.setItems(observableList);
     }
 
     @FXML
