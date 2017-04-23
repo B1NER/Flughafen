@@ -5,12 +5,14 @@ import Model.Exceptions.FlugNotFoundException;
 import Model.Klassen.Elemente.Flug;
 import Model.Klassen.MAIN;
 import Model.Klassen.Verwaltung.Verwaltung;
+import com.sun.rowset.internal.Row;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import sun.applet.Main;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -52,13 +54,7 @@ public class FluglisteController {  //TODO Felder auf die Suchkriterien setzen
     private TextField fluggesellschaftFeld;
 
     @FXML
-    private DatePicker DatumRuckflug;
-
-    @FXML
     private TextField PersonenanzahlFeld;
-
-    @FXML
-    private Label FlugauswahlText;
 
     @FXML
     private TextField FlugabFeld;
@@ -107,11 +103,17 @@ public class FluglisteController {  //TODO Felder auf die Suchkriterien setzen
         flugTabelle.setRowFactory( tv -> {
             TableRow<Flug> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
-                if (event.getClickCount() == 2 && (!row.isEmpty())) {
+                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
                     Flug klickedFlug = row.getItem();
                     ZahlungController.setHinflug(klickedFlug);
                     ZahlungController.setAnzahlPersonen(Integer.parseInt(PersonenanzahlFeld.getText()));
-                    MAIN.fensterOeffnen(Views.Zahlung);
+
+                    if(!Verwaltung.isAngemeldet()){
+                        MAIN.fensterOeffnen(Views.Anmelden);
+                    }else {
+                        MAIN.fensterOeffnen(Views.Zahlung);
+                    }
+
                 }
             });
             return row ;

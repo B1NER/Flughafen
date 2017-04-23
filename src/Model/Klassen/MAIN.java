@@ -1,5 +1,6 @@
 package Model.Klassen;
 
+import Controller.*;
 import Model.Enums.Views;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.application.Application;
@@ -8,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import javax.swing.text.View;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -17,6 +20,9 @@ public class MAIN extends Application {
 
     static private Stage primaryStage;
     static private HashMap<Views, String> viewPfad = new HashMap<>();
+
+    //bei jedem neuem Fensteröffnen muss das fenster in diese Chronik eingetragen werden!
+    static public ArrayList<Views> viewsChronik = new ArrayList<>();
 
 
     public void start(Stage primaryStage) {
@@ -62,8 +68,10 @@ public class MAIN extends Application {
         try {
 
             FXMLLoader loader = new FXMLLoader(MAIN.class.getResource(viewPfad.get(view)));
-            Pane pane = loader.load();
 
+            viewsChronik.add(view);
+
+            Pane pane = loader.load();
             Scene scene = new Scene(pane);
 
             primaryStage.setFullScreen(false);

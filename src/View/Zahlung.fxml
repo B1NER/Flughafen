@@ -12,7 +12,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0" prefWidth="1280.0" stylesheets="@../View/CSSFiles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ZahlungController">
     <children>
-        <StackPane prefHeight="1024.0" prefWidth="1280.0">
+        <StackPane prefHeight="800.0" prefWidth="1000.0">
             <children>
                 <ImageView fitHeight="1024.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true" scaleY="1.44">
                     <image>
@@ -121,29 +121,29 @@
                                     <Button fx:id="berechneGesamtPreisButton" mnemonicParsing="false" onAction="#berechneGesamtPreisAction" text="Berechne Gesamt Preis" />
                                             </children>
                                         </VBox>
-                                        <VBox prefHeight="230.0" prefWidth="65.0">
+                                        <VBox prefHeight="518.0" prefWidth="114.0">
                                             <children>
-                                                <Label fx:id="HinflugPreisLabel" textFill="#f8f8f8">
+                                                <Label fx:id="HinflugPreisLabel" prefHeight="45.0" prefWidth="105.0" textFill="#f8f8f8">
                                                     <font>
                                                         <Font size="30.0" />
                                                     </font>
                                                 </Label>
-                                                <Label fx:id="RueckflugPreisLabel" textFill="#f8f8f8">
+                                                <Label fx:id="RueckflugPreisLabel" prefHeight="45.0" prefWidth="116.0" textFill="#f8f8f8">
                                                     <font>
                                                         <Font size="30.0" />
                                                     </font>
                                                 </Label>
-                                                <Label fx:id="GepaeckPreisProKiloLabel" prefHeight="45.0" prefWidth="11.0" textFill="#f8f8f8">
+                                                <Label fx:id="GepaeckPreisProKiloLabel" prefHeight="45.0" prefWidth="106.0" textFill="#f8f8f8">
                                                     <font>
                                                         <Font size="30.0" />
                                                     </font>
                                                 </Label>
-                                                <Label fx:id="AnzahlPersonenLabel" textFill="#f8f8f8">
+                                                <Label fx:id="AnzahlPersonenLabel" prefHeight="45.0" prefWidth="134.0" textFill="#f8f8f8">
                                                     <font>
                                                         <Font size="30.0" />
                                                     </font>
                                                 </Label>
-                                    <Label fx:id="GesamtpreisLabel" textFill="#f8f8f8">
+                                    <Label fx:id="GesamtpreisLabel" prefHeight="45.0" prefWidth="127.0" textFill="#f8f8f8">
                                        <font>
                                           <Font size="30.0" />
                                        </font>

@@ -90,6 +90,7 @@ public class BuchungszusammenfassungController {
     @FXML
     private Label HinflugText;
 
+
     public void initialize() {
     }
 

@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.media.MediaView;
+import sun.applet.Main;
 
 public class AnmeldenController {
 
@@ -57,15 +58,20 @@ public class AnmeldenController {
     @FXML
     void AnmeldenAction(ActionEvent event) {
         try {
+
             Verwaltung.anmelden(EmailFeld.getText(), PasswordFeld.getText());
 
             if(Verwaltung.getAngemeldeter() instanceof Administrator){
                 MAIN.fensterOeffnen(Views.AdminStartseite);
             }else if(Verwaltung.getAngemeldeter() instanceof Angestellter){
                 MAIN.fensterOeffnen(Views.AngestellterStartseite);
+                //Wenn zuletzt die Flugliste offen war, dann gehe zur Zahlung
+            }else if(MAIN.viewsChronik.get(MAIN.viewsChronik.size()-2).equals(Views.Flugliste)) {
+                MAIN.fensterOeffnen(Views.Zahlung);
             }else{
                 MAIN.fensterOeffnen(Views.KundenProfil);
             }
+
         }
         catch(NutzerDoesNotExistException e){
             PasswordFeld.setPromptText("Email oder Passwort falsch!");
