@@ -7,72 +7,188 @@ import Model.Klassen.MAIN;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 public class ZahlungController {
 
     @FXML
-    private TextField GewichtFeld;
+    private Button BestatigenButton;
 
     @FXML
-    private TextField KreditkartennummerFeld;
+    private Label Gesamtpreis1;
 
     @FXML
-    private TextField NameFeld;
+    private Label HinflugGesamtPreis;
 
     @FXML
-    private TextField NachnameFeld;
+    private Label RueckflugGesamtPreis;
 
     @FXML
-    private Label GewichtText;
+    private TextField CSVFeld1;
 
     @FXML
-    private TextField CSVFeld;
+    private TextField CSVFeld2;
 
     @FXML
-    private Label RueckFlugPreisProPersonText;
+    private Label NachnameText1;
 
     @FXML
-    private Label HinflugPreisLabel;
+    private Label GesamtPreis2;
 
     @FXML
-    private Label RueckflugPreisLabel;
+    private ChoiceBox<Gepaecktypen> GepackFeld1;
 
     @FXML
-    private Label AnzahlPersonenLabel;
+    private Label AnzahlPersonenLabel11;
 
     @FXML
-    private Label GepaeckPreisProKiloLabel;
+    private Label GepackText1;
 
     @FXML
-    private Label GesamtpreisLabel;
+    private Label NachnameText11;
 
     @FXML
-    private ChoiceBox<Gepaecktypen> GepackFeld;
+    private Label GewichtText1;
+
+    @FXML
+    private ChoiceBox<Gepaecktypen> GepackFeld2;
+
+    @FXML
+    private Label PreisproGepackText;
+
+    @FXML
+    private Label NameText1;
+
+    @FXML
+    private Button berechneGesamtPreisButton2;
+
+    @FXML
+    private Label PreisproGepackText11;
+
+    @FXML
+    private TextField NameFeld2;
+
+    @FXML
+    private Label AnzahlPersonenLabel1;
+
+    @FXML
+    private Label AnzahlPersonen2;
+
+    @FXML
+    private Label PreisProPerson2;
+
+    @FXML
+    private Label PreisProPerson1;
+
+    @FXML
+    private Button berechneGesamtPreisButton1;
+
+    @FXML
+    private Label AnzahlPersonen1;
+
+    @FXML
+    private TextField NachnameFeld1;
+
+    @FXML
+    private Tab RueckflugTab;
+
+    @FXML
+    private TextField GewichtFeld2;
+
+    @FXML
+    private Label PreisproGepackText2;
+
+    @FXML
+    private Tab HinflugTab;
+
+    @FXML
+    private Label PreisproGepackText1;
+
+    @FXML
+    private Label CSVText11;
+
+    @FXML
+    private Label GewichtText11;
+
+    @FXML
+    private Label KreditkartennummerText11;
+
+    @FXML
+    private Label KreditkartennummerText1;
+
+    @FXML
+    private TextField GewichtFeld1;
+
+    @FXML
+    private TextField KreditkartennummerFeld2;
+
+    @FXML
+    private Label GesamtpreisText2;
+
+    @FXML
+    private TextField KreditkartennummerFeld1;
+
+    @FXML
+    private Label GesamtpreisText1;
+
+    @FXML
+    private Label GepackText11;
+
+    @FXML
+    private Label GepaeckPreisProKilo2;
+
+    @FXML
+    private TextField NameFeld1;
+
+    @FXML
+    private Label GepaeckPreisProKilo1;
+
+    @FXML
+    private Label CSVText1;
+
+    @FXML
+    private Label NameText11;
+
+    @FXML
+    private Label GesamtpreisLabel1;
+
+    @FXML
+    private Label GesamtpreisLabel2;
+
+    @FXML
+    private Button zurueckButton;
+
+    @FXML
+    private TextField NachnameFeld2;
 
     private static Flug hinflug;
     private static Flug rueckflug;
     private static int anzahlPersonen;
+    private static int gepaecksPreisProKilo = 40;
 
     public void initialize() {
 
-        NameFeld.setText(Verwaltung.getAngemeldeter().getVorname());
-        NachnameFeld.setText(Verwaltung.getAngemeldeter().getNachname());
-        GepackFeld.getItems().addAll(Gepaecktypen.Handgepaeck, Gepaecktypen.Koffer, Gepaecktypen.Sportgepaeck, Gepaecktypen.Tasche);
-        GepackFeld.setValue(Gepaecktypen.Handgepaeck);
-        HinflugPreisLabel.setText("" + hinflug.getPreisProPerson() + "€");
-        if (rueckflug != null) {
-            RueckflugPreisLabel.setText("" + rueckflug.getPreisProPerson() + "€");
+        NameFeld1.setText(Verwaltung.getAngemeldeter().getVorname());
+        NachnameFeld1.setText(Verwaltung.getAngemeldeter().getNachname());
+        GepackFeld1.getItems().addAll(Gepaecktypen.Handgepaeck, Gepaecktypen.Koffer, Gepaecktypen.Sportgepaeck, Gepaecktypen.Tasche);
+        GepackFeld1.setValue(Gepaecktypen.Handgepaeck);
+        PreisProPerson1.setText("" + hinflug.getPreisProPerson() + "€");
+        GepaeckPreisProKilo1.setText("" + gepaecksPreisProKilo + "€");
+        AnzahlPersonen1.setText("" + anzahlPersonen);
+
+        if (rueckflug == null) {
+            RueckflugTab.setDisable(true);
         } else {
-            RueckflugPreisLabel.setDisable(true);
-            RueckFlugPreisProPersonText.setDisable(true);
+            NameFeld2.setText(Verwaltung.getAngemeldeter().getVorname());
+            NachnameFeld2.setText(Verwaltung.getAngemeldeter().getNachname());
+            GepackFeld2.getItems().addAll(Gepaecktypen.Handgepaeck, Gepaecktypen.Koffer, Gepaecktypen.Sportgepaeck, Gepaecktypen.Tasche);
+            GepackFeld2.setValue(Gepaecktypen.Handgepaeck);
+            PreisProPerson2.setText("" + rueckflug.getPreisProPerson() + "€");
+            GepaeckPreisProKilo2.setText("" + gepaecksPreisProKilo + "€");
+            AnzahlPersonen2.setText("" + anzahlPersonen);
         }
-        GepaeckPreisProKiloLabel.setText("" + 40 + "€");
-        AnzahlPersonenLabel.setText("" + anzahlPersonen);
-        GewichtFeld.setText("0");
+
+
     }
 
     public static void setHinflug(Flug hinflug) {
@@ -89,39 +205,84 @@ public class ZahlungController {
 
     @FXML
     void berechneGesamtPreisAction(ActionEvent event) {
-        try {
-            if (rueckflug != null) {
-                GesamtpreisLabel.setText("" + (hinflug.getPreisProPerson() * anzahlPersonen + rueckflug.getPreisProPerson() * anzahlPersonen + Double.parseDouble(GewichtText.getText()) * anzahlPersonen * 40));
-            } else {
-                double gesamtpreis = hinflug.getPreisProPerson() * anzahlPersonen + Double.parseDouble(GewichtFeld.getText()) * anzahlPersonen * 40;
-                GesamtpreisLabel.setText("" + gesamtpreis);
-            }
-        } catch (IllegalArgumentException e) {
-            GewichtFeld.setPromptText("Gewicht in kg");
-        } catch (ClassCastException e) {
-            GewichtFeld.setPromptText("Gewicht in kg");
-        }
 
+        if (rueckflug == null) {
+            try {
+                HinflugGesamtPreis.setText("" + (hinflug.getPreisProPerson() * anzahlPersonen + gepaecksPreisProKilo * Double.parseDouble(GewichtFeld1.getText())));
+                GesamtpreisLabel1.setText("" + Double.parseDouble(HinflugGesamtPreis.getText()));
+            } catch (IllegalArgumentException e) {
+                GewichtFeld1.setPromptText("Gewicht in kg");
+            } catch (ClassCastException e) {
+                GewichtFeld1.setPromptText("Gewicht in kg");
+            }
+        }else {
+            try {
+                HinflugGesamtPreis.setText("" + (hinflug.getPreisProPerson() * anzahlPersonen + gepaecksPreisProKilo * Double.parseDouble(GewichtFeld1.getText())));
+                RueckflugGesamtPreis.setText("" + (rueckflug.getPreisProPerson() * anzahlPersonen + gepaecksPreisProKilo * Double.parseDouble(GewichtFeld2.getText())));
+                GesamtpreisLabel1.setText("" + (Double.parseDouble(HinflugGesamtPreis.getText()) + Double.parseDouble(RueckflugGesamtPreis.getText())));
+                GesamtpreisLabel2.setText("" + (Double.parseDouble(HinflugGesamtPreis.getText()) + Double.parseDouble(RueckflugGesamtPreis.getText())));
+            } catch (IllegalArgumentException e) {
+                GewichtFeld2.setPromptText("Gewicht in kg");
+            } catch (ClassCastException e) {
+                GewichtFeld2.setPromptText("Gewicht in kg");
+            }
+        }
     }
 
     @FXML
     void BestatigenAction(ActionEvent event) {
-        if (KreditkartennummerFeld.getText().equals("")) {
-            KreditkartennummerFeld.setPromptText("Pflichtfeld!");
-        }
-        if (CSVFeld.getText().equals("")) {
-            CSVFeld.setPromptText("Pflichtfeld!");
-        }
-        if(GewichtFeld.getText().equals("")){
-            GewichtFeld.setPromptText("Gewicht in kg");
-        }
-        if(NameFeld.getText().equals("")){
-            NameFeld.setPromptText("Pflichtfeld!");
-        }
-        if(NachnameFeld.getText().equals("")){
-            NachnameFeld.setPromptText("Pflichtfeld!");
-        }else {
-            MAIN.fensterOeffnen(Views.Buchungszusammenfassung);
+
+        if (rueckflug == null) {
+            if (KreditkartennummerFeld1.getText().equals("")) {
+                KreditkartennummerFeld1.setPromptText("Pflichtfeld!");
+            }
+            if (CSVFeld1.getText().equals("")) {
+                CSVFeld1.setPromptText("Pflichtfeld!");
+            }
+            if (GewichtFeld1.getText().equals("")) {
+                GewichtFeld1.setPromptText("Gewicht in kg");
+            }
+            if (NameFeld1.getText().equals("")) {
+                NameFeld1.setPromptText("Pflichtfeld!");
+            }
+            if (NachnameFeld1.getText().equals("")) {
+                NachnameFeld1.setPromptText("Pflichtfeld!");
+            } else {
+                MAIN.fensterOeffnen(Views.Buchungszusammenfassung);
+            }
+        } else {
+            if (KreditkartennummerFeld1.getText().equals("")) {
+                KreditkartennummerFeld1.setPromptText("Pflichtfeld!");
+            }
+            if (CSVFeld1.getText().equals("")) {
+                CSVFeld1.setPromptText("Pflichtfeld!");
+            }
+            if (GewichtFeld1.getText().equals("")) {
+                GewichtFeld1.setPromptText("Gewicht in kg");
+            }
+            if (NameFeld1.getText().equals("")) {
+                NameFeld1.setPromptText("Pflichtfeld!");
+            }
+            if (NachnameFeld1.getText().equals("")) {
+                NachnameFeld1.setPromptText("Pflichtfeld!");
+            }
+            if (KreditkartennummerFeld2.getText().equals("")) {
+                KreditkartennummerFeld2.setPromptText("Pflichtfeld!");
+            }
+            if (CSVFeld2.getText().equals("")) {
+                CSVFeld2.setPromptText("Pflichtfeld!");
+            }
+            if (GewichtFeld2.getText().equals("")) {
+                GewichtFeld2.setPromptText("Gewicht in kg");
+            }
+            if (NameFeld2.getText().equals("")) {
+                NameFeld2.setPromptText("Pflichtfeld!");
+            }
+            if (NachnameFeld2.getText().equals("")) {
+                NachnameFeld2.setPromptText("Pflichtfeld!");
+            } else {
+                MAIN.fensterOeffnen(Views.Buchungszusammenfassung);
+            }
         }
     }
 
@@ -129,5 +290,6 @@ public class ZahlungController {
     void zurueckButtonAction(ActionEvent event) {
 
     }
+
 
 }

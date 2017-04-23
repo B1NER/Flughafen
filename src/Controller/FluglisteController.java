@@ -5,14 +5,19 @@ import Model.Exceptions.FlugNotFoundException;
 import Model.Klassen.Elemente.Flug;
 import Model.Klassen.MAIN;
 import Model.Klassen.Verwaltung.Verwaltung;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.Color;
 
+import java.awt.event.MouseEvent;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -23,16 +28,16 @@ public class FluglisteController {  //TODO Felder auf die Suchkriterien setzen
 
 
     @FXML
-    private TableColumn<Flug,String> RueckSpaltePreis;
+    private TableColumn<Flug, String> RueckSpaltePreis;
 
     @FXML
-    private TableColumn<Flug,String> HinSpalteAnkunftsOrt;
+    private TableColumn<Flug, String> HinSpalteAnkunftsOrt;
 
     @FXML
     private TextField PersonenanzahlFeld;
 
     @FXML
-    private TableColumn<Flug,String> HinSpalteDatum;
+    private TableColumn<Flug, String> HinSpalteDatum;
 
     @FXML
     private Label IhreSucheText;
@@ -44,16 +49,16 @@ public class FluglisteController {  //TODO Felder auf die Suchkriterien setzen
     private TextField FlugnachFeld;
 
     @FXML
-    private TableColumn<Flug,String> HinSpalteAbflugsOrt;
+    private TableColumn<Flug, String> HinSpalteAbflugsOrt;
 
     @FXML
-    private TableColumn<Flug,String> HinSpaltePreis;
+    private TableColumn<Flug, String> HinSpaltePreis;
 
     @FXML
-    private TableColumn<Flug,String> HinSpalteFluggesellschaft;
+    private TableColumn<Flug, String> HinSpalteFluggesellschaft;
 
     @FXML
-    private TableColumn<Flug,String> RueckSpalteAnkunftsOrt;
+    private TableColumn<Flug, String> RueckSpalteAnkunftsOrt;
 
     @FXML
     private TableView<Flug> hinflugTabelle;
@@ -62,10 +67,10 @@ public class FluglisteController {  //TODO Felder auf die Suchkriterien setzen
     private Button FlugfindenButton;
 
     @FXML
-    private TableColumn<Flug,String> RueckSpalteAbflugsOrt;
+    private TableColumn<Flug, String> RueckSpalteAbflugsOrt;
 
     @FXML
-    private TableColumn<Flug,String> RueckSpalteFluggesellschaft;
+    private TableColumn<Flug, String> RueckSpalteFluggesellschaft;
 
     @FXML
     private DatePicker DatumHinflug;
@@ -77,16 +82,19 @@ public class FluglisteController {  //TODO Felder auf die Suchkriterien setzen
     private Button zurueckButton1;
 
     @FXML
-    private Tab RueckflugTab;
+    private TabPane tabPane;
 
     @FXML
-    private Tab HinflugTab;
+    private Tab rueckflugTab;
+
+    @FXML
+    private Tab hinflugTab;
 
     @FXML
     private Button buchenButton;
 
     @FXML
-    private TableColumn<Flug,String> RueckSpalteDatum;
+    private TableColumn<Flug, String> RueckSpalteDatum;
 
     @FXML
     private Label FlugauswahlText;
@@ -95,7 +103,7 @@ public class FluglisteController {  //TODO Felder auf die Suchkriterien setzen
     private TextField FlugabFeld;
 
     @FXML
-    private TableView<Flug> RueckflugTabelle;
+    private TableView<Flug> rueckflugTabelle;
 
 
     private static String flugAb;
@@ -104,6 +112,9 @@ public class FluglisteController {  //TODO Felder auf die Suchkriterien setzen
     private static String anzahlPersonen;
     private static LocalDate datumHinflug;
     private static LocalDate datumRueckflug;
+    private static boolean isWithRueckflug;
+    private static Flug hinflug = null;
+    private static Flug rueckflug = null;
 
     public static void setInfos(String flugAb, String flugNach, String fluggesellschaft, String anzahlPersonen, LocalDate datumHinflug) {
         FluglisteController.flugAb = flugAb;
@@ -111,6 +122,7 @@ public class FluglisteController {  //TODO Felder auf die Suchkriterien setzen
         FluglisteController.fluggesellschaft = fluggesellschaft;
         FluglisteController.anzahlPersonen = anzahlPersonen;
         FluglisteController.datumHinflug = datumHinflug;
+        FluglisteController.isWithRueckflug = false;
     }
 
     public static void setInfos(String flugAb, String flugNach, String fluggesellschaft, String anzahlPersonen, LocalDate datumHinflug, LocalDate datumRueckflug) {
@@ -120,41 +132,94 @@ public class FluglisteController {  //TODO Felder auf die Suchkriterien setzen
         FluglisteController.anzahlPersonen = anzahlPersonen;
         FluglisteController.datumHinflug = datumHinflug;
         FluglisteController.datumRueckflug = datumRueckflug;
+        FluglisteController.isWithRueckflug = true;
     }
 
     public void initialize() {
-        FlugabFeld.setText(flugAb);
-        FlugnachFeld.setText(flugNach);
-        fluggesellschaftFeld.setText(fluggesellschaft);
-        PersonenanzahlFeld.setText(anzahlPersonen);
-        DatumHinflug.setValue(datumHinflug);
 
-        HinSpalteAbflugsOrt.setCellValueFactory(new PropertyValueFactory<Flug, String>("abflugort"));
-        HinSpalteAbflugsOrt.setCellValueFactory(new PropertyValueFactory<Flug, String>("ankunftsort"));
-        HinSpalteAbflugsOrt.setCellValueFactory(new PropertyValueFactory<Flug, String>("abflugzeit"));
-        HinSpalteFluggesellschaft.setCellValueFactory(new PropertyValueFactory<Flug, String>("flugGesellschaft"));
-        HinSpaltePreis.setCellValueFactory(new PropertyValueFactory<Flug, String>("preisProPerson"));
-
-        hinflugTabelle.setRowFactory( tv -> {
-            TableRow<Flug> row = new TableRow<>();
-            row.setOnMouseClicked(event -> {
-                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
-                    Flug klickedFlug = row.getItem();
-                    ZahlungController.setHinflug(klickedFlug);
-                    ZahlungController.setAnzahlPersonen(Integer.parseInt(PersonenanzahlFeld.getText()));
-
-                    if(!Verwaltung.isAngemeldet()){
-                        MAIN.fensterOeffnen(Views.Anmelden);
-                    }else {
-                        MAIN.fensterOeffnen(Views.Zahlung);
+        if(!isWithRueckflug){
+            rueckflugTab.setDisable(true);
+        }else {
+            tabPane.getSelectionModel().selectedItemProperty().addListener(
+                    new ChangeListener<Tab>() {
+                        @Override
+                        public void changed(ObservableValue<? extends Tab> ov, Tab t, Tab aktuellerTab) {
+                            tabHasChanged(aktuellerTab);
+                        }
                     }
-
-                }
-            });
-            return row ;
-        });
-
+            );
+            FlugauswahlText.setText("Hinflug auswählen");
+        }
+        tabHasChanged(hinflugTab);
         FlugfindenAction(new ActionEvent());
+
+    }
+
+    private void tabHasChanged(Tab tab) {
+
+        if (!isWithRueckflug) { //nur Hinflug
+            FlugabFeld.setText(flugAb);
+            FlugnachFeld.setText(flugNach);
+            fluggesellschaftFeld.setText(fluggesellschaft);
+            PersonenanzahlFeld.setText(anzahlPersonen);
+            DatumHinflug.setValue(datumHinflug);
+
+            HinSpalteAbflugsOrt.setCellValueFactory(new PropertyValueFactory<Flug, String>("abflugort"));
+            HinSpalteAnkunftsOrt.setCellValueFactory(new PropertyValueFactory<Flug, String>("ankunftsort"));
+            HinSpalteDatum.setCellValueFactory(new PropertyValueFactory<Flug, String>("abflugzeit"));
+            HinSpalteFluggesellschaft.setCellValueFactory(new PropertyValueFactory<Flug, String>("flugGesellschaft"));
+            HinSpaltePreis.setCellValueFactory(new PropertyValueFactory<Flug, String>("preisProPerson"));
+            rueckflugTab.setDisable(true);
+
+            if (hinflugTabelle.getSelectionModel().getSelectedItem() != null) {
+                hinflug = hinflugTabelle.getSelectionModel().getSelectedItem();
+            }
+
+            FlugfindenAction(new ActionEvent());
+
+        } else {
+
+            if (tab.getId().equals("hinflugTab")) {
+                FlugabFeld.setText(flugAb);
+                FlugnachFeld.setText(flugNach);
+                fluggesellschaftFeld.setText(fluggesellschaft);
+                PersonenanzahlFeld.setText(anzahlPersonen);
+                DatumHinflug.setValue(datumHinflug);
+
+                HinSpalteAbflugsOrt.setCellValueFactory(new PropertyValueFactory<Flug, String>("abflugort"));
+                HinSpalteAnkunftsOrt.setCellValueFactory(new PropertyValueFactory<Flug, String>("ankunftsort"));
+                HinSpalteDatum.setCellValueFactory(new PropertyValueFactory<Flug, String>("abflugzeit"));
+                HinSpalteFluggesellschaft.setCellValueFactory(new PropertyValueFactory<Flug, String>("flugGesellschaft"));
+                HinSpaltePreis.setCellValueFactory(new PropertyValueFactory<Flug, String>("preisProPerson"));
+
+                if (hinflugTabelle.getSelectionModel().getSelectedItem() != null) {
+                    hinflug = hinflugTabelle.getSelectionModel().getSelectedItem();
+                }
+
+                FlugfindenAction(new ActionEvent());
+
+            } else if (tab.getId().equals("rueckflugTab")) {
+
+                FlugabFeld.setText(flugNach);
+                FlugnachFeld.setText(flugAb);
+                fluggesellschaftFeld.setText(fluggesellschaft);
+                PersonenanzahlFeld.setText(anzahlPersonen);
+                DatumHinflug.setValue(datumRueckflug);
+
+                RueckSpalteAbflugsOrt.setCellValueFactory(new PropertyValueFactory<Flug, String>("abflugort"));
+                RueckSpalteAnkunftsOrt.setCellValueFactory(new PropertyValueFactory<Flug, String>("ankunftsort"));
+                RueckSpalteDatum.setCellValueFactory(new PropertyValueFactory<Flug, String>("abflugzeit"));
+                RueckSpalteFluggesellschaft.setCellValueFactory(new PropertyValueFactory<Flug, String>("flugGesellschaft"));
+                RueckSpaltePreis.setCellValueFactory(new PropertyValueFactory<Flug, String>("preisProPerson"));
+
+                if (rueckflugTabelle.getSelectionModel().getSelectedItem() != null) {
+                    rueckflug = rueckflugTabelle.getSelectionModel().getSelectedItem();
+                }
+
+                FlugfindenAction(new ActionEvent());
+            }
+
+        }
     }
 
     @FXML
@@ -182,6 +247,9 @@ public class FluglisteController {  //TODO Felder auf die Suchkriterien setzen
                 }
                 observableList = FXCollections.observableList(gefundeneFluege);
                 hinflugTabelle.setItems(observableList);
+                if(isWithRueckflug){
+                    rueckflugTabelle.setItems(observableList);
+                }
             }
         } catch (FlugNotFoundException e) {
             observableList.clear();
@@ -197,29 +265,72 @@ public class FluglisteController {  //TODO Felder auf die Suchkriterien setzen
 
     }
 
-
     @FXML
     void zurueckAction(ActionEvent event) {
         MAIN.fensterOeffnen(MAIN.viewsChronik.get(MAIN.viewsChronik.size() - 2));
     }
 
     @FXML
-    void buchenAction(ActionEvent event){
+    void buchenAction(ActionEvent event) {
 
-        if (hinflugTabelle.getSelectionModel().getSelectedItem() != null) {
-            Flug klickedFlug = hinflugTabelle.getSelectionModel().getSelectedItem();
-            ZahlungController.setHinflug(klickedFlug);
-            ZahlungController.setAnzahlPersonen(Integer.parseInt(PersonenanzahlFeld.getText()));
-            if (!Verwaltung.isAngemeldet()) {
-                MAIN.fensterOeffnen(Views.Anmelden);
+        if(!isWithRueckflug) {
+            if (hinflugTabelle.getSelectionModel().getSelectedItem() != null) {
+                hinflug = hinflugTabelle.getSelectionModel().getSelectedItem();
+                ZahlungController.setHinflug(hinflug);
+                ZahlungController.setAnzahlPersonen(Integer.parseInt(PersonenanzahlFeld.getText()));
+                if (!Verwaltung.isAngemeldet()) {
+                    MAIN.fensterOeffnen(Views.Anmelden);
+                } else {
+                    MAIN.fensterOeffnen(Views.Zahlung);
+                }
             } else {
-                MAIN.fensterOeffnen(Views.Zahlung);
+                keineBuchungAusgewaehltLabel.setTextFill(Color.RED);
+                keineBuchungAusgewaehltLabel.setText("Flug auswählen!");
             }
-        } else {
-            keineBuchungAusgewaehltLabel.setTextFill(Color.RED);
-            keineBuchungAusgewaehltLabel.setText("Flug auswählen!");
+        }else {
+
+            if(hinflugTab.isSelected()) {
+                if (hinflugTabelle.getSelectionModel().getSelectedItem() != null) {
+                    hinflug = hinflugTabelle.getSelectionModel().getSelectedItem();
+                    ZahlungController.setHinflug(hinflug);
+                    ZahlungController.setAnzahlPersonen(Integer.parseInt(PersonenanzahlFeld.getText()));
+
+                    if (rueckflug == null) {
+                        keineBuchungAusgewaehltLabel.setTextFill(Color.RED);
+                        keineBuchungAusgewaehltLabel.setText("Rückflug auswählen!");
+                    } else if (!Verwaltung.isAngemeldet()) {
+                        MAIN.fensterOeffnen(Views.Anmelden);
+                    } else {
+                        MAIN.fensterOeffnen(Views.Zahlung);
+                    }
+
+                } else {
+                    keineBuchungAusgewaehltLabel.setTextFill(Color.RED);
+                    keineBuchungAusgewaehltLabel.setText("Hinflug auswählen!");
+                }
+            }else if(rueckflugTab.isSelected()) {
+                if (rueckflugTabelle.getSelectionModel().getSelectedItem() != null) {
+                    rueckflug = rueckflugTabelle.getSelectionModel().getSelectedItem();
+                    ZahlungController.setRueckflug(rueckflug);
+                    ZahlungController.setAnzahlPersonen(Integer.parseInt(PersonenanzahlFeld.getText()));
+                    if (hinflug == null) {
+                        keineBuchungAusgewaehltLabel.setTextFill(Color.RED);
+                        keineBuchungAusgewaehltLabel.setText("Hinflug auswählen!");
+                    } else if (!Verwaltung.isAngemeldet()) {
+                        MAIN.fensterOeffnen(Views.Anmelden);
+                    } else {
+                        MAIN.fensterOeffnen(Views.Zahlung);
+                    }
+
+                } else {
+                    keineBuchungAusgewaehltLabel.setTextFill(Color.RED);
+                    keineBuchungAusgewaehltLabel.setText("Rückflug auswählen!");
+                }
+            }
+
         }
 
     }
+
 
 }

@@ -27,15 +27,17 @@ public class MAIN extends Application {
     public void start(Stage primaryStage) {
         MAIN.primaryStage = primaryStage;
         hashmapsFuellen();
+
+        /*
         try {
             Verwaltung.anmelden(Administratoren.getAdministratorByID(3));
         }catch (final Exception e){
 
-        }
+        }*/
 
-        MAIN.fensterOeffnen(Views.AdminStartseite);
+        //MAIN.fensterOeffnen(Views.AdminStartseite);
 
-        //MAIN.fensterOeffnen(Views.Buchen);
+        MAIN.fensterOeffnen(Views.Buchen);
     }
 
     public static void main(String[] args) {
