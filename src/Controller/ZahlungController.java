@@ -164,7 +164,7 @@ public class ZahlungController {
     private static Flug hinflug;
     private static Flug rueckflug;
     private static int anzahlPersonen;
-    private static int gepaecksPreisProKilo = 40;
+    private static int gepaecksPreisProKilo = 10;
 
     public void initialize() {
 
