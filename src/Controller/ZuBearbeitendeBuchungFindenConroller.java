@@ -112,50 +112,58 @@ public class ZuBearbeitendeBuchungFindenConroller {
         SpalteGepaeck.setCellValueFactory(new PropertyValueFactory<Buchung, String>("gepaeck"));
         SpaltePreis.setCellValueFactory(new PropertyValueFactory<Buchung, Double>("buchungspreis"));
         SpaltebyAngestellter.setCellValueFactory(new PropertyValueFactory<Buchung, Boolean>("createdByAnwender"));
+
+        observableList = FXCollections.observableList(Verwaltung.getBuchungen());
+        if (observableList.size() == 0) {
+            System.out.println("Der Anwender hat keine Kunden!");
+            Label keineFluege = new Label("Keine Anwender gefunden!");
+            keineFluege.setId("keineFluegeGefunden");
+            tabelle.setPlaceholder(keineFluege);
+        }
+        tabelle.setItems(observableList);
     }
 
 
     @FXML
     void SuchenAction(ActionEvent event) {
 
-            if (!VornameFeld.getText().equals("")) {
-                if (!NachnameFeld.getText().equals("")) {  //Vor- und Nachname
-                    for (int i = 0; i < Verwaltung.getAnwender().size(); i++) {
-                        if (Verwaltung.getAnwender().get(i).getVorname().equalsIgnoreCase(VornameFeld.getText()) && Verwaltung.getAnwender().get(i).getNachname().equalsIgnoreCase(NachnameFeld.getText())) {
-                            zutreffendeBuchungen.addAll(Verwaltung.getBuchungenByAnwender(Verwaltung.getAnwender().get(i)));
-                        }
-                    }
-                } else {  //Vorname
-                    for (int i = 0; i < Verwaltung.getAnwender().size(); i++) {
-                        if (Verwaltung.getAnwender().get(i).getVorname().equalsIgnoreCase(VornameFeld.getText())) {
-                            zutreffendeBuchungen.addAll(Verwaltung.getBuchungenByAnwender(Verwaltung.getAnwender().get(i)));
-                        }
+        if (!VornameFeld.getText().equals("")) {
+            if (!NachnameFeld.getText().equals("")) {  //Vor- und Nachname
+                for (int i = 0; i < Verwaltung.getAnwender().size(); i++) {
+                    if (Verwaltung.getAnwender().get(i).getVorname().equalsIgnoreCase(VornameFeld.getText()) && Verwaltung.getAnwender().get(i).getNachname().equalsIgnoreCase(NachnameFeld.getText())) {
+                        zutreffendeBuchungen.addAll(Verwaltung.getBuchungenByAnwender(Verwaltung.getAnwender().get(i)));
                     }
                 }
-            } else {
-                VornameFeld.setPromptText("Pflichtfeld!");
+            } else {  //Vorname
+                for (int i = 0; i < Verwaltung.getAnwender().size(); i++) {
+                    if (Verwaltung.getAnwender().get(i).getVorname().equalsIgnoreCase(VornameFeld.getText())) {
+                        zutreffendeBuchungen.addAll(Verwaltung.getBuchungenByAnwender(Verwaltung.getAnwender().get(i)));
+                    }
+                }
             }
+        } else {
+            VornameFeld.setPromptText("Pflichtfeld!");
+        }
 
+        observableList = FXCollections.observableList(zutreffendeBuchungen);
+        tabelle.setItems(observableList);
+
+
+        if (zutreffendeBuchungen.size() < 1) {
+            System.out.println("Es gibt keinen Buchungen mit diesen Eigenschaften");
+            Label keineBuchungen = new Label("Keine Buchungen gefunden!");
+            tabelle.setPlaceholder(keineBuchungen);
+        } else {
             observableList = FXCollections.observableList(zutreffendeBuchungen);
-            tabelle.setItems(observableList);
-
-
-            if (zutreffendeBuchungen.size() < 1) {
-                System.out.println("Es gibt keinen Buchungen mit diesen Eigenschaften");
-                Label keineBuchungen = new Label("Keine Buchungen gefunden!");
-                tabelle.setPlaceholder(keineBuchungen);
-            } else {
-                observableList = FXCollections.observableList(zutreffendeBuchungen);
-            }
+        }
 
     }
 
     @FXML
     void LoschenAction(ActionEvent event) {
         Buchungen.removeBuchung(tabelle.getSelectionModel().getSelectedItem());
-        observableList.removeAll(observableList);
-        SuchenAction(new ActionEvent());
-        tabelle.setItems(observableList);
+        observableList.remove(tabelle.getSelectionModel().getSelectedItem());
+        initialize();
     }
 
     @FXML
@@ -166,7 +174,7 @@ public class ZuBearbeitendeBuchungFindenConroller {
 
     @FXML
     void ZuruckAction(ActionEvent event) {
-        MAIN.fensterOeffnen(MAIN.viewsChronik.get(MAIN.viewsChronik.size()-2));
+        MAIN.fensterOeffnen(MAIN.viewsChronik.get(MAIN.viewsChronik.size() - 2));
     }
 
 }
