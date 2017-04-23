@@ -26,7 +26,7 @@ public class GepaeckBearbeitenController {
     private Label GepackbearbeitenText;
 
     @FXML
-    private ComboBox GepaeckTyp;
+    private ComboBox<Gepaecktypen> GepaeckTyp;
 
     @FXML
     private Button AbbrechenButton;
@@ -41,10 +41,10 @@ public class GepaeckBearbeitenController {
 
     public void initialize() {
         GepaeckTyp.getItems().addAll(
-                "Handgepäck",
-                "Koffer",
-                "Tasche",
-                "Sprotgepäck");
+                Gepaecktypen.Handgepaeck,
+                Gepaecktypen.Koffer,
+                Gepaecktypen.Tasche,
+                Gepaecktypen.Sportgepaeck);
     }
 
     @FXML
@@ -61,10 +61,10 @@ public class GepaeckBearbeitenController {
         boolean x = false;
         while (!x) {
             try {
-                Verwaltung.gepaeckBearbeiten(gepaeck, Integer.parseInt(GewichtFeld.getText()), (Gepaecktypen) GepaeckTyp.getValue());
+                Verwaltung.gepaeckBearbeiten(gepaeck, Integer.parseInt(GewichtFeld.getText()), GepaeckTyp.getValue());
                 x = true;
             } catch (final ToHighWeightException e) {
-                GewichtFeld.setText("Zu hohes Gewicht!");
+                GewichtFeld.setPromptText("Zu hohes Gewicht!");
             }
         }
 

@@ -3,6 +3,7 @@ package Controller;
 import Model.Enums.Views;
 import Model.Exceptions.EmailIsAlreadyUsedException;
 import Model.Exceptions.InvalidEmailException;
+import Model.Exceptions.NutzerDoesNotExistException;
 import Model.Klassen.MAIN;
 import Model.Klassen.Nutzer.Administrator;
 import Model.Klassen.Nutzer.Angestellter;
@@ -23,10 +24,10 @@ public class RegistrierenController {
     private Button RegistrierenButton;
 
     @FXML
-    private PasswordField PasswordFeld;
+    private PasswordField PasswortFeld;
 
     @FXML
-    private PasswordField Password2Feld;
+    private PasswordField PasswortBestaetigen;
 
     @FXML
     private Label GeburtsdatumText;
@@ -70,6 +71,10 @@ public class RegistrierenController {
     @FXML
     private TextField EmailFeld;
 
+    @FXML
+    private TextField PassnummerFeld;
+
+
     public void initialize() {
         if (Verwaltung.isAngemeldet()) {
             if (Verwaltung.getAngemeldeter() instanceof Administrator) { //admin kann alles erstellen
@@ -107,6 +112,8 @@ public class RegistrierenController {
 
     @FXML
     void RegistrierenAction(ActionEvent event) {
+
+
         if (VornameFeld.getText().equals("")) {
             VornameFeld.setPromptText("Geben Sie einen Vornamen ein!");
             return;
@@ -115,66 +122,55 @@ public class RegistrierenController {
             NachnameFeld.setPromptText("Geben Sie einen Nachnamen ein!");
             return;
         }
-
-        if (Password2Feld.getText().equals("") || PasswordFeld.getText().equals("")) {
-            PasswordFeld.setPromptText("Geben Sie ein gültiges Passwort ein!");
-            return;
-        }
-        if (!(PasswordFeld.getText().equals(Password2Feld.getText()))) {
-            PasswordFeld.setText("");
-            Password2Feld.setText("");
-            PasswordFeld.setPromptText("Die Passwörter stimmen nicht überein!");
-            Password2Feld.setPromptText("Die Passwörter stimmen nicht überein!");
+        if (PassnummerFeld.getText().equals("")) {
+            PassnummerFeld.setPromptText("Geben Sie eine Passnummer ein!");
             return;
         }
 
+        if (PassnummerFeld.getText().equals("") || PasswortBestaetigen.getText().equals("")) {
+            PasswortFeld.setPromptText("Geben Sie ein gültiges Passwort ein!");
+            return;
+        }
+        if (!(PasswortFeld.getText().equals(PasswortBestaetigen.getText()))) {
+            PasswortFeld.setText("");
+            PasswortBestaetigen.setText("");
+            PasswortFeld.setPromptText("Die Passwörter stimmen nicht überein!");
+            PasswortBestaetigen.setPromptText("Die Passwörter stimmen nicht überein!");
+            return;
+        }
 
-        if (Verwaltung.getAngemeldeter() instanceof Administrator) {      //Admin
-            try {
+        try {
+            if (Verwaltung.getAngemeldeter() instanceof Administrator) {      //Admin
                 if (AnwenderRbutton.isSelected() && !AngestellterRButton.isSelected() && !AdminRButton.isSelected()) {
-                    Verwaltung.anwenderErstellen(VornameFeld.getText(), NachnameFeld.getText(), Date.from(GeburtsdatumFeld.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()).toString(), 777, EmailFeld.getText(), PasswordFeld.getText());
-                    //todo registrieren fehlt noch passnummer
+                    Verwaltung.anwenderErstellen(VornameFeld.getText(), NachnameFeld.getText(), Date.from(GeburtsdatumFeld.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()).toString(), Integer.parseInt(PassnummerFeld.getText()), EmailFeld.getText(), PasswortFeld.getText());
                     MAIN.fensterOeffnen(Views.AdminStartseite);
                 } else if (!AnwenderRbutton.isSelected() && AngestellterRButton.isSelected() && !AdminRButton.isSelected()) {
-                    Verwaltung.angestellterErstellen(VornameFeld.getText(), NachnameFeld.getText(), Date.from(GeburtsdatumFeld.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()).toString(), 777, EmailFeld.getText(), PasswordFeld.getText());
-                    //todo registrieren fehlt noch passnummer
+                    Verwaltung.angestellterErstellen(VornameFeld.getText(), NachnameFeld.getText(), Date.from(GeburtsdatumFeld.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()).toString(), Integer.parseInt(PassnummerFeld.getText()), EmailFeld.getText(), PasswortFeld.getText());
                     MAIN.fensterOeffnen(Views.AdminStartseite);
                 } else if (!AnwenderRbutton.isSelected() && !AngestellterRButton.isSelected() && AdminRButton.isSelected()) {
-                    Verwaltung.adminErstellten(VornameFeld.getText(), NachnameFeld.getText(), Date.from(GeburtsdatumFeld.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()).toString(), 777, EmailFeld.getText(), PasswordFeld.getText());
-                    //todo registrieren fehlt noch passnummer
+                    Verwaltung.adminErstellten(VornameFeld.getText(), NachnameFeld.getText(), Date.from(GeburtsdatumFeld.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()).toString(), Integer.parseInt(PassnummerFeld.getText()), EmailFeld.getText(), PasswortFeld.getText());
                     MAIN.fensterOeffnen(Views.AdminStartseite);
                 }
-            } catch (EmailIsAlreadyUsedException e) {
-                EmailFeld.setPromptText("Diese Email wird bereits verwendet!");
-                EmailFeld.setText("");
-            } catch (InvalidEmailException e) {
-                EmailFeld.setPromptText("Ungültige Email!");
-                EmailFeld.setText("");
-            }
-        } else if (Verwaltung.getAngemeldeter() instanceof Angestellter) {    //Angestellter
-            try {
-                Verwaltung.anwenderErstellen(VornameFeld.getText(), NachnameFeld.getText(), Date.from(GeburtsdatumFeld.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()).toString(), 777, EmailFeld.getText(), PasswordFeld.getText());
-                //todo registrieren fehlt noch passnummer
+            } else if (Verwaltung.getAngemeldeter() instanceof Angestellter) {    //Angestellter
+                Verwaltung.anwenderErstellen(VornameFeld.getText(), NachnameFeld.getText(), Date.from(GeburtsdatumFeld.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()).toString(), Integer.parseInt(PassnummerFeld.getText()), EmailFeld.getText(), PasswortFeld.getText());
                 MAIN.fensterOeffnen(Views.AngestellterStartseite);
-            } catch (EmailIsAlreadyUsedException e) {
-                EmailFeld.setPromptText("Diese Email wird bereits verwendet!");
-                EmailFeld.setText("");
-            } catch (InvalidEmailException e) {
-                EmailFeld.setPromptText("Ungültige Email!");
-                EmailFeld.setText("");
+            } else {
+                Verwaltung.anwenderErstellen(VornameFeld.getText(), NachnameFeld.getText(), Date.from(GeburtsdatumFeld.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()).toString(), Integer.parseInt(PassnummerFeld.getText()), EmailFeld.getText(), PasswortFeld.getText());
+                Verwaltung.anmelden(Verwaltung.getAnwenderByID(Verwaltung.getNutzerIDByEmail(EmailFeld.getText())));
+                MAIN.fensterOeffnen(Views.KundenProfil);
             }
-        } else {
-            try {
-                Verwaltung.anwenderErstellen(VornameFeld.getText(), NachnameFeld.getText(), Date.from(GeburtsdatumFeld.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()).toString(), 777, EmailFeld.getText(), PasswordFeld.getText());
-                //todo registrieren fehlt noch passnummer
-                MAIN.fensterOeffnen(Views.Anmelden);
-            } catch (EmailIsAlreadyUsedException e) {
-                EmailFeld.setPromptText("Diese Email wird bereits verwendet!");
-                EmailFeld.setText("");
-            } catch (InvalidEmailException e) {
-                EmailFeld.setPromptText("Ungültige Email!");
-                EmailFeld.setText("");
-            }
+        } catch (final EmailIsAlreadyUsedException e) {
+            EmailFeld.setPromptText("Diese Email wird bereits verwendet!");
+            EmailFeld.setText("");
+        } catch (final InvalidEmailException e) {
+            EmailFeld.setPromptText("Ungültige Email!");
+            EmailFeld.setText("");
+        } catch (final NumberFormatException e) {
+            PassnummerFeld.setPromptText("Nur Zahlen erlaubt");
+            EmailFeld.setText("");
+        } catch (final NutzerDoesNotExistException e) {
+            System.out.println("Kunde wurde nicht gefunden!");
+            //Nie der Fall da der Kunde gerade erstellt wurde
         }
     }
 }

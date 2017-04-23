@@ -1,8 +1,10 @@
 package Controller;
 
+import Model.Enums.Gepaecktypen;
 import Model.Enums.Views;
 import Model.Exceptions.FlugNotFoundException;
 import Model.Klassen.Elemente.Buchung;
+import Model.Klassen.Elemente.Gepaeck;
 import Model.Klassen.MAIN;
 import Model.Klassen.Nutzer.Administrator;
 import Model.Klassen.Nutzer.Angestellter;
@@ -11,10 +13,7 @@ import Model.Klassen.Verwaltung.Fluege;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 public class BuchungBearbeitenController {
 
@@ -25,7 +24,7 @@ public class BuchungBearbeitenController {
     private Button BestatigenButton;
 
     @FXML
-    private PasswordField PreisFeld;
+    private TextField PreisFeld;
 
     @FXML
     private Label AnzahlSitzplatzeText;
@@ -52,7 +51,10 @@ public class BuchungBearbeitenController {
     private Label GepackText;
 
     @FXML
-    private PasswordField GepackFeld;
+    private TextField GewichtGepaeck;
+
+    @FXML
+    private ChoiceBox <Gepaecktypen> GepaeckTypChoiceBox;
 
     @FXML
     private Label HinflugText;
@@ -70,7 +72,9 @@ public class BuchungBearbeitenController {
         }
         AnzahlSitzplatzeFeld.setText(String.valueOf(buchung.getAnzahlSitzplaetze()));
         PreisFeld.setText(String.valueOf(buchung.getBuchungspreis()));
-        GepackFeld.setText(String.valueOf(buchung.getGepaeck().getGewicht()));
+        GewichtGepaeck.setText(String.valueOf(buchung.getGepaeck().getGewicht()));
+        GepaeckTypChoiceBox.getItems().addAll(Gepaecktypen.Handgepaeck, Gepaecktypen.Koffer, Gepaecktypen.Tasche, Gepaecktypen.Sportgepaeck);
+        GepaeckTypChoiceBox.setValue(buchung.getGepaeck().getGepaeckTyp());
     }
 
 
@@ -81,9 +85,13 @@ public class BuchungBearbeitenController {
 
     @FXML
     void BestatigenAction(ActionEvent event) {
-        buchung.setBuchungspreis(Integer.valueOf(PreisFeld.getText()));
-        buchung.setAnzahlSitzplaetze(Integer.valueOf(PreisFeld.getText()));
-        //buchung.setGepaeck();
+        // todo ParseInt -> wirft exception
+        buchung.setBuchungspreis(Integer.parseInt(PreisFeld.getText()));
+        buchung.setAnzahlSitzplaetze(Integer.parseInt(PreisFeld.getText()));
+        Gepaeck g = buchung.getGepaeck();
+        g.setGewicht(Integer.parseInt(GewichtGepaeck.getText()));
+        g.setGepaeckTyp(GepaeckTypChoiceBox.getValue());
+        buchung.setGepaeck(g);
 
         try {
             buchung.setHinflug(Fluege.getFlugByID(HinflugFeld.getText()));

@@ -3,6 +3,7 @@ package Controller;
 import Model.Enums.Views;
 import Model.Exceptions.NutzerDoesNotExistException;
 import Model.Klassen.MAIN;
+import Model.Klassen.Nutzer.Angestellter;
 import Model.Klassen.Nutzer.Anwender;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.collections.FXCollections;
@@ -91,35 +92,37 @@ public class AngestellterStartseiteController {
     void KundenSuchenAction(ActionEvent event) {
 
         ArrayList<Anwender> zutreffendeAnwender = new ArrayList<>();
-        try {
-            if (!VornameFeld.getText().equals("")) {
-                if (VornameFeld.getText().equals("")) {  //Vor- und Nachname
-                    for (int i = 0; i < Verwaltung.getAnwenderByAngestellten(Verwaltung.getAngestelltenByAngemeldeten()).size(); i++) {
-                        if (Verwaltung.getAnwenderByAngestellten(Verwaltung.getAngestelltenByAngemeldeten()).get(i).getVorname().equalsIgnoreCase(VornameFeld.getText()) && Verwaltung.getAnwenderByAngestellten(Verwaltung.getAngestelltenByAngemeldeten()).get(i).getNachname().equalsIgnoreCase(NachnameText.getText())) {
-                            zutreffendeAnwender.add(Verwaltung.getAnwenderByAngestellten(Verwaltung.getAngestelltenByAngemeldeten()).get(i));
-                        }
-                    }
-                } else {  //Vorname
-                    for (int i = 0; i < Verwaltung.getAnwenderByAngestellten(Verwaltung.getAngestelltenByAngemeldeten()).size(); i++) {
-                        if (Verwaltung.getAnwenderByAngestellten(Verwaltung.getAngestelltenByAngemeldeten()).get(i).getVorname().equalsIgnoreCase(VornameFeld.getText())) {
-                            zutreffendeAnwender.add(Verwaltung.getAnwenderByAngestellten(Verwaltung.getAngestelltenByAngemeldeten()).get(i));
-                        }
-                    }
+
+        if (!VornameFeld.getText().equals("") && NachnameFeld.getText().equals("")) {
+            //Suche nach Vornamen
+            for (int i = 0; i < Verwaltung.getAnwenderByAngestellten((Angestellter)Verwaltung.getAngemeldeter()).size(); i++) {
+                if (Verwaltung.getAnwenderByAngestellten((Angestellter)Verwaltung.getAngemeldeter()).get(i).getVorname().toLowerCase().contains(VornameFeld.getText().toLowerCase())) {
+                    zutreffendeAnwender.add(Verwaltung.getAnwenderByAngestellten((Angestellter)Verwaltung.getAngemeldeter()).get(i));
                 }
-            } else {
-                VornameFeld.setPromptText("Pflichtfeld!");
             }
-        } catch (final NutzerDoesNotExistException e) {
-            System.out.println("Nutzer nicht gefunden!");
+        } else if (VornameFeld.getText().equals("") && !NachnameFeld.getText().equals("")) {
+            //Suche nach Nachnamen
+            for (int i = 0; i < Verwaltung.getAnwenderByAngestellten((Angestellter)Verwaltung.getAngemeldeter()).size(); i++) {
+                if (Verwaltung.getAnwenderByAngestellten((Angestellter)Verwaltung.getAngemeldeter()).get(i).getNachname().toLowerCase().contains(NachnameFeld.getText().toLowerCase())) {
+                    zutreffendeAnwender.add(Verwaltung.getAnwenderByAngestellten((Angestellter)Verwaltung.getAngemeldeter()).get(i));
+                }
+            }
+        } else {
+            //Suche nach Vornamen und Nachnamen
+            for (int i = 0; i < Verwaltung.getAnwenderByAngestellten((Angestellter)Verwaltung.getAngemeldeter()).size(); i++) {
+                if (Verwaltung.getAnwenderByAngestellten((Angestellter)Verwaltung.getAngemeldeter()).get(i).getNachname().toLowerCase().contains(NachnameFeld.getText().toLowerCase()) && zutreffendeAnwender.get(i).getVorname().toLowerCase().contains(VornameFeld.getText().toLowerCase())) {
+                    zutreffendeAnwender.add(Verwaltung.getAnwenderByAngestellten((Angestellter)Verwaltung.getAngemeldeter()).get(i));
+                }
+            }
         }
-        observableList = FXCollections.observableList(zutreffendeAnwender);
+
         if (observableList.size() < 1) {
             observableList.clear();
             Tabelle.setItems(observableList);
-            System.out.println("Es gibt keinen Anwender mit diesen Eigenschaften");
-            Label keineAnwender = new Label("Keine Anwender gefunden!");
-            keineAnwender.setId("keineFluegeGefunden");
-            Tabelle.setPlaceholder(keineAnwender);
+            System.out.println("Es gibt keinen Ergebnise mit diesen Eigenschaften");
+            Label keinErgebniss = new Label("Kein Ergebniss gefunden!");
+            keinErgebniss.setId("keinErgebniss");
+            Tabelle.setPlaceholder(keinErgebniss);
         } else {
             observableList = FXCollections.observableList(zutreffendeAnwender);
             Tabelle.setItems(observableList);
@@ -135,12 +138,13 @@ public class AngestellterStartseiteController {
 
     @FXML
     void KundebearbeitenAction(ActionEvent event) {
-        MAIN.fensterOeffnen(Views.ZuBearbeitendenNutzerFinden);
+        ProfilBearbeitenController.setZuBearbeitenderMensch(Tabelle.getSelectionModel().getSelectedItem());
+        MAIN.fensterOeffnen(Views.ProfilBearbeiten);
     }
 
     @FXML
     void BuchungdurchfurenAction(ActionEvent event) {
-
+        MAIN.fensterOeffnen(Views.ProfilBearbeiten);
     }
 
     @FXML

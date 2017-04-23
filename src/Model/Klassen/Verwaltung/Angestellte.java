@@ -21,6 +21,7 @@ public abstract class Angestellte {
     }
 
     public static void removeAngestellter(Angestellter angestellter){
+        //todo Angestelltenanwender herauslöschen + buchung createt by ändern
         angestellte.remove(angestellter);
     }
 

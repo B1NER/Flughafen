@@ -86,7 +86,7 @@ public class AdminStartseiteController {
         SpalteGepaeckskapazitaet.setCellValueFactory(new PropertyValueFactory<Flug, Double>("gepaeckskapazitaet"));
         SpalteSitzplaetze.setCellValueFactory(new PropertyValueFactory<Flug, Double>("anzahlPlaetze"));
         SpaltePreis.setCellValueFactory(new PropertyValueFactory<Flug, String>("preisProPerson"));
-        SpalteStatus.setCellValueFactory(new PropertyValueFactory<Flug, String>("status")); //todo keine ahnung wieso des no net geat
+        SpalteStatus.setCellValueFactory(new PropertyValueFactory<Flug, String>("status"));
 
         ArrayList<Flug> alleFluege = Verwaltung.getFluege();
         ObservableList<Flug> observableList = FXCollections.observableList(alleFluege);
