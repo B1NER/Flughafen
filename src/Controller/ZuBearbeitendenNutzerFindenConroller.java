@@ -149,6 +149,7 @@ public class ZuBearbeitendenNutzerFindenConroller {
 
     @FXML
     void ZuruckAction(ActionEvent event) {
-        MAIN.fensterOeffnen(MAIN.viewsChronik.get(MAIN.viewsChronik.size() - 2));
+        MAIN.viewsChronik.pop();
+        MAIN.fensterOeffnen(MAIN.viewsChronik.pop());
     }
 }

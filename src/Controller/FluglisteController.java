@@ -137,6 +137,9 @@ public class FluglisteController {  //TODO Felder auf die Suchkriterien setzen
 
     public void initialize() {
 
+        hinflug = null;
+        rueckflug = null;
+
         if(!isWithRueckflug){
             rueckflugTab.setDisable(true);
         }else {
@@ -267,7 +270,8 @@ public class FluglisteController {  //TODO Felder auf die Suchkriterien setzen
 
     @FXML
     void zurueckAction(ActionEvent event) {
-        MAIN.fensterOeffnen(MAIN.viewsChronik.get(MAIN.viewsChronik.size() - 2));
+        MAIN.viewsChronik.pop();
+        MAIN.fensterOeffnen(MAIN.viewsChronik.pop());
     }
 
     @FXML

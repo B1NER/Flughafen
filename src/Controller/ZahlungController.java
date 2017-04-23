@@ -288,7 +288,8 @@ public class ZahlungController {
 
     @FXML
     void zurueckButtonAction(ActionEvent event) {
-
+        MAIN.viewsChronik.pop();
+        MAIN.fensterOeffnen(MAIN.viewsChronik.pop());
     }
 
 

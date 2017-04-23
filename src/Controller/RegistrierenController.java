@@ -106,7 +106,8 @@ public class RegistrierenController {
         } else if (Verwaltung.getAngemeldeter() instanceof Angestellter) {
             MAIN.fensterOeffnen(Views.AngestellterStartseite);
         } else {
-            MAIN.fensterOeffnen(Views.Buchen);
+            MAIN.viewsChronik.pop();
+            MAIN.fensterOeffnen(MAIN.viewsChronik.pop());
         }
     }
 

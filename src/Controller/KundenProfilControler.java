@@ -199,7 +199,8 @@ public class KundenProfilControler {
     @FXML
     void AbmeldenAction(ActionEvent event) {
         Verwaltung.setAngemeldeter(null);
-        MAIN.fensterOeffnen(Views.Buchen);
+        MAIN.viewsChronik.pop();
+        MAIN.fensterOeffnen(MAIN.viewsChronik.pop());
     }
 
 }

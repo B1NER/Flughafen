@@ -7,9 +7,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Stack;
 
 /**
  * Created by knoll on 21.03.2017.
@@ -20,7 +19,7 @@ public class MAIN extends Application {
     static private HashMap<Views, String> viewPfad = new HashMap<>();
 
     //bei jedem neuem Fensteröffnen muss das fenster in diese Chronik eingetragen werden!
-    static public ArrayList<Views> viewsChronik = new ArrayList<>();
+    static public Stack<Views> viewsChronik = new Stack<>();
 
 
     public void start(Stage primaryStage) {
@@ -67,7 +66,7 @@ public class MAIN extends Application {
 
             FXMLLoader loader = new FXMLLoader(MAIN.class.getResource(viewPfad.get(view)));
 
-            viewsChronik.add(view);
+            viewsChronik.push(view);
 
             Pane pane = loader.load();
             Scene scene = new Scene(pane);
