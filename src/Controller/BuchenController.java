@@ -90,6 +90,8 @@ public class BuchenController {
         }
         DatumHinflug.setEditable(false);
         DatumHinflug2.setEditable(false);
+        FlugAbFeld.setText("London");
+        FlugNachFeld.setText("Innsbruck");
     }
 
     @FXML
@@ -112,6 +114,7 @@ public class BuchenController {
     void plusAction(ActionEvent event) {
         AnzahlFeld.setText("" + (Integer.parseInt(AnzahlFeld.getText()) + 1));
     }
+
 
     @FXML
     void FlugSuchenAction(ActionEvent event){
@@ -147,4 +150,5 @@ public class BuchenController {
     void NurHinflugplusAction(ActionEvent event) {
         NurHinflugAnzahlFeld.setText("" + (Integer.parseInt(NurHinflugAnzahlFeld.getText()) + 1));
     }
+
 }

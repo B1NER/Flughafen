@@ -18,40 +18,10 @@ import sun.applet.Main;
 public class ZahlungController {
 
     @FXML
-    private Button BestatigenButton;
-
-    @FXML
-    private Label ZalungsartText;
-
-    @FXML
     private TextField GewichtFeld;
 
     @FXML
-    private Button ZusammenfassungButton;
-
-    @FXML
-    private Label NachnameText;
-
-    @FXML
-    private Button FlugauswahlButton;
-
-    @FXML
-    private Label GesamtpreisText;
-
-    @FXML
-    private Button MeineDatenButton;
-
-    @FXML
-    private Label PreisproPersonText;
-
-    @FXML
     private TextField KreditkartennummerFeld;
-
-    @FXML
-    private Label KreditkartennummerText;
-
-    @FXML
-    private Label PreisproGepackText;
 
     @FXML
     private TextField NameFeld;
@@ -63,19 +33,10 @@ public class ZahlungController {
     private Label GewichtText;
 
     @FXML
-    private Label CSVText;
-
-    @FXML
-    private Label NameText;
-
-    @FXML
     private TextField CSVFeld;
 
     @FXML
     private Label RueckFlugPreisProPersonText;
-
-    @FXML
-    private Label GepackText;
 
     @FXML
     private Label HinflugPreisLabel;
@@ -93,9 +54,6 @@ public class ZahlungController {
     private Label GesamtpreisLabel;
 
     @FXML
-    private Button berechneGesamtPreisButton;
-
-    @FXML
     private ChoiceBox<Gepaecktypen> GepackFeld;
 
     private static Flug hinflug;
@@ -107,6 +65,7 @@ public class ZahlungController {
         NameFeld.setText(Verwaltung.getAngemeldeter().getVorname());
         NachnameFeld.setText(Verwaltung.getAngemeldeter().getNachname());
         GepackFeld.getItems().addAll(Gepaecktypen.Handgepaeck, Gepaecktypen.Koffer, Gepaecktypen.Sportgepaeck, Gepaecktypen.Tasche);
+        GepackFeld.setValue(Gepaecktypen.Handgepaeck);
         HinflugPreisLabel.setText("" + hinflug.getPreisProPerson() + "€");
         if (rueckflug != null) {
             RueckflugPreisLabel.setText("" + rueckflug.getPreisProPerson() + "€");
@@ -152,15 +111,17 @@ public class ZahlungController {
     void BestatigenAction(ActionEvent event) {
         if (KreditkartennummerFeld.getText().equals("")) {
             KreditkartennummerFeld.setPromptText("Pflichtfeld!");
-        }else if (CSVFeld.getText().equals("")) {
+        }
+        if (CSVFeld.getText().equals("")) {
             CSVFeld.setPromptText("Pflichtfeld!");
-        }else if(GepackFeld.getValue() == null){
-            //todo kann man kein gepäck auswählen?
-        }else if(GewichtFeld.getText().equals("")){
+        }
+        if(GewichtFeld.getText().equals("")){
             GewichtFeld.setPromptText("Gewicht in kg");
-        }else if(NameFeld.getText().equals("")){
+        }
+        if(NameFeld.getText().equals("")){
             NameFeld.setPromptText("Pflichtfeld!");
-        }else if(NachnameFeld.getText().equals("")){
+        }
+        if(NachnameFeld.getText().equals("")){
             NachnameFeld.setPromptText("Pflichtfeld!");
         }else {
             MAIN.fensterOeffnen(Views.Buchungszusammenfassung);

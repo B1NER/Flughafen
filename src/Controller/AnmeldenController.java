@@ -81,7 +81,7 @@ public class AnmeldenController {
 
     @FXML
     void AbbrechenAction(ActionEvent event) {
-        MAIN.fensterOeffnen(Views.Buchen);
+        MAIN.fensterOeffnen(MAIN.viewsChronik.get(MAIN.viewsChronik.size() - 2));
     }
 
     @FXML

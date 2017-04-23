@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0"
-      prefWidth="1280.0" stylesheets="@../View/CSSFiles/Style.css" xmlns="http://javafx.com/javafx/8"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BuchenController">
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0" prefWidth="1280.0" stylesheets="@../View/CSSFiles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BuchenController">
     <children>
         <StackPane prefHeight="1024.0" prefWidth="1280.0">
             <children>
@@ -22,18 +24,13 @@
                 </MediaView  -->
                 <AnchorPane prefHeight="119.0" prefWidth="1280.0">
                     <children>
-                        <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="386.0" spacing="20.0"
-                              AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="5.0"
-                              AnchorPane.topAnchor="5.0">
+                        <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="386.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
                             <children>
-                                <Button fx:id="RegistrierenButton" mnemonicParsing="false"
-                                        onAction="#RegistrierenAction" prefHeight="65.0" prefWidth="200.0"
-                                        text="Registrieren"/>
-                                <Button fx:id="AnmeldenButton" mnemonicParsing="false" onAction="#AnmeldenAction"
-                                        prefHeight="65.0" prefWidth="200.0" text="Anmelden"/>
+                                <Button fx:id="RegistrierenButton" mnemonicParsing="false" onAction="#RegistrierenAction" prefHeight="65.0" prefWidth="200.0" text="Registrieren" />
+                                <Button fx:id="AnmeldenButton" mnemonicParsing="false" onAction="#AnmeldenAction" prefHeight="65.0" prefWidth="200.0" text="Anmelden" />
                             </children>
                             <padding>
-                                <Insets right="20.0" top="20.0"/>
+                                <Insets right="20.0" top="20.0" />
                             </padding>
                         </HBox>
                     </children>
@@ -42,55 +39,40 @@
                     <children>
                         <Label fx:id="FlugsuchenText" text="Flüge suchen" textFill="#fffbfb">
                             <font>
-                                <Font size="73.0"/>
+                                <Font size="73.0" />
                             </font>
                         </Label>
                         <StackPane prefHeight="150.0" prefWidth="200.0">
                             <children>
                                 <AnchorPane prefHeight="300.0" prefWidth="870.0" StackPane.alignment="CENTER">
                                     <children>
-                                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#10018080" height="310.0"
-                                                   stroke="BLACK" strokeType="INSIDE" width="870.0"/>
+                                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#10018080" height="310.0" stroke="BLACK" strokeType="INSIDE" width="870.0" />
                                     </children>
                                     <StackPane.margin>
-                                        <Insets/>
+                                        <Insets />
                                     </StackPane.margin>
                                 </AnchorPane>
                                 <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                     <children>
-                                        <TabPane prefHeight="300.0" prefWidth="870.0" tabClosingPolicy="ALL_TABS"
-                                                 tabMaxHeight="1000.0" tabMaxWidth="1000.0" tabMinHeight="30.0"
-                                                 tabMinWidth="415.0">
+                                        <TabPane prefHeight="300.0" prefWidth="870.0" tabClosingPolicy="ALL_TABS" tabMaxHeight="1000.0" tabMaxWidth="1000.0" tabMinHeight="30.0" tabMinWidth="415.0">
                                             <tabs>
                                                 <Tab closable="false" text="Hin- &amp; Rückflug">
                                                     <content>
                                                         <VBox prefHeight="300.0" prefWidth="1100.0">
                                                             <children>
-                                                                <HBox prefHeight="100.0" prefWidth="1000.0"
-                                                                      spacing="50.0">
+                                                                <HBox prefHeight="100.0" prefWidth="1000.0" spacing="50.0">
                                                                     <children>
-                                                                        <TextField fx:id="FlugAbFeld" prefHeight="50.0"
-                                                                                   prefWidth="400.0"
-                                                                                   promptText="Flug ab"/>
-                                                                        <TextField fx:id="FlugNachFeld"
-                                                                                   prefHeight="50.0" prefWidth="400.0"
-                                                                                   promptText="Flug nach"/>
+                                                                        <TextField fx:id="FlugAbFeld" prefHeight="50.0" prefWidth="400.0" promptText="Flug ab" />
+                                                                        <TextField fx:id="FlugNachFeld" prefHeight="50.0" prefWidth="400.0" promptText="Flug nach" />
                                                                     </children>
                                                                 </HBox>
-                                                                <HBox prefHeight="100.0" prefWidth="1000.0"
-                                                                      spacing="50.0">
+                                                                <HBox prefHeight="100.0" prefWidth="1000.0" spacing="50.0">
                                                                     <children>
-                                                                        <DatePicker fx:id="DatumHinflug"
-                                                                                    prefHeight="50.0" prefWidth="400.0"
-                                                                                    promptText="Datum Hinflug"
-                                                                                    showWeekNumbers="true"/>
-                                                                        <DatePicker fx:id="DatumRückflug"
-                                                                                    prefHeight="50.0" prefWidth="400.0"
-                                                                                    promptText="Datum Rückflug"/>
+                                                                        <DatePicker fx:id="DatumHinflug" prefHeight="50.0" prefWidth="400.0" promptText="Datum Hinflug" showWeekNumbers="true" />
+                                                                        <DatePicker fx:id="DatumRueckflug" prefHeight="50.0" prefWidth="400.0" promptText="Datum Rückflug" />
                                                                     </children>
                                                                 </HBox>
-                                                                <HBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="68.0"
-                                                                      prefWidth="1010.0" spacing="130.0">
+                                                                <HBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="68.0" prefWidth="1010.0" spacing="130.0">
                                                                     <children>
                                                                         <HBox prefHeight="66.0" prefWidth="322.0">
                                                                             <children>
@@ -99,36 +81,20 @@
                                                                                       <Image url="@../../../Flughafen/src/View/Grafiken/Profilbild.jpg" />
                                                                                    </image>
                                                                                 </ImageView>-->
-                                                                                <Button fx:id="minusButton"
-                                                                                        mnemonicParsing="false"
-                                                                                        onAction="#minusAction"
-                                                                                        prefHeight="65.0"
-                                                                                        prefWidth="95.0" text="-"/>
-                                                                                <TextField fx:id="AnzahlFeld"
-                                                                                           alignment="CENTER"
-                                                                                           prefHeight="65.0"
-                                                                                           prefWidth="86.0" text="1"/>
-                                                                                <Button fx:id="plusButton"
-                                                                                        mnemonicParsing="false"
-                                                                                        onAction="#plusAction"
-                                                                                        prefHeight="65.0"
-                                                                                        prefWidth="95.0" text="+">
+                                                                                <Button fx:id="minusButton" mnemonicParsing="false" onAction="#minusAction" prefHeight="65.0" prefWidth="95.0" text="-" />
+                                                                                <TextField fx:id="AnzahlFeld" alignment="CENTER" prefHeight="65.0" prefWidth="86.0" text="1" />
+                                                                                <Button fx:id="plusButton" mnemonicParsing="false" onAction="#plusAction" prefHeight="65.0" prefWidth="95.0" text="+">
                                                                                     <font>
-                                                                                        <Font size="22.0"/>
+                                                                                        <Font size="22.0" />
                                                                                     </font>
                                                                                 </Button>
                                                                             </children>
                                                                         </HBox>
                                                                         <HBox prefHeight="65.0" prefWidth="410.0">
                                                                             <children>
-                                                                                <Button fx:id="FlugSuchenButton"
-                                                                                        mnemonicParsing="false"
-                                                                                        onAction="#FlugSuchenAction"
-                                                                                        prefHeight="65.0"
-                                                                                        prefWidth="400.0"
-                                                                                        text="Flug suchen">
+                                                                                <Button fx:id="FlugSuchenButton" mnemonicParsing="false" onAction="#FlugSuchenAction" prefHeight="65.0" prefWidth="400.0" text="Flug suchen">
                                                                                     <HBox.margin>
-                                                                                        <Insets/>
+                                                                                        <Insets />
                                                                                     </HBox.margin>
                                                                                 </Button>
                                                                             </children>
@@ -137,7 +103,7 @@
                                                                 </HBox>
                                                             </children>
                                                             <padding>
-                                                                <Insets left="10.0" top="10.0"/>
+                                                                <Insets left="10.0" top="10.0" />
                                                             </padding>
                                                         </VBox>
                                                     </content>
@@ -146,71 +112,40 @@
                                                     <content>
                                                         <VBox prefHeight="279.0" prefWidth="1164.0">
                                                             <children>
-                                                                <HBox prefHeight="100.0" prefWidth="1000.0"
-                                                                      spacing="50.0">
+                                                                <HBox prefHeight="100.0" prefWidth="1000.0" spacing="50.0">
                                                                     <children>
-                                                                        <TextField fx:id="FlugAbFeld2" prefHeight="50.0"
-                                                                                   prefWidth="400.0"
-                                                                                   promptText="Flug ab"/>
-                                                                        <TextField fx:id="FlugNachFeld2"
-                                                                                   prefHeight="50.0" prefWidth="400.0"
-                                                                                   promptText="Flug nach"/>
+                                                                        <TextField fx:id="FlugAbFeld2" prefHeight="50.0" prefWidth="400.0" promptText="Flug ab" />
+                                                                        <TextField fx:id="FlugNachFeld2" prefHeight="50.0" prefWidth="400.0" promptText="Flug nach" />
                                                                     </children>
                                                                 </HBox>
-                                                                <HBox prefHeight="100.0" prefWidth="1000.0"
-                                                                      spacing="50.0">
+                                                                <HBox prefHeight="100.0" prefWidth="1000.0" spacing="50.0">
                                                                     <children>
-                                                                        <DatePicker fx:id="DatumHinflug2"
-                                                                                    prefHeight="50.0" prefWidth="850.0"
-                                                                                    promptText="Datum Hinflug"
-                                                                                    showWeekNumbers="true"/>
+                                                                        <DatePicker fx:id="DatumHinflug2" prefHeight="50.0" prefWidth="850.0" promptText="Datum Hinflug" showWeekNumbers="true" />
                                                                     </children>
                                                                 </HBox>
                                                                 <HBox prefHeight="66.0" prefWidth="322.0">
                                                                     <children>
-                                                                        <HBox prefHeight="65.0" prefWidth="410.0"
-                                                                              spacing="200.0">
+                                                                        <HBox prefHeight="65.0" prefWidth="410.0" spacing="200.0">
                                                                             <children>
-                                                                                <HBox prefHeight="66.0"
-                                                                                      prefWidth="600.0">
+                                                                                <HBox prefHeight="66.0" prefWidth="600.0">
                                                                                     <children>
                                                                                         <!--<ImageView fitHeight="66.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
                                                                                            <image>
                                                                                               <Image url="@../../../Flughafen/src/View/Grafiken/Profilbild.jpg" />
                                                                                            </image>
                                                                                         </ImageView>-->
-                                                                                        <Button fx:id="NurHinflugminusButton"
-                                                                                                mnemonicParsing="false"
-                                                                                                onAction="#NurHinflugminusAction"
-                                                                                                prefHeight="65.0"
-                                                                                                prefWidth="90.0"
-                                                                                                text="-"/>
-                                                                                        <TextField
-                                                                                                fx:id="NurHinflugAnzahlFeld"
-                                                                                                alignment="CENTER"
-                                                                                                prefHeight="65.0"
-                                                                                                prefWidth="86.0"
-                                                                                                text="1"/>
-                                                                                        <Button fx:id="NurHinflugplusButton"
-                                                                                                mnemonicParsing="false"
-                                                                                                onAction="#NurHinflugplusAction"
-                                                                                                prefHeight="65.0"
-                                                                                                prefWidth="90.0"
-                                                                                                text="+"/>
+                                                                                        <Button fx:id="NurHinflugminusButton" mnemonicParsing="false" onAction="#NurHinflugminusAction" prefHeight="65.0" prefWidth="90.0" text="-" />
+                                                                                        <TextField fx:id="NurHinflugAnzahlFeld" alignment="CENTER" prefHeight="65.0" prefWidth="86.0" text="1" />
+                                                                                        <Button fx:id="NurHinflugplusButton" mnemonicParsing="false" onAction="#NurHinflugplusAction" prefHeight="65.0" prefWidth="90.0" text="+" />
                                                                                     </children>
                                                                                 </HBox>
                                                                             </children>
                                                                         </HBox>
                                                                         <HBox prefHeight="66.0" prefWidth="500.0">
                                                                             <children>
-                                                                                <Button fx:id="FlugSuchenButton2"
-                                                                                        mnemonicParsing="false"
-                                                                                        onAction="#FlugSuchenAction2"
-                                                                                        prefHeight="50.0"
-                                                                                        prefWidth="400.0"
-                                                                                        text="Flug suchen">
+                                                                                <Button fx:id="FlugSuchenButton2" mnemonicParsing="false" onAction="#FlugSuchenAction2" prefHeight="50.0" prefWidth="400.0" text="Flug suchen">
                                                                                     <HBox.margin>
-                                                                                        <Insets left="66.0"/>
+                                                                                        <Insets left="66.0" />
                                                                                     </HBox.margin>
                                                                                 </Button>
                                                                             </children>
@@ -219,14 +154,14 @@
                                                                 </HBox>
                                                             </children>
                                                             <padding>
-                                                                <Insets left="10.0" top="10.0"/>
+                                                                <Insets left="10.0" top="10.0" />
                                                             </padding>
                                                         </VBox>
                                                     </content>
                                                 </Tab>
                                             </tabs>
                                             <opaqueInsets>
-                                                <Insets/>
+                                                <Insets />
                                             </opaqueInsets>
                                         </TabPane>
                                     </children>
@@ -235,7 +170,7 @@
                         </StackPane>
                     </children>
                     <StackPane.margin>
-                        <Insets left="200.0" top="250.0"/>
+                        <Insets left="200.0" top="250.0" />
                     </StackPane.margin>
                 </VBox>
             </children>
