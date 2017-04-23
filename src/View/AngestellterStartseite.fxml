@@ -35,8 +35,8 @@
                         <HBox alignment="CENTER" prefHeight="111.0" prefWidth="1280.0" spacing="20.0">
                             <children>
                                 <Label fx:id="VornameText" text="Vorname" textFill="#fcfafa"/>
-                                <TextField id="txtKundenListeVorname" fx:id="VornameFeld" prefHeight="65.0"
-                                           prefWidth="250.0"/>
+                                <TextField id="txtKundenListeVorname" fx:id="VornameFeld" alignment="CENTER"
+                                           prefHeight="65.0" prefWidth="250.0"/>
                                 <Label fx:id="NachnameText" text="Nachname" textFill="#fcfafa"/>
                                 <TextField id="txtKundenListeNachname" fx:id="NachnameFeld" alignment="CENTER"
                                            layoutY="50.0" prefHeight="65.0" prefWidth="250.0"/>

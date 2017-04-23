@@ -66,6 +66,12 @@
                                                 <Font size="30.0" />
                                             </font>
                                         </Button>
+                                        <Button fx:id="zurueckButton" mnemonicParsing="false" onAction="#zurueckAction"
+                                                prefHeight="65.0" prefWidth="300.0" text="Zurück">
+                                            <font>
+                                                <Font size="30.0"/>
+                                            </font>
+                                        </Button>
                                     </children>
                                 </VBox>
                                 <TableView fx:id="flugTabelle" prefHeight="686.0" prefWidth="901.0">

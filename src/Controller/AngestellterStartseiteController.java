@@ -107,7 +107,7 @@ public class AngestellterStartseiteController {
                     }
                 }
             } else {
-                VornameFeld.setText("Pflichtfeld!");
+                VornameFeld.setPromptText("Pflichtfeld!");
             }
         } catch (final NutzerDoesNotExistException e) {
             System.out.println("Nutzer nicht gefunden!");
