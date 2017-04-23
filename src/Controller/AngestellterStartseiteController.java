@@ -91,6 +91,10 @@ public class AngestellterStartseiteController {     //TODO Vorname, Nachname Gr�
     @FXML
     void KundenSuchenAction(ActionEvent event) {
 
+        //TODO suchen --> wirft exception
+        //TODO Datum
+        //TODO a poor fääle testen de exceptions werfen
+
         ArrayList<Anwender> zutreffendeAnwender = new ArrayList<>();
 
         if (!VornameFeld.getText().equals("") && NachnameFeld.getText().equals("")) {

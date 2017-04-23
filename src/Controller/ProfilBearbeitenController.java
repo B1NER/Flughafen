@@ -10,8 +10,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.Locale;
 
 public class ProfilBearbeitenController {
 
@@ -60,6 +64,15 @@ public class ProfilBearbeitenController {
     public void initialize() {
         VornameFeld.setText(zuBearbeitenderMensch.getVorname());
         NachnameFeld.setText(zuBearbeitenderMensch.getNachname());
+        try {
+            String target = zuBearbeitenderMensch.getGeburtsdatum();
+            DateFormat df = new SimpleDateFormat("EEE MMM dd kk:mm:ss z yyyy", Locale.ENGLISH);
+            Date result =  df.parse(target);
+            GeburtsdatumFeld.setValue(result.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+        }catch(ParseException e){
+            System.out.println("Parseexception");
+        }
+
         Password.setText(zuBearbeitenderMensch.getPasswort());
         Password2Feld.setText(zuBearbeitenderMensch.getPasswort());
     }
