@@ -9,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import javax.swing.text.View;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -18,6 +20,9 @@ public class MAIN extends Application {
 
     static private Stage primaryStage;
     static private HashMap<Views, String> viewPfad = new HashMap<>();
+
+    //bei jedem neuem Fensteröffnen muss das fenster in diese Chronik eingetragen werden!
+    static public ArrayList<Views> viewsChronik = new ArrayList<>();
 
 
     public void start(Stage primaryStage) {
@@ -30,6 +35,7 @@ public class MAIN extends Application {
         }
 
         MAIN.fensterOeffnen(Views.KundenProfil);*/
+
 
         MAIN.fensterOeffnen(Views.Buchen);
     }
@@ -63,38 +69,10 @@ public class MAIN extends Application {
         try {
 
             FXMLLoader loader = new FXMLLoader(MAIN.class.getResource(viewPfad.get(view)));
+
+            viewsChronik.add(view);
+
             Pane pane = loader.load();
-
-            if (view.toString().equals("AdminStartseiteController")) {
-                AdminStartseiteController controller = loader.getController();
-            } else if (view.toString().equals("AngestellterStartseiteController")) {
-                AngestellterStartseiteController controller = loader.getController();
-            } else if (view.toString().equals("AnmeldenController")) {
-                AnmeldenController controller = loader.getController();
-            } else if (view.toString().equals("BuchenController")) {
-                BuchenController controller = loader.getController();
-            } else if (view.toString().equals("BuchungBearbeitenController")) {
-                BuchungBearbeitenController controller = loader.getController();
-            } else if (view.toString().equals("BuchungszusammenfassungController")) {
-                BuchungszusammenfassungController controller = loader.getController();
-            } else if (view.toString().equals("FluglisteController")) {
-                FluglisteController controller = loader.getController();
-            } else if (view.toString().equals("GepaeckBearbeitenController")) {
-                GepaeckBearbeitenController controller = loader.getController();
-            } else if (view.toString().equals("KundenProfilControler")) {
-                KundenProfilControler controller = loader.getController();
-            } else if (view.toString().equals("ProfilBearbeitenController")) {
-                ProfilBearbeitenController controller = loader.getController();
-            } else if (view.toString().equals("RegistrierenController")) {
-                RegistrierenController controller = loader.getController();
-            } else if (view.toString().equals("ZahlungController")) {
-                ZahlungController controller = loader.getController();
-            } else if (view.toString().equals("ZuBearbeitendeBuchungFindenConroller")) {
-                ZuBearbeitendeBuchungFindenConroller controller = loader.getController();
-            } else if (view.toString().equals("ZuBearbeitendenNutzerFindenConroller")) {
-                ZuBearbeitendenNutzerFindenConroller controller = loader.getController();
-            }
-
             Scene scene = new Scene(pane);
 
             primaryStage.setFullScreen(false);
