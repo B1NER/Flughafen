@@ -74,7 +74,7 @@ public abstract class Verwaltung {
             Date ankunftdatum = new Date(Integer.parseInt(zeile[6].split("\\.")[2]) - 1900, Integer.parseInt(zeile[6].split("\\.")[1]) - 1, Integer.parseInt(zeile[6].split("\\.")[0]), Integer.parseInt(zeile[7].split(":")[0]), Integer.parseInt(zeile[7].split(":")[1]));
             Flug eingelesenerFlug = new Flug(zeile[0], zeile[1], zeile[2], zeile[3], Integer.parseInt(zeile[8]), Integer.parseInt(zeile[9]), abflugdatum, ankunftdatum, 100);
             Fluege.addFlug(eingelesenerFlug);
-            System.out.println("Fluege angelegt:" + eingelesenerFlug);
+            System.out.println("Fluege angelegt:" + eingelesenerFlug.toStringLog());
         }
         s.close();
     }
@@ -175,7 +175,7 @@ public abstract class Verwaltung {
             }
 
             Gepaecke.addGepaeck(eingelesenesGepaeck);
-            System.out.println("Gepaeck angelegt:" + eingelesenesGepaeck);
+            System.out.println("Gepaeck angelegt:" + eingelesenesGepaeck.toStringLog());
 
         }
         s.close();
@@ -299,7 +299,7 @@ public abstract class Verwaltung {
             bw.write(Anwenders.getAnwenders().get(i).getPasswort());
             bw.write(';');
             bw.write('\n');
-            System.out.println("Speichern: " + Anwenders.getAnwenders().get(i));
+            System.out.println("Speichern: " + Anwenders.getAnwenders().get(i).toStringLog());
         }
         bw.close();
     }
@@ -322,7 +322,7 @@ public abstract class Verwaltung {
             bw.write(String.valueOf(Gepaecke.getGepaecke().get(i).getGewicht()));
             bw.write(";");
             bw.write(Gepaecke.getGepaecke().get(i).getGepaeckTyp().toString());
-            System.out.println("Speichern: " + Gepaecke.getGepaecke().get(i));
+            System.out.println("Speichern: " + Gepaecke.getGepaecke().get(i).toStringLog());
         }
         bw.close();
     }
@@ -369,7 +369,7 @@ public abstract class Verwaltung {
         if (angemeldeter instanceof Angestellter) {
             anwenderAnestellten.put(a, (Angestellter) angemeldeter);
         }
-        System.out.println("Anwender angelegt:" + a);
+        System.out.println("Anwender angelegt:" + a.toStringLog());
     }
 
     public static void adminErstellten(String vorname, String nachname, String geburtsdatum, int passnummer, String eMail, String passwort) throws InvalidEmailException, EmailIsAlreadyUsedException {
@@ -518,6 +518,10 @@ public abstract class Verwaltung {
         return Buchungen.getBuchungenByAnwender(anwender);
     }
 
+    public static ArrayList<Buchung> getBuchungen(){
+        return Buchungen.getBuchungen();
+    }
+
     //Nutzer Getter
     public static ArrayList<Anwender> getAnwenderByAngestellten(Angestellter angestellter) {
         //AnwenderAngetsellten geändert
@@ -586,6 +590,13 @@ public abstract class Verwaltung {
         return Fluege.getZutreffendeFluege(abflugort, ankunftsort, anzahlSitzplaetze);
     }
 
+    public static ArrayList<Flug> getFluege(){
+        return Fluege.getFluege();
+    }
+
+
+
+
     //Funktionelle Methoden
     public static boolean isAngemeldet() {
         return angemeldeter != null;
@@ -630,6 +641,11 @@ public abstract class Verwaltung {
     public static Mensch getAngemeldeter() {
         return angemeldeter;
     }
+
+    public static ArrayList<Anwender> getAnwender() {
+        return Anwenders.getAnwenders();
+    }
+
 
 
     //Setter

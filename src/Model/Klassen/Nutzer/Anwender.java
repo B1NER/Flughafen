@@ -31,6 +31,11 @@ public class Anwender extends Mensch {
 
     @Override
     public String toString() {
+        return super.getVorname() + " " + super.getNachname();
+    }
+
+
+    public String toStringLog() {
         return "Anwender: " + super.toString() + "anwenderID=" + anwenderID;
     }
 }

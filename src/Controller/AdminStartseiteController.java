@@ -1,23 +1,30 @@
 package Controller;
 
 import Model.Enums.Views;
+import Model.Klassen.Elemente.Flug;
 import Model.Klassen.MAIN;
 import Model.Klassen.Verwaltung.Verwaltung;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
+
+import java.util.ArrayList;
+import java.util.Date;
 
 public class AdminStartseiteController {
 
     @FXML
-    private TableColumn<?, ?> SpalteStart;
+    private TableColumn<Flug, String> SpalteStartort;
 
     @FXML
-    private TableColumn<?, ?> SpalteStatus;
+    private TableColumn<Flug, String> SpalteZielort;
 
     @FXML
     private Button AngestelltehinzufugenButton;
@@ -29,10 +36,10 @@ public class AdminStartseiteController {
     private Button AbmeldenButton;
 
     @FXML
-    private TableColumn<?, ?> SpalteStartOrt;
+    private TableColumn<Flug, Date> SpalteStartzeit;
 
     @FXML
-    private TableColumn<?, ?> SpalteZielOrt;
+    private TableColumn<Flug, Date> SpalteAnkunftszeit;
 
     @FXML
     private Button BenutzerBearbeitenButton;
@@ -41,10 +48,27 @@ public class AdminStartseiteController {
     private VBox AdministartorText;
 
     @FXML
-    private TableView<?> tabelle;
+    private TableView<Flug> tabelle;
 
     @FXML
-    private TableColumn<?, ?> SpalteAnkunft;
+    private TableColumn<Flug, String> SpalteFluggesellschaft;
+
+    @FXML
+    private TableColumn<Flug, Double> SpalteGepaeckskapazitaet;
+
+    @FXML
+    private TableColumn<Flug, Double> SpalteSitzplaetze;
+
+    @FXML
+    private TableColumn<Flug, String> SpaltePreis;
+
+    @FXML
+    private TableColumn<Flug, String> SpalteStatus;
+
+    @FXML
+    private TableColumn<Flug, String> SpalteID;
+
+
 
     @FXML
     private Button BuchungBearbeitenButton;
@@ -53,6 +77,21 @@ public class AdminStartseiteController {
     private TableColumn<?, ?> SpalteFlugID;
 
     public void initialize() {
+        SpalteID.setCellValueFactory(new PropertyValueFactory<Flug, String>("FlugID"));
+        SpalteStartort.setCellValueFactory(new PropertyValueFactory<Flug, String>("abflugort"));
+        SpalteZielort.setCellValueFactory(new PropertyValueFactory<Flug, String>("ankunftsort"));
+        SpalteStartzeit.setCellValueFactory(new PropertyValueFactory<Flug, Date>("abflugzeit"));
+        SpalteAnkunftszeit.setCellValueFactory(new PropertyValueFactory<Flug, Date>("ankunftszeit"));
+        SpalteFluggesellschaft.setCellValueFactory(new PropertyValueFactory<Flug, String>("flugGesellschaft"));
+        SpalteGepaeckskapazitaet.setCellValueFactory(new PropertyValueFactory<Flug, Double>("gepaeckskapazitaet"));
+        SpalteSitzplaetze.setCellValueFactory(new PropertyValueFactory<Flug, Double>("anzahlPlaetze"));
+        SpaltePreis.setCellValueFactory(new PropertyValueFactory<Flug, String>("preisProPerson"));
+        SpalteStatus.setCellValueFactory(new PropertyValueFactory<Flug, String>("status")); //todo keine ahnung wieso des no net geat
+
+        ArrayList<Flug> alleFluege = Verwaltung.getFluege();
+        ObservableList<Flug> observableList = FXCollections.observableList(alleFluege);
+
+        tabelle.setItems(observableList);
     }
 
 

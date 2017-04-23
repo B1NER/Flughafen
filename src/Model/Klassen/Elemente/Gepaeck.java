@@ -53,6 +53,10 @@ public class Gepaeck {
 
     @Override
     public String toString() {
+        return gepaeckTyp+ " - " +gewicht;
+    }
+
+    public String toStringLog() {
         return "Gepaeck{" +
                 "gepaeckID=" + gepaeckID +
                 ", gepaeckTyp=" + gepaeckTyp +
