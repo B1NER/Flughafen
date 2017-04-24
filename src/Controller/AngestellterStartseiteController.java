@@ -80,7 +80,7 @@ public class AngestellterStartseiteController {
             System.out.println("Es gibt keinen Ergebnisse mit diesen Eigenschaften");
 
             Label keinErgebnis = new Label("Kein Ergebnis gefunden!");
-            keinErgebnis.setId("keinErgebnis");     //TODO LABEL wird nicht gesetzt
+            keinErgebnis.setId("keinErgebnis");
             Tabelle.setPlaceholder(keinErgebnis);
         }
     }
@@ -88,10 +88,6 @@ public class AngestellterStartseiteController {
 
     @FXML
     void KundenSuchenAction(ActionEvent event) {
-
-        //TODO suchen --> content in tabelle
-        //TODO Datum
-
         ArrayList<Anwender> zutreffendeAnwender = new ArrayList<>();
 
         if (!VornameFeld.getText().equals("") && NachnameFeld.getText().equals("")) {
@@ -126,7 +122,7 @@ public class AngestellterStartseiteController {
             System.out.println("Es gibt keinen Ergebnisse mit diesen Eigenschaften");
 
             Label keinErgebnis = new Label("Kein Ergebnis gefunden!");
-            keinErgebnis.setId("keinErgebnis");     //TODO LABEL wird nicht gesetzt
+            keinErgebnis.setId("keinErgebnis");
             Tabelle.setPlaceholder(keinErgebnis);
         }
     }
@@ -141,8 +137,8 @@ public class AngestellterStartseiteController {
     @FXML
     void KundebearbeitenAction(ActionEvent event) {
         if(Tabelle.getSelectionModel().getSelectedItem() != null) {
-            ProfilBearbeitenController.setZuBearbeitenderMensch(Tabelle.getSelectionModel().getSelectedItem());
-            MAIN.fensterOeffnen(Views.ProfilBearbeiten);
+            KundenProfilControler.setAnwender(Tabelle.getSelectionModel().getSelectedItem());
+            MAIN.fensterOeffnen(Views.KundenProfil);
         }
     }
 

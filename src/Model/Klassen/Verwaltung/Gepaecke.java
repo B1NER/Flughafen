@@ -24,7 +24,7 @@ public abstract class Gepaecke {
         gepaecke.remove(gepaeck);
     }
 
-    public static void gepeckBearbeiten(Gepaeck gepaeck, double neuesGewicht, Gepaecktypen gepaeckTyp) throws ToHighWeightException {   //TODO Methode funktioniert nicht!
+    public static void gepeckBearbeiten(Gepaeck gepaeck, double neuesGewicht, Gepaecktypen gepaeckTyp) throws ToHighWeightException {
         gepaeck.setGepaeckTyp(gepaeckTyp);
         String flugID = "";
 

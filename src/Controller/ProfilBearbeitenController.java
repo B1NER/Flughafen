@@ -80,9 +80,11 @@ public class ProfilBearbeitenController {
     @FXML
     void AbbrechenAction(ActionEvent event) {
         if(Verwaltung.getAngemeldeter() instanceof Administrator){
-            MAIN.fensterOeffnen(Views.ZuBearbeitendenNutzerFinden);
+            MAIN.viewsChronik.pop();
+            MAIN.fensterOeffnen(MAIN.viewsChronik.pop());
         }else if(Verwaltung.getAngemeldeter() instanceof Angestellter){
-            MAIN.fensterOeffnen(Views.AngestellterStartseite);
+            MAIN.viewsChronik.pop();
+            MAIN.fensterOeffnen(MAIN.viewsChronik.pop());
         }else{
             MAIN.fensterOeffnen(Views.KundenProfil);
         }
@@ -96,9 +98,11 @@ public class ProfilBearbeitenController {
             zuBearbeitenderMensch.setGeburtsdatum(Date.from(GeburtsdatumFeld.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()).toString());
             zuBearbeitenderMensch.setPasswort(Password.getText());
             if(Verwaltung.getAngemeldeter() instanceof Administrator){
-                MAIN.fensterOeffnen(Views.ZuBearbeitendenNutzerFinden);
+                MAIN.viewsChronik.pop();
+                MAIN.fensterOeffnen(MAIN.viewsChronik.pop());
             }else if(Verwaltung.getAngemeldeter() instanceof Angestellter){
-                MAIN.fensterOeffnen(Views.AngestellterStartseite);
+                MAIN.viewsChronik.pop();
+                MAIN.fensterOeffnen(MAIN.viewsChronik.pop());
             }else{
                 MAIN.fensterOeffnen(Views.KundenProfil);
             }

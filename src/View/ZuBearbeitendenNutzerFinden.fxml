@@ -44,6 +44,9 @@
                                     <HBox.margin>
                                         <Insets />
                                     </HBox.margin>
+                           <font>
+                              <Font size="25.0" />
+                           </font>
                                 </TextField>
                                 <Label fx:id="NachnameText" alignment="TOP_CENTER" prefHeight="50.0" text="Nachname:" textFill="#fffefe">
                                     <font>
@@ -57,8 +60,14 @@
                                     <HBox.margin>
                                         <Insets />
                                     </HBox.margin>
+                           <font>
+                              <Font size="25.0" />
+                           </font>
                                 </TextField>
-                                <Button fx:id="SuchenButton" mnemonicParsing="false" onAction="#SuchenAction" prefHeight="50.0" prefWidth="200.0" text="Suchen" />
+                                <Button fx:id="SuchenButton" mnemonicParsing="false" onAction="#SuchenAction" prefHeight="50.0" prefWidth="200.0" text="Suchen">
+                           <font>
+                              <Font size="25.0" />
+                           </font></Button>
                             </children>
                         </HBox>
                         <TableView fx:id="tabelle" prefHeight="631.0" prefWidth="1280.0">
@@ -70,6 +79,7 @@
                                 <TableColumn fx:id="SpalteNachname" prefWidth="327.0" text="Nachname" />
                                 <TableColumn fx:id="SpalteGeburtsdatum" prefWidth="312.0" text="Geburtsdatum" />
                                 <TableColumn fx:id="SpaltEmail" prefWidth="115.0" text="E-Mail" />
+                        <TableColumn fx:id="spalteTyp" prefWidth="75.0" text="Typ" />
                             </columns>
                             <VBox.margin>
                                 <Insets top="20.0" />

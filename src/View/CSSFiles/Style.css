@@ -26,12 +26,10 @@
 
 #plusButton {
     -fx-border-radius: 0px, 0px, 0px, 0px;
-    -fx-font-weight: bold;
 }
 
 #minusButton {
     -fx-border-radius: 0px, 0px, 0px, 0px;
-    -fx-font-weight: bold;
 }
 
 .tab-pane .tab-header-area .tab-header-background {

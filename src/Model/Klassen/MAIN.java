@@ -1,7 +1,9 @@
 package Model.Klassen;
 
 import Model.Enums.Views;
+import Model.Klassen.Nutzer.Administrator;
 import Model.Klassen.Verwaltung.Administratoren;
+import Model.Klassen.Verwaltung.Angestellte;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -17,10 +19,15 @@ import java.util.Stack;
  */
 
 //TODO Größen anpassen
-//TODO Konsolenlog doppelte ausgabe fixxen (angelegt)
-//TODO Gepäck löschen, wenn Buchung des Gepäcks gelöscht wurde
-//TODO Flugliste auswählen Hinflug bugt
-
+//TODO TABPane verkleinern
+//TODO Kundenprofil anzeigen wenn keine Buchungen vorhanden sind
+//TODO Plus und Minus auf Buchen View ausbessern
+//TODO Flug bearbeiten Flug bestätigen
+//TODO Admin Buchung bearbeiten Gepaeck To HightWeightException
+//TODO Buchung Erstellt von(Anwendername, Angestelltenname)
+//TODO Buchung finden ohne Kriterien
+//TODO Zahlung Tab stylen
+//TODO Zahlung To Highweight exception
 
 public class MAIN extends Application {
 
@@ -33,15 +40,18 @@ public class MAIN extends Application {
 
     public void start(Stage primaryStage) {
         MAIN.primaryStage = primaryStage;
+        primaryStage.setResizable(false);
         hashmapsFuellen();
-
         /*try {
-            Verwaltung.anmelden(Administratoren.getAdministratorByID(3));
+            //Verwaltung.anmelden(Administratoren.getAdministratorByID(1));
+            Verwaltung.anmelden(Angestellte.getAngestelltenByID(1));
         }catch (final Exception e){
 
-        }*/
+        }
 
-       //MAIN.fensterOeffnen(Views.AdminStartseite);
+        //MAIN.fensterOeffnen(Views.AdminStartseite);
+        MAIN.fensterOeffnen(Views.AngestellterStartseite);*/
+
         MAIN.fensterOeffnen(Views.Buchen);
     }
 

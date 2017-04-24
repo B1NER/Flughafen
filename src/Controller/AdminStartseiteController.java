@@ -123,6 +123,4 @@ public class AdminStartseiteController {
     }
 
 
-    //TODO Buchung durchfüren (Zu Bearbeitenden Nutzer finden --> Button Buchen)
-
 }
