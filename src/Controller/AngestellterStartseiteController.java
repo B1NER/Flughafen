@@ -116,6 +116,11 @@ public class AngestellterStartseiteController {
         observableList = FXCollections.observableList(zutreffendeAnwender);
         Tabelle.setItems(observableList);
 
+        if (VornameFeld.getText().equals("") && NachnameFeld.getText().equals("")) {
+            observableList = FXCollections.observableList(Verwaltung.getAnwenderByAngestellten((Angestellter) Verwaltung.getAngemeldeter()));
+            Tabelle.setItems(observableList);
+        }
+
         if (observableList.size() < 1) {
             observableList.clear();
             Tabelle.setItems(observableList);
@@ -125,6 +130,8 @@ public class AngestellterStartseiteController {
             keinErgebnis.setId("keinErgebnis");
             Tabelle.setPlaceholder(keinErgebnis);
         }
+
+
     }
 
 

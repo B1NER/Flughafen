@@ -3,11 +3,12 @@ package Controller;
 import Model.Enums.Gepaecktypen;
 import Model.Enums.Views;
 import Model.Exceptions.FlugNotFoundException;
+import Model.Exceptions.ToHighWeightException;
 import Model.Klassen.Elemente.Buchung;
-import Model.Klassen.Elemente.Gepaeck;
 import Model.Klassen.MAIN;
 import Model.Klassen.Verwaltung.Buchungen;
 import Model.Klassen.Verwaltung.Fluege;
+import Model.Klassen.Verwaltung.Gepaecke;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -88,25 +89,33 @@ public class BuchungBearbeitenController {
     void BestatigenAction(ActionEvent event) {
         buchung.setBuchungspreis(Double.parseDouble(PreisFeld.getText()));
         buchung.setAnzahlSitzplaetze(Integer.parseInt(AnzahlSitzplatzeFeld.getText()));
-        Gepaeck g = buchung.getGepaeck();
-        g.setGewicht(Double.parseDouble(GewichtGepaeck.getText()));
-        g.setGepaeckTyp(GepaeckTypChoiceBox.getValue());
-        buchung.setGepaeck(g);
+        try {
+            Gepaecke.gepeckBearbeiten(buchung.getGepaeck(), Double.parseDouble(GewichtGepaeck.getText()), GepaeckTypChoiceBox.getValue());
+            GewichtGepaeck.setPromptText("");
+        } catch (ToHighWeightException e) {
+            GewichtGepaeck.setPromptText("Zu hohes Gewicht");
+            GewichtGepaeck.setText("");
+        }
 
         try {
             buchung.setHinflug(Fluege.getFlugByID(HinflugFeld.getText()));
+            HinflugFeld.setPromptText("");
         } catch (FlugNotFoundException e) {
             HinflugFeld.setPromptText("Dieser Flug existiert nicht");
+            HinflugFeld.setText("");
         }
 
         try {
             if (Buchungen.isRueckflug(buchung)) {
                 buchung.setRueckflug(Fluege.getFlugByID(RuckflugFeld.getText()));
+                RuckflugFeld.setPromptText("");
             }
         } catch (FlugNotFoundException e) {
             RuckflugFeld.setPromptText("Dieser Flug existiert nicht");
+            RuckflugFeld.setText("");
         }
-        MAIN.fensterOeffnen(Views.ZuBearbeitendeBuchungFinden);
+        if (!HinflugFeld.getPromptText().equals("Dieser Flug existiert nicht") && !RuckflugFeld.getPromptText().equals("Dieser Flug existiert nicht") && !GewichtGepaeck.getPromptText().equals("Zu hohes Gewicht")) {
+            MAIN.fensterOeffnen(Views.ZuBearbeitendeBuchungFinden);
+        }
     }
-
 }

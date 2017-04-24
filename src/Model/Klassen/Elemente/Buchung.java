@@ -2,7 +2,6 @@ package Model.Klassen.Elemente;
 
 
 import Model.Klassen.Nutzer.Anwender;
-import Model.Klassen.Verwaltung.Anwenders;
 import Model.Klassen.Verwaltung.Buchungen;
 
 /**
@@ -18,6 +17,7 @@ public class Buchung {
     private Gepaeck gepaeck;
     private double buchungspreis;
     private boolean createdByAnwender; //1 = Anwender hat gbucht = true     0 = Angestellter hat gebucht = false
+    private String createdBy;
 
 
     public Buchung(int buchungsID, Flug hinflug, Flug rueckflug, Anwender anwender, int anzahlSitzplaetze, Gepaeck gepaeck, double buchungspreis, boolean createdByAnwender){
@@ -97,6 +97,9 @@ public class Buchung {
         return buchungsID;
     }
 
+    public String getCreatedBy() {
+        return createdBy;
+    }
 
     public void setAnwender(Anwender anwender) {
         this.anwender = anwender;
@@ -130,6 +133,9 @@ public class Buchung {
         this.rueckflug = rueckflug;
     }
 
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
 
     @Override
     public String toString() {

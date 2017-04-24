@@ -17,15 +17,6 @@ import java.util.Stack;
  */
 
 //TODO Größen anpassen
-//TODO TABPane verkleinern
-//TODO Kundenprofil anzeigen wenn keine Buchungen vorhanden sind
-//TODO Plus und Minus auf Buchen View ausbessern
-//TODO Flug bearbeiten Flug bestätigen
-//TODO Admin Buchung bearbeiten Gepaeck To HightWeightException
-//TODO Buchung Erstellt von(Anwendername, Angestelltenname)
-//TODO Buchung finden ohne Kriterien
-//TODO Zahlung Tab stylen
-//TODO Zahlung To Highweight exception
 
 public class MAIN extends Application {
 

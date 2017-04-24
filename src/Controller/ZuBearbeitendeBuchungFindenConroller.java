@@ -1,9 +1,7 @@
 package Controller;
 
 import Model.Enums.Views;
-import Model.Exceptions.NutzerDoesNotExistException;
 import Model.Klassen.Elemente.Buchung;
-import Model.Klassen.Elemente.Flug;
 import Model.Klassen.MAIN;
 import Model.Klassen.Nutzer.Angestellter;
 import Model.Klassen.Nutzer.Anwender;
@@ -16,10 +14,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.media.MediaView;
-import sun.applet.Main;
 
-import javax.swing.text.View;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ZuBearbeitendeBuchungFindenConroller {
 
@@ -93,7 +90,7 @@ public class ZuBearbeitendeBuchungFindenConroller {
     private TableColumn<Buchung, Double> SpaltePreis;
 
     @FXML
-    private TableColumn<Buchung, Boolean> SpaltebyAngestellter;
+    private TableColumn<Buchung, String> SpaltebyAngestellter;
 
     @FXML
     private TextField VornameFeld;
@@ -105,20 +102,30 @@ public class ZuBearbeitendeBuchungFindenConroller {
     private ArrayList<Anwender> anwenders = Verwaltung.getAnwender();
 
     public void initialize() {
+        for (int i = 0; i < Verwaltung.getBuchungen().size(); i++) {
+                if (!Verwaltung.getBuchungen().get(i).isCreatedByAnwender()) {
+                    for (HashMap.Entry<Anwender, Angestellter> h : Verwaltung.getAnwenderAnestellten().entrySet()) {
+                        if (h.getKey().equals(Verwaltung.getBuchungen().get(i).getAnwender())) {
+                            Verwaltung.getBuchungen().get(i).setCreatedBy(h.getValue().getVorname() + " " + h.getValue().getNachname());
+                        }
+                    }
+
+                }
+            }
         SpalteHinflug.setCellValueFactory(new PropertyValueFactory<Buchung, String>("hinflug"));
         SpalteRueckflug.setCellValueFactory(new PropertyValueFactory<Buchung, String>("rueckflug"));
         SpalteAnwender.setCellValueFactory(new PropertyValueFactory<Buchung, Anwender>("anwender"));
         SpalteSitzplaetze.setCellValueFactory(new PropertyValueFactory<Buchung, String>("anzahlSitzplaetze"));
         SpalteGepaeck.setCellValueFactory(new PropertyValueFactory<Buchung, String>("gepaeck"));
         SpaltePreis.setCellValueFactory(new PropertyValueFactory<Buchung, Double>("buchungspreis"));
-        SpaltebyAngestellter.setCellValueFactory(new PropertyValueFactory<Buchung, Boolean>("createdByAnwender"));
+        SpaltebyAngestellter.setCellValueFactory(new PropertyValueFactory<Buchung, String>("createdBy"));
 
         observableList = FXCollections.observableList(Verwaltung.getBuchungen());
         if (observableList.size() == 0) {
-            System.out.println("Der Anwender hat keine Kunden!");
-            Label keineFluege = new Label("Keine Anwender gefunden!");
-            keineFluege.setId("keineFluegeGefunden");
-            tabelle.setPlaceholder(keineFluege);
+            System.out.println("Keine Buchungen vorhanden");
+            Label keinErgebnis = new Label("Keine Buchungen vorhanden!");
+            keinErgebnis.setId("keinErgebnis");
+            tabelle.setPlaceholder(keinErgebnis);
         }
         tabelle.setItems(observableList);
     }
@@ -131,7 +138,7 @@ public class ZuBearbeitendeBuchungFindenConroller {
 
 
         if (!VornameFeld.getText().equals("") && NachnameFeld.getText().equals("")) {
-            //Suche nach Vornamen
+            //Suche nach Vornamenx
             for (int i = 0; i < anwenders.size(); i++) {
                 if (anwenders.get(i).getVorname().toLowerCase().contains(VornameFeld.getText().toLowerCase())) {
                     zutreffendeBuchungen.addAll(Verwaltung.getBuchungenByAnwender(anwenders.get(i)));
@@ -155,6 +162,12 @@ public class ZuBearbeitendeBuchungFindenConroller {
 
         observableList = FXCollections.observableList(zutreffendeBuchungen);
         tabelle.setItems(observableList);
+
+        if (VornameFeld.getText().equals("") && NachnameFeld.getText().equals("")) {
+            observableList = FXCollections.observableList(Verwaltung.getBuchungen());
+            tabelle.setItems(observableList);
+        }
+
         if (observableList.size() < 1) {
             observableList.clear();
             tabelle.setItems(observableList);
@@ -163,6 +176,7 @@ public class ZuBearbeitendeBuchungFindenConroller {
             keinErgebnis.setId("keinErgebnis");
             tabelle.setPlaceholder(keinErgebnis);
         }
+
     }
 
     @FXML
@@ -174,7 +188,7 @@ public class ZuBearbeitendeBuchungFindenConroller {
 
     @FXML
     void BearbeitenAction(ActionEvent event) {
-        if(tabelle.getSelectionModel().getSelectedItem() != null) {
+        if (tabelle.getSelectionModel().getSelectedItem() != null) {
             BuchungBearbeitenController.setBuchung(tabelle.getSelectionModel().getSelectedItem());
             MAIN.fensterOeffnen(Views.BuchungBearbeiten);
         }
