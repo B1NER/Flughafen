@@ -125,20 +125,9 @@ public class KundenProfilControler {    //TODO Kundenprofil View ausbessern
     @FXML
     private Label HinflugText;
 
-    private static Buchung buchung;
-
-    public static void setBuchung(Buchung buchung) {
-        KundenProfilControler.buchung = buchung;
-    }
 
     @FXML
     public void initialize() {
-        try {
-            buchung = Buchungen.getBuchungByID(1);      //todo Buchung setzten indem man von liste auswählt
-        }catch(BuchungDoesNotExistException e){         // in dem fall nur zum TEst
-            System.out.println("Buchung nicht gefunden!");
-        }
-
         VornameFeld.setText(Verwaltung.getAngemeldeter().getVorname());
         NachnameFeld.setText(Verwaltung.getAngemeldeter().getNachname());
         GeburtsdatumFeld.setText(Verwaltung.getAngemeldeter().getGeburtsdatum());

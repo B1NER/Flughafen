@@ -18,13 +18,12 @@ import java.util.Stack;
  * Created by knoll on 21.03.2017.
  */
 
+
 //TODO Größen anpassen
 //TODO Konsolenlog doppelte ausgabe fixxen (angelegt)
 //TODO Zahlung View Gröüen / zurück
-//TODO Emails ausbessern (Angestelltensstartseite, Adminstartseite, ...)
-//TODO viesChronik --> Stack
-//TODO verfalleneFluegeAusblenden --> Flügefinden
 //TODO TABPane verkleinern
+//TODO joni verfallene Flüge nicht anzeigen lassen
 
 public class MAIN extends Application {
 
@@ -39,12 +38,15 @@ public class MAIN extends Application {
         MAIN.primaryStage = primaryStage;
         hashmapsFuellen();
         try {
-            Verwaltung.anmelden(Angestellte.getAngestelltenByID(1));
+            //Verwaltung.anmelden(Angestellte.getAngestelltenByID(1));
+            Verwaltung.anmelden(Administratoren.getAdministratorByID(1));
         }catch (final Exception e){
 
         }
 
-        MAIN.fensterOeffnen(Views.AngestellterStartseite);
+        //MAIN.fensterOeffnen(Views.AngestellterStartseite);
+        MAIN.fensterOeffnen(Views.AdminStartseite);
+
 
         //MAIN.fensterOeffnen(Views.Buchen);
     }
