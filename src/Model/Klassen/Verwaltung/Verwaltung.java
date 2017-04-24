@@ -69,7 +69,7 @@ public abstract class Verwaltung {
     public static void fluegeEinlesen(String pfad) throws IOException {
         Scanner s = new Scanner(new BufferedReader(new FileReader(pfad)));
         while (s.hasNext()) {
-            String[] zeile = s.nextLine().split("\\s+");
+            String[] zeile = s.nextLine().split(";");
             Date abflugdatum = new Date(Integer.parseInt(zeile[4].split("\\.")[2]) - 1900, Integer.parseInt(zeile[4].split("\\.")[1]) - 1, Integer.parseInt(zeile[4].split("\\.")[0]), Integer.parseInt(zeile[5].split(":")[0]), Integer.parseInt(zeile[5].split(":")[1]));
             Date ankunftdatum = new Date(Integer.parseInt(zeile[6].split("\\.")[2]) - 1900, Integer.parseInt(zeile[6].split("\\.")[1]) - 1, Integer.parseInt(zeile[6].split("\\.")[0]), Integer.parseInt(zeile[7].split(":")[0]), Integer.parseInt(zeile[7].split(":")[1]));
             Flug eingelesenerFlug = new Flug(zeile[0], zeile[1], zeile[2], zeile[3], Integer.parseInt(zeile[8]), Integer.parseInt(zeile[9]), abflugdatum, ankunftdatum, 100);
@@ -419,7 +419,6 @@ public abstract class Verwaltung {
         }
         Administrator a = new Administrator(vorname, nachname, geburtsdatum, passnummer, eMail, passwort);
         Administratoren.addAndministrator(a);
-        System.out.println("Administrator angelegt:" + a);
     }
 
     public static void angestellterErstellen(String vorname, String nachname, String geburtsdatum, int passnummer, String eMail, String passwort) throws InvalidEmailException, EmailIsAlreadyUsedException {
@@ -479,7 +478,6 @@ public abstract class Verwaltung {
         if (angemeldeter instanceof Angestellter) {
             anwenderAnestellten.put(anwender, (Angestellter) angemeldeter);
         }
-        System.out.println("Anwender angelegt:" + anwender.toStringLog());
     }
 
     public static void adminErstellten(Administrator administrator) throws InvalidEmailException, EmailIsAlreadyUsedException {
