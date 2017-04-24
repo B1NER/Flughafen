@@ -102,32 +102,23 @@ public class ZuBearbeitendeBuchungFindenConroller {
     private ArrayList<Anwender> anwenders = Verwaltung.getAnwender();
 
     public void initialize() {
-
-
-        try {
-            for (int i = 0; i < Verwaltung.getBuchungen().size(); i++) {
+        for (int i = 0; i < Verwaltung.getBuchungen().size(); i++) {
                 if (!Verwaltung.getBuchungen().get(i).isCreatedByAnwender()) {
-
-
                     for (HashMap.Entry<Anwender, Angestellter> h : Verwaltung.getAnwenderAnestellten().entrySet()) {
                         if (h.getKey().equals(Verwaltung.getBuchungen().get(i).getAnwender())) {
-                            Verwaltung.getBuchungen().get(i).setCreatedBy(h.getValue().getVorname());
+                            Verwaltung.getBuchungen().get(i).setCreatedBy(h.getValue().getVorname() + " " + h.getValue().getNachname());
                         }
                     }
 
                 }
             }
-        } catch (final NullPointerException e) {
-
-        }
-
         SpalteHinflug.setCellValueFactory(new PropertyValueFactory<Buchung, String>("hinflug"));
         SpalteRueckflug.setCellValueFactory(new PropertyValueFactory<Buchung, String>("rueckflug"));
         SpalteAnwender.setCellValueFactory(new PropertyValueFactory<Buchung, Anwender>("anwender"));
         SpalteSitzplaetze.setCellValueFactory(new PropertyValueFactory<Buchung, String>("anzahlSitzplaetze"));
         SpalteGepaeck.setCellValueFactory(new PropertyValueFactory<Buchung, String>("gepaeck"));
         SpaltePreis.setCellValueFactory(new PropertyValueFactory<Buchung, Double>("buchungspreis"));
-        SpaltebyAngestellter.setCellValueFactory(new PropertyValueFactory<Buchung, String>("createdby"));
+        SpaltebyAngestellter.setCellValueFactory(new PropertyValueFactory<Buchung, String>("createdBy"));
 
         observableList = FXCollections.observableList(Verwaltung.getBuchungen());
         if (observableList.size() == 0) {

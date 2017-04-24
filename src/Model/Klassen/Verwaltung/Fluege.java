@@ -50,6 +50,7 @@ public abstract class Fluege {
     }
 
     public static boolean isVerfallen(Flug flug) {
+        //TODO nullpointer bei kundenprofil --> status --> anklicken
         return flug.getAbflugzeit().before(Calendar.getInstance().getTime());
     }
 

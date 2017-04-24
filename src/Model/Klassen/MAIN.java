@@ -16,7 +16,6 @@ import java.util.Stack;
  */
 
 //TODO Größen anpassen
-//TODO Buchung Erstellt von(Anwendername, Angestelltenname)
 
 public class MAIN extends Application {
 
