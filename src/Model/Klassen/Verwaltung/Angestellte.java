@@ -6,6 +6,7 @@ import Model.Klassen.Nutzer.Angestellter;
 import Model.Klassen.Nutzer.Anwender;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by knoll on 27.03.2017.
@@ -21,7 +22,12 @@ public abstract class Angestellte {
     }
 
     public static void removeAngestellter(Angestellter angestellter){
-        //todo Angestelltenanwender herauslöschen + buchung createt by ändern
+        for (HashMap.Entry<Anwender, Angestellter> h : Verwaltung.getAnwenderAnestellten().entrySet()) {
+            if (h.getValue().equals(angestellter)) {
+                Verwaltung.getAnwenderAnestellten().remove(h.getKey());
+            }
+        }
+        System.out.println(Verwaltung.getAnwenderAnestellten());
         angestellte.remove(angestellter);
     }
 

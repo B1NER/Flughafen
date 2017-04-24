@@ -20,6 +20,7 @@ public abstract class Anwenders {
     }
 
     public static void removeAnwender(Anwender anwender) {
+        Verwaltung.getAnwenderAnestellten().remove(anwender);
         anwenders.remove(anwender);
     }
 

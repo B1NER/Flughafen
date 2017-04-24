@@ -75,6 +75,16 @@ public class AngestellterStartseiteController {     //TODO Vorname, Nachname Gr√
 
         observableList = FXCollections.observableList(myAnwenders);
         Tabelle.setItems(observableList);
+
+        if (observableList.size() < 1) {
+            observableList.clear();
+            Tabelle.setItems(observableList);
+            System.out.println("Es gibt keinen Ergebnisse mit diesen Eigenschaften");
+
+            Label keinErgebnis = new Label("Kein Ergebnis gefunden!");
+            keinErgebnis.setId("keinErgebnis");     //TODO LABEL wird nicht gesetzt
+            Tabelle.setPlaceholder(keinErgebnis);
+        }
     }
 
 
@@ -120,7 +130,6 @@ public class AngestellterStartseiteController {     //TODO Vorname, Nachname Gr√
             Label keinErgebnis = new Label("Kein Ergebnis gefunden!");
             keinErgebnis.setId("keinErgebnis");     //TODO LABEL wird nicht gesetzt
             Tabelle.setPlaceholder(keinErgebnis);
-
         }
     }
 

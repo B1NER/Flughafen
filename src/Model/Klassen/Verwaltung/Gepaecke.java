@@ -37,7 +37,7 @@ public abstract class Gepaecke {
         }
 
         try {
-            if (neuesGewicht < 20 * anzahlPersonen && neuesGewicht * anzahlPersonen < Fluege.getVerfuegbarePlaetze(Fluege.getFlugByID(flugID))) {
+            if (neuesGewicht < 20 * anzahlPersonen && anzahlPersonen < Fluege.getVerfuegbarePlaetze(Fluege.getFlugByID(flugID))) {
                 gepaeck.setGewicht(neuesGewicht);
             } else {
                 throw new ToHighWeightException();
