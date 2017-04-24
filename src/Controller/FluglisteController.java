@@ -271,7 +271,11 @@ public class FluglisteController {
     @FXML
     void zurueckAction(ActionEvent event) {
         MAIN.viewsChronik.pop();
-        MAIN.fensterOeffnen(MAIN.viewsChronik.pop());
+        if(MAIN.viewsChronik.peek().equals(Views.Zahlung)){
+            MAIN.fensterOeffnen(Views.Buchen);
+        }else {
+            MAIN.fensterOeffnen(MAIN.viewsChronik.pop());
+        }
     }
 
     @FXML
