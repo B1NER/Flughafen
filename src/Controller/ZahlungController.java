@@ -147,24 +147,40 @@ public class ZahlungController {
 
     public void initialize() {
 
-        NameFeld1.setText(Verwaltung.getAngemeldeter().getVorname());
-        NachnameFeld1.setText(Verwaltung.getAngemeldeter().getNachname());
+        if(Verwaltung.getAngemeldeter() instanceof Anwender) {
+            NameFeld1.setText(Verwaltung.getAngemeldeter().getVorname());
+            NachnameFeld1.setText(Verwaltung.getAngemeldeter().getNachname());
+
+            if (rueckflug == null) {
+                RueckflugTab.setDisable(true);
+            } else {
+                NameFeld2.setText(Verwaltung.getAngemeldeter().getVorname());
+                NachnameFeld2.setText(Verwaltung.getAngemeldeter().getNachname());
+                PreisProPerson2.setText("" + rueckflug.getPreisProPerson() + "€");
+                GepaeckPreisProKilo2.setText("" + gepaecksPreisProKilo + "€");
+                AnzahlPersonen2.setText("" + anzahlPersonen);
+            }
+
+        } else {
+            NameFeld1.setText(anwender.getVorname());
+            NachnameFeld1.setText(anwender.getNachname());
+
+            if (rueckflug == null) {
+                RueckflugTab.setDisable(true);
+            } else {
+                NameFeld2.setText(anwender.getVorname());
+                NachnameFeld2.setText(anwender.getNachname());
+                PreisProPerson2.setText("" + rueckflug.getPreisProPerson() + "€");
+                GepaeckPreisProKilo2.setText("" + gepaecksPreisProKilo + "€");
+                AnzahlPersonen2.setText("" + anzahlPersonen);
+            }
+        }
+
         GepackFeld1.getItems().addAll(Gepaecktypen.Handgepaeck, Gepaecktypen.Koffer, Gepaecktypen.Sportgepaeck, Gepaecktypen.Tasche);
         GepackFeld1.setValue(Gepaecktypen.Handgepaeck);
         PreisProPerson1.setText("" + hinflug.getPreisProPerson() + "€");
         GepaeckPreisProKilo1.setText("" + gepaecksPreisProKilo + "€");
         AnzahlPersonen1.setText("" + anzahlPersonen);
-
-        if (rueckflug == null) {
-            RueckflugTab.setDisable(true);
-        } else {
-            NameFeld2.setText(Verwaltung.getAngemeldeter().getVorname());
-            NachnameFeld2.setText(Verwaltung.getAngemeldeter().getNachname());
-            PreisProPerson2.setText("" + rueckflug.getPreisProPerson() + "€");
-            GepaeckPreisProKilo2.setText("" + gepaecksPreisProKilo + "€");
-            AnzahlPersonen2.setText("" + anzahlPersonen);
-        }
-
 
     }
 

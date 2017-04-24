@@ -5,9 +5,21 @@ import Model.Klassen.MAIN;
 import Model.Klassen.Nutzer.Angestellter;
 import Model.Klassen.Nutzer.Anwender;
 import Model.Klassen.Verwaltung.Verwaltung;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.DoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
+import javafx.scene.paint.Color;
+
+import java.io.File;
 
 /**
  * Created by knoll on 14.04.2017.
@@ -83,9 +95,13 @@ public class BuchenController {
     @FXML
     private Button MeinProfilButton;
 
+    @FXML
+    private StackPane stackPane;
+
 
 
     public void initialize() {
+        setMediaPlayer();
         if (Verwaltung.isAngemeldet()) {
             AnmeldenButton.setVisible(false);
             RegistrierenButton.setVisible(false);
@@ -100,6 +116,30 @@ public class BuchenController {
         DatumHinflug2.setEditable(false);
         FlugAbFeld.setText("London");
         FlugNachFeld.setText("Innsbruck");
+    }
+
+
+    private void setMediaPlayer(){
+        final File f = new File("src\\View\\Grafiken\\wolken.mp4");
+
+        VBox vBox = (VBox) stackPane.getChildren().get(0);
+        stackPane.getChildren().remove(0);
+
+        final Media m = new Media(f.toURI().toString());
+        final MediaPlayer mp = new MediaPlayer(m);
+        final javafx.scene.media.MediaView mv = new MediaView(mp);
+
+        final DoubleProperty width = mv.fitWidthProperty();
+        final DoubleProperty height = mv.fitHeightProperty();
+
+        width.bind(Bindings.selectDouble(mv.sceneProperty(), "width"));
+        height.bind(Bindings.selectDouble(mv.sceneProperty(), "height"));
+
+        mv.setPreserveRatio(true);
+        stackPane.getChildren().add(mv);
+        stackPane.getChildren().add(vBox);
+        mp.play();
+
     }
 
 

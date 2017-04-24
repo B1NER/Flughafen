@@ -1,9 +1,6 @@
 package Model.Klassen;
 
 import Model.Enums.Views;
-import Model.Klassen.Nutzer.Administrator;
-import Model.Klassen.Verwaltung.Administratoren;
-import Model.Klassen.Verwaltung.Angestellte;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

@@ -162,7 +162,6 @@ public class FluglisteController {
             TableRow<Flug> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 1 && (!row.isEmpty())) {
-                    System.out.println("Hinflug");
                     hinflug = row.getItem();
                     ZahlungController.setHinflug(hinflug);
                     ZahlungController.setAnzahlPersonen(Integer.parseInt(PersonenanzahlFeld.getText()));
@@ -175,7 +174,6 @@ public class FluglisteController {
             TableRow<Flug> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 1 && (!row.isEmpty())) {
-                    System.out.println("Rückflug");
                     rueckflug = row.getItem();
                     ZahlungController.setRueckflug(rueckflug);
                     ZahlungController.setAnzahlPersonen(Integer.parseInt(PersonenanzahlFeld.getText()));
@@ -354,7 +352,6 @@ public class FluglisteController {
                     keineBuchungAusgewaehltLabel.setText("Rückflug auswählen!");
                 }
             } else if (!Verwaltung.isAngemeldet()) {
-                //TODO wenn angestellter bereits angemeldet ist!
                 MAIN.fensterOeffnen(Views.Anmelden);
             } else {
                 if(Verwaltung.getAngemeldeter() instanceof Anwender) {

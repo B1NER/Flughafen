@@ -21,9 +21,9 @@ public class BuchungszusammenfassungController {
     public void initialize(){
         ZusammenfassungText.setWrapText(true);
         if(buchung.getRueckflug() == null) {
-            ZusammenfassungText.setText("B1NER- Airlines:\nHinflug: " + buchung.getHinflug().getAbflugort() + " - " + buchung.getHinflug().getAnkunftsort() + "\nPreis: " + buchung.getBuchungspreis() + "€");
+            ZusammenfassungText.setText("Sie fliegen mit: " + buchung.getHinflug().getFlugGesellschaft() + " Airlines\nHinflug: " + buchung.getHinflug().getAbflugort() + " - " + buchung.getHinflug().getAnkunftsort() + "\nPreis: " + buchung.getBuchungspreis() + "€");
         }else {
-            ZusammenfassungText.setText("B1NER- Airlines:\nHinflug: " + buchung.getHinflug().getAbflugort() + " - " + buchung.getHinflug().getAnkunftsort() + "\nRückflug: " + buchung.getRueckflug().getAbflugort() + " - " + buchung.getRueckflug().getAnkunftsort() + "\nPreis: " + buchung.getBuchungspreis() + "e");
+            ZusammenfassungText.setText("Sie fliegen mit: " + buchung.getHinflug().getFlugGesellschaft()+ " Airlines\nHinflug: " + buchung.getHinflug().getAbflugort() + " - " + buchung.getHinflug().getAnkunftsort() + "\nSie fliegen mit: " + buchung.getRueckflug().getFlugGesellschaft() + " Airlines\nRückflug: " + buchung.getRueckflug().getAbflugort() + " - " + buchung.getRueckflug().getAnkunftsort() + "\nPreis: " + buchung.getBuchungspreis() + "€");
         }
     }
 
