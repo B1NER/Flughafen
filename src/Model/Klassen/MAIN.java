@@ -1,9 +1,6 @@
 package Model.Klassen;
 
 import Model.Enums.Views;
-import Model.Klassen.Nutzer.Angestellter;
-import Model.Klassen.Verwaltung.Administratoren;
-import Model.Klassen.Verwaltung.Angestellte;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -38,15 +35,15 @@ public class MAIN extends Application {
     public void start(Stage primaryStage) {
         MAIN.primaryStage = primaryStage;
         hashmapsFuellen();
-        try {
+        /*try {
             Verwaltung.anmelden(Angestellte.getAngestelltenByID(1));
         }catch (final Exception e){
 
         }
 
-        MAIN.fensterOeffnen(Views.AngestellterStartseite);
+        MAIN.fensterOeffnen(Views.AngestellterStartseite);*/
 
-        //MAIN.fensterOeffnen(Views.Buchen);
+        MAIN.fensterOeffnen(Views.Buchen);
     }
 
     public static void main(String[] args) {
