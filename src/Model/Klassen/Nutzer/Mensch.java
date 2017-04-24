@@ -11,6 +11,7 @@ public class Mensch {
     private int passnummer;
     private String email;
     private String passwort;
+    private String typ;
 
 
     public Mensch(String vorname, String nachname, String geburtsdatum, int passnummer, String eMail, String passwort) {
@@ -20,6 +21,13 @@ public class Mensch {
         this.passnummer = passnummer;
         this.email = eMail;
         this.passwort = passwort;
+        if(this instanceof Administrator){
+            typ = "Administrator";
+        }else if(this instanceof Angestellter){
+            typ = "Angestellter";
+        }else{
+            typ = "Anwender";
+        }
     }
 
 
@@ -47,6 +55,9 @@ public class Mensch {
         return vorname;
     }
 
+    public String getTyp() {
+        return typ;
+    }
 
     public void setEmail(String email) {
         this.email = email;
@@ -70,6 +81,10 @@ public class Mensch {
 
     public void setVorname(String vorname) {
         this.vorname = vorname;
+    }
+
+    public void setTyp(String typ) {
+        this.typ = typ;
     }
 
     public String toString() {

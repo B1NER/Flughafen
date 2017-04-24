@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 
-public class FluglisteController {  //TODO Felder auf die Suchkriterien setzen
+public class FluglisteController {
 
 
     @FXML

@@ -70,6 +70,7 @@
                                 <TableColumn fx:id="SpalteNachname" prefWidth="327.0" text="Nachname" />
                                 <TableColumn fx:id="SpalteGeburtsdatum" prefWidth="312.0" text="Geburtsdatum" />
                                 <TableColumn fx:id="SpaltEmail" prefWidth="115.0" text="E-Mail" />
+                        <TableColumn fx:id="spalteTyp" prefWidth="75.0" text="Typ" />
                             </columns>
                             <VBox.margin>
                                 <Insets top="20.0" />
