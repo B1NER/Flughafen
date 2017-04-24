@@ -2,6 +2,8 @@ package Controller;
 
 import Model.Enums.Views;
 import Model.Klassen.MAIN;
+import Model.Klassen.Nutzer.Angestellter;
+import Model.Klassen.Nutzer.Anwender;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -78,15 +80,20 @@ public class BuchenController {
     @FXML
     private TabPane tabPaneOhneRueckflug;
 
-    //TODO mein profil implementieren
+    @FXML
+    private Button MeinProfilButton;
+
 
     public void initialize() {
         if (Verwaltung.isAngemeldet()) {
             AnmeldenButton.setVisible(false);
             RegistrierenButton.setVisible(false);
+            MeinProfilButton.setVisible(true);
+
         } else {
             AnmeldenButton.setVisible(true);
             RegistrierenButton.setVisible(true);
+            MeinProfilButton.setVisible(false);
         }
         DatumHinflug.setEditable(false);
         DatumHinflug2.setEditable(false);
@@ -151,4 +158,14 @@ public class BuchenController {
         NurHinflugAnzahlFeld.setText("" + (Integer.parseInt(NurHinflugAnzahlFeld.getText()) + 1));
     }
 
+    @FXML
+    void MeinProfilAction(ActionEvent event) {
+        if (Verwaltung.getAngemeldeter() instanceof Anwender) {
+            MAIN.fensterOeffnen(Views.KundenProfil);
+        } else if (Verwaltung.getAngemeldeter() instanceof Angestellter) {
+            MAIN.fensterOeffnen(Views.AngestellterStartseite);
+        } else {
+            MAIN.fensterOeffnen(Views.AdminStartseite);
+        }
+    }
 }

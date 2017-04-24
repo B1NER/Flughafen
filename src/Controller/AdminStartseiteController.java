@@ -116,6 +116,9 @@ public class AdminStartseiteController {
         MAIN.fensterOeffnen(Views.Buchen);
     }
 
-    //TODO Buchung durchfüren (Zu Bearbeitenden Nutzer finden --> Button Buchen)
+    @FXML
+    void BuchungDurchfuerhenButtonAction() {
+
+    }
 
 }
