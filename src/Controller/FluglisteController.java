@@ -259,7 +259,7 @@ public class FluglisteController {  //TODO Felder auf die Suchkriterien setzen
             hinflugTabelle.setItems(observableList);
 
             Label keineFluege = new Label("Keine Flüge gefunden!");
-            keineFluege.setId("keineFluegeGefunden");
+            keineFluege.setId("keinErgebnis");
             hinflugTabelle.setPlaceholder(keineFluege);
 
             System.out.println("Flug wurde nicht gefunden");

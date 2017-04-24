@@ -98,7 +98,7 @@ public class ProfilBearbeitenController {
             if(Verwaltung.getAngemeldeter() instanceof Administrator){
                 MAIN.fensterOeffnen(Views.ZuBearbeitendenNutzerFinden);
             }else if(Verwaltung.getAngemeldeter() instanceof Angestellter){
-                MAIN.fensterOeffnen(Views.ZuBearbeitendenNutzerFinden);
+                MAIN.fensterOeffnen(Views.AngestellterStartseite);
             }else{
                 MAIN.fensterOeffnen(Views.KundenProfil);
             }

@@ -269,7 +269,7 @@ public abstract class Verwaltung {
             bw.write(';');
             bw.write(String.valueOf(Administratoren.getAdministratoren().get(i).getPassnummer()));
             bw.write(';');
-            bw.write(Administratoren.getAdministratoren().get(i).geteMail());
+            bw.write(Administratoren.getAdministratoren().get(i).getEmail());
             bw.write(';');
             bw.write(Administratoren.getAdministratoren().get(i).getPasswort());
             bw.write(';');
@@ -292,7 +292,7 @@ public abstract class Verwaltung {
             bw.write(';');
             bw.write(String.valueOf(Angestellte.getAngestellte().get(i).getPassnummer()));
             bw.write(';');
-            bw.write(Angestellte.getAngestellte().get(i).geteMail());
+            bw.write(Angestellte.getAngestellte().get(i).getEmail());
             bw.write(';');
             bw.write(Angestellte.getAngestellte().get(i).getPasswort());
             bw.write(';');
@@ -315,7 +315,7 @@ public abstract class Verwaltung {
             bw.write(';');
             bw.write(String.valueOf(Anwenders.getAnwenders().get(i).getPassnummer()));
             bw.write(';');
-            bw.write(Anwenders.getAnwenders().get(i).geteMail());
+            bw.write(Anwenders.getAnwenders().get(i).getEmail());
             bw.write(';');
             bw.write(Anwenders.getAnwenders().get(i).getPasswort());
             bw.write(';');
@@ -371,17 +371,17 @@ public abstract class Verwaltung {
         }
 
         for (int i = 0; i < Administratoren.getAdministratoren().size(); i++) {
-            if (Administratoren.getAdministratoren().get(i).geteMail().equals(eMail)) {
+            if (Administratoren.getAdministratoren().get(i).getEmail().equals(eMail)) {
                 throw new EmailIsAlreadyUsedException();
             }
         }
         for (int i = 0; i < Angestellte.getAngestellte().size(); i++) {
-            if (Angestellte.getAngestellte().get(i).geteMail().equals(eMail)) {
+            if (Angestellte.getAngestellte().get(i).getEmail().equals(eMail)) {
                 throw new EmailIsAlreadyUsedException();
             }
         }
         for (int i = 0; i < Anwenders.getAnwenders().size(); i++) {
-            if (Anwenders.getAnwenders().get(i).geteMail().equals(eMail)) {
+            if (Anwenders.getAnwenders().get(i).getEmail().equals(eMail)) {
                 throw new EmailIsAlreadyUsedException();
             }
         }
@@ -403,17 +403,17 @@ public abstract class Verwaltung {
         }
 
         for (int i = 0; i < Administratoren.getAdministratoren().size(); i++) {
-            if (Administratoren.getAdministratoren().get(i).geteMail().equals(eMail)) {
+            if (Administratoren.getAdministratoren().get(i).getEmail().equals(eMail)) {
                 throw new EmailIsAlreadyUsedException();
             }
         }
         for (int i = 0; i < Angestellte.getAngestellte().size(); i++) {
-            if (Angestellte.getAngestellte().get(i).geteMail().equals(eMail)) {
+            if (Angestellte.getAngestellte().get(i).getEmail().equals(eMail)) {
                 throw new EmailIsAlreadyUsedException();
             }
         }
         for (int i = 0; i < Anwenders.getAnwenders().size(); i++) {
-            if (Anwenders.getAnwenders().get(i).geteMail().equals(eMail)) {
+            if (Anwenders.getAnwenders().get(i).getEmail().equals(eMail)) {
                 throw new EmailIsAlreadyUsedException();
             }
         }
@@ -432,17 +432,17 @@ public abstract class Verwaltung {
         }
 
         for (int i = 0; i < Administratoren.getAdministratoren().size(); i++) {
-            if (Administratoren.getAdministratoren().get(i).geteMail().equals(eMail)) {
+            if (Administratoren.getAdministratoren().get(i).getEmail().equals(eMail)) {
                 throw new EmailIsAlreadyUsedException();
             }
         }
         for (int i = 0; i < Angestellte.getAngestellte().size(); i++) {
-            if (Angestellte.getAngestellte().get(i).geteMail().equals(eMail)) {
+            if (Angestellte.getAngestellte().get(i).getEmail().equals(eMail)) {
                 throw new EmailIsAlreadyUsedException();
             }
         }
         for (int i = 0; i < Anwenders.getAnwenders().size(); i++) {
-            if (Anwenders.getAnwenders().get(i).geteMail().equals(eMail)) {
+            if (Anwenders.getAnwenders().get(i).getEmail().equals(eMail)) {
                 throw new EmailIsAlreadyUsedException();
             }
         }
@@ -454,24 +454,24 @@ public abstract class Verwaltung {
     public static void anwenderErstellen(Anwender anwender) throws InvalidEmailException, EmailIsAlreadyUsedException {
         //AnwenderAngestellte umgeändert
         Pattern pattern = Pattern.compile("^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$");
-        Matcher matcher = pattern.matcher(anwender.geteMail());
+        Matcher matcher = pattern.matcher(anwender.getEmail());
 
         if (!matcher.matches()) {
             throw new InvalidEmailException();
         }
 
         for (int i = 0; i < Administratoren.getAdministratoren().size(); i++) {
-            if (Administratoren.getAdministratoren().get(i).geteMail().equals(anwender.geteMail())) {
+            if (Administratoren.getAdministratoren().get(i).getEmail().equals(anwender.getEmail())) {
                 throw new EmailIsAlreadyUsedException();
             }
         }
         for (int i = 0; i < Angestellte.getAngestellte().size(); i++) {
-            if (Angestellte.getAngestellte().get(i).geteMail().equals(anwender.geteMail())) {
+            if (Angestellte.getAngestellte().get(i).getEmail().equals(anwender.getEmail())) {
                 throw new EmailIsAlreadyUsedException();
             }
         }
         for (int i = 0; i < Anwenders.getAnwenders().size(); i++) {
-            if (Anwenders.getAnwenders().get(i).geteMail().equals(anwender.geteMail())) {
+            if (Anwenders.getAnwenders().get(i).getEmail().equals(anwender.getEmail())) {
                 throw new EmailIsAlreadyUsedException();
             }
         }
@@ -485,24 +485,24 @@ public abstract class Verwaltung {
     public static void adminErstellten(Administrator administrator) throws InvalidEmailException, EmailIsAlreadyUsedException {
         assert !(angemeldeter instanceof Administrator);
         Pattern pattern = Pattern.compile("^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$");
-        Matcher matcher = pattern.matcher(administrator.geteMail());
+        Matcher matcher = pattern.matcher(administrator.getEmail());
 
         if (!matcher.matches()) {
             throw new InvalidEmailException();
         }
 
         for (int i = 0; i < Administratoren.getAdministratoren().size(); i++) {
-            if (Administratoren.getAdministratoren().get(i).geteMail().equals(administrator.geteMail())) {
+            if (Administratoren.getAdministratoren().get(i).getEmail().equals(administrator.getEmail())) {
                 throw new EmailIsAlreadyUsedException();
             }
         }
         for (int i = 0; i < Angestellte.getAngestellte().size(); i++) {
-            if (Angestellte.getAngestellte().get(i).geteMail().equals(administrator.geteMail())) {
+            if (Angestellte.getAngestellte().get(i).getEmail().equals(administrator.getEmail())) {
                 throw new EmailIsAlreadyUsedException();
             }
         }
         for (int i = 0; i < Anwenders.getAnwenders().size(); i++) {
-            if (Anwenders.getAnwenders().get(i).geteMail().equals(administrator.geteMail())) {
+            if (Anwenders.getAnwenders().get(i).getEmail().equals(administrator.getEmail())) {
                 throw new EmailIsAlreadyUsedException();
             }
         }
@@ -513,24 +513,24 @@ public abstract class Verwaltung {
     public static void angestellterErstellen(Angestellter angestellter) throws InvalidEmailException, EmailIsAlreadyUsedException {
         assert !(angemeldeter instanceof Administrator);
         Pattern pattern = Pattern.compile("^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$");
-        Matcher matcher = pattern.matcher(angestellter.geteMail());
+        Matcher matcher = pattern.matcher(angestellter.getEmail());
 
         if (!matcher.matches()) {
             throw new InvalidEmailException();
         }
 
         for (int i = 0; i < Administratoren.getAdministratoren().size(); i++) {
-            if (Administratoren.getAdministratoren().get(i).geteMail().equals(angestellter.geteMail())) {
+            if (Administratoren.getAdministratoren().get(i).getEmail().equals(angestellter.getEmail())) {
                 throw new EmailIsAlreadyUsedException();
             }
         }
         for (int i = 0; i < Angestellte.getAngestellte().size(); i++) {
-            if (Angestellte.getAngestellte().get(i).geteMail().equals(angestellter.geteMail())) {
+            if (Angestellte.getAngestellte().get(i).getEmail().equals(angestellter.getEmail())) {
                 throw new EmailIsAlreadyUsedException();
             }
         }
         for (int i = 0; i < Anwenders.getAnwenders().size(); i++) {
-            if (Anwenders.getAnwenders().get(i).geteMail().equals(angestellter.geteMail())) {
+            if (Anwenders.getAnwenders().get(i).getEmail().equals(angestellter.getEmail())) {
                 throw new EmailIsAlreadyUsedException();
             }
         }
@@ -570,7 +570,7 @@ public abstract class Verwaltung {
     //Anmelden
     public static void anmelden(String eMail, String password) throws NutzerDoesNotExistException {
         for (int i = 0; i < Administratoren.getAdministratoren().size(); i++) {
-            if (Administratoren.getAdministratoren().get(i).geteMail().equals(eMail) && Administratoren.getAdministratoren().get(i).getPasswort().equals(password)) {
+            if (Administratoren.getAdministratoren().get(i).getEmail().equals(eMail) && Administratoren.getAdministratoren().get(i).getPasswort().equals(password)) {
                 angemeldeter = Administratoren.getAdministratoren().get(i);
                 System.out.println("Erfolgreich Angemeldet:" + angemeldeter);
                 return;
@@ -578,7 +578,7 @@ public abstract class Verwaltung {
         }
         if (angemeldeter == null) {
             for (int i = 0; i < Angestellte.getAngestellte().size(); i++) {
-                if (Angestellte.getAngestellte().get(i).geteMail().equals(eMail) && Angestellte.getAngestellte().get(i).getPasswort().equals(password)) {
+                if (Angestellte.getAngestellte().get(i).getEmail().equals(eMail) && Angestellte.getAngestellte().get(i).getPasswort().equals(password)) {
                     angemeldeter = Angestellte.getAngestellte().get(i);
                     System.out.println("Erfolgreich Angemeldet:" + angemeldeter);
                     return;
@@ -587,7 +587,7 @@ public abstract class Verwaltung {
         }
         if (angemeldeter == null) {
             for (int i = 0; i < Anwenders.getAnwenders().size(); i++) {
-                if (Anwenders.getAnwenders().get(i).geteMail().equals(eMail) && Anwenders.getAnwenders().get(i).getPasswort().equals(password)) {
+                if (Anwenders.getAnwenders().get(i).getEmail().equals(eMail) && Anwenders.getAnwenders().get(i).getPasswort().equals(password)) {
                     angemeldeter = Anwenders.getAnwenders().get(i);
                     System.out.println("Erfolgreich Angemeldet:" + angemeldeter);
                     return;
@@ -659,15 +659,15 @@ public abstract class Verwaltung {
 
     public static int getNutzerIDByEmail() throws NutzerDoesNotExistException {
         for (int i = 0; i < Administratoren.getAdministratoren().size(); i++) {
-            if (angemeldeter.geteMail().equals(Administratoren.getAdministratoren().get(i).geteMail()))
+            if (angemeldeter.getEmail().equals(Administratoren.getAdministratoren().get(i).getEmail()))
                 return Administratoren.getAdministratoren().get(i).getAdminID();
         }
         for (int i = 0; i < Angestellte.getAngestellte().size(); i++) {
-            if (angemeldeter.geteMail().equals(Angestellte.getAngestellte().get(i).geteMail()))
+            if (angemeldeter.getEmail().equals(Angestellte.getAngestellte().get(i).getEmail()))
                 return Angestellte.getAngestellte().get(i).getAngestelltenID();
         }
         for (int i = 0; i < Anwenders.getAnwenders().size(); i++) {
-            if (angemeldeter.geteMail().equals(Anwenders.getAnwenders().get(i).geteMail()))
+            if (angemeldeter.getEmail().equals(Anwenders.getAnwenders().get(i).getEmail()))
                 return (Anwenders.getAnwenders().get(i)).getAnwenderID();
         }
         throw new NutzerDoesNotExistException();
@@ -675,15 +675,15 @@ public abstract class Verwaltung {
 
     public static int getNutzerIDByEmail(String email) throws NutzerDoesNotExistException {
         for (int i = 0; i < Administratoren.getAdministratoren().size(); i++) {
-            if (email.equals(Administratoren.getAdministratoren().get(i).geteMail()))
+            if (email.equals(Administratoren.getAdministratoren().get(i).getEmail()))
                 return Administratoren.getAdministratoren().get(i).getAdminID();
         }
         for (int i = 0; i < Angestellte.getAngestellte().size(); i++) {
-            if (email.equals(Angestellte.getAngestellte().get(i).geteMail()))
+            if (email.equals(Angestellte.getAngestellte().get(i).getEmail()))
                 return Angestellte.getAngestellte().get(i).getAngestelltenID();
         }
         for (int i = 0; i < Anwenders.getAnwenders().size(); i++) {
-            if (email.equals(Anwenders.getAnwenders().get(i).geteMail()))
+            if (email.equals(Anwenders.getAnwenders().get(i).getEmail()))
                 return (Anwenders.getAnwenders().get(i)).getAnwenderID();
         }
         throw new NutzerDoesNotExistException();

@@ -9,7 +9,7 @@ public class Mensch {
     private String nachname;
     private String geburtsdatum;
     private int passnummer;
-    private String eMail;
+    private String email;
     private String passwort;
 
 
@@ -18,7 +18,7 @@ public class Mensch {
         this.nachname = nachname;
         this.geburtsdatum = geburtsdatum;
         this.passnummer = passnummer;
-        this.eMail = eMail;
+        this.email = eMail;
         this.passwort = passwort;
     }
 
@@ -31,8 +31,8 @@ public class Mensch {
         return passnummer;
     }
 
-    public String geteMail() {
-        return eMail;
+    public String getEmail() {
+        return email;
     }
 
     public String getNachname() {
@@ -48,8 +48,8 @@ public class Mensch {
     }
 
 
-    public void seteMail(String eMail) {
-        this.eMail = eMail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setGeburtsdatum(String geburtsdatum) {
@@ -73,6 +73,6 @@ public class Mensch {
     }
 
     public String toString() {
-        return vorname + ',' + nachname + ',' + geburtsdatum + ',' + passnummer + ',' + eMail + ',' + passwort + '}';
+        return vorname + ',' + nachname + ',' + geburtsdatum + ',' + passnummer + ',' + email + ',' + passwort + '}';
     }
 }
