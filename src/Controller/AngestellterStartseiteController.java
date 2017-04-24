@@ -1,11 +1,9 @@
 package Controller;
 
 import Model.Enums.Views;
-import Model.Exceptions.NutzerDoesNotExistException;
 import Model.Klassen.MAIN;
 import Model.Klassen.Nutzer.Angestellter;
 import Model.Klassen.Nutzer.Anwender;
-import Model.Klassen.Verwaltung.Angestellte;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,7 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.util.ArrayList;
 
-public class AngestellterStartseiteController {     //TODO Vorname, Nachname Gr√∂√üen
+public class AngestellterStartseiteController {
 
     @FXML
     private Label NachnameText;
@@ -82,7 +80,7 @@ public class AngestellterStartseiteController {     //TODO Vorname, Nachname Gr√
             System.out.println("Es gibt keinen Ergebnisse mit diesen Eigenschaften");
 
             Label keinErgebnis = new Label("Kein Ergebnis gefunden!");
-            keinErgebnis.setId("keinErgebnis");     //TODO LABEL wird nicht gesetzt
+            keinErgebnis.setId("keinErgebnis");
             Tabelle.setPlaceholder(keinErgebnis);
         }
     }
@@ -90,10 +88,6 @@ public class AngestellterStartseiteController {     //TODO Vorname, Nachname Gr√
 
     @FXML
     void KundenSuchenAction(ActionEvent event) {
-
-        //TODO suchen --> content in tabelle
-        //TODO Datum
-
         ArrayList<Anwender> zutreffendeAnwender = new ArrayList<>();
 
         if (!VornameFeld.getText().equals("") && NachnameFeld.getText().equals("")) {
@@ -128,7 +122,7 @@ public class AngestellterStartseiteController {     //TODO Vorname, Nachname Gr√
             System.out.println("Es gibt keinen Ergebnisse mit diesen Eigenschaften");
 
             Label keinErgebnis = new Label("Kein Ergebnis gefunden!");
-            keinErgebnis.setId("keinErgebnis");     //TODO LABEL wird nicht gesetzt
+            keinErgebnis.setId("keinErgebnis");
             Tabelle.setPlaceholder(keinErgebnis);
         }
     }
@@ -143,8 +137,8 @@ public class AngestellterStartseiteController {     //TODO Vorname, Nachname Gr√
     @FXML
     void KundebearbeitenAction(ActionEvent event) {
         if(Tabelle.getSelectionModel().getSelectedItem() != null) {
-            ProfilBearbeitenController.setZuBearbeitenderMensch(Tabelle.getSelectionModel().getSelectedItem());
-            MAIN.fensterOeffnen(Views.ProfilBearbeiten);
+            KundenProfilControler.setAnwender(Tabelle.getSelectionModel().getSelectedItem());
+            MAIN.fensterOeffnen(Views.KundenProfil);
         }
     }
 

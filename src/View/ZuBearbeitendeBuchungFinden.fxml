@@ -44,6 +44,9 @@
                                     <HBox.margin>
                                         <Insets />
                                     </HBox.margin>
+                           <font>
+                              <Font size="25.0" />
+                           </font>
                                 </TextField>
                                 <Label fx:id="NachnameText" alignment="TOP_CENTER" prefHeight="50.0" text="Nachname:" textFill="#fffefe">
                                     <font>
@@ -57,8 +60,14 @@
                                     <HBox.margin>
                                         <Insets />
                                     </HBox.margin>
+                           <font>
+                              <Font size="25.0" />
+                           </font>
                                 </TextField>
-                                <Button fx:id="SuchenButton" mnemonicParsing="false" onAction="#SuchenAction" prefHeight="50.0" prefWidth="200.0" text="Suchen" />
+                                <Button fx:id="SuchenButton" mnemonicParsing="false" onAction="#SuchenAction" prefHeight="50.0" prefWidth="200.0" text="Suchen">
+                           <font>
+                              <Font size="25.0" />
+                           </font></Button>
                             </children>
                         </HBox>
                         <TableView fx:id="tabelle" prefHeight="700.0" prefWidth="1280.0">

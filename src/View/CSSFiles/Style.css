@@ -63,13 +63,13 @@
     -fx-border-width: 0.5px;
 }
 
-.table-row-cell{
+.table-row-cell {
     -fx-background-color: transparent;
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.0em;
 }
 
-.table-row-cell:odd{
+.table-row-cell:odd {
     -fx-background-color: rgba(88, 122, 145, 0.25);
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.0em;
@@ -91,4 +91,44 @@
     -fx-font-size: 40px;
     -fx-font-weight: bold;
     -fx-text-fill: white;
+}
+
+/*TabPane*/
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-opacity: 1;
+}
+
+.tab-pane .tab-header-area {
+    -fx-tab-min-width: 90px;
+    -fx-background-color: rgba(14, 0, 86, 0.25);
+}
+
+.tab {
+    -fx-background-insets: 0 1 0 1, 0, 0;
+}
+
+.tab-pane .tab {
+    -fx-background-color: #e6e6e6;
+
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: rgb(60, 60, 60);
+}
+
+.tab .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: rgba(95, 95, 95, 0.4);
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.tab:selected .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: White;
+}
+
+.tab-pane *.tab-header-background {
+    -fx-background-color: -fx-outer-border, -fx-inner-border, derive(-fx-color, -20%);
+    -fx-effect: innershadow(two-pass-box, rgba(0, 0, 0, 0), 4, 0.0, 0, 0);
 }

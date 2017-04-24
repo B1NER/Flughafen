@@ -19,7 +19,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.util.ArrayList;
 
-public class ZuBearbeitendenNutzerFindenConroller { //TODO Nutzertyp in Liste anzeigen
+public class ZuBearbeitendenNutzerFindenConroller {
 
     @FXML
     private Label NachnameText;
@@ -61,6 +61,9 @@ public class ZuBearbeitendenNutzerFindenConroller { //TODO Nutzertyp in Liste an
     private TableColumn<Mensch, String> SpalteNachname;
 
     @FXML
+    private TableColumn<Mensch, String> spalteTyp;
+
+    @FXML
     private Label SuchenText;
 
     @FXML
@@ -75,6 +78,7 @@ public class ZuBearbeitendenNutzerFindenConroller { //TODO Nutzertyp in Liste an
         SpalteNachname.setCellValueFactory(new PropertyValueFactory<Mensch, String>("nachname"));
         SpalteGeburtsdatum.setCellValueFactory(new PropertyValueFactory<Mensch, String>("geburtsdatum"));
         SpaltEmail.setCellValueFactory(new PropertyValueFactory<Mensch, String>("email"));
+        spalteTyp.setCellValueFactory(new PropertyValueFactory<Mensch, String>("typ"));
 
         menschen.clear();
         menschen.addAll(Anwenders.getAnwenders());
@@ -141,7 +145,7 @@ public class ZuBearbeitendenNutzerFindenConroller { //TODO Nutzertyp in Liste an
     }
 
     @FXML
-    void BearbeitenAction(ActionEvent event) {
+    void BearbeitenAction(ActionEvent event) {  //TODO Admin Kundenprofil
         if(tabelle.getSelectionModel().getSelectedItem() != null) {
             ProfilBearbeitenController.setZuBearbeitenderMensch(tabelle.getSelectionModel().getSelectedItem());
             MAIN.fensterOeffnen(Views.ProfilBearbeiten);

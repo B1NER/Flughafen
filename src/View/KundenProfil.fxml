@@ -19,56 +19,50 @@
                 </ImageView>
                 <VBox prefHeight="1024.0" prefWidth="1280.0" spacing="20.0">
                     <children>
-                        <Label fx:id="KundenProfilText" alignment="CENTER" text="Kunden Profil" textFill="#fcf8f8">
-                            <font>
-                                <Font size="62.0" />
-                            </font>
-                            <VBox.margin>
-                                <Insets left="450.0" />
-                            </VBox.margin>
-                        </Label>
-                        <HBox alignment="CENTER_LEFT" prefHeight="145.0" prefWidth="1268.0">
+                        <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
                             <children>
-                                <VBox alignment="CENTER_LEFT" prefHeight="135.0" prefWidth="551.0">
+                                <Label fx:id="KundenProfilText" alignment="CENTER" text="Kunden Profil"
+                                       textFill="#fcf8f8">
+                                    <font>
+                                        <Font size="62.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                        </HBox>
+                        <HBox alignment="TOP_CENTER" prefHeight="65.0" prefWidth="1280.0">
+                            <children>
+                                <HBox alignment="TOP_CENTER" prefHeight="65.0" prefWidth="400.0">
                                     <children>
-                                        <HBox alignment="CENTER" prefHeight="300.0" prefWidth="600.0">
-                                            <children>
-                                                <Label fx:id="VornameText" prefHeight="65.0" prefWidth="258.0"
-                                                       text="Vorname: " textFill="#eee9e9"/>
-                                                <Label id="lblKundeVorname" fx:id="VornameFeld" prefHeight="65.0"
-                                                       prefWidth="300.0" textFill="WHITE">
-                                                    <font>
-                                                        <Font size="20.0"/>
-                                                    </font>
-                                                </Label>
-                                            </children>
-                                        </HBox>
-                                        <HBox alignment="CENTER" prefHeight="300.0" prefWidth="600.0">
-                                            <children>
-                                                <Label fx:id="NachnameText" prefHeight="65.0" prefWidth="258.0"
-                                                       text="Nachname:" textFill="#eee9e9"/>
-                                                <Label id="lblKundeNachname" fx:id="NachnameFeld" prefHeight="65.0"
-                                                       prefWidth="300.0" textFill="WHITE">
-                                                    <font>
-                                                        <Font size="20.0"/>
-                                                    </font>
-                                                </Label>
-                                            </children>
-                                        </HBox>
-                                        <HBox alignment="CENTER" prefHeight="300.0" prefWidth="600.0">
-                                            <children>
-                                                <Label fx:id="GeburtsdatumText" prefHeight="65.0" prefWidth="258.0"
-                                                       text="Geburtsdatum:" textFill="#eee9e9"/>
-                                                <Label id="lblKundeGeburtsdatum" fx:id="GeburtsdatumFeld"
-                                                       prefHeight="65.0" prefWidth="300.0" textFill="WHITE">
-                                                    <font>
-                                                        <Font size="20.0"/>
-                                                    </font>
-                                                </Label>
-                                            </children>
-                                        </HBox>
+                                        <Label fx:id="VornameText" prefHeight="65.0" prefWidth="220.0" text="Vorname: "
+                                               textFill="#eee9e9">
+                                            <font>
+                                                <Font size="30.0"/>
+                                            </font>
+                                        </Label>
+                                        <Label id="lblKundeVorname" fx:id="VornameFeld" prefHeight="65.0"
+                                               prefWidth="300.0" textFill="WHITE">
+                                            <font>
+                                                <Font size="30.0"/>
+                                            </font>
+                                        </Label>
                                     </children>
-                                </VBox>
+                                </HBox>
+                                <HBox alignment="TOP_CENTER" prefHeight="65.0" prefWidth="400.0">
+                                    <children>
+                                        <Label fx:id="NachnameText" prefHeight="65.0" prefWidth="220.0" text="Nachname:"
+                                               textFill="#eee9e9">
+                                            <font>
+                                                <Font size="30.0"/>
+                                            </font>
+                                        </Label>
+                                        <Label id="lblKundeNachname" fx:id="NachnameFeld" prefHeight="65.0"
+                                               prefWidth="300.0" textFill="WHITE">
+                                            <font>
+                                                <Font size="30.0"/>
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </HBox>
                             </children>
                             <VBox.margin>
                                 <Insets left="20.0" />
@@ -76,7 +70,7 @@
                         </HBox>
                         <Label fx:id="BuchungenText" alignment="CENTER" text="Buchungen" textFill="#fff8f8">
                             <font>
-                                <Font size="28.0" />
+                                <Font size="30.0"/>
                             </font>
                             <opaqueInsets>
                                 <Insets />
@@ -103,78 +97,180 @@
                                     <children>
                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                             <children>
-                                                <Label fx:id="HinflugText" prefWidth="200.0" text="Hinflug:"
-                                                       textFill="WHITE"/>
+                                                <Label fx:id="HinflugText" prefWidth="230.0" text="Hinflug:"
+                                                       textFill="WHITE">
+                                                    <font>
+                                                        <Font size="30.0"/>
+                                                    </font>
+                                                </Label>
                                                 <Label id="lblKundeVorname" fx:id="HinflugFeld" prefHeight="30.0"
-                                                       prefWidth="200.0" textFill="WHITE"/>
+                                                       prefWidth="282.0" textFill="WHITE">
+                                                    <font>
+                                                        <Font size="30.0"/>
+                                                    </font>
+                                                </Label>
                                             </children>
                                         </HBox>
                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                             <children>
-                                                <Label fx:id="RuckflugText" prefHeight="30.0" prefWidth="200.0"
-                                                       text="Rückflug" textFill="WHITE"/>
-                                                <Label id="lblKundeNachname" fx:id="RuckflugFeld" prefHeight="30.0"
-                                                       prefWidth="285.0" textFill="WHITE"/>
-                                            </children>
-                                        </HBox>
-                                        <HBox prefHeight="100.0" prefWidth="200.0">
-                                            <children>
-                                                <Label fx:id="StartDatumText" prefWidth="200.0" text="Start Datum"
-                                                       textFill="WHITE"/>
+                                                <Label fx:id="StartDatumText" prefHeight="30.0" prefWidth="230.0"
+                                                       text="Start Datum:" textFill="WHITE">
+                                                    <font>
+                                                        <Font size="30.0"/>
+                                                    </font>
+                                                </Label>
                                                 <Label id="lblKundeGeburtsdatum" fx:id="StartDatumFeld"
-                                                       prefHeight="30.0" prefWidth="199.0" textFill="WHITE"/>
+                                                       prefHeight="30.0" prefWidth="282.0" textFill="WHITE">
+                                                    <font>
+                                                        <Font size="30.0"/>
+                                                    </font>
+                                                </Label>
                                             </children>
+                                            <padding>
+                                                <Insets left="20.0"/>
+                                            </padding>
                                         </HBox>
                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                             <children>
-                                                <Label fx:id="StartortText" prefWidth="200.0" text="Startort"
-                                                       textFill="WHITE"/>
-                                                <Label fx:id="StartortFeld" prefHeight="30.0" prefWidth="379.0"
-                                                       textFill="WHITE"/>
-                                            </children>
-                                        </HBox>
-                                        <HBox prefHeight="100.0" prefWidth="200.0">
-                                            <children>
-                                                <Label fx:id="ZielortText" prefWidth="200.0" text="Zielort"
-                                                       textFill="WHITE"/>
-                                                <Label fx:id="ZielortFeld" prefHeight="30.0" prefWidth="380.0"
-                                                       textFill="WHITE"/>
-                                            </children>
-                                        </HBox>
-                                        <HBox prefHeight="100.0" prefWidth="200.0">
-                                            <children>
-                                                <Label fx:id="GepackText" prefHeight="35.0" prefWidth="200.0"
-                                                       text="Gepäck" textFill="WHITE"/>
-                                                <Label fx:id="GepackFeld" prefHeight="30.0" prefWidth="470.0"
-                                                       textFill="WHITE"/>
-                                            </children>
-                                        </HBox>
-                                        <HBox prefHeight="100.0" prefWidth="200.0">
-                                            <children>
-                                                <Label fx:id="PreisText" prefWidth="200.0" text="Preis"
-                                                       textFill="WHITE"/>
-                                                <Label fx:id="PreisFeld" prefHeight="30.0" prefWidth="200.0"
-                                                       textFill="WHITE"/>
-                                            </children>
-                                        </HBox>
-                                        <HBox prefHeight="100.0" prefWidth="200.0">
-                                            <children>
-                                                <Label fx:id="SitzplatzeText" prefWidth="200.0" text="Sitzplätze"
-                                                       textFill="WHITE"/>
-                                            </children>
-                                        </HBox>
-                                        <HBox prefHeight="100.0" prefWidth="200.0">
-                                            <children>
-                                                <Label fx:id="AbgelaufenText" prefWidth="200.0" text="Abgelaufen"
-                                                       textFill="WHITE"/>
-                                            </children>
-                                        </HBox>
-                                        <HBox prefHeight="100.0" prefWidth="200.0">
-                                            <children>
-                                                <Label fx:id="AnkunftsDatumText" prefHeight="65.0" prefWidth="200.0"
-                                                       text="Ankunfts Datum:" textFill="WHITE"/>
+                                                <Label fx:id="AnkunftsDatumText" prefHeight="40.0" prefWidth="230.0"
+                                                       text="Ankunfts Datum:" textFill="WHITE">
+                                                    <font>
+                                                        <Font size="30.0"/>
+                                                    </font>
+                                                </Label>
                                                 <Label fx:id="AnkunftsDatumFeld" prefHeight="30.0" prefWidth="282.0"
-                                                       textFill="WHITE"/>
+                                                       textFill="WHITE">
+                                                    <font>
+                                                        <Font size="30.0"/>
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                            <VBox.margin>
+                                                <Insets/>
+                                            </VBox.margin>
+                                            <padding>
+                                                <Insets left="20.0"/>
+                                            </padding>
+                                        </HBox>
+                                        <HBox prefHeight="100.0" prefWidth="200.0">
+                                            <children>
+                                                <Label fx:id="RuckflugText" prefHeight="30.0" prefWidth="230.0"
+                                                       text="Rückflug:" textFill="WHITE">
+                                                    <font>
+                                                        <Font size="30.0"/>
+                                                    </font>
+                                                </Label>
+                                                <Label id="lblKundeNachname" fx:id="RuckflugFeld" prefHeight="30.0"
+                                                       prefWidth="282.0" textFill="WHITE">
+                                                    <font>
+                                                        <Font size="30.0"/>
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                            <VBox.margin>
+                                                <Insets/>
+                                            </VBox.margin>
+                                        </HBox>
+                                        <HBox prefHeight="100.0" prefWidth="200.0">
+                                            <children>
+                                                <Label fx:id="StartDatumText1" prefHeight="30.0" prefWidth="230.0"
+                                                       text="Start Datum:" textFill="WHITE">
+                                                    <font>
+                                                        <Font size="30.0"/>
+                                                    </font>
+                                                </Label>
+                                                <Label id="lblKundeGeburtsdatum" fx:id="StartDatumFeld1"
+                                                       prefHeight="30.0" prefWidth="282.0" textFill="WHITE">
+                                                    <font>
+                                                        <Font size="30.0"/>
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                            <VBox.margin>
+                                                <Insets left="20.0"/>
+                                            </VBox.margin>
+                                        </HBox>
+                                        <HBox prefHeight="100.0" prefWidth="200.0">
+                                            <children>
+                                                <Label fx:id="AnkunftsDatumText1" prefHeight="40.0" prefWidth="230.0"
+                                                       text="Ankunfts Datum:" textFill="WHITE">
+                                                    <font>
+                                                        <Font size="30.0"/>
+                                                    </font>
+                                                </Label>
+                                                <Label fx:id="AnkunftsDatumFeld1" prefHeight="30.0" prefWidth="282.0"
+                                                       textFill="WHITE">
+                                                    <font>
+                                                        <Font size="30.0"/>
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                            <padding>
+                                                <Insets left="20.0"/>
+                                            </padding>
+                                        </HBox>
+                                        <HBox prefHeight="100.0" prefWidth="200.0">
+                                            <children>
+                                                <Label fx:id="GepackText" prefHeight="30.0" prefWidth="200.0"
+                                                       text="Gepäck:" textFill="WHITE">
+                                                    <font>
+                                                        <Font size="30.0"/>
+                                                    </font>
+                                                </Label>
+                                                <Label fx:id="GepackFeld" prefHeight="30.0" prefWidth="282.0"
+                                                       textFill="WHITE">
+                                                    <font>
+                                                        <Font size="30.0"/>
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                        <HBox prefHeight="100.0" prefWidth="200.0">
+                                            <children>
+                                                <Label fx:id="PreisText" prefHeight="30.0" prefWidth="200.0"
+                                                       text="Preis:" textFill="WHITE">
+                                                    <font>
+                                                        <Font size="30.0"/>
+                                                    </font>
+                                                </Label>
+                                                <Label fx:id="PreisFeld" prefHeight="30.0" prefWidth="282.0"
+                                                       textFill="WHITE">
+                                                    <font>
+                                                        <Font size="30.0"/>
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                        <HBox prefHeight="100.0" prefWidth="200.0">
+                                            <children>
+                                                <Label fx:id="SitzplaetzeText" prefHeight="30.0" prefWidth="200.0"
+                                                       text="Sitzplätze:" textFill="WHITE">
+                                                    <font>
+                                                        <Font size="30.0"/>
+                                                    </font>
+                                                </Label>
+                                                <Label fx:id="SitzplaetzeFeld" prefHeight="30.0" prefWidth="282.0"
+                                                       textFill="WHITE">
+                                                    <font>
+                                                        <Font size="30.0"/>
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                        <HBox prefHeight="100.0" prefWidth="200.0">
+                                            <children>
+                                                <Label fx:id="AbgelaufenText" prefHeight="30.0" prefWidth="200.0"
+                                                       text="Status:" textFill="WHITE">
+                                                    <font>
+                                                        <Font size="30.0"/>
+                                                    </font>
+                                                </Label>
+                                                <Label fx:id="AbgelaufenFeld" prefHeight="30.0" prefWidth="282.0"
+                                                       textFill="WHITE">
+                                                    <font>
+                                                        <Font size="30.0"/>
+                                                    </font>
+                                                </Label>
                                             </children>
                                         </HBox>
                                     </children>
@@ -191,7 +287,8 @@
                                         <Insets />
                                     </HBox.margin>
                                 </Button>
-                                <Button id="btn" fx:id="GepackbearbeitenButton" mnemonicParsing="false" onAction="#GepackbearbeitenAction" prefWidth="350.0" text="Gepäck bearbeiten">
+                                <Button id="btn" fx:id="BuchungBearbeiten" mnemonicParsing="false"
+                                        onAction="#BuchungBearbeitenAction" prefWidth="350.0" text="Buchung bearbeiten">
                                     <HBox.margin>
                                         <Insets />
                                     </HBox.margin>

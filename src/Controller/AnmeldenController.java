@@ -5,6 +5,7 @@ import Model.Exceptions.NutzerDoesNotExistException;
 import Model.Klassen.MAIN;
 import Model.Klassen.Nutzer.Administrator;
 import Model.Klassen.Nutzer.Angestellter;
+import Model.Klassen.Nutzer.Anwender;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -69,6 +70,7 @@ public class AnmeldenController {
             }else if(MAIN.viewsChronik.get(MAIN.viewsChronik.size()-2).equals(Views.Flugliste)) {
                 MAIN.fensterOeffnen(Views.Zahlung);
             }else{
+                KundenProfilControler.setAnwender((Anwender)Verwaltung.getAngemeldeter());
                 MAIN.fensterOeffnen(Views.KundenProfil);
             }
 
