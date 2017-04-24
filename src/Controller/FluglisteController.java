@@ -5,6 +5,7 @@ import Model.Exceptions.FlugNotFoundException;
 import Model.Klassen.Elemente.Buchung;
 import Model.Klassen.Elemente.Flug;
 import Model.Klassen.MAIN;
+import Model.Klassen.Nutzer.Anwender;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -114,6 +115,7 @@ public class FluglisteController {
     private static boolean isWithRueckflug;
     private static Flug hinflug = null;
     private static Flug rueckflug = null;
+    private static Anwender anwender;
 
     public static void setInfos(String flugAb, String flugNach, String fluggesellschaft, String anzahlPersonen, LocalDate datumHinflug) {
         FluglisteController.flugAb = flugAb;
@@ -132,6 +134,10 @@ public class FluglisteController {
         FluglisteController.datumHinflug = datumHinflug;
         FluglisteController.datumRueckflug = datumRueckflug;
         FluglisteController.isWithRueckflug = true;
+    }
+
+    public static void setAnwender(Anwender anwender){
+        FluglisteController.anwender = anwender;
     }
 
     public void initialize() {
@@ -323,16 +329,20 @@ public class FluglisteController {
     void buchenAction(ActionEvent event) {
 
         if (!isWithRueckflug) {
-
             if(hinflug == null) {
                 keineBuchungAusgewaehltLabel.setTextFill(Color.RED);
                 keineBuchungAusgewaehltLabel.setText("Flug auswählen!");
             }else if (!Verwaltung.isAngemeldet()) {
                 MAIN.fensterOeffnen(Views.Anmelden);
             } else {
-                MAIN.fensterOeffnen(Views.Zahlung);
+                if(Verwaltung.getAngemeldeter() instanceof Anwender) {
+                    MAIN.fensterOeffnen(Views.Zahlung);
+                }else {
+                    //Buchung führt ein Admin/Angestellter durch
+                    ZahlungController.setAnwender(anwender);
+                    MAIN.fensterOeffnen(Views.Zahlung);
+                }
             }
-
         } else {
 
             if (rueckflug == null || hinflug == null) {
@@ -344,9 +354,16 @@ public class FluglisteController {
                     keineBuchungAusgewaehltLabel.setText("Rückflug auswählen!");
                 }
             } else if (!Verwaltung.isAngemeldet()) {
+                //TODO wenn angestellter bereits angemeldet ist!
                 MAIN.fensterOeffnen(Views.Anmelden);
             } else {
-                MAIN.fensterOeffnen(Views.Zahlung);
+                if(Verwaltung.getAngemeldeter() instanceof Anwender) {
+                    MAIN.fensterOeffnen(Views.Zahlung);
+                }else {
+                    //Buchung führt ein Admin/Angestellter durch
+                    ZahlungController.setAnwender(anwender);
+                    MAIN.fensterOeffnen(Views.Zahlung);
+                }
             }
 
 
