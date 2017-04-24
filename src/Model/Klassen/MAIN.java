@@ -1,9 +1,7 @@
 package Model.Klassen;
 
 import Model.Enums.Views;
-import Model.Klassen.Nutzer.Angestellter;
 import Model.Klassen.Verwaltung.Administratoren;
-import Model.Klassen.Verwaltung.Angestellte;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -20,11 +18,9 @@ import java.util.Stack;
 
 //TODO Größen anpassen
 //TODO Konsolenlog doppelte ausgabe fixxen (angelegt)
-//TODO Zahlung View Gröüen / zurück
-//TODO Emails ausbessern (Angestelltensstartseite, Adminstartseite, ...)
-//TODO viesChronik --> Stack
-//TODO verfalleneFluegeAusblenden --> Flügefinden
-//TODO TABPane verkleinern
+//TODO Gepäck löschen, wenn Buchung des Gepäcks gelöscht wurde
+//TODO Flugliste auswählen Hinflug bugt
+
 
 public class MAIN extends Application {
 
@@ -38,15 +34,15 @@ public class MAIN extends Application {
     public void start(Stage primaryStage) {
         MAIN.primaryStage = primaryStage;
         hashmapsFuellen();
-        try {
-            Verwaltung.anmelden(Angestellte.getAngestelltenByID(1));
+
+        /*try {
+            Verwaltung.anmelden(Administratoren.getAdministratorByID(3));
         }catch (final Exception e){
 
-        }
+        }*/
 
-        MAIN.fensterOeffnen(Views.AngestellterStartseite);
-
-        //MAIN.fensterOeffnen(Views.Buchen);
+       //MAIN.fensterOeffnen(Views.AdminStartseite);
+        MAIN.fensterOeffnen(Views.Buchen);
     }
 
     public static void main(String[] args) {

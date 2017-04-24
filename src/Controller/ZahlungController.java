@@ -2,8 +2,12 @@ package Controller;
 
 import Model.Enums.Gepaecktypen;
 import Model.Enums.Views;
+import Model.Exceptions.ToHighWeightException;
+import Model.Klassen.Elemente.Buchung;
 import Model.Klassen.Elemente.Flug;
+import Model.Klassen.Elemente.Gepaeck;
 import Model.Klassen.MAIN;
+import Model.Klassen.Nutzer.Anwender;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -211,19 +215,23 @@ public class ZahlungController {
                 HinflugGesamtPreis.setText("" + (hinflug.getPreisProPerson() * anzahlPersonen + gepaecksPreisProKilo * Double.parseDouble(GewichtFeld1.getText())));
                 GesamtpreisLabel1.setText("" + Double.parseDouble(HinflugGesamtPreis.getText()));
             } catch (IllegalArgumentException e) {
+                GewichtFeld1.setText("");
                 GewichtFeld1.setPromptText("Gewicht in kg");
             } catch (ClassCastException e) {
+                GewichtFeld1.setText("");
                 GewichtFeld1.setPromptText("Gewicht in kg");
             }
-        }else {
+        } else {
             try {
                 HinflugGesamtPreis.setText("" + (hinflug.getPreisProPerson() * anzahlPersonen + gepaecksPreisProKilo * Double.parseDouble(GewichtFeld1.getText())));
                 RueckflugGesamtPreis.setText("" + (rueckflug.getPreisProPerson() * anzahlPersonen + gepaecksPreisProKilo * Double.parseDouble(GewichtFeld2.getText())));
                 GesamtpreisLabel1.setText("" + (Double.parseDouble(HinflugGesamtPreis.getText()) + Double.parseDouble(RueckflugGesamtPreis.getText())));
                 GesamtpreisLabel2.setText("" + (Double.parseDouble(HinflugGesamtPreis.getText()) + Double.parseDouble(RueckflugGesamtPreis.getText())));
             } catch (IllegalArgumentException e) {
+                GewichtFeld1.setText("");
                 GewichtFeld2.setPromptText("Gewicht in kg");
             } catch (ClassCastException e) {
+                GewichtFeld1.setText("");
                 GewichtFeld2.setPromptText("Gewicht in kg");
             }
         }
@@ -239,16 +247,35 @@ public class ZahlungController {
             if (CSVFeld1.getText().equals("")) {
                 CSVFeld1.setPromptText("Pflichtfeld!");
             }
-            if (GewichtFeld1.getText().equals("")) {
-                GewichtFeld1.setPromptText("Gewicht in kg");
-            }
             if (NameFeld1.getText().equals("")) {
                 NameFeld1.setPromptText("Pflichtfeld!");
             }
             if (NachnameFeld1.getText().equals("")) {
                 NachnameFeld1.setPromptText("Pflichtfeld!");
+            }
+            if (GewichtFeld1.getText().equals("")) {
+                GewichtFeld1.setPromptText("Gewicht in kg");
             } else {
-                MAIN.fensterOeffnen(Views.Buchungszusammenfassung);
+
+                try {
+                    Verwaltung.gepaeckErstellen(Double.parseDouble(GewichtFeld1.getText()), (Gepaecktypen) GepackFeld1.getValue());
+                    Verwaltung.buchungErstellen(hinflug, (Anwender) Verwaltung.getAngemeldeter(), anzahlPersonen, Verwaltung.getGepaeck().get(Verwaltung.getGepaeck().size() - 1), Double.parseDouble(HinflugGesamtPreis.getText()), true);
+                    BuchungszusammenfassungController.setBuchung(Verwaltung.getBuchungen().get(Verwaltung.getBuchungen().size() - 1));
+                    MAIN.fensterOeffnen(Views.Buchungszusammenfassung);
+                } catch (ToHighWeightException e) {
+                    GewichtFeld1.setText("");
+                    GewichtFeld1.setPromptText("Zu hohes Gewicht");
+                } catch (NumberFormatException e) {
+                    GewichtFeld1.setText("");
+                    GewichtFeld1.setPromptText("Gewicht in kg");
+                } catch (IllegalArgumentException e) {
+                    GewichtFeld1.setText("");
+                    GewichtFeld1.setPromptText("Gewicht in kg");
+                } catch (ClassCastException e) {
+                    GewichtFeld1.setText("");
+                    GewichtFeld1.setPromptText("Gewicht in kg");
+                }
+
             }
         } else {
             if (KreditkartennummerFeld1.getText().equals("")) {
@@ -256,9 +283,6 @@ public class ZahlungController {
             }
             if (CSVFeld1.getText().equals("")) {
                 CSVFeld1.setPromptText("Pflichtfeld!");
-            }
-            if (GewichtFeld1.getText().equals("")) {
-                GewichtFeld1.setPromptText("Gewicht in kg");
             }
             if (NameFeld1.getText().equals("")) {
                 NameFeld1.setPromptText("Pflichtfeld!");
@@ -272,16 +296,56 @@ public class ZahlungController {
             if (CSVFeld2.getText().equals("")) {
                 CSVFeld2.setPromptText("Pflichtfeld!");
             }
-            if (GewichtFeld2.getText().equals("")) {
-                GewichtFeld2.setPromptText("Gewicht in kg");
-            }
             if (NameFeld2.getText().equals("")) {
                 NameFeld2.setPromptText("Pflichtfeld!");
             }
             if (NachnameFeld2.getText().equals("")) {
                 NachnameFeld2.setPromptText("Pflichtfeld!");
-            } else {
-                MAIN.fensterOeffnen(Views.Buchungszusammenfassung);
+            }
+            if (GewichtFeld1.getText().equals("")) {
+                GewichtFeld1.setPromptText("Gewicht in kg");
+            }
+            if (GewichtFeld2.getText().equals("")) {
+                GewichtFeld2.setPromptText("Gewicht in kg");
+            }else {
+
+                //Hinflug
+                try {
+                    Verwaltung.gepaeckErstellen(Double.parseDouble(GewichtFeld1.getText()), (Gepaecktypen) GepackFeld1.getValue());
+                } catch (ToHighWeightException e) {
+                    GewichtFeld1.setText("");
+                    GewichtFeld1.setPromptText("Zu hohes Gewicht");
+                } catch (NumberFormatException e) {
+                    GewichtFeld1.setText("");
+                    GewichtFeld1.setPromptText("Gewicht in kg");
+                } catch (IllegalArgumentException e) {
+                    GewichtFeld1.setText("");
+                    GewichtFeld1.setPromptText("Gewicht in kg");
+                } catch (ClassCastException e) {
+                    GewichtFeld1.setText("");
+                    GewichtFeld1.setPromptText("Gewicht in kg");
+                }
+
+                //Rückflug
+                try {
+                    Verwaltung.gepaeckErstellen(Double.parseDouble(GewichtFeld1.getText()), (Gepaecktypen) GepackFeld1.getValue());
+                    Verwaltung.buchungErstellen(hinflug, (Anwender) Verwaltung.getAngemeldeter(), anzahlPersonen, Verwaltung.getGepaeck().get(Verwaltung.getGepaeck().size() - 1), Double.parseDouble(HinflugGesamtPreis.getText()), true);
+                    BuchungszusammenfassungController.setBuchung(Verwaltung.getBuchungen().get(Verwaltung.getBuchungen().size() - 1));
+                    MAIN.fensterOeffnen(Views.Buchungszusammenfassung);
+                } catch (ToHighWeightException e) {
+                    GewichtFeld1.setText("");
+                    GewichtFeld1.setPromptText("Zu hohes Gewicht");
+                } catch (NumberFormatException e) {
+                    GewichtFeld1.setText("");
+                    GewichtFeld1.setPromptText("Gewicht in kg");
+                } catch (IllegalArgumentException e) {
+                    GewichtFeld1.setText("");
+                    GewichtFeld1.setPromptText("Gewicht in kg");
+                } catch (ClassCastException e) {
+                    GewichtFeld1.setText("");
+                    GewichtFeld1.setPromptText("Gewicht in kg");
+                }
+
             }
         }
     }

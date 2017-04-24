@@ -631,6 +631,10 @@ public abstract class Verwaltung {
         return Buchungen.getBuchungen();
     }
 
+    public static ArrayList<Gepaeck> getGepaeck(){
+        return Gepaecke.getGepaecke();
+    }
+
     //Nutzer Getter
     public static ArrayList<Anwender> getAnwenderByAngestellten(Angestellter angestellter) {
         //AnwenderAngetsellten geändert
