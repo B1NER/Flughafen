@@ -28,7 +28,8 @@
                                 <Insets bottom="100.0"/>
                             </VBox.margin>
                         </Label>
-                        <Label fx:id="ZusammenfassungText" prefHeight="150.0" prefWidth="1000.0" textFill="WHITE">
+                        <Label fx:id="ZusammenfassungText" alignment="CENTER" prefHeight="150.0" prefWidth="1000.0"
+                               textFill="WHITE">
                             <VBox.margin>
                                 <Insets bottom="70.0"/>
                             </VBox.margin>

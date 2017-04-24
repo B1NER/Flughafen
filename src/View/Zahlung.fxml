@@ -32,7 +32,7 @@
                         </HBox>
                         <TabPane prefHeight="1000.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE">
                             <tabs>
-                                <Tab fx:id="HinflugTab" text="Hinflug">
+                                <Tab fx:id="HinflugTab" text="Hinflug Optionen">
                                     <content>
                                         <GridPane alignment="CENTER_LEFT" prefHeight="471.0" prefWidth="1280.0">
                                             <children>
@@ -60,7 +60,7 @@
                                                 </TextField>
                                                 <Label fx:id="KreditkartennummerText1" text="Kreditkartennummer" textFill="#f8f7f7" GridPane.rowIndex="4">
                                                     <font>
-                                                        <Font size="25.0" />
+                                                        <Font size="30.0"/>
                                                     </font>
                                                 </Label>
                                                 <Label fx:id="CSVText1" text="CSV" textFill="#f8f7f7" GridPane.columnIndex="2" GridPane.rowIndex="4">
@@ -194,7 +194,7 @@
                                         </GridPane>
                                     </content>
                                 </Tab>
-                                <Tab fx:id="RueckflugTab" text="Rückflug">
+                                <Tab fx:id="RueckflugTab" text="Rückflug Optionen">
                                     <content>
                                         <GridPane alignment="CENTER_LEFT" prefHeight="471.0" prefWidth="1280.0">
                                             <children>
@@ -237,23 +237,6 @@
                                                 </TextField>
                                                 <TextField fx:id="KreditkartennummerFeld2" prefHeight="65.0"
                                                            prefWidth="300.0" GridPane.rowIndex="5">
-                                                    <font>
-                                                        <Font size="30.0"/>
-                                                    </font>
-                                                </TextField>
-                                                <Label fx:id="GepackText11" text="Gepäck" textFill="#f8f7f7">
-                                                    <font>
-                                                        <Font size="30.0"/>
-                                                    </font>
-                                                </Label>
-                                                <ChoiceBox fx:id="GepackFeld2" prefHeight="65.0" prefWidth="387.0" GridPane.rowIndex="1" />
-                                                <Label fx:id="GewichtText11" text="Gewicht in kg" textFill="#f8f7f7" GridPane.columnIndex="2">
-                                                    <font>
-                                                        <Font size="30.0"/>
-                                                    </font>
-                                                </Label>
-                                                <TextField fx:id="GewichtFeld2" prefHeight="65.0" prefWidth="320.0"
-                                                           GridPane.columnIndex="2" GridPane.rowIndex="1">
                                                     <font>
                                                         <Font size="30.0"/>
                                                     </font>
