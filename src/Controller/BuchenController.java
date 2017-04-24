@@ -84,6 +84,7 @@ public class BuchenController {
     private Button MeinProfilButton;
 
 
+
     public void initialize() {
         if (Verwaltung.isAngemeldet()) {
             AnmeldenButton.setVisible(false);
@@ -100,6 +101,8 @@ public class BuchenController {
         FlugAbFeld.setText("London");
         FlugNachFeld.setText("Innsbruck");
     }
+
+
 
     @FXML
     void RegistrierenAction(ActionEvent event) {

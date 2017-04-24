@@ -3,6 +3,10 @@ package Controller;
 import Model.Enums.Views;
 import Model.Klassen.Elemente.Buchung;
 import Model.Klassen.MAIN;
+import Model.Klassen.Nutzer.Administrator;
+import Model.Klassen.Nutzer.Angestellter;
+import Model.Klassen.Nutzer.Anwender;
+import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -29,7 +33,15 @@ public class BuchungszusammenfassungController {
 
     @FXML
     void ZumKundenprofilAction(ActionEvent event) {
-        MAIN.fensterOeffnen(Views.KundenProfil);
+        if(Verwaltung.getAngemeldeter() instanceof Anwender) {
+            KundenProfilControler.setAnwender((Anwender) Verwaltung.getAngemeldeter());
+            MAIN.fensterOeffnen(Views.KundenProfil);
+        }else if(Verwaltung.getAngemeldeter() instanceof Angestellter){
+            MAIN.fensterOeffnen(Views.AngestellterStartseite);
+        }else if(Verwaltung.getAngemeldeter() instanceof Administrator){
+            MAIN.fensterOeffnen(Views.AdminStartseite);
+        }
+
     }
 
 }

@@ -198,6 +198,7 @@ public class KundenProfilControler {    //TODO Kundenprofil View ausbessern
 
     @FXML
     void NeueBuchungAction(ActionEvent event) {
+        FluglisteController.setAnwender(anwender);
         MAIN.fensterOeffnen(Views.Buchen);
     }
 

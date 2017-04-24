@@ -143,6 +143,7 @@ public class ZahlungController {
     private static Flug rueckflug;
     private static int anzahlPersonen;
     private static int gepaecksPreisProKilo = 10;
+    private static Anwender anwender;
 
     public void initialize() {
 
@@ -165,6 +166,10 @@ public class ZahlungController {
         }
 
 
+    }
+
+    public static void setAnwender(Anwender anwender) {
+        ZahlungController.anwender = anwender;
     }
 
     public static void setHinflug(Flug hinflug) {
@@ -240,7 +245,11 @@ public class ZahlungController {
 
                 try {
                     Verwaltung.gepaeckErstellen(Double.parseDouble(GewichtFeld1.getText()), (Gepaecktypen) GepackFeld1.getValue());
-                    Verwaltung.buchungErstellen(hinflug, (Anwender) Verwaltung.getAngemeldeter(), anzahlPersonen, Verwaltung.getGepaeck().get(Verwaltung.getGepaeck().size() - 1), Double.parseDouble(GesamtpreisLabel1.getText()), true);
+                    if(Verwaltung.getAngemeldeter() instanceof Anwender) {
+                        Verwaltung.buchungErstellen(hinflug, (Anwender) Verwaltung.getAngemeldeter(), anzahlPersonen, Verwaltung.getGepaeck().get(Verwaltung.getGepaeck().size() - 1), Double.parseDouble(GesamtpreisLabel1.getText()), true);
+                    }else {
+                        Verwaltung.buchungErstellen(hinflug, anwender, anzahlPersonen, Verwaltung.getGepaeck().get(Verwaltung.getGepaeck().size() - 1), Double.parseDouble(GesamtpreisLabel1.getText()), false);
+                    }
                     BuchungszusammenfassungController.setBuchung(Verwaltung.getBuchungen().get(Verwaltung.getBuchungen().size() - 1));
                     MAIN.fensterOeffnen(Views.Buchungszusammenfassung);
                 } catch (ToHighWeightException e) {
@@ -289,21 +298,31 @@ public class ZahlungController {
 
                 try {
                     Verwaltung.gepaeckErstellen(Double.parseDouble(GewichtFeld1.getText()), (Gepaecktypen) GepackFeld1.getValue());
-                    Verwaltung.buchungErstellen(hinflug, rueckflug, (Anwender) Verwaltung.getAngemeldeter(), anzahlPersonen, Verwaltung.getGepaeck().get(Verwaltung.getGepaeck().size() - 1), Double.parseDouble(GesamtpreisLabel1.getText()), true);
+
+                    if(Verwaltung.getAngemeldeter() instanceof Anwender) {
+                        Verwaltung.buchungErstellen(hinflug, rueckflug, (Anwender) Verwaltung.getAngemeldeter(), anzahlPersonen, Verwaltung.getGepaeck().get(Verwaltung.getGepaeck().size() - 1), Double.parseDouble(GesamtpreisLabel1.getText()), true);
+                    }else {
+                        Verwaltung.buchungErstellen(hinflug, rueckflug, anwender, anzahlPersonen, Verwaltung.getGepaeck().get(Verwaltung.getGepaeck().size() - 1), Double.parseDouble(GesamtpreisLabel1.getText()), false);
+                    }
+
                     BuchungszusammenfassungController.setBuchung(Verwaltung.getBuchungen().get(Verwaltung.getBuchungen().size() - 1));
                     MAIN.fensterOeffnen(Views.Buchungszusammenfassung);
                 } catch (ToHighWeightException e) {
                     GewichtFeld1.setText("");
                     GewichtFeld1.setPromptText("Zu hohes Gewicht");
+                    e.printStackTrace();
                 } catch (NumberFormatException e) {
                     GewichtFeld1.setText("");
                     GewichtFeld1.setPromptText("Gewicht in kg");
+                    e.printStackTrace();
                 } catch (IllegalArgumentException e) {
                     GewichtFeld1.setText("");
                     GewichtFeld1.setPromptText("Gewicht in kg");
+                    e.printStackTrace();
                 } catch (ClassCastException e) {
                     GewichtFeld1.setText("");
                     GewichtFeld1.setPromptText("Gewicht in kg");
+                    e.printStackTrace();
                 }
 
             }
