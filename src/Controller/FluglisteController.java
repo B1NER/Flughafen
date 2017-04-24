@@ -2,6 +2,7 @@ package Controller;
 
 import Model.Enums.Views;
 import Model.Exceptions.FlugNotFoundException;
+import Model.Klassen.Elemente.Buchung;
 import Model.Klassen.Elemente.Flug;
 import Model.Klassen.MAIN;
 import Model.Klassen.Verwaltung.Verwaltung;
@@ -10,14 +11,12 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.Color;
+import org.omg.CORBA.DATA_CONVERSION;
 
-import java.awt.event.MouseEvent;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -140,9 +139,9 @@ public class FluglisteController {
         hinflug = null;
         rueckflug = null;
 
-        if(!isWithRueckflug){
+        if (!isWithRueckflug) {
             rueckflugTab.setDisable(true);
-        }else {
+        } else {
             tabPane.getSelectionModel().selectedItemProperty().addListener(
                     new ChangeListener<Tab>() {
                         @Override
@@ -151,9 +150,48 @@ public class FluglisteController {
                         }
                     }
             );
-            FlugauswahlText.setText("Hinflug auswählen");
         }
+
+        hinflugTabelle.setRowFactory(tv -> {
+            TableRow<Flug> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 1 && (!row.isEmpty())) {
+                    System.out.println("Hinflug");
+                    hinflug = row.getItem();
+                    ZahlungController.setHinflug(hinflug);
+                    ZahlungController.setAnzahlPersonen(Integer.parseInt(PersonenanzahlFeld.getText()));
+                }
+            });
+            return row;
+        });
+
+        rueckflugTabelle.setRowFactory(tv -> {
+            TableRow<Flug> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 1 && (!row.isEmpty())) {
+                    System.out.println("Rückflug");
+                    rueckflug = row.getItem();
+                    ZahlungController.setRueckflug(rueckflug);
+                    ZahlungController.setAnzahlPersonen(Integer.parseInt(PersonenanzahlFeld.getText()));
+                }
+            });
+            return row;
+        });
+
+        FlugabFeld.textProperty().addListener((observable, oldValue, newValue) -> {
+            flugAb = newValue;
+        });
+
+        FlugnachFeld.textProperty().addListener((observable, oldValue, newValue) -> {
+            flugNach = newValue;
+        });
+
         tabHasChanged(hinflugTab);
+        if(isWithRueckflug) {
+            String zw = flugAb;
+            FlugabFeld.setText(flugNach);
+            FlugnachFeld.setText(zw);
+        }
         FlugfindenAction(new ActionEvent());
 
     }
@@ -174,17 +212,16 @@ public class FluglisteController {
             HinSpaltePreis.setCellValueFactory(new PropertyValueFactory<Flug, String>("preisProPerson"));
             rueckflugTab.setDisable(true);
 
-            if (hinflugTabelle.getSelectionModel().getSelectedItem() != null) {
-                hinflug = hinflugTabelle.getSelectionModel().getSelectedItem();
-            }
-
             FlugfindenAction(new ActionEvent());
 
         } else {
 
             if (tab.getId().equals("hinflugTab")) {
-                FlugabFeld.setText(flugAb);
-                FlugnachFeld.setText(flugNach);
+
+                FlugauswahlText.setText("Hinflug auswählen");
+                String zw = flugAb;
+                FlugabFeld.setText(flugNach);
+                FlugnachFeld.setText(zw);
                 fluggesellschaftFeld.setText(fluggesellschaft);
                 PersonenanzahlFeld.setText(anzahlPersonen);
                 DatumHinflug.setValue(datumHinflug);
@@ -195,16 +232,14 @@ public class FluglisteController {
                 HinSpalteFluggesellschaft.setCellValueFactory(new PropertyValueFactory<Flug, String>("flugGesellschaft"));
                 HinSpaltePreis.setCellValueFactory(new PropertyValueFactory<Flug, String>("preisProPerson"));
 
-                if (hinflugTabelle.getSelectionModel().getSelectedItem() != null) {
-                    hinflug = hinflugTabelle.getSelectionModel().getSelectedItem();
-                }
-
                 FlugfindenAction(new ActionEvent());
 
             } else if (tab.getId().equals("rueckflugTab")) {
 
+                FlugauswahlText.setText("Rückflug auswählen");
+                String zw = flugAb;
                 FlugabFeld.setText(flugNach);
-                FlugnachFeld.setText(flugAb);
+                FlugnachFeld.setText(zw);
                 fluggesellschaftFeld.setText(fluggesellschaft);
                 PersonenanzahlFeld.setText(anzahlPersonen);
                 DatumHinflug.setValue(datumRueckflug);
@@ -214,10 +249,6 @@ public class FluglisteController {
                 RueckSpalteDatum.setCellValueFactory(new PropertyValueFactory<Flug, String>("abflugzeit"));
                 RueckSpalteFluggesellschaft.setCellValueFactory(new PropertyValueFactory<Flug, String>("flugGesellschaft"));
                 RueckSpaltePreis.setCellValueFactory(new PropertyValueFactory<Flug, String>("preisProPerson"));
-
-                if (rueckflugTabelle.getSelectionModel().getSelectedItem() != null) {
-                    rueckflug = rueckflugTabelle.getSelectionModel().getSelectedItem();
-                }
 
                 FlugfindenAction(new ActionEvent());
             }
@@ -231,8 +262,8 @@ public class FluglisteController {
 
         try {
             if (FlugabFeld.getText().equals("") && FlugnachFeld.getText().equals("")) {
-                FlugabFeld.setText("Pflichtfeld!");
-                FlugnachFeld.setText("Pflichtfeld");
+                FlugabFeld.setPromptText("Pflichtfeld!");
+                FlugnachFeld.setPromptText("Pflichtfeld");
             } else {
                 ArrayList<Flug> gefundeneFluege;
                 if (!fluggesellschaftFeld.getText().equals("") && DatumHinflug.getValue() == null) {
@@ -250,17 +281,27 @@ public class FluglisteController {
                 }
                 observableList = FXCollections.observableList(gefundeneFluege);
                 hinflugTabelle.setItems(observableList);
-                if(isWithRueckflug){
+
+                if (isWithRueckflug) {
                     rueckflugTabelle.setItems(observableList);
                 }
             }
         } catch (FlugNotFoundException e) {
-            observableList.clear();
-            hinflugTabelle.setItems(observableList);
 
             Label keineFluege = new Label("Keine Flüge gefunden!");
             keineFluege.setId("keinErgebnis");
-            hinflugTabelle.setPlaceholder(keineFluege);
+            observableList.clear();
+            //TODO label wird nicht angezeigt
+            if (isWithRueckflug) {
+                rueckflugTabelle.setItems(observableList);
+                rueckflugTabelle.setPlaceholder(keineFluege);
+                hinflugTabelle.setItems(observableList);
+                hinflugTabelle.setPlaceholder(keineFluege);
+            }else {
+                observableList.clear();
+                hinflugTabelle.setItems(observableList);
+                hinflugTabelle.setPlaceholder(keineFluege);
+            }
 
             System.out.println("Flug wurde nicht gefunden");
         }
@@ -271,9 +312,9 @@ public class FluglisteController {
     @FXML
     void zurueckAction(ActionEvent event) {
         MAIN.viewsChronik.pop();
-        if(MAIN.viewsChronik.peek().equals(Views.Zahlung)){
+        if (MAIN.viewsChronik.peek().equals(Views.Zahlung)) {
             MAIN.fensterOeffnen(Views.Buchen);
-        }else {
+        } else {
             MAIN.fensterOeffnen(MAIN.viewsChronik.pop());
         }
     }
@@ -281,60 +322,33 @@ public class FluglisteController {
     @FXML
     void buchenAction(ActionEvent event) {
 
-        if(!isWithRueckflug) {
-            if (hinflugTabelle.getSelectionModel().getSelectedItem() != null) {
-                hinflug = hinflugTabelle.getSelectionModel().getSelectedItem();
-                ZahlungController.setHinflug(hinflug);
-                ZahlungController.setAnzahlPersonen(Integer.parseInt(PersonenanzahlFeld.getText()));
-                if (!Verwaltung.isAngemeldet()) {
-                    MAIN.fensterOeffnen(Views.Anmelden);
-                } else {
-                    MAIN.fensterOeffnen(Views.Zahlung);
-                }
-            } else {
+        if (!isWithRueckflug) {
+
+            if(hinflug == null) {
                 keineBuchungAusgewaehltLabel.setTextFill(Color.RED);
                 keineBuchungAusgewaehltLabel.setText("Flug auswählen!");
+            }else if (!Verwaltung.isAngemeldet()) {
+                MAIN.fensterOeffnen(Views.Anmelden);
+            } else {
+                MAIN.fensterOeffnen(Views.Zahlung);
             }
-        }else {
 
-            if(hinflugTab.isSelected()) {
-                if (hinflugTabelle.getSelectionModel().getSelectedItem() != null) {
-                    hinflug = hinflugTabelle.getSelectionModel().getSelectedItem();
-                    ZahlungController.setHinflug(hinflug);
-                    ZahlungController.setAnzahlPersonen(Integer.parseInt(PersonenanzahlFeld.getText()));
+        } else {
 
-                    if (rueckflug == null) {
-                        keineBuchungAusgewaehltLabel.setTextFill(Color.RED);
-                        keineBuchungAusgewaehltLabel.setText("Rückflug auswählen!");
-                    } else if (!Verwaltung.isAngemeldet()) {
-                        MAIN.fensterOeffnen(Views.Anmelden);
-                    } else {
-                        MAIN.fensterOeffnen(Views.Zahlung);
-                    }
-
-                } else {
+            if (rueckflug == null || hinflug == null) {
+                if(hinflug==null) {
                     keineBuchungAusgewaehltLabel.setTextFill(Color.RED);
                     keineBuchungAusgewaehltLabel.setText("Hinflug auswählen!");
-                }
-            }else if(rueckflugTab.isSelected()) {
-                if (rueckflugTabelle.getSelectionModel().getSelectedItem() != null) {
-                    rueckflug = rueckflugTabelle.getSelectionModel().getSelectedItem();
-                    ZahlungController.setRueckflug(rueckflug);
-                    ZahlungController.setAnzahlPersonen(Integer.parseInt(PersonenanzahlFeld.getText()));
-                    if (hinflug == null) {
-                        keineBuchungAusgewaehltLabel.setTextFill(Color.RED);
-                        keineBuchungAusgewaehltLabel.setText("Hinflug auswählen!");
-                    } else if (!Verwaltung.isAngemeldet()) {
-                        MAIN.fensterOeffnen(Views.Anmelden);
-                    } else {
-                        MAIN.fensterOeffnen(Views.Zahlung);
-                    }
-
-                } else {
+                }else{
                     keineBuchungAusgewaehltLabel.setTextFill(Color.RED);
                     keineBuchungAusgewaehltLabel.setText("Rückflug auswählen!");
                 }
+            } else if (!Verwaltung.isAngemeldet()) {
+                MAIN.fensterOeffnen(Views.Anmelden);
+            } else {
+                MAIN.fensterOeffnen(Views.Zahlung);
             }
+
 
         }
 
