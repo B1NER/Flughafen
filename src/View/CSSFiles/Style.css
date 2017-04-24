@@ -87,7 +87,7 @@
     -fx-padding: 0.0em;
 }
 
-#keineFluegeGefunden {
+#keinErgebnis {
     -fx-font-size: 40px;
     -fx-font-weight: bold;
     -fx-text-fill: white;

@@ -144,7 +144,7 @@ public class ZuBearbeitendeBuchungFindenConroller {
                     zutreffendeBuchungen.addAll(Verwaltung.getBuchungenByAnwender(anwenders.get(i)));
                 }
             }
-        } else {
+        } else if (!VornameFeld.getText().equals("") && !NachnameFeld.getText().equals("")) {
             //Suche nach Vornamen und Nachnamen
             for (int i = 0; i < anwenders.size(); i++) {
                 if (anwenders.get(i).getNachname().toLowerCase().contains(NachnameFeld.getText().toLowerCase()) && anwenders.get(i).getVorname().toLowerCase().contains(VornameFeld.getText().toLowerCase())) {
@@ -154,17 +154,15 @@ public class ZuBearbeitendeBuchungFindenConroller {
         }
 
         observableList = FXCollections.observableList(zutreffendeBuchungen);
+        tabelle.setItems(observableList);
         if (observableList.size() < 1) {
             observableList.clear();
             tabelle.setItems(observableList);
-            System.out.println("Es gibt keinen Ergebnise mit diesen Eigenschaften");
-            Label keinErgebniss = new Label("Kein Ergebniss gefunden!");
-            keinErgebniss.setId("keinErgebniss");
-            tabelle.setPlaceholder(keinErgebniss);
-        } else {
-            tabelle.setItems(observableList);
+            System.out.println("Es gibt keinen Ergebnisse mit diesen Eigenschaften");
+            Label keinErgebnis = new Label("Kein Ergebnis gefunden!");
+            keinErgebnis.setId("keinErgebnis");
+            tabelle.setPlaceholder(keinErgebnis);
         }
-
     }
 
     @FXML
@@ -176,8 +174,10 @@ public class ZuBearbeitendeBuchungFindenConroller {
 
     @FXML
     void BearbeitenAction(ActionEvent event) {
-        BuchungBearbeitenController.setBuchung(tabelle.getSelectionModel().getSelectedItem());
-        MAIN.fensterOeffnen(Views.BuchungBearbeiten);
+        if(tabelle.getSelectionModel().getSelectedItem() != null) {
+            BuchungBearbeitenController.setBuchung(tabelle.getSelectionModel().getSelectedItem());
+            MAIN.fensterOeffnen(Views.BuchungBearbeiten);
+        }
     }
 
     @FXML

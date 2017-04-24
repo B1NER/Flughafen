@@ -5,6 +5,7 @@ import Model.Exceptions.NutzerDoesNotExistException;
 import Model.Klassen.MAIN;
 import Model.Klassen.Nutzer.Angestellter;
 import Model.Klassen.Nutzer.Anwender;
+import Model.Klassen.Verwaltung.Angestellte;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -64,72 +65,62 @@ public class AngestellterStartseiteController {     //TODO Vorname, Nachname Gr√
 
 
     private static ObservableList<Anwender> observableList = FXCollections.observableList(new ArrayList<>());
-
+    ArrayList<Anwender> myAnwenders = Verwaltung.getAnwenderByAngestellten((Angestellter)Verwaltung.getAngemeldeter());
 
     public void initialize() {
         SpalteVorname.setCellValueFactory(new PropertyValueFactory<Anwender, String>("vorname"));
         SpalteNachname.setCellValueFactory(new PropertyValueFactory<Anwender, String>("nachname"));
         SpalteGeburtsdatum.setCellValueFactory(new PropertyValueFactory<Anwender, String>("geburtsdatum"));
-        SpalteEmail.setCellValueFactory(new PropertyValueFactory<Anwender, String>("eMail"));
+        SpalteEmail.setCellValueFactory(new PropertyValueFactory<Anwender, String>("email"));
 
-
-        try {
-            observableList = FXCollections.observableList(Verwaltung.getAnwenderByAngestellten(Verwaltung.getAngestelltenByAngemeldeten()));
-            if (observableList.size() == 0) {
-                System.out.println("Der Anwender hat keine Kunden!");
-                Label keineFluege = new Label("Keine Anwender gefunden!");
-                keineFluege.setId("keineFluegeGefunden");
-                Tabelle.setPlaceholder(keineFluege);
-            }
-            Tabelle.setItems(observableList);
-        } catch (final NutzerDoesNotExistException e) {
-            System.out.println("Nutzer does not exist!");
-        }
+        observableList = FXCollections.observableList(myAnwenders);
+        Tabelle.setItems(observableList);
     }
 
 
     @FXML
     void KundenSuchenAction(ActionEvent event) {
 
-        //TODO suchen --> wirft exception
+        //TODO suchen --> content in tabelle
         //TODO Datum
-        //TODO a poor f√§√§le testen de exceptions werfen
 
         ArrayList<Anwender> zutreffendeAnwender = new ArrayList<>();
 
         if (!VornameFeld.getText().equals("") && NachnameFeld.getText().equals("")) {
             //Suche nach Vornamen
-            for (int i = 0; i < Verwaltung.getAnwenderByAngestellten((Angestellter)Verwaltung.getAngemeldeter()).size(); i++) {
-                if (Verwaltung.getAnwenderByAngestellten((Angestellter)Verwaltung.getAngemeldeter()).get(i).getVorname().toLowerCase().contains(VornameFeld.getText().toLowerCase())) {
-                    zutreffendeAnwender.add(Verwaltung.getAnwenderByAngestellten((Angestellter)Verwaltung.getAngemeldeter()).get(i));
+            for (int i = 0; i < myAnwenders.size(); i++) {
+                if (myAnwenders.get(i).getVorname().toLowerCase().contains(VornameFeld.getText().toLowerCase())) {
+                    zutreffendeAnwender.add(myAnwenders.get(i));
                 }
             }
         } else if (VornameFeld.getText().equals("") && !NachnameFeld.getText().equals("")) {
             //Suche nach Nachnamen
             for (int i = 0; i < Verwaltung.getAnwenderByAngestellten((Angestellter)Verwaltung.getAngemeldeter()).size(); i++) {
-                if (Verwaltung.getAnwenderByAngestellten((Angestellter)Verwaltung.getAngemeldeter()).get(i).getNachname().toLowerCase().contains(NachnameFeld.getText().toLowerCase())) {
-                    zutreffendeAnwender.add(Verwaltung.getAnwenderByAngestellten((Angestellter)Verwaltung.getAngemeldeter()).get(i));
+                if (myAnwenders.get(i).getNachname().toLowerCase().contains(NachnameFeld.getText().toLowerCase())) {
+                    zutreffendeAnwender.add(myAnwenders.get(i));
                 }
             }
-        } else {
+        } else if (!VornameFeld.getText().equals("") && !NachnameFeld.getText().equals("")){
             //Suche nach Vornamen und Nachnamen
             for (int i = 0; i < Verwaltung.getAnwenderByAngestellten((Angestellter)Verwaltung.getAngemeldeter()).size(); i++) {
-                if (Verwaltung.getAnwenderByAngestellten((Angestellter)Verwaltung.getAngemeldeter()).get(i).getNachname().toLowerCase().contains(NachnameFeld.getText().toLowerCase()) && zutreffendeAnwender.get(i).getVorname().toLowerCase().contains(VornameFeld.getText().toLowerCase())) {
-                    zutreffendeAnwender.add(Verwaltung.getAnwenderByAngestellten((Angestellter)Verwaltung.getAngemeldeter()).get(i));
+                if (myAnwenders.get(i).getNachname().toLowerCase().contains(NachnameFeld.getText().toLowerCase()) && myAnwenders.get(i).getVorname().toLowerCase().contains(VornameFeld.getText().toLowerCase())) {
+                    zutreffendeAnwender.add(myAnwenders.get(i));
                 }
             }
         }
 
+        observableList = FXCollections.observableList(zutreffendeAnwender);
+        Tabelle.setItems(observableList);
+
         if (observableList.size() < 1) {
             observableList.clear();
             Tabelle.setItems(observableList);
-            System.out.println("Es gibt keinen Ergebnise mit diesen Eigenschaften");
-            Label keinErgebniss = new Label("Kein Ergebniss gefunden!");
-            keinErgebniss.setId("keinErgebniss");
-            Tabelle.setPlaceholder(keinErgebniss);
-        } else {
-            observableList = FXCollections.observableList(zutreffendeAnwender);
-            Tabelle.setItems(observableList);
+            System.out.println("Es gibt keinen Ergebnisse mit diesen Eigenschaften");
+
+            Label keinErgebnis = new Label("Kein Ergebnis gefunden!");
+            keinErgebnis.setId("keinErgebnis");     //TODO LABEL wird nicht gesetzt
+            Tabelle.setPlaceholder(keinErgebnis);
+
         }
     }
 
@@ -142,8 +133,10 @@ public class AngestellterStartseiteController {     //TODO Vorname, Nachname Gr√
 
     @FXML
     void KundebearbeitenAction(ActionEvent event) {
-        ProfilBearbeitenController.setZuBearbeitenderMensch(Tabelle.getSelectionModel().getSelectedItem());
-        MAIN.fensterOeffnen(Views.ProfilBearbeiten);
+        if(Tabelle.getSelectionModel().getSelectedItem() != null) {
+            ProfilBearbeitenController.setZuBearbeitenderMensch(Tabelle.getSelectionModel().getSelectedItem());
+            MAIN.fensterOeffnen(Views.ProfilBearbeiten);
+        }
     }
 
     @FXML

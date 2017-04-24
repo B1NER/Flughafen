@@ -43,7 +43,7 @@ public class VerwaltungTest {
             assertEquals(anwender.get(i).getNachname(), Anwenders.getAnwenders().get(i).getNachname());
             assertEquals(anwender.get(i).getGeburtsdatum(), Anwenders.getAnwenders().get(i).getGeburtsdatum());
             assertEquals(anwender.get(i).getPassnummer(), Anwenders.getAnwenders().get(i).getPassnummer());
-            assertEquals(anwender.get(i).geteMail(), Anwenders.getAnwenders().get(i).geteMail());
+            assertEquals(anwender.get(i).getEmail(), Anwenders.getAnwenders().get(i).getEmail());
             assertEquals(anwender.get(i).getPasswort(), Anwenders.getAnwenders().get(i).getPasswort());
         }
     }
@@ -66,7 +66,7 @@ public class VerwaltungTest {
             assertEquals(angestellte.get(i).getNachname(), Angestellte.getAngestellte().get(i).getNachname());
             assertEquals(angestellte.get(i).getGeburtsdatum(), Angestellte.getAngestellte().get(i).getGeburtsdatum());
             assertEquals(angestellte.get(i).getPassnummer(), Angestellte.getAngestellte().get(i).getPassnummer());
-            assertEquals(angestellte.get(i).geteMail(), Angestellte.getAngestellte().get(i).geteMail());
+            assertEquals(angestellte.get(i).getEmail(), Angestellte.getAngestellte().get(i).getEmail());
             assertEquals(angestellte.get(i).getPasswort(), Angestellte.getAngestellte().get(i).getPasswort());
         }
 
@@ -90,7 +90,7 @@ public class VerwaltungTest {
             assertEquals(administratoren.get(i).getNachname(), Administratoren.getAdministratoren().get(i).getNachname());
             assertEquals(administratoren.get(i).getGeburtsdatum(), Administratoren.getAdministratoren().get(i).getGeburtsdatum());
             assertEquals(administratoren.get(i).getPassnummer(), Administratoren.getAdministratoren().get(i).getPassnummer());
-            assertEquals(administratoren.get(i).geteMail(), Administratoren.getAdministratoren().get(i).geteMail());
+            assertEquals(administratoren.get(i).getEmail(), Administratoren.getAdministratoren().get(i).getEmail());
             assertEquals(administratoren.get(i).getPasswort(), Administratoren.getAdministratoren().get(i).getPasswort());
         }
     }
@@ -142,7 +142,7 @@ public class VerwaltungTest {
         assertEquals(a.getNachname(),Buchungen.getBuchungen().get(0).getAnwender().getNachname());
         assertEquals(a.getGeburtsdatum(),Buchungen.getBuchungen().get(0).getAnwender().getGeburtsdatum());
         assertTrue(a.getPassnummer() == Buchungen.getBuchungen().get(0).getAnwender().getPassnummer());
-        assertEquals(a.geteMail(),Buchungen.getBuchungen().get(0).getAnwender().geteMail());
+        assertEquals(a.getEmail(),Buchungen.getBuchungen().get(0).getAnwender().getEmail());
         assertEquals(a.getPasswort(),Buchungen.getBuchungen().get(0).getAnwender().getPasswort());
 
         //Anzahl Sitzplätze
@@ -283,7 +283,7 @@ public class VerwaltungTest {
             assertEquals("Obergasser", Angestellte.getAngestelltenByID(74).getNachname());
             assertEquals("23.09.1999", Angestellte.getAngestelltenByID(74).getGeburtsdatum());
             assertTrue(8274 == Angestellte.getAngestelltenByID(74).getPassnummer());
-            assertEquals("matti.climb@gmail.com", Angestellte.getAngestelltenByID(74).geteMail());
+            assertEquals("matti.climb@gmail.com", Angestellte.getAngestelltenByID(74).getEmail());
             assertEquals("mattrivals1999", Angestellte.getAngestelltenByID(74).getPasswort());
 
         } catch (NutzerDoesNotExistException e) {
@@ -312,7 +312,7 @@ public class VerwaltungTest {
             assertEquals(anwenderArrayList.get(i).getNachname(), Verwaltung.getAnwenderByAngestellten(angestellter).get(i).getNachname());
             assertEquals(anwenderArrayList.get(i).getGeburtsdatum(), Verwaltung.getAnwenderByAngestellten(angestellter).get(i).getGeburtsdatum());
             assertTrue(anwenderArrayList.get(i).getPassnummer() == Verwaltung.getAnwenderByAngestellten(angestellter).get(i).getPassnummer());
-            assertEquals(anwenderArrayList.get(i).geteMail(), Verwaltung.getAnwenderByAngestellten(angestellter).get(i).geteMail());
+            assertEquals(anwenderArrayList.get(i).getEmail(), Verwaltung.getAnwenderByAngestellten(angestellter).get(i).getEmail());
             assertEquals(anwenderArrayList.get(i).getPasswort(), Verwaltung.getAnwenderByAngestellten(angestellter).get(i).getPasswort());
 
         }
@@ -322,7 +322,7 @@ public class VerwaltungTest {
 
         Anwenders.addAnwender(anwender);
         try {
-            Verwaltung.anmelden(anwender.geteMail(), anwender.getPasswort());
+            Verwaltung.anmelden(anwender.getEmail(), anwender.getPasswort());
         } catch (NutzerDoesNotExistException e) {
             e.printStackTrace();
         }
@@ -331,7 +331,7 @@ public class VerwaltungTest {
         assertEquals(anwender.getNachname(), Verwaltung.getAngemeldeter().getNachname());
         assertEquals(anwender.getGeburtsdatum(), Verwaltung.getAngemeldeter().getGeburtsdatum());
         assertTrue(anwender.getPassnummer() == Verwaltung.getAngemeldeter().getPassnummer());
-        assertEquals(anwender.geteMail(), Verwaltung.getAngemeldeter().geteMail());
+        assertEquals(anwender.getEmail(), Verwaltung.getAngemeldeter().getEmail());
         assertEquals(anwender.getPasswort(), Verwaltung.getAngemeldeter().getPasswort());
 
     }

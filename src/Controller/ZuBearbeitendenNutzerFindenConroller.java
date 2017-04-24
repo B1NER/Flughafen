@@ -20,7 +20,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.util.ArrayList;
 
 public class ZuBearbeitendenNutzerFindenConroller { //TODO Nutzertyp in Liste anzeigen
-    //TODO Kein Kontent in Tabelle
 
     @FXML
     private Label NachnameText;
@@ -75,7 +74,7 @@ public class ZuBearbeitendenNutzerFindenConroller { //TODO Nutzertyp in Liste an
         SpalteVorname.setCellValueFactory(new PropertyValueFactory<Mensch, String>("vorname"));
         SpalteNachname.setCellValueFactory(new PropertyValueFactory<Mensch, String>("nachname"));
         SpalteGeburtsdatum.setCellValueFactory(new PropertyValueFactory<Mensch, String>("geburtsdatum"));
-        SpaltEmail.setCellValueFactory(new PropertyValueFactory<Mensch, String>("eMail"));
+        SpaltEmail.setCellValueFactory(new PropertyValueFactory<Mensch, String>("email"));
 
         menschen.clear();
         menschen.addAll(Anwenders.getAnwenders());
@@ -106,7 +105,7 @@ public class ZuBearbeitendenNutzerFindenConroller { //TODO Nutzertyp in Liste an
                     zutreffendeMenschen.add(menschen.get(i));
                 }
             }
-        } else {
+        } else if (!VornameFeld.getText().equals("") && !NachnameFeld.getText().equals("")){
             //Suche nach Vornamen und Nachnamen
             for (int i = 0; i < menschen.size(); i++) {
                 if (menschen.get(i).getNachname().toLowerCase().contains(NachnameFeld.getText().toLowerCase()) && menschen.get(i).getVorname().toLowerCase().contains(VornameFeld.getText().toLowerCase())) {
@@ -115,16 +114,16 @@ public class ZuBearbeitendenNutzerFindenConroller { //TODO Nutzertyp in Liste an
             }
         }
 
+        observableList = FXCollections.observableList(zutreffendeMenschen);
+        tabelle.setItems(observableList);
+
         if (observableList.size() < 1) {
             observableList.clear();
             tabelle.setItems(observableList);
-            System.out.println("Es gibt keinen Ergebnise mit diesen Eigenschaften");
-            Label keinErgebniss = new Label("Kein Ergebniss gefunden!");
-            keinErgebniss.setId("keinErgebniss");
-            tabelle.setPlaceholder(keinErgebniss);
-        } else {
-            observableList = FXCollections.observableList(zutreffendeMenschen);
-            tabelle.setItems(observableList);
+            System.out.println("Es gibt keinen Ergebnisse mit diesen Eigenschaften");
+            Label keinErgebnis = new Label("Kein Ergebnis gefunden!");
+            keinErgebnis.setId("keinErgebnis");
+            tabelle.setPlaceholder(keinErgebnis);
         }
     }
 
@@ -143,8 +142,10 @@ public class ZuBearbeitendenNutzerFindenConroller { //TODO Nutzertyp in Liste an
 
     @FXML
     void BearbeitenAction(ActionEvent event) {
-        ProfilBearbeitenController.setZuBearbeitenderMensch(tabelle.getSelectionModel().getSelectedItem());
-        MAIN.fensterOeffnen(Views.ProfilBearbeiten);
+        if(tabelle.getSelectionModel().getSelectedItem() != null) {
+            ProfilBearbeitenController.setZuBearbeitenderMensch(tabelle.getSelectionModel().getSelectedItem());
+            MAIN.fensterOeffnen(Views.ProfilBearbeiten);
+        }
     }
 
     @FXML
