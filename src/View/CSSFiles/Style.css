@@ -90,7 +90,7 @@
 #keinErgebnis {
     -fx-font-size: 40px;
     -fx-font-weight: bold;
-    -fx-text-fill: white;
+    -fx-text-fill: rgba(230, 57, 0, 0.69);
 }
 
 /*TabPane*/

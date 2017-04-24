@@ -40,14 +40,22 @@
                                     </font>
                                 </Label>
                                 <TextField id="txtKundenListeVorname" fx:id="VornameFeld" alignment="CENTER"
-                                           prefHeight="65.0" prefWidth="250.0"/>
+                                           prefHeight="65.0" prefWidth="250.0">
+                                    <font>
+                                        <Font size="30.0"/>
+                                    </font>
+                                </TextField>
                                 <Label fx:id="NachnameText" text="Nachname:" textFill="#fcfafa">
                                     <font>
                                         <Font size="36.0"/>
                                     </font>
                                 </Label>
                                 <TextField id="txtKundenListeNachname" fx:id="NachnameFeld" alignment="CENTER"
-                                           layoutY="50.0" prefHeight="65.0" prefWidth="250.0"/>
+                                           layoutY="50.0" prefHeight="65.0" prefWidth="250.0">
+                                    <font>
+                                        <Font size="30.0"/>
+                                    </font>
+                                </TextField>
                                 <Button fx:id="KundenSuchenButton" mnemonicParsing="false"
                                         onAction="#KundenSuchenAction" prefHeight="65.0" prefWidth="230.0"
                                         text="Kunde suchen">

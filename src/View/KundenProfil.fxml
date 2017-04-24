@@ -97,7 +97,7 @@
                                     <children>
                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                             <children>
-                                                <Label fx:id="HinflugText" prefWidth="230.0" text="Hinflug:"
+                                                <Label fx:id="HinflugText" prefWidth="240.0" text="Hinflug:"
                                                        textFill="WHITE">
                                                     <font>
                                                         <Font size="30.0"/>
@@ -116,18 +116,18 @@
                                                 <Label fx:id="StartDatumText" prefHeight="30.0" prefWidth="230.0"
                                                        text="Start Datum:" textFill="WHITE">
                                                     <font>
-                                                        <Font size="30.0"/>
+                                                        <Font size="25.0"/>
                                                     </font>
                                                 </Label>
                                                 <Label id="lblKundeGeburtsdatum" fx:id="StartDatumFeld"
                                                        prefHeight="30.0" prefWidth="282.0" textFill="WHITE">
                                                     <font>
-                                                        <Font size="30.0"/>
+                                                        <Font size="25.0"/>
                                                     </font>
                                                 </Label>
                                             </children>
                                             <padding>
-                                                <Insets left="20.0"/>
+                                                <Insets left="10.0"/>
                                             </padding>
                                         </HBox>
                                         <HBox prefHeight="100.0" prefWidth="200.0">
@@ -135,13 +135,13 @@
                                                 <Label fx:id="AnkunftsDatumText" prefHeight="40.0" prefWidth="230.0"
                                                        text="Ankunfts Datum:" textFill="WHITE">
                                                     <font>
-                                                        <Font size="30.0"/>
+                                                        <Font size="25.0"/>
                                                     </font>
                                                 </Label>
                                                 <Label fx:id="AnkunftsDatumFeld" prefHeight="30.0" prefWidth="282.0"
                                                        textFill="WHITE">
                                                     <font>
-                                                        <Font size="30.0"/>
+                                                        <Font size="25.0"/>
                                                     </font>
                                                 </Label>
                                             </children>
@@ -149,12 +149,12 @@
                                                 <Insets/>
                                             </VBox.margin>
                                             <padding>
-                                                <Insets left="20.0"/>
+                                                <Insets left="10.0"/>
                                             </padding>
                                         </HBox>
                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                             <children>
-                                                <Label fx:id="RuckflugText" prefHeight="30.0" prefWidth="230.0"
+                                                <Label fx:id="RuckflugText" prefHeight="30.0" prefWidth="240.0"
                                                        text="Rückflug:" textFill="WHITE">
                                                     <font>
                                                         <Font size="30.0"/>
@@ -176,18 +176,18 @@
                                                 <Label fx:id="StartDatumText1" prefHeight="30.0" prefWidth="230.0"
                                                        text="Start Datum:" textFill="WHITE">
                                                     <font>
-                                                        <Font size="30.0"/>
+                                                        <Font size="25.0"/>
                                                     </font>
                                                 </Label>
                                                 <Label id="lblKundeGeburtsdatum" fx:id="StartDatumFeld1"
                                                        prefHeight="30.0" prefWidth="282.0" textFill="WHITE">
                                                     <font>
-                                                        <Font size="30.0"/>
+                                                        <Font size="25.0"/>
                                                     </font>
                                                 </Label>
                                             </children>
                                             <VBox.margin>
-                                                <Insets left="20.0"/>
+                                                <Insets left="10.0"/>
                                             </VBox.margin>
                                         </HBox>
                                         <HBox prefHeight="100.0" prefWidth="200.0">
@@ -195,23 +195,23 @@
                                                 <Label fx:id="AnkunftsDatumText1" prefHeight="40.0" prefWidth="230.0"
                                                        text="Ankunfts Datum:" textFill="WHITE">
                                                     <font>
-                                                        <Font size="30.0"/>
+                                                        <Font size="25.0"/>
                                                     </font>
                                                 </Label>
                                                 <Label fx:id="AnkunftsDatumFeld1" prefHeight="30.0" prefWidth="282.0"
                                                        textFill="WHITE">
                                                     <font>
-                                                        <Font size="30.0"/>
+                                                        <Font size="25.0"/>
                                                     </font>
                                                 </Label>
                                             </children>
                                             <padding>
-                                                <Insets left="20.0"/>
+                                                <Insets left="10.0"/>
                                             </padding>
                                         </HBox>
                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                             <children>
-                                                <Label fx:id="GepackText" prefHeight="30.0" prefWidth="200.0"
+                                                <Label fx:id="GepackText" prefHeight="30.0" prefWidth="240.0"
                                                        text="Gepäck:" textFill="WHITE">
                                                     <font>
                                                         <Font size="30.0"/>
@@ -227,7 +227,7 @@
                                         </HBox>
                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                             <children>
-                                                <Label fx:id="PreisText" prefHeight="30.0" prefWidth="200.0"
+                                                <Label fx:id="PreisText" prefHeight="30.0" prefWidth="240.0"
                                                        text="Preis:" textFill="WHITE">
                                                     <font>
                                                         <Font size="30.0"/>
@@ -243,7 +243,7 @@
                                         </HBox>
                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                             <children>
-                                                <Label fx:id="SitzplaetzeText" prefHeight="30.0" prefWidth="200.0"
+                                                <Label fx:id="SitzplaetzeText" prefHeight="30.0" prefWidth="240.0"
                                                        text="Sitzplätze:" textFill="WHITE">
                                                     <font>
                                                         <Font size="30.0"/>
@@ -259,7 +259,7 @@
                                         </HBox>
                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                             <children>
-                                                <Label fx:id="AbgelaufenText" prefHeight="30.0" prefWidth="200.0"
+                                                <Label fx:id="AbgelaufenText" prefHeight="30.0" prefWidth="240.0"
                                                        text="Status:" textFill="WHITE">
                                                     <font>
                                                         <Font size="30.0"/>
