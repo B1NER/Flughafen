@@ -5,7 +5,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.*?>
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0"
       prefWidth="1280.0" stylesheets="@../View/CSSFiles/Style.css" xmlns="http://javafx.com/javafx/8"
       xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AngestellterStartseiteController">
@@ -34,17 +34,25 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="111.0" prefWidth="1280.0" spacing="20.0">
                             <children>
-                                <Label fx:id="VornameText" text="Vorname" textFill="#fcfafa"/>
+                                <Label fx:id="VornameText" text="Vorname:" textFill="#fcfafa">
+                                    <font>
+                                        <Font size="36.0"/>
+                                    </font>
+                                </Label>
                                 <TextField id="txtKundenListeVorname" fx:id="VornameFeld" alignment="CENTER"
                                            prefHeight="65.0" prefWidth="250.0"/>
-                                <Label fx:id="NachnameText" text="Nachname" textFill="#fcfafa"/>
+                                <Label fx:id="NachnameText" text="Nachname:" textFill="#fcfafa">
+                                    <font>
+                                        <Font size="36.0"/>
+                                    </font>
+                                </Label>
                                 <TextField id="txtKundenListeNachname" fx:id="NachnameFeld" alignment="CENTER"
                                            layoutY="50.0" prefHeight="65.0" prefWidth="250.0"/>
                                 <Button fx:id="KundenSuchenButton" mnemonicParsing="false"
                                         onAction="#KundenSuchenAction" prefHeight="65.0" prefWidth="230.0"
                                         text="Kunde suchen">
                                     <font>
-                                        <Font size="20.0"/>
+                                        <Font size="30.0"/>
                                     </font>
                                 </Button>
                             </children>
@@ -63,18 +71,25 @@
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1280.0" spacing="20.0">
                             <children>
                                 <Button id="btnKundenListeAbmelden" fx:id="AbmeldenButton" mnemonicParsing="false"
-                                        onAction="#AbmeldenAction" prefHeight="65.0" prefWidth="200.0" text="Abmelden"/>
+                                        onAction="#AbmeldenAction" prefHeight="65.0" prefWidth="200.0" text="Abmelden">
+                                    <font>
+                                        <Font size="22.0"/>
+                                    </font>
+                                </Button>
                                 <Button id="btnKundenListeBearbeiten" fx:id="KundebearbeitenButton"
                                         mnemonicParsing="false" onAction="#KundebearbeitenAction" prefHeight="65.0"
-                                        prefWidth="250.0" text="Kunde bearbeiten"/>
-                                <Button fx:id="BuchungBearbeitenButton" mnemonicParsing="false" prefHeight="65.0"
-                                        prefWidth="250.0" text="BuchungBearbeiten"/>
-                                <Button id="btnKundenListeBuchen" fx:id="BuchungdurchfurenButten"
-                                        mnemonicParsing="false" onAction="#BuchungdurchfurenAction" prefHeight="65.0"
-                                        prefWidth="250.0" text="Buchung durchführen"/>
+                                        prefWidth="250.0" text="Kunde bearbeiten">
+                                    <font>
+                                        <Font size="22.0"/>
+                                    </font>
+                                </Button>
                                 <Button id="btnKundenListeNeuErstellen" fx:id="KundenanlegenButton"
                                         mnemonicParsing="false" onAction="#KundenanlegenAction" prefHeight="65.0"
-                                        prefWidth="200.0" text="Kunde anlegen"/>
+                                        prefWidth="200.0" text="Kunde anlegen">
+                                    <font>
+                                        <Font size="22.0"/>
+                                    </font>
+                                </Button>
                             </children>
                         </HBox>
                     </children>

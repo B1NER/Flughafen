@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
-<?import java.lang.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-
 <Pane prefHeight="1024.0" prefWidth="1280.0" stylesheets="@../View/CSSFiles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FluglisteController">
     <children>
         <StackPane prefHeight="1024.0" prefWidth="1280.0">
@@ -103,9 +100,10 @@
                                         <Insets />
                                     </HBox.margin>
                                 </VBox>
-                                <TabPane fx:id="tabPane" prefHeight="500.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE">
+                                <TabPane id="TABPANE" fx:id="tabPane" prefHeight="500.0" prefWidth="1000.0"
+                                         tabClosingPolicy="UNAVAILABLE">
                                     <tabs>
-                                        <Tab fx:id="hinflugTab" text="Hinflug">
+                                        <Tab fx:id="hinflugTab" styleClass="TabClass" text="Hinflug wählen">
                                             <content>
                                                 <TableView fx:id="hinflugTabelle" prefHeight="581.0" prefWidth="1122.0">
                                                     <columnResizePolicy>
@@ -121,7 +119,7 @@
                                                 </TableView>
                                             </content>
                                         </Tab>
-                                        <Tab fx:id="rueckflugTab" text="Rückflug">
+                                        <Tab fx:id="rueckflugTab" styleClass="TabClass" text="Rückflug  wählen">
                                             <content>
                                                 <TableView fx:id="rueckflugTabelle" prefHeight="686.0" prefWidth="800.0">
                                                     <columnResizePolicy>
