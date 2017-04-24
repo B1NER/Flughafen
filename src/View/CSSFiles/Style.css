@@ -7,21 +7,21 @@
 /* Buchen */
 
 #FlugSuchenButton {
-    -fx-background-color: #ffd364;
+    -fx-background-color: rgba(47, 162, 255, 0.75);
     -fx-font-weight: bold;
 }
 
 #FlugSuchenButton2 {
-    -fx-background-color: #ffd364;
+    -fx-background-color: rgba(47, 162, 255, 0.75);
     -fx-font-weight: bold;
 }
 
 #FlugSuchenButton:hover {
-    -fx-background-color: #ffd364;
+    -fx-background-color: rgba(33, 110, 178, 0.75);
 }
 
 #FlugSuchenButton2:hover {
-    -fx-background-color: #ffd364;
+    -fx-background-color: rgba(33, 110, 178, 0.75);
 }
 
 #plusButton {
@@ -126,7 +126,16 @@
     -fx-text-fill: White;
 }
 
-.tab-pane *.tab-header-background {
+/*.tab-pane *.tab-header-background {
     -fx-background-color: -fx-outer-border, -fx-inner-border, derive(-fx-color, -20%);
     -fx-effect: innershadow(two-pass-box, rgba(0, 0, 0, 0), 4, 0.0, 0, 0);
+}*/
+
+.tab-pane {
+    -fx-background-color: rgba(0, 84, 230, 0);
+}
+
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: rgba(14, 0, 86, 0.25);
+    -fx-border-color: white;
 }

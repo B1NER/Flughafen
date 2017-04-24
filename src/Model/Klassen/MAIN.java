@@ -1,9 +1,6 @@
 package Model.Klassen;
 
 import Model.Enums.Views;
-import Model.Klassen.Nutzer.Administrator;
-import Model.Klassen.Verwaltung.Administratoren;
-import Model.Klassen.Verwaltung.Angestellte;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -40,7 +37,7 @@ public class MAIN extends Application {
 
     public void start(Stage primaryStage) {
         MAIN.primaryStage = primaryStage;
-        primaryStage.setResizable(false);
+        //primaryStage.setResizable(false);
         hashmapsFuellen();
         /*try {
             //Verwaltung.anmelden(Administratoren.getAdministratorByID(1));
