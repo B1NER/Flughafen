@@ -342,7 +342,7 @@ public abstract class Verwaltung {
             bw.write(";");
             bw.write(String.valueOf(Gepaecke.getGepaecke().get(i).getGewicht()));
             bw.write(";");
-            bw.write(Gepaecke.getGepaecke().get(i).getGepaeckTyp().toString());
+            bw.write(Gepaecke.getGepaecke().get(i).getGepaeckTyp().toString() +"\n");
             System.out.println("Speichern: " + Gepaecke.getGepaecke().get(i).toStringLog());
         }
         bw.close();

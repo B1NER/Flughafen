@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 
-public class FluglisteController {  //TODO Felder auf die Suchkriterien setzen
+public class FluglisteController {
 
 
     @FXML
@@ -271,7 +271,11 @@ public class FluglisteController {  //TODO Felder auf die Suchkriterien setzen
     @FXML
     void zurueckAction(ActionEvent event) {
         MAIN.viewsChronik.pop();
-        MAIN.fensterOeffnen(MAIN.viewsChronik.pop());
+        if(MAIN.viewsChronik.peek().equals(Views.Zahlung)){
+            MAIN.fensterOeffnen(Views.Buchen);
+        }else {
+            MAIN.fensterOeffnen(MAIN.viewsChronik.pop());
+        }
     }
 
     @FXML
