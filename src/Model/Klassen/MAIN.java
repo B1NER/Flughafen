@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.util.HashMap;
 import java.util.Stack;
 
@@ -86,6 +87,8 @@ public class MAIN extends Application {
 
             Pane pane = loader.load();
             Scene scene = new Scene(pane);
+
+            GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 
             primaryStage.setFullScreen(false);
             primaryStage.setScene(scene);

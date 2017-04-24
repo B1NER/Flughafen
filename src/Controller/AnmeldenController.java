@@ -7,17 +7,24 @@ import Model.Klassen.Nutzer.Administrator;
 import Model.Klassen.Nutzer.Angestellter;
 import Model.Klassen.Nutzer.Anwender;
 import Model.Klassen.Verwaltung.Verwaltung;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
-import sun.applet.Main;
+
+import java.io.File;
+
 
 public class AnmeldenController {
 
@@ -48,12 +55,41 @@ public class AnmeldenController {
     @FXML
     private MediaView MediaView;
 
+    @FXML
+    private StackPane stackPane;
+
     public void initialize() {
         PasswordFeld.setOnKeyReleased(event -> {
             if (event.getCode() == KeyCode.ENTER){
                 AnmeldenAction(new ActionEvent());
             }
         });
+        setMediaPlayer();
+    }
+
+    private void setMediaPlayer(){
+        final File f = new File("src\\View\\Grafiken\\wolken.mp4");
+
+        StackPane st = (StackPane) stackPane.getChildren().get(0);
+        stackPane.getChildren().remove(0);
+
+        final Media m = new Media(f.toURI().toString());
+        final MediaPlayer mp = new MediaPlayer(m);
+        final javafx.scene.media.MediaView mv = new MediaView(mp);
+
+        final DoubleProperty width = new SimpleDoubleProperty(1280);    //mv.fitWidthProperty();
+        final DoubleProperty height = new SimpleDoubleProperty(1024);   //mv.fitHeightProperty();
+
+        mv.setPreserveRatio(false);
+        mp.setCycleCount(MediaPlayer.INDEFINITE);
+
+        stackPane.getChildren().add(mv);
+        stackPane.getChildren().add(st);
+
+        width.bind(Bindings.selectDouble(mv.sceneProperty(), "width"));
+        height.bind(Bindings.selectDouble(mv.sceneProperty(), "height"));
+        mp.play();
+
     }
 
 
