@@ -76,13 +76,6 @@
                                         <Font size="20.0" />
                                     </font>
                                 </Button>
-                                <Button fx:id="BuchungDurchfuehrenButton" mnemonicParsing="false"
-                                        onAction="#BuchungDurchfuerhenButtonAction" prefHeight="65.0" prefWidth="230.0"
-                                        text="Buchung durchführen">
-                                    <font>
-                                        <Font size="20.0"/>
-                                    </font>
-                        </Button>
                                 <Button fx:id="AbmeldenButton" alignment="CENTER" mnemonicParsing="false"
                                         onAction="#AbmeldenAction" prefHeight="65.0" prefWidth="230.0" text="Abmelden">
                                     <font>

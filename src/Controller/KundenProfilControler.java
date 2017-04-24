@@ -1,7 +1,6 @@
 package Controller;
 
 import Model.Enums.Views;
-import Model.Exceptions.BuchungDoesNotExistException;
 import Model.Klassen.Elemente.Buchung;
 import Model.Klassen.Elemente.Flug;
 import Model.Klassen.MAIN;
@@ -172,7 +171,7 @@ public class KundenProfilControler {    //TODO Kundenprofil View ausbessern
     }
 
     @FXML
-    void GepackbearbeitenAction(ActionEvent event) {
+    void BuchungBearbeitenAction(ActionEvent event) {   //TODO Überprüffen (Admin, Angestellter, Anwender)
         if (tableBuchungen.getSelectionModel().getSelectedItem() != null) {
             GepaeckBearbeitenController.setGepaeck(tableBuchungen.getSelectionModel().getSelectedItem().getGepaeck(), (int) tableBuchungen.getSelectionModel().getSelectedItem().getGepaeck().getGewicht());
             MAIN.fensterOeffnen(Views.GepaeckBearbeiten);

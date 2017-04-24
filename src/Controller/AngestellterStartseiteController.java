@@ -1,11 +1,9 @@
 package Controller;
 
 import Model.Enums.Views;
-import Model.Exceptions.NutzerDoesNotExistException;
 import Model.Klassen.MAIN;
 import Model.Klassen.Nutzer.Angestellter;
 import Model.Klassen.Nutzer.Anwender;
-import Model.Klassen.Verwaltung.Angestellte;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,7 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.util.ArrayList;
 
-public class AngestellterStartseiteController {     //TODO Vorname, Nachname Größen
+public class AngestellterStartseiteController {
 
     @FXML
     private Label NachnameText;
