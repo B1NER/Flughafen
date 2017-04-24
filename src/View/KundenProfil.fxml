@@ -126,6 +126,9 @@
                                                     </font>
                                                 </Label>
                                             </children>
+                                            <padding>
+                                                <Insets left="20.0"/>
+                                            </padding>
                                         </HBox>
                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                             <children>
@@ -145,6 +148,9 @@
                                             <VBox.margin>
                                                 <Insets/>
                                             </VBox.margin>
+                                            <padding>
+                                                <Insets left="20.0"/>
+                                            </padding>
                                         </HBox>
                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                             <children>
@@ -161,6 +167,9 @@
                                                     </font>
                                                 </Label>
                                             </children>
+                                            <VBox.margin>
+                                                <Insets/>
+                                            </VBox.margin>
                                         </HBox>
                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                             <children>
@@ -177,6 +186,9 @@
                                                     </font>
                                                 </Label>
                                             </children>
+                                            <VBox.margin>
+                                                <Insets left="20.0"/>
+                                            </VBox.margin>
                                         </HBox>
                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                             <children>
@@ -193,6 +205,9 @@
                                                     </font>
                                                 </Label>
                                             </children>
+                                            <padding>
+                                                <Insets left="20.0"/>
+                                            </padding>
                                         </HBox>
                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                             <children>
@@ -245,7 +260,7 @@
                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                             <children>
                                                 <Label fx:id="AbgelaufenText" prefHeight="30.0" prefWidth="200.0"
-                                                       text="Abgelaufen:" textFill="WHITE">
+                                                       text="Status:" textFill="WHITE">
                                                     <font>
                                                         <Font size="30.0"/>
                                                     </font>
