@@ -21,6 +21,13 @@ import java.util.Stack;
 //TODO Größen anpassen
 //TODO TABPane verkleinern
 //TODO Kundenprofil anzeigen wenn keine Buchungen vorhanden sind
+//TODO Plus und Minus auf Buchen View ausbessern
+//TODO Flug bearbeiten Flug bestätigen
+//TODO Admin Buchung bearbeiten Gepaeck To HightWeightException
+//TODO Buchung Erstellt von(Anwendername, Angestelltenname)
+//TODO Buchung finden ohne Kriterien
+//TODO Zahlung Tab stylen
+//TODO Zahlung To Highweight exception
 
 public class MAIN extends Application {
 
@@ -35,7 +42,7 @@ public class MAIN extends Application {
         MAIN.primaryStage = primaryStage;
         primaryStage.setResizable(false);
         hashmapsFuellen();
-        try {
+        /*try {
             //Verwaltung.anmelden(Administratoren.getAdministratorByID(1));
             Verwaltung.anmelden(Angestellte.getAngestelltenByID(1));
         }catch (final Exception e){
@@ -43,9 +50,9 @@ public class MAIN extends Application {
         }
 
         //MAIN.fensterOeffnen(Views.AdminStartseite);
-        MAIN.fensterOeffnen(Views.AngestellterStartseite);
+        MAIN.fensterOeffnen(Views.AngestellterStartseite);*/
 
-        //MAIN.fensterOeffnen(Views.Buchen);
+        MAIN.fensterOeffnen(Views.Buchen);
     }
 
     public static void main(String[] args) {
