@@ -17,7 +17,6 @@ import java.util.Stack;
 
 //TODO Größen anpassen
 //TODO Emails ausbessern (Angestelltensstartseite, Adminstartseite, ...)
-//TODO viesChronik --> Stack
 //TODO verfalleneFluegeAusblenden --> Flügefinden
 //TODO TABPane verkleinern
 

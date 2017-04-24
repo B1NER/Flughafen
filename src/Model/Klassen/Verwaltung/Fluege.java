@@ -4,11 +4,13 @@ import Model.Exceptions.FlugNotFoundException;
 import Model.Klassen.Elemente.Flug;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
  * Created by knoll on 27.03.2017.
  */
+
 public abstract class Fluege {
 
     private static ArrayList<Flug> fluege = new ArrayList<>();
@@ -48,14 +50,16 @@ public abstract class Fluege {
     }
 
     public static boolean isVerfallen(Flug flug) {
-        return flug.getAnkunftszeit().before(flug.getAbflugzeit());
+        return flug.getAbflugzeit().before(Calendar.getInstance().getTime());
     }
 
     public static ArrayList<Flug> getZutreffendeFluege(String abflugort, String ankunftsort, Date abflugzeit, int anzahlSitzplaetze) throws FlugNotFoundException {
         ArrayList<Flug> zutreffendeFluege = new ArrayList<>();
         for (int i = 0; i < Fluege.getFluege().size(); i++) {
             if (Fluege.getFluege().get(i).getAbflugort().equals(abflugort) && Fluege.getFluege().get(i).getAnkunftsort().equals(ankunftsort) && Fluege.getFluege().get(i).getAbflugzeit().getYear() == abflugzeit.getYear() && Fluege.getFluege().get(i).getAbflugzeit().getMonth() == abflugzeit.getMonth() && Fluege.getFluege().get(i).getAbflugzeit().getDay() == abflugzeit.getDay() && Fluege.getVerfuegbarePlaetze(Fluege.getFluege().get(i)) > anzahlSitzplaetze) {
-                zutreffendeFluege.add(Fluege.getFluege().get(i));
+                if(Fluege.isVerfallen(Fluege.getFluege().get(i))){
+                    zutreffendeFluege.add(Fluege.getFluege().get(i));
+                }
             }
         }
         if (zutreffendeFluege.size() > 0) {
@@ -69,7 +73,9 @@ public abstract class Fluege {
         ArrayList<Flug> zutreffendeFluege = new ArrayList<>();
         for (int i = 0; i < Fluege.getFluege().size(); i++) {
             if (Fluege.getFluege().get(i).getAbflugort().equals(abflugort) && Fluege.getFluege().get(i).getAnkunftsort().equals(ankunftsort) && Fluege.getFluege().get(i).getFlugGesellschaft().equals(fluggesellschaft) && Fluege.getVerfuegbarePlaetze(Fluege.getFluege().get(i)) > anzahlSitzplaetze) {
-                zutreffendeFluege.add(Fluege.getFluege().get(i));
+                if(Fluege.isVerfallen(Fluege.getFluege().get(i))){
+                    zutreffendeFluege.add(Fluege.getFluege().get(i));
+                }
             }
         }
         if (zutreffendeFluege.size() > 0) {
@@ -83,7 +89,9 @@ public abstract class Fluege {
         ArrayList<Flug> zutreffendeFluege = new ArrayList<>();
         for (int i = 0; i < Fluege.getFluege().size(); i++) {
             if (Fluege.getFluege().get(i).getAbflugort().equals(abflugort) && Fluege.getFluege().get(i).getAnkunftsort().equals(ankunftsort) && Fluege.getFluege().get(i).getAbflugzeit().getYear() == abflugzeit.getYear() && Fluege.getFluege().get(i).getAbflugzeit().getMonth() == abflugzeit.getMonth() && Fluege.getFluege().get(i).getAbflugzeit().getDay() == abflugzeit.getDay() && Fluege.getFluege().get(i).getFlugGesellschaft().equals(fluggesellschaft) && Fluege.getVerfuegbarePlaetze(Fluege.getFluege().get(i)) > anzahlSitzplaetze) {
-                zutreffendeFluege.add(Fluege.getFluege().get(i));
+                if(Fluege.isVerfallen(Fluege.getFluege().get(i))){
+                    zutreffendeFluege.add(Fluege.getFluege().get(i));
+                }
             }
         }
         if (zutreffendeFluege.size() > 0) {
@@ -97,7 +105,9 @@ public abstract class Fluege {
         ArrayList<Flug> zutreffendeFluege = new ArrayList<>();
         for (int i = 0; i < Fluege.getFluege().size(); i++) {
             if (Fluege.getFluege().get(i).getAbflugort().equals(abflugort) && Fluege.getFluege().get(i).getAnkunftsort().equals(ankunftsort) && Fluege.getVerfuegbarePlaetze(Fluege.getFluege().get(i)) > anzahlSitzplaetze) {
-                zutreffendeFluege.add(Fluege.getFluege().get(i));
+                if(Fluege.isVerfallen(Fluege.getFluege().get(i))){
+                    zutreffendeFluege.add(Fluege.getFluege().get(i));
+                }
             }
         }
         if (zutreffendeFluege.size() > 0) {
