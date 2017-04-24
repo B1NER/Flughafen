@@ -116,6 +116,13 @@ public class AdminStartseiteController {
         MAIN.fensterOeffnen(Views.Buchen);
     }
 
+    @FXML
+    void BuchungDurchfuerhenButtonAction(ActionEvent event) {
+        Verwaltung.setAngemeldeter(null);
+        MAIN.fensterOeffnen(Views.Buchen);
+    }
+
+
     //TODO Buchung durchfüren (Zu Bearbeitenden Nutzer finden --> Button Buchen)
 
 }

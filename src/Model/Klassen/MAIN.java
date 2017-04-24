@@ -23,7 +23,6 @@ import java.util.Stack;
 //TODO Konsolenlog doppelte ausgabe fixxen (angelegt)
 //TODO Zahlung View Gröüen / zurück
 //TODO TABPane verkleinern
-//TODO joni verfallene Flüge nicht anzeigen lassen
 
 public class MAIN extends Application {
 
