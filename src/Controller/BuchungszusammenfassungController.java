@@ -16,7 +16,11 @@ public class BuchungszusammenfassungController {
 
     public void initialize(){
         if(buchung.getRueckflug() == null) {
-            ZusammenfassungText.setText("Sie fliegen mit B1ner - Airlines von " + buchung.getHinflug().getAbflugort() + " nach " + buchung.getHinflug().getAnkunftsort());
+            ZusammenfassungText.setText("B1NER- Airlines:\nHinflug: " + buchung.getHinflug().getAbflugort() + " - " + buchung.getHinflug().getAnkunftsort());
+        }else {
+            //TODO mehrere zeilen schreiben geht nicht
+            ZusammenfassungText.setText("B1NER- Airlines:\nHinflug: " + buchung.getHinflug().getAbflugort() + " - " + buchung.getHinflug().getAnkunftsort());
+            ZusammenfassungText.setText("\nRückflug: " + buchung.getRueckflug().getAbflugort() + " - " + buchung.getRueckflug().getAnkunftsort());
         }
     }
 

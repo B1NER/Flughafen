@@ -55,9 +55,6 @@ public class ZahlungController {
     private Label GewichtText1;
 
     @FXML
-    private ChoiceBox<Gepaecktypen> GepackFeld2;
-
-    @FXML
     private Label PreisproGepackText;
 
     @FXML
@@ -96,29 +93,6 @@ public class ZahlungController {
     @FXML
     private Tab RueckflugTab;
 
-    @FXML
-    private TextField GewichtFeld2;
-
-    @FXML
-    private Label PreisproGepackText2;
-
-    @FXML
-    private Tab HinflugTab;
-
-    @FXML
-    private Label PreisproGepackText1;
-
-    @FXML
-    private Label CSVText11;
-
-    @FXML
-    private Label GewichtText11;
-
-    @FXML
-    private Label KreditkartennummerText11;
-
-    @FXML
-    private Label KreditkartennummerText1;
 
     @FXML
     private TextField GewichtFeld1;
@@ -185,8 +159,6 @@ public class ZahlungController {
         } else {
             NameFeld2.setText(Verwaltung.getAngemeldeter().getVorname());
             NachnameFeld2.setText(Verwaltung.getAngemeldeter().getNachname());
-            GepackFeld2.getItems().addAll(Gepaecktypen.Handgepaeck, Gepaecktypen.Koffer, Gepaecktypen.Sportgepaeck, Gepaecktypen.Tasche);
-            GepackFeld2.setValue(Gepaecktypen.Handgepaeck);
             PreisProPerson2.setText("" + rueckflug.getPreisProPerson() + "€");
             GepaeckPreisProKilo2.setText("" + gepaecksPreisProKilo + "€");
             AnzahlPersonen2.setText("" + anzahlPersonen);
@@ -210,6 +182,7 @@ public class ZahlungController {
     @FXML
     void berechneGesamtPreisAction(ActionEvent event) {
 
+
         if (rueckflug == null) {
             try {
                 HinflugGesamtPreis.setText("" + (hinflug.getPreisProPerson() * anzahlPersonen + gepaecksPreisProKilo * Double.parseDouble(GewichtFeld1.getText())));
@@ -224,42 +197,50 @@ public class ZahlungController {
         } else {
             try {
                 HinflugGesamtPreis.setText("" + (hinflug.getPreisProPerson() * anzahlPersonen + gepaecksPreisProKilo * Double.parseDouble(GewichtFeld1.getText())));
-                RueckflugGesamtPreis.setText("" + (rueckflug.getPreisProPerson() * anzahlPersonen + gepaecksPreisProKilo * Double.parseDouble(GewichtFeld2.getText())));
+                RueckflugGesamtPreis.setText("" + (rueckflug.getPreisProPerson() * anzahlPersonen));
                 GesamtpreisLabel1.setText("" + (Double.parseDouble(HinflugGesamtPreis.getText()) + Double.parseDouble(RueckflugGesamtPreis.getText())));
                 GesamtpreisLabel2.setText("" + (Double.parseDouble(HinflugGesamtPreis.getText()) + Double.parseDouble(RueckflugGesamtPreis.getText())));
             } catch (IllegalArgumentException e) {
                 GewichtFeld1.setText("");
-                GewichtFeld2.setPromptText("Gewicht in kg");
+                GewichtFeld1.setPromptText("Gewicht in kg");
             } catch (ClassCastException e) {
                 GewichtFeld1.setText("");
-                GewichtFeld2.setPromptText("Gewicht in kg");
+                GewichtFeld1.setPromptText("Gewicht in kg");
             }
         }
     }
 
     @FXML
     void BestatigenAction(ActionEvent event) {
+        if(GesamtpreisLabel1.getText().equals("")){
+            berechneGesamtPreisAction(new ActionEvent());
+            return;
+        }
+        if(rueckflug!= null && GesamtpreisLabel2.getText().equals("")){
+            berechneGesamtPreisAction(new ActionEvent());
+            return;
+        }
 
         if (rueckflug == null) {
             if (KreditkartennummerFeld1.getText().equals("")) {
                 KreditkartennummerFeld1.setPromptText("Pflichtfeld!");
             }
-            if (CSVFeld1.getText().equals("")) {
+            else if (CSVFeld1.getText().equals("")) {
                 CSVFeld1.setPromptText("Pflichtfeld!");
             }
-            if (NameFeld1.getText().equals("")) {
+            else if (NameFeld1.getText().equals("")) {
                 NameFeld1.setPromptText("Pflichtfeld!");
             }
-            if (NachnameFeld1.getText().equals("")) {
+            else if (NachnameFeld1.getText().equals("")) {
                 NachnameFeld1.setPromptText("Pflichtfeld!");
             }
-            if (GewichtFeld1.getText().equals("")) {
+            else if (GewichtFeld1.getText().equals("")) {
                 GewichtFeld1.setPromptText("Gewicht in kg");
             } else {
 
                 try {
                     Verwaltung.gepaeckErstellen(Double.parseDouble(GewichtFeld1.getText()), (Gepaecktypen) GepackFeld1.getValue());
-                    Verwaltung.buchungErstellen(hinflug, (Anwender) Verwaltung.getAngemeldeter(), anzahlPersonen, Verwaltung.getGepaeck().get(Verwaltung.getGepaeck().size() - 1), Double.parseDouble(HinflugGesamtPreis.getText()), true);
+                    Verwaltung.buchungErstellen(hinflug, (Anwender) Verwaltung.getAngemeldeter(), anzahlPersonen, Verwaltung.getGepaeck().get(Verwaltung.getGepaeck().size() - 1), Double.parseDouble(GesamtpreisLabel1.getText()), true);
                     BuchungszusammenfassungController.setBuchung(Verwaltung.getBuchungen().get(Verwaltung.getBuchungen().size() - 1));
                     MAIN.fensterOeffnen(Views.Buchungszusammenfassung);
                 } catch (ToHighWeightException e) {
@@ -281,55 +262,34 @@ public class ZahlungController {
             if (KreditkartennummerFeld1.getText().equals("")) {
                 KreditkartennummerFeld1.setPromptText("Pflichtfeld!");
             }
-            if (CSVFeld1.getText().equals("")) {
+            else if (CSVFeld1.getText().equals("")) {
                 CSVFeld1.setPromptText("Pflichtfeld!");
             }
-            if (NameFeld1.getText().equals("")) {
+            else if (NameFeld1.getText().equals("")) {
                 NameFeld1.setPromptText("Pflichtfeld!");
             }
-            if (NachnameFeld1.getText().equals("")) {
+            else if (NachnameFeld1.getText().equals("")) {
                 NachnameFeld1.setPromptText("Pflichtfeld!");
             }
-            if (KreditkartennummerFeld2.getText().equals("")) {
+            else if (KreditkartennummerFeld2.getText().equals("")) {
                 KreditkartennummerFeld2.setPromptText("Pflichtfeld!");
             }
-            if (CSVFeld2.getText().equals("")) {
+            else if (CSVFeld2.getText().equals("")) {
                 CSVFeld2.setPromptText("Pflichtfeld!");
             }
-            if (NameFeld2.getText().equals("")) {
+            else if (NameFeld2.getText().equals("")) {
                 NameFeld2.setPromptText("Pflichtfeld!");
             }
-            if (NachnameFeld2.getText().equals("")) {
+            else if (NachnameFeld2.getText().equals("")) {
                 NachnameFeld2.setPromptText("Pflichtfeld!");
             }
-            if (GewichtFeld1.getText().equals("")) {
+            else if (GewichtFeld1.getText().equals("")) {
                 GewichtFeld1.setPromptText("Gewicht in kg");
-            }
-            if (GewichtFeld2.getText().equals("")) {
-                GewichtFeld2.setPromptText("Gewicht in kg");
             }else {
 
-                //Hinflug
                 try {
                     Verwaltung.gepaeckErstellen(Double.parseDouble(GewichtFeld1.getText()), (Gepaecktypen) GepackFeld1.getValue());
-                } catch (ToHighWeightException e) {
-                    GewichtFeld1.setText("");
-                    GewichtFeld1.setPromptText("Zu hohes Gewicht");
-                } catch (NumberFormatException e) {
-                    GewichtFeld1.setText("");
-                    GewichtFeld1.setPromptText("Gewicht in kg");
-                } catch (IllegalArgumentException e) {
-                    GewichtFeld1.setText("");
-                    GewichtFeld1.setPromptText("Gewicht in kg");
-                } catch (ClassCastException e) {
-                    GewichtFeld1.setText("");
-                    GewichtFeld1.setPromptText("Gewicht in kg");
-                }
-
-                //Rückflug
-                try {
-                    Verwaltung.gepaeckErstellen(Double.parseDouble(GewichtFeld1.getText()), (Gepaecktypen) GepackFeld1.getValue());
-                    Verwaltung.buchungErstellen(hinflug, (Anwender) Verwaltung.getAngemeldeter(), anzahlPersonen, Verwaltung.getGepaeck().get(Verwaltung.getGepaeck().size() - 1), Double.parseDouble(HinflugGesamtPreis.getText()), true);
+                    Verwaltung.buchungErstellen(hinflug, rueckflug, (Anwender) Verwaltung.getAngemeldeter(), anzahlPersonen, Verwaltung.getGepaeck().get(Verwaltung.getGepaeck().size() - 1), Double.parseDouble(GesamtpreisLabel1.getText()), true);
                     BuchungszusammenfassungController.setBuchung(Verwaltung.getBuchungen().get(Verwaltung.getBuchungen().size() - 1));
                     MAIN.fensterOeffnen(Views.Buchungszusammenfassung);
                 } catch (ToHighWeightException e) {
