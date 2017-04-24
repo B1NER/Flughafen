@@ -419,7 +419,6 @@ public abstract class Verwaltung {
         }
         Administrator a = new Administrator(vorname, nachname, geburtsdatum, passnummer, eMail, passwort);
         Administratoren.addAndministrator(a);
-        System.out.println("Administrator angelegt:" + a);
     }
 
     public static void angestellterErstellen(String vorname, String nachname, String geburtsdatum, int passnummer, String eMail, String passwort) throws InvalidEmailException, EmailIsAlreadyUsedException {
@@ -479,7 +478,6 @@ public abstract class Verwaltung {
         if (angemeldeter instanceof Angestellter) {
             anwenderAnestellten.put(anwender, (Angestellter) angemeldeter);
         }
-        System.out.println("Anwender angelegt:" + anwender.toStringLog());
     }
 
     public static void adminErstellten(Administrator administrator) throws InvalidEmailException, EmailIsAlreadyUsedException {

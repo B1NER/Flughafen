@@ -37,7 +37,7 @@ public class MAIN extends Application {
 
     public void start(Stage primaryStage) {
         MAIN.primaryStage = primaryStage;
-        primaryStage.setResizable(false);
+        //primaryStage.setResizable(false);
         hashmapsFuellen();
         /*try {
             //Verwaltung.anmelden(Administratoren.getAdministratorByID(1));
