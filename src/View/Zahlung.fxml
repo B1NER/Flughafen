@@ -200,12 +200,12 @@
                                             <children>
                                                 <Label fx:id="NameText11" text="Name" textFill="#f8f7f7" GridPane.rowIndex="2">
                                                     <font>
-                                                        <Font size="25.0" />
+                                                        <Font size="30.0"/>
                                                     </font>
                                                 </Label>
                                                 <Label fx:id="NachnameText11" text="Nachname" textFill="#f8f7f7" GridPane.columnIndex="2" GridPane.rowIndex="2">
                                                     <font>
-                                                        <Font size="25.0" />
+                                                        <Font size="30.0"/>
                                                     </font>
                                                 </Label>
                                                 <TextField fx:id="NachnameFeld2" prefHeight="65.0" prefWidth="320.0"
@@ -222,12 +222,12 @@
                                                 </TextField>
                                                 <Label fx:id="KreditkartennummerText11" text="Kreditkartennummer" textFill="#f8f7f7" GridPane.rowIndex="4">
                                                     <font>
-                                                        <Font size="25.0" />
+                                                        <Font size="30.0"/>
                                                     </font>
                                                 </Label>
                                                 <Label fx:id="CSVText11" text="CSV" textFill="#f8f7f7" GridPane.columnIndex="2" GridPane.rowIndex="4">
                                                     <font>
-                                                        <Font size="25.0" />
+                                                        <Font size="30.0"/>
                                                     </font>
                                                 </Label>
                                                 <TextField fx:id="CSVFeld2" prefHeight="65.0" prefWidth="315.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
