@@ -535,7 +535,6 @@ public abstract class Verwaltung {
             }
         }
         Angestellte.addAngestellter(angestellter);
-        System.out.println("Angestellter angelegt:" + angestellter);
     }
 
 

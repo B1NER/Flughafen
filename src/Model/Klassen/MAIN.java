@@ -16,8 +16,6 @@ import java.util.Stack;
  */
 
 //TODO Größen anpassen
-//TODO Konsolenlog doppelte ausgabe fixxen (angelegt)
-//TODO Zahlung View Gröüen / zurück
 //TODO Emails ausbessern (Angestelltensstartseite, Adminstartseite, ...)
 //TODO viesChronik --> Stack
 //TODO verfalleneFluegeAusblenden --> Flügefinden
