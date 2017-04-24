@@ -137,8 +137,8 @@ public class AngestellterStartseiteController {
     @FXML
     void KundebearbeitenAction(ActionEvent event) {
         if(Tabelle.getSelectionModel().getSelectedItem() != null) {
-            ProfilBearbeitenController.setZuBearbeitenderMensch(Tabelle.getSelectionModel().getSelectedItem());
-            MAIN.fensterOeffnen(Views.ProfilBearbeiten);
+            KundenProfilControler.setAnwender(Tabelle.getSelectionModel().getSelectedItem());
+            MAIN.fensterOeffnen(Views.KundenProfil);
         }
     }
 

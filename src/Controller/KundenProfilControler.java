@@ -4,8 +4,11 @@ import Model.Enums.Views;
 import Model.Klassen.Elemente.Buchung;
 import Model.Klassen.Elemente.Flug;
 import Model.Klassen.MAIN;
+import Model.Klassen.Nutzer.Administrator;
+import Model.Klassen.Nutzer.Angestellter;
 import Model.Klassen.Nutzer.Anwender;
 import Model.Klassen.Verwaltung.Buchungen;
+import Model.Klassen.Verwaltung.Fluege;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,37 +22,25 @@ import java.util.ArrayList;
 public class KundenProfilControler {    //TODO Kundenprofil View ausbessern
 
     @FXML
-    private Label RuckflugFeld;
-
-    @FXML
-    private Label GeburtsdatumText;
-
-    @FXML
-    private Label StartortText;
-
-    @FXML
-    private Label SitzplatzeFeld;
+    private Label KundenProfilText;
 
     @FXML
     private Label VornameText;
 
     @FXML
-    private Label StartDatumText;
-
-    @FXML
-    private Label GepackText;
-
-    @FXML
     private Label VornameFeld;
 
     @FXML
-    private Label StartDatumFeld;
+    private Label NachnameText;
 
     @FXML
-    private Label AbgelaufenText;
+    private Label NachnameFeld;
 
     @FXML
-    private Button AbmeldenButton;
+    private Label BuchungenText;
+
+    @FXML
+    private TableView<Buchung> tableBuchungen;
 
     @FXML
     private TableColumn<Buchung, Flug> SpalteHinflug;
@@ -58,83 +49,99 @@ public class KundenProfilControler {    //TODO Kundenprofil View ausbessern
     private TableColumn<Buchung, Flug> SpalteRueckflug;
 
     @FXML
-    private Label AnkunftsDatumFeld;
-
-    @FXML
-    private Label AnkunftsDatumText;
-
-    @FXML
-    private Label PreisText;
-
-    @FXML
-    private Button GepackbearbeitenButton;
-
-    @FXML
-    private Label NachnameText;
-
-    @FXML
-    private Label AbgelaufenFeld;
-
-    @FXML
-    private Label ZielortText;
-
-    @FXML
-    private Label PreisFeld;
-
-    @FXML
-    private Label SitzplatzeText;
-
-    @FXML
-    private Button NeueBuchungButton;
-
-    @FXML
-    private Label StartortFeld;
-
-    @FXML
-    private Label NachnameFeld;
-
-    @FXML
-    private TableView<Buchung> tableBuchungen;
-
-
-    @FXML
-    private Label RuckflugText;
-
-    @FXML
-    private Label BuchungenText;
-
-    @FXML
-    private Button ProfilBearbeitenButton;
-
-    @FXML
-    private Label GeburtsdatumFeld;
-
-    @FXML
-    private Label ZielortFeld;
-
-    @FXML
-    private Label KundenProfilText;
+    private Label HinflugText;
 
     @FXML
     private Label HinflugFeld;
 
     @FXML
+    private Label StartDatumText;
+
+    @FXML
+    private Label StartDatumFeld;
+
+    @FXML
+    private Label AnkunftsDatumText;
+
+    @FXML
+    private Label AnkunftsDatumFeld;
+
+    @FXML
+    private Label RuckflugText;
+
+    @FXML
+    private Label RuckflugFeld;
+
+    @FXML
+    private Label StartDatumText1;
+
+    @FXML
+    private Label StartDatumFeld1;
+
+    @FXML
+    private Label AnkunftsDatumText1;
+
+    @FXML
+    private Label AnkunftsDatumFeld1;
+
+    @FXML
+    private Label GepackText;
+
+    @FXML
     private Label GepackFeld;
 
     @FXML
-    private Label HinflugText;
+    private Label PreisText;
 
+    @FXML
+    private Label PreisFeld;
+
+    @FXML
+    private Label SitzplaetzeText;
+
+    @FXML
+    private Label SitzplaetzeFeld;
+
+    @FXML
+    private Label AbgelaufenText;
+
+    @FXML
+    private Label AbgelaufenFeld;
+
+    @FXML
+    private Button NeueBuchungButton;
+
+    @FXML
+    private Button BuchungBearbeiten;
+
+    @FXML
+    private Button ProfilBearbeitenButton;
+
+    @FXML
+    private Button AbmeldenButton;
+
+    //TODO Datum fixen
+
+    private static Anwender anwender;
+
+    public static void setAnwender(Anwender anwender) {
+        KundenProfilControler.anwender = anwender;
+    }
 
     @FXML
     public void initialize() {
-        VornameFeld.setText(Verwaltung.getAngemeldeter().getVorname());
-        NachnameFeld.setText(Verwaltung.getAngemeldeter().getNachname());
-        GeburtsdatumFeld.setText(Verwaltung.getAngemeldeter().getGeburtsdatum());
+        if(Verwaltung.getAngemeldeter() instanceof Administrator || Verwaltung.getAngemeldeter() instanceof Angestellter){
+            AbmeldenButton.setText("Zurück");
+        }else{
+            AbmeldenButton.setText("Abmelden");
+        }
+        VornameFeld.setText(anwender.getVorname());
+        NachnameFeld.setText(anwender.getNachname());
 
         SpalteHinflug.setCellValueFactory(new PropertyValueFactory<Buchung, Flug>("hinflug"));
         SpalteRueckflug.setCellValueFactory(new PropertyValueFactory<Buchung, Flug>("rueckflug"));
 
-        ArrayList<Buchung> meineBuchungen = Verwaltung.getBuchungenByAnwender((Anwender)Verwaltung.getAngemeldeter());
+        ArrayList<Buchung> meineBuchungen = Verwaltung.getBuchungenByAnwender(anwender);
         ObservableList<Buchung> observableList = FXCollections.observableList(meineBuchungen);
 
         tableBuchungen.setItems(observableList);
@@ -144,25 +151,49 @@ public class KundenProfilControler {    //TODO Kundenprofil View ausbessern
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 1 && (! row.isEmpty()) ) {
                     HinflugFeld.setText("");
+                    StartDatumFeld.setText("");
+                    AnkunftsDatumFeld.setText("");
+                    RuckflugFeld.setText("");
+                    StartDatumFeld1.setText("");
+                    AnkunftsDatumFeld1.setText("");
                     GepackFeld.setText("");
                     PreisFeld.setText("");
-                    RuckflugFeld.setText("");
-                    SitzplatzeFeld.setText("");
+                    SitzplaetzeFeld.setText("");
+                    AbgelaufenFeld.setText("");
 
 
                     Buchung rowData = row.getItem();
-                    HinflugFeld.setText(rowData.getHinflug().getAbflugort() + " - " + rowData.getHinflug().getAnkunftsort());
+                    HinflugFeld.setText(rowData.getHinflug().toString());
+                    StartDatumFeld.setText(rowData.getHinflug().getAbflugzeit().toString());
+                    AnkunftsDatumFeld.setText(rowData.getHinflug().getAbflugzeit().toString());
+
                     if(Buchungen.isRueckflug(rowData)){
-                        RuckflugFeld.setText(rowData.getRueckflug().getAbflugort() + " - " + rowData.getRueckflug().getAnkunftsort());
+                        RuckflugFeld.setText(rowData.getRueckflug().toString());
+                        StartDatumFeld1.setText(rowData.getHinflug().getAbflugzeit().toString());
+                        AnkunftsDatumFeld1.setText(rowData.getHinflug().getAbflugzeit().toString());
                     }
-                    //StartDatumFeld.setText(rowData.get);
-                    GepackFeld.setText(rowData.getGepaeck().getGewicht() + " - " + rowData.getGepaeck().getGepaeckTyp().toString());
+
+                    GepackFeld.setText(rowData.getGepaeck().toString());
                     PreisFeld.setText(String.valueOf(rowData.getBuchungspreis()));
-                    SitzplatzeFeld.setText(String.valueOf(rowData.getAnzahlSitzplaetze()));
+                    SitzplaetzeFeld.setText(String.valueOf(rowData.getAnzahlSitzplaetze()));
+                    if(Fluege.isVerfallen(rowData.getHinflug()) || Fluege.isVerfallen(rowData.getRueckflug())) {
+                        AbgelaufenFeld.setText("Abgelaufen");
+                    }else{
+                        AbgelaufenFeld.setText("Aktuell");
+                    }
                 }
             });
             return row ;
         });
+        if (observableList.size() < 1) {
+            observableList.clear();
+            tableBuchungen.setItems(observableList);
+            System.out.println("Es gibt keinen Ergebnisse mit diesen Eigenschaften");
+
+            Label keinErgebnis = new Label("Kein Ergebnis gefunden!");
+            keinErgebnis.setId("keinErgebnis");
+            tableBuchungen.setPlaceholder(keinErgebnis);
+        }
     }
 
     @FXML
@@ -180,14 +211,19 @@ public class KundenProfilControler {    //TODO Kundenprofil View ausbessern
 
     @FXML
     void ProfilBearbeitenAction(ActionEvent event) {
-        ProfilBearbeitenController.setZuBearbeitenderMensch(Verwaltung.getAngemeldeter());
+        ProfilBearbeitenController.setZuBearbeitenderMensch(anwender);
         MAIN.fensterOeffnen(Views.ProfilBearbeiten);
     }
 
     @FXML
     void AbmeldenAction(ActionEvent event) {
-        Verwaltung.setAngemeldeter(null);
-        MAIN.fensterOeffnen(Views.Buchen);
+        if(Verwaltung.getAngemeldeter() instanceof Administrator || Verwaltung.getAngemeldeter() instanceof Angestellter){
+            MAIN.viewsChronik.pop();
+            MAIN.fensterOeffnen(MAIN.viewsChronik.pop());
+        }else{
+            Verwaltung.setAngemeldeter(null);
+            MAIN.fensterOeffnen(Views.Buchen);
+        }
     }
 
 }

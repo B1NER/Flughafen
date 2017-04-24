@@ -7,6 +7,7 @@ import Model.Exceptions.NutzerDoesNotExistException;
 import Model.Klassen.MAIN;
 import Model.Klassen.Nutzer.Administrator;
 import Model.Klassen.Nutzer.Angestellter;
+import Model.Klassen.Nutzer.Anwender;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -159,6 +160,7 @@ public class RegistrierenController {
             } else {
                 Verwaltung.anwenderErstellen(VornameFeld.getText(), NachnameFeld.getText(), Date.from(GeburtsdatumFeld.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()).toString(), Integer.parseInt(PassnummerFeld.getText()), EmailFeld.getText(), PasswortFeld.getText());
                 Verwaltung.anmelden(Verwaltung.getAnwenderByID(Verwaltung.getNutzerIDByEmail(EmailFeld.getText())));
+                KundenProfilControler.setAnwender((Anwender)Verwaltung.getAngemeldeter());
                 MAIN.fensterOeffnen(Views.KundenProfil);
             }
         } catch (final EmailIsAlreadyUsedException e) {
