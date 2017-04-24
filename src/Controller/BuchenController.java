@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -87,17 +88,16 @@ public class BuchenController {
     private Button NurHinflugSuchenButton;
 
     @FXML
-    private TabPane tabPaneMitRueckflug;
+    private Tab tabPaneMitRueckflug;
 
     @FXML
-    private TabPane tabPaneOhneRueckflug;
+    private Tab tabPaneOhneRueckflug;
 
     @FXML
     private Button MeinProfilButton;
 
     @FXML
     private StackPane stackPane;
-
 
 
     public void initialize() {
@@ -114,8 +114,16 @@ public class BuchenController {
         }
         DatumHinflug.setEditable(false);
         DatumHinflug2.setEditable(false);
-        FlugAbFeld.setText("London");
-        FlugNachFeld.setText("Innsbruck");
+
+        stackPane.setOnKeyReleased(event -> {
+            if (event.getCode() == KeyCode.ENTER){
+                if(tabPaneMitRueckflug.isSelected()){
+                    FlugSuchenAction(new ActionEvent());
+                }else if(tabPaneOhneRueckflug.isSelected()){
+                    FlugSuchenAction2(new ActionEvent());
+                }
+            }
+        });
     }
 
 

@@ -49,8 +49,13 @@ public class AnmeldenController {
     private MediaView MediaView;
 
     public void initialize() {
-
+        PasswordFeld.setOnKeyReleased(event -> {
+            if (event.getCode() == KeyCode.ENTER){
+                AnmeldenAction(new ActionEvent());
+            }
+        });
     }
+
 
     @FXML
     void EmailFeldAction(ActionEvent event) {
@@ -82,6 +87,7 @@ public class AnmeldenController {
         } catch (NutzerDoesNotExistException e) {
             PasswordFeld.setPromptText("Email oder Passwort falsch!");
             PasswordFeld.setText("");
+            EmailFeld.requestFocus();
         }
     }
 

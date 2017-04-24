@@ -81,7 +81,7 @@
                             <children>
                                 <TabPane prefHeight="500.0" prefWidth="900.0" tabClosingPolicy="ALL_TABS" tabMaxHeight="100.0" tabMaxWidth="900.0" tabMinHeight="50.0" tabMinWidth="430.0">
                                     <tabs>
-                                        <Tab closable="false" text="Hin- &amp; Rückflug">
+                                        <Tab fx:id="tabPaneMitRueckflug" closable="false" text="Hin- &amp; Rückflug">
                                             <content>
                                                 <VBox prefHeight="279.0" prefWidth="1164.0">
                                                     <children>
@@ -119,7 +119,7 @@
                                                                     <children>
                                                                         <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                                                                             <image>
-                                                                                <Image url="@../../../Flughafen/src/View/Grafiken/Profilbild.jpg" />
+                                                                                <Image url="@Grafiken/Profilbild.jpg" />
                                                                             </image>
                                                                         </ImageView>
                                                                         <Button fx:id="minusButton" mnemonicParsing="false" onAction="#minusAction" prefHeight="65.0" prefWidth="65.0" text="-" />
@@ -149,7 +149,7 @@
                                                 </VBox>
                                             </content>
                                         </Tab>
-                                        <Tab closable="false" text="Nur Hinflug">
+                                        <Tab fx:id="tabPaneOhneRueckflug" closable="false" text="Nur Hinflug">
                                             <content>
                                                 <VBox prefHeight="279.0" prefWidth="1164.0">
                                                     <children>
@@ -178,7 +178,7 @@
                                                                     <children>
                                                                         <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                                                                             <image>
-                                                                                <Image url="@../../../Flughafen/src/View/Grafiken/Profilbild.jpg" />
+                                                                                <Image url="@Grafiken/Profilbild.jpg" />
                                                                             </image>
                                                                         </ImageView>
                                                                         <!--<ImageView fitHeight="66.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
