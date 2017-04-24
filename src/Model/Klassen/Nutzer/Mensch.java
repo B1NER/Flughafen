@@ -59,6 +59,7 @@ public class Mensch {
         return typ;
     }
 
+
     public void setEmail(String email) {
         this.email = email;
     }

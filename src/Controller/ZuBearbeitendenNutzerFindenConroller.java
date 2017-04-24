@@ -121,6 +121,11 @@ public class ZuBearbeitendenNutzerFindenConroller {
         observableList = FXCollections.observableList(zutreffendeMenschen);
         tabelle.setItems(observableList);
 
+        if (VornameFeld.getText().equals("") && NachnameFeld.getText().equals("")) {
+            observableList = FXCollections.observableList(menschen);
+            tabelle.setItems(observableList);
+        }
+
         if (observableList.size() < 1) {
             observableList.clear();
             tabelle.setItems(observableList);
@@ -129,6 +134,8 @@ public class ZuBearbeitendenNutzerFindenConroller {
             keinErgebnis.setId("keinErgebnis");
             tabelle.setPlaceholder(keinErgebnis);
         }
+
+
     }
 
     @FXML

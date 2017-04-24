@@ -3,9 +3,7 @@ package Controller;
 import Model.Enums.Gepaecktypen;
 import Model.Enums.Views;
 import Model.Exceptions.ToHighWeightException;
-import Model.Klassen.Elemente.Buchung;
 import Model.Klassen.Elemente.Flug;
-import Model.Klassen.Elemente.Gepaeck;
 import Model.Klassen.MAIN;
 import Model.Klassen.Nutzer.Anwender;
 import Model.Klassen.Verwaltung.Verwaltung;
@@ -260,7 +258,10 @@ public class ZahlungController {
             } else {
 
                 try {
-                    Verwaltung.gepaeckErstellen(Double.parseDouble(GewichtFeld1.getText()), (Gepaecktypen) GepackFeld1.getValue());
+                    Verwaltung.gepaeckErstellen(Double.parseDouble(GewichtFeld1.getText()), GepackFeld1.getValue());
+                    if (Integer.parseInt(GewichtFeld1.getText()) > anzahlPersonen * 20) {
+                        throw new ToHighWeightException();
+                    }
                     if(Verwaltung.getAngemeldeter() instanceof Anwender) {
                         Verwaltung.buchungErstellen(hinflug, (Anwender) Verwaltung.getAngemeldeter(), anzahlPersonen, Verwaltung.getGepaeck().get(Verwaltung.getGepaeck().size() - 1), Double.parseDouble(GesamtpreisLabel1.getText()), true);
                     }else {
@@ -313,8 +314,10 @@ public class ZahlungController {
             }else {
 
                 try {
-                    Verwaltung.gepaeckErstellen(Double.parseDouble(GewichtFeld1.getText()), (Gepaecktypen) GepackFeld1.getValue());
-
+                    Verwaltung.gepaeckErstellen(Double.parseDouble(GewichtFeld1.getText()), GepackFeld1.getValue());
+                    if (Integer.parseInt(GewichtFeld1.getText()) > anzahlPersonen * 20) {
+                        throw new ToHighWeightException();
+                    }
                     if(Verwaltung.getAngemeldeter() instanceof Anwender) {
                         Verwaltung.buchungErstellen(hinflug, rueckflug, (Anwender) Verwaltung.getAngemeldeter(), anzahlPersonen, Verwaltung.getGepaeck().get(Verwaltung.getGepaeck().size() - 1), Double.parseDouble(GesamtpreisLabel1.getText()), true);
                     }else {
