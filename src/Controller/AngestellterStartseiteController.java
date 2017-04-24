@@ -150,16 +150,6 @@ public class AngestellterStartseiteController {
     }
 
     @FXML
-    void BuchungBearbeitenAction(ActionEvent event) {
-        //TODO BuchungBearbeiten
-    }
-
-    @FXML
-    void BuchungdurchfurenAction(ActionEvent event) {
-        //TODO Buchung durchführen
-    }
-
-    @FXML
     void KundenanlegenAction(ActionEvent event) {
         MAIN.fensterOeffnen(Views.Registrieren);
     }

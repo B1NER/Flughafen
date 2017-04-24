@@ -81,7 +81,7 @@
                                 <TableColumn fx:id="SpalteSitzplaetze" prefWidth="115.0" text="Sitzplätze" />
                         <TableColumn fx:id="SpalteGepaeck" prefWidth="115.0" text="Gepäck" />
                         <TableColumn fx:id="SpaltePreis" prefWidth="115.0" text="Preis" />
-                        <TableColumn fx:id="SpaltebyAngestellter" prefWidth="115.0" text="Erstellt von Anwender" />
+                        <TableColumn fx:id="SpaltebyAngestellter" prefWidth="115.0" text="Erstellt von" />
                             </columns>
                         </TableView>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">

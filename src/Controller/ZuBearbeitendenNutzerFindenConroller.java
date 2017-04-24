@@ -109,7 +109,7 @@ public class ZuBearbeitendenNutzerFindenConroller {
                     zutreffendeMenschen.add(menschen.get(i));
                 }
             }
-        } else if (!VornameFeld.getText().equals("") && !NachnameFeld.getText().equals("")){
+        } else if (!VornameFeld.getText().equals("") && !NachnameFeld.getText().equals("")) {
             //Suche nach Vornamen und Nachnamen
             for (int i = 0; i < menschen.size(); i++) {
                 if (menschen.get(i).getNachname().toLowerCase().contains(NachnameFeld.getText().toLowerCase()) && menschen.get(i).getVorname().toLowerCase().contains(VornameFeld.getText().toLowerCase())) {
@@ -140,22 +140,27 @@ public class ZuBearbeitendenNutzerFindenConroller {
 
     @FXML
     void LoschenAction(ActionEvent event) {
-        if(tabelle.getSelectionModel().getSelectedItem() instanceof Administrator){
-            Administratoren.removeAdministrator((Administrator)tabelle.getSelectionModel().getSelectedItem());
-        }else if(tabelle.getSelectionModel().getSelectedItem() instanceof Angestellter){
-            Angestellte.removeAngestellter((Angestellter)tabelle.getSelectionModel().getSelectedItem());
-        }else{
-            Anwenders.removeAnwender((Anwender)tabelle.getSelectionModel().getSelectedItem());
+        if (tabelle.getSelectionModel().getSelectedItem() instanceof Administrator) {
+            Administratoren.removeAdministrator((Administrator) tabelle.getSelectionModel().getSelectedItem());
+        } else if (tabelle.getSelectionModel().getSelectedItem() instanceof Angestellter) {
+            Angestellte.removeAngestellter((Angestellter) tabelle.getSelectionModel().getSelectedItem());
+        } else {
+            Anwenders.removeAnwender((Anwender) tabelle.getSelectionModel().getSelectedItem());
         }
         observableList.remove(tabelle.getSelectionModel().getSelectedItem());
         initialize();
     }
 
     @FXML
-    void BearbeitenAction(ActionEvent event) {  //TODO Admin Kundenprofil
-        if(tabelle.getSelectionModel().getSelectedItem() != null) {
-            ProfilBearbeitenController.setZuBearbeitenderMensch(tabelle.getSelectionModel().getSelectedItem());
-            MAIN.fensterOeffnen(Views.ProfilBearbeiten);
+    void BearbeitenAction(ActionEvent event) {
+        if (tabelle.getSelectionModel().getSelectedItem() != null) {
+            if (tabelle.getSelectionModel().getSelectedItem() instanceof Anwender) {
+                KundenProfilControler.setAnwender((Anwender) tabelle.getSelectionModel().getSelectedItem());
+                MAIN.fensterOeffnen(Views.KundenProfil);
+            } else {
+                ProfilBearbeitenController.setZuBearbeitenderMensch(tabelle.getSelectionModel().getSelectedItem());
+                MAIN.fensterOeffnen(Views.ProfilBearbeiten);
+            }
         }
     }
 

@@ -19,7 +19,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.util.ArrayList;
 
-public class KundenProfilControler {    //TODO Kundenprofil View ausbessern
+public class KundenProfilControler {
 
     @FXML
     private Label KundenProfilText;
@@ -204,10 +204,16 @@ public class KundenProfilControler {    //TODO Kundenprofil View ausbessern
 
     @FXML
     void BuchungBearbeitenAction(ActionEvent event) {   //TODO Überprüffen (Admin, Angestellter, Anwender)
-        if (tableBuchungen.getSelectionModel().getSelectedItem() != null) {
-            GepaeckBearbeitenController.setGepaeck(tableBuchungen.getSelectionModel().getSelectedItem().getGepaeck(), (int) tableBuchungen.getSelectionModel().getSelectedItem().getGepaeck().getGewicht());
-            MAIN.fensterOeffnen(Views.GepaeckBearbeiten);
-        }
+
+            if (tableBuchungen.getSelectionModel().getSelectedItem() != null) {
+                if(!(Verwaltung.getAngemeldeter() instanceof Administrator)) {
+                    GepaeckBearbeitenController.setGepaeck(tableBuchungen.getSelectionModel().getSelectedItem().getGepaeck(), (int) tableBuchungen.getSelectionModel().getSelectedItem().getGepaeck().getGewicht());
+                    MAIN.fensterOeffnen(Views.GepaeckBearbeiten);
+                }else{
+                    BuchungBearbeitenController.setBuchung(tableBuchungen.getSelectionModel().getSelectedItem());
+                    MAIN.fensterOeffnen(Views.BuchungBearbeiten);
+                }
+            }
     }
 
     @FXML
