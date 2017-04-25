@@ -3,18 +3,12 @@ package Model.Klassen;
 import Model.Enums.Views;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.application.Application;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
-import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.Pane;
-import javafx.scene.transform.Scale;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.util.HashMap;
 import java.util.Stack;
 
@@ -26,13 +20,10 @@ import java.util.Stack;
 //TODO CPU stirbt
 /*TODO Buchung speichern bugt? *///Mehrere Fälle Probiert, aber fehler nicht gefunden
 //TODO Kundenproil bei Buchung auswählen --> farbe hässlich grau (bei Flüge suchen funktioniert es)
-//TODO TESTEN OB GEP. KAPAZITÄT funktioniert
-//TODO anzahlplätze muss übertragen werden
-
 
 public class MAIN extends Application {
 
-    static public Stage primaryStage;
+    static private Stage primaryStage;
     static private HashMap<Views, String> viewPfad = new HashMap<>();
 
     //bei jedem neuem Fensteröffnen muss das fenster in diese Chronik eingetragen werden!
@@ -80,34 +71,21 @@ public class MAIN extends Application {
 
     public static void fensterOeffnen(Views view) {
         try {
-            viewsChronik.push(view);
 
             FXMLLoader loader = new FXMLLoader(MAIN.class.getResource(viewPfad.get(view)));
+
+            viewsChronik.push(view);
+
             Pane pane = loader.load();
             Scene scene = new Scene(pane);
+
+            GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 
             primaryStage.setFullScreen(false);
             primaryStage.setScene(scene);
             primaryStage.show();
-
-            pane.setOnScroll(new EventHandler<ScrollEvent>() {
-                @Override
-                public void handle(ScrollEvent event) {
-                    event.consume();
-                    if (event.getDeltaY() == 0) {
-                        return;
-                    }
-                    double scaleFactor = (event.getDeltaY() > 0) ? 1.1 : 1 / 1.1;
-
-                    pane.setScaleX(pane.getScaleX() * scaleFactor);
-                    pane.setScaleY(pane.getScaleY() * scaleFactor);
-
-                }
-            });
-
         } catch (final java.io.IOException e) {
             e.printStackTrace();
         }
     }
-
 }

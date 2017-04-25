@@ -262,7 +262,6 @@ public class FluglisteController {
 
                 FlugfindenAction(new ActionEvent());
             }
-
         }
     }
 
@@ -371,11 +370,6 @@ public class FluglisteController {
                     MAIN.fensterOeffnen(Views.Zahlung);
                 }
             }
-
-
         }
-
     }
-
-
 }
