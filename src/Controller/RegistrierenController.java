@@ -110,8 +110,6 @@ public class RegistrierenController {
             MAIN.viewsChronik.pop();
             MAIN.fensterOeffnen(MAIN.viewsChronik.pop());
         }
-        //TODO Zurück zur Flugliste
-        //Warum man kommt zurück auf anmelden --> meiner meinnug nach richtig
     }
 
     @FXML
@@ -162,10 +160,16 @@ public class RegistrierenController {
                 Verwaltung.anwenderErstellen(VornameFeld.getText(), NachnameFeld.getText(), Date.from(GeburtsdatumFeld.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()).toString(), Integer.parseInt(PassnummerFeld.getText()), EmailFeld.getText(), PasswortFeld.getText());
                 Verwaltung.anmelden(Verwaltung.getAnwenderByID(Verwaltung.getNutzerIDByEmail(EmailFeld.getText())));
                 KundenProfilControler.setAnwender((Anwender)Verwaltung.getAngemeldeter());
-                MAIN.fensterOeffnen(Views.KundenProfil);
+
+                if(MAIN.viewsChronik.get(MAIN.viewsChronik.size()-3).equals(Views.Flugliste)){
+                    MAIN.fensterOeffnen(Views.Zahlung);
+                }else {
+                    MAIN.fensterOeffnen(Views.KundenProfil);
+                }
+
             }
         } catch (final EmailIsAlreadyUsedException e) {
-            EmailFeld.setPromptText("Diese Email wird bereits verwendet!");
+            EmailFeld.setPromptText("Diese Emai l wird bereits verwendet!");
             EmailFeld.setText("");
         } catch (final InvalidEmailException e) {
             EmailFeld.setPromptText("Ungültige Email!");

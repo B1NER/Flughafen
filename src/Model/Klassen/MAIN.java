@@ -17,11 +17,9 @@ import java.util.Stack;
  */
 
 //TODO Größen anpassen
-//TODO preis in zahlungscontroller bugt
-//TODO Großklein schreibung
 //TODO CPU stirbt
 /*TODO Buchung speichern bugt? *///Mehrere Fälle Probiert, aber fehler nicht gefunden
-//TODO keine Email wurde akzeptiert (keine ahnung warum --> funktioniert momentan aber)
+//TODO Kundenproil bei Buchung auswählen --> farbe hässlich grau (bei Flüge suchen funktioniert es)
 
 public class MAIN extends Application {
 
@@ -30,7 +28,6 @@ public class MAIN extends Application {
 
     //bei jedem neuem Fensteröffnen muss das fenster in diese Chronik eingetragen werden!
     static public Stack<Views> viewsChronik = new Stack<>();
-
 
     public void start(Stage primaryStage) {
         MAIN.primaryStage = primaryStage;
@@ -55,7 +52,6 @@ public class MAIN extends Application {
         Verwaltung.exit();
     }
 
-
     public void hashmapsFuellen() {
         viewPfad.put(Views.AdminStartseite, "/View/AdminStartseite.fxml");
         viewPfad.put(Views.AngestellterStartseite, "/View/AngestellterStartseite.fxml");
@@ -72,7 +68,6 @@ public class MAIN extends Application {
         viewPfad.put(Views.ZuBearbeitendeBuchungFinden, "/View/ZuBearbeitendeBuchungFinden.fxml");
         viewPfad.put(Views.ZuBearbeitendenNutzerFinden, "/View/ZuBearbeitendenNutzerFinden.fxml");
     }
-
 
     public static void fensterOeffnen(Views view) {
         try {

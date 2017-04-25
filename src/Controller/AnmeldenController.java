@@ -80,14 +80,14 @@ public class AnmeldenController {
         final DoubleProperty width = new SimpleDoubleProperty(1280);    //mv.fitWidthProperty();
         final DoubleProperty height = new SimpleDoubleProperty(1024);   //mv.fitHeightProperty();
 
+        width.bind(Bindings.selectDouble(mv.sceneProperty(), "width"));
+        height.bind(Bindings.selectDouble(mv.sceneProperty(), "height"));
+
         mv.setPreserveRatio(false);
         mp.setCycleCount(MediaPlayer.INDEFINITE);
 
         stackPane.getChildren().add(mv);
         stackPane.getChildren().add(st);
-
-        width.bind(Bindings.selectDouble(mv.sceneProperty(), "width"));
-        height.bind(Bindings.selectDouble(mv.sceneProperty(), "height"));
         mp.play();
 
     }

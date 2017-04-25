@@ -69,7 +69,6 @@ public class AdminStartseiteController {
     private TableColumn<Flug, String> SpalteID;
 
 
-
     @FXML
     private Button BuchungBearbeitenButton;
 
@@ -90,10 +89,9 @@ public class AdminStartseiteController {
 
         ArrayList<Flug> alleFluege = Verwaltung.getFluege();
         ObservableList<Flug> observableList = FXCollections.observableList(alleFluege);
-
         tabelle.setItems(observableList);
-    }
 
+    }
 
     @FXML
     void NutzerHinzufugenAction(ActionEvent event) {
