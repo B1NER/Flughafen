@@ -12,7 +12,6 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -27,34 +26,24 @@ import java.io.File;
 public class AnmeldenController {
 
     @FXML
-    private Label PasswordText;
-
-    @FXML
-    private Label AnmeldenText;
-
-    @FXML
     private PasswordField PasswordFeld;
 
     @FXML
     private TextField EmailFeld;
 
     @FXML
-    private MediaView MediaView;
-
-    @FXML
     private StackPane stackPane;
 
     public void initialize() {
         PasswordFeld.setOnKeyReleased(event -> {
-            if (event.getCode() == KeyCode.ENTER){
+            if (event.getCode() == KeyCode.ENTER) {
                 AnmeldenAction(new ActionEvent());
             }
         });
         setMediaPlayer();
     }
 
-
-    private void setMediaPlayer(){
+    private void setMediaPlayer() {
         final File f = new File("src\\View\\Grafiken\\wolken.mp4");
 
         StackPane st = (StackPane) stackPane.getChildren().get(0);
@@ -77,16 +66,6 @@ public class AnmeldenController {
         stackPane.getChildren().add(st);
         mp.play();
 
-    }
-
-
-    @FXML
-    void EmailFeldAction(ActionEvent event) {
-    }
-
-
-    @FXML
-    void PasswordFeldAction(ActionEvent event) {
     }
 
     @FXML
@@ -124,5 +103,4 @@ public class AnmeldenController {
     void RegistrierenAction(ActionEvent event) {
         MAIN.fensterOeffnen(Views.Registrieren);
     }
-
 }

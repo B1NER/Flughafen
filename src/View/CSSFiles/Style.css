@@ -14,6 +14,13 @@
     -fx-border-radius: 4px;
 }
 
+.text-field {
+    -fx-background-color: rgba(0, 0, 0, 0.2);
+    -fx-border-color: white;
+    -fx-text-fill: white;
+    -fx-border-radius: 4px;
+}
+
 /* IDs */
 
 #FlugSuchenButton {
@@ -45,34 +52,50 @@
 
 #NurHinflugplusButton {
     -fx-background-color: rgba(47, 162, 255, 0.75);
+    -fx-border-radius: 50%;
+    -fx-background-radius: 50%;
 }
 
 #NurHinflugminusButton {
     -fx-background-color: rgba(47, 162, 255, 0.75);
+    -fx-border-radius: 50%;
+    -fx-background-radius: 50%;
 }
 
 #NurHinflugplusButton:hover {
     -fx-background-color: rgba(33, 110, 178, 0.75);
+    -fx-border-radius: 50%;
+    -fx-background-radius: 50%;
 }
 
 #NurHinflugminusButton:hover {
     -fx-background-color: rgba(33, 110, 178, 0.75);
+    -fx-border-radius: 50%;
+    -fx-background-radius: 50%;
 }
 
 #plusButton {
     -fx-background-color: rgba(47, 162, 255, 0.75);
+    -fx-border-radius: 50%;
+    -fx-background-radius: 50%;
 }
 
 #minusButton {
     -fx-background-color: rgba(47, 162, 255, 0.75);
+    -fx-border-radius: 50%;
+    -fx-background-radius: 50%;
 }
 
 #plusButton:hover {
     -fx-background-color: rgba(33, 110, 178, 0.75);
+    -fx-border-radius: 50%;
+    -fx-background-radius: 50%;
 }
 
 #minusButton:hover {
     -fx-background-color: rgba(33, 110, 178, 0.75);
+    -fx-border-radius: 50%;
+    -fx-background-radius: 50%;
 }
 
 
@@ -135,6 +158,7 @@
 
 .tab-pane {
     -fx-background-color: rgba(14, 0, 86, 0.25);
+    -fx-border-radius: 4px;
     -fx-border-color: white;
 }
 

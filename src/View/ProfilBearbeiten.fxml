@@ -5,15 +5,16 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0"
-      prefWidth="1280.0" stylesheets="@../View/CSSFiles/Style.css" xmlns="http://javafx.com/javafx/8"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ProfilBearbeitenController">
+<Pane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity"
+      prefHeight="1024.0" prefWidth="1280.0" stylesheets="@../View/CSSFiles/Style.css"
+      xmlns="http://javafx.com/javafx/8" fx:controller="Controller.ProfilBearbeitenController">
     <children>
         <StackPane prefHeight="1024.0" prefWidth="1280.0">
             <children>
                 <ImageView fitHeight="1024.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true" scaleY="1.44">
                     <image>
-                        <Image url="@../View/Grafiken/Background.jpg" />
+                        <Image url="@../View/Grafiken/Background.jpg"/>
                     </image>
                 </ImageView>
                 <VBox alignment="CENTER" prefHeight="1023.0" prefWidth="1278.0">

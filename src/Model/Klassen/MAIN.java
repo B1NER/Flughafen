@@ -8,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.util.HashMap;
 import java.util.Stack;
 
@@ -17,39 +16,41 @@ import java.util.Stack;
  */
 
 //TODO Größen anpassen
-//TODO CPU stirbt
-/*TODO Buchung speichern bugt? *///Mehrere Fälle Probiert, aber fehler nicht gefunden
-//TODO Kundenproil bei Buchung auswählen --> farbe hässlich grau (bei Flüge suchen funktioniert es)
 
 public class MAIN extends Application {
 
-    static private Stage primaryStage;
-    static private HashMap<Views, String> viewPfad = new HashMap<>();
-
     //bei jedem neuem Fensteröffnen muss das fenster in diese Chronik eingetragen werden!
     static public Stack<Views> viewsChronik = new Stack<>();
-
-    public void start(Stage primaryStage) {
-        MAIN.primaryStage = primaryStage;
-        //primaryStage.setResizable(false);
-        hashmapsFuellen();
-        /*try {
-            //Verwaltung.anmelden(Administratoren.getAdministratorByID(1));
-            Verwaltung.anmelden(Angestellte.getAngestelltenByID(1));
-        }catch (final Exception e){
-
-        }
-
-        //MAIN.fensterOeffnen(Views.AdminStartseite);
-        MAIN.fensterOeffnen(Views.AngestellterStartseite);*/
-
-        MAIN.fensterOeffnen(Views.Buchen);
-    }
+    static private Stage primaryStage;
+    static private HashMap<Views, String> viewPfad = new HashMap<>();
 
     public static void main(String[] args) {
         Verwaltung.init();
         launch(args);
         Verwaltung.exit();
+    }
+
+    public static void fensterOeffnen(Views view) {
+        try {
+            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource(viewPfad.get(view)));
+
+            viewsChronik.push(view);
+
+            Pane pane = loader.load();
+            Scene scene = new Scene(pane);
+
+            primaryStage.setFullScreen(false);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (final java.io.IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void start(Stage primaryStage) {
+        MAIN.primaryStage = primaryStage;
+        hashmapsFuellen();
+        MAIN.fensterOeffnen(Views.Buchen);
     }
 
     public void hashmapsFuellen() {
@@ -67,25 +68,5 @@ public class MAIN extends Application {
         viewPfad.put(Views.Zahlung, "/View/Zahlung.fxml");
         viewPfad.put(Views.ZuBearbeitendeBuchungFinden, "/View/ZuBearbeitendeBuchungFinden.fxml");
         viewPfad.put(Views.ZuBearbeitendenNutzerFinden, "/View/ZuBearbeitendenNutzerFinden.fxml");
-    }
-
-    public static void fensterOeffnen(Views view) {
-        try {
-
-            FXMLLoader loader = new FXMLLoader(MAIN.class.getResource(viewPfad.get(view)));
-
-            viewsChronik.push(view);
-
-            Pane pane = loader.load();
-            Scene scene = new Scene(pane);
-
-            GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-
-            primaryStage.setFullScreen(false);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (final java.io.IOException e) {
-            e.printStackTrace();
-        }
     }
 }

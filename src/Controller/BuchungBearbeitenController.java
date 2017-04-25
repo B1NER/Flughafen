@@ -11,56 +11,24 @@ import Model.Klassen.Verwaltung.Fluege;
 import Model.Klassen.Verwaltung.Gepaecke;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class BuchungBearbeitenController {
 
+    private static Buchung buchung;
     @FXML
     private TextField RuckflugFeld;
-
-    @FXML
-    private Button BestatigenButton;
-
     @FXML
     private TextField PreisFeld;
-
-    @FXML
-    private Label AnzahlSitzplatzeText;
-
-    @FXML
-    private Label BuchungbearbeitenText;
-
     @FXML
     private TextField AnzahlSitzplatzeFeld;
-
-    @FXML
-    private Label RuckflugText;
-
-    @FXML
-    private Button ZuruckButton;
-
     @FXML
     private TextField HinflugFeld;
-
-    @FXML
-    private Label PreisText;
-
-    @FXML
-    private Label GepackText;
-
     @FXML
     private TextField GewichtGepaeck;
-
     @FXML
-    private ChoiceBox <Gepaecktypen> GepaeckTypChoiceBox;
-
-    @FXML
-    private Label HinflugText;
-
-    private static Buchung buchung;
+    private ChoiceBox<Gepaecktypen> GepaeckTypChoiceBox;
 
     public static void setBuchung(Buchung buchung) {
         BuchungBearbeitenController.buchung = buchung;
@@ -77,7 +45,6 @@ public class BuchungBearbeitenController {
         GepaeckTypChoiceBox.getItems().addAll(Gepaecktypen.Handgepaeck, Gepaecktypen.Koffer, Gepaecktypen.Tasche, Gepaecktypen.Sportgepaeck);
         GepaeckTypChoiceBox.setValue(buchung.getGepaeck().getGepaeckTyp());
     }
-
 
     @FXML
     void ZuruckAction(ActionEvent event) {
