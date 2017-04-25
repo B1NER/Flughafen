@@ -6,12 +6,14 @@
     -fx-text-fill: white;
     -fx-transition-duration: 0.4s;
     -fx-border-radius: 4px;
+    -fx-background-radius: 4;
 }
 
 .button:hover {
     -fx-background-color: rgba(13, 13, 54, 0.95);
     -fx-text-fill: white;
     -fx-border-radius: 4px;
+    -fx-background-radius: 4;
 }
 
 .text-field {
@@ -51,51 +53,51 @@
 }
 
 #NurHinflugplusButton {
-    -fx-background-color: rgba(47, 162, 255, 0.75);
-    -fx-border-radius: 50%;
-    -fx-background-radius: 50%;
+    -fx-background-color: rgba(0, 0, 0, 0.6);
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
 }
 
 #NurHinflugminusButton {
-    -fx-background-color: rgba(47, 162, 255, 0.75);
-    -fx-border-radius: 50%;
-    -fx-background-radius: 50%;
+    -fx-background-color: rgba(0, 0, 0, 0.6);
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
 }
 
 #NurHinflugplusButton:hover {
-    -fx-background-color: rgba(33, 110, 178, 0.75);
-    -fx-border-radius: 50%;
-    -fx-background-radius: 50%;
+    -fx-background-color: rgba(0, 0, 0, 0.85);
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
 }
 
 #NurHinflugminusButton:hover {
-    -fx-background-color: rgba(33, 110, 178, 0.75);
-    -fx-border-radius: 50%;
-    -fx-background-radius: 50%;
+    -fx-background-color: rgba(0, 0, 0, 0.85);
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
 }
 
 #plusButton {
-    -fx-background-color: rgba(47, 162, 255, 0.75);
-    -fx-border-radius: 50%;
-    -fx-background-radius: 50%;
+    -fx-background-color: rgba(0, 0, 0, 0.6);
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
 }
 
 #minusButton {
-    -fx-background-color: rgba(47, 162, 255, 0.75);
-    -fx-border-radius: 50%;
-    -fx-background-radius: 50%;
+    -fx-background-color: rgba(0, 0, 0, 0.6);
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
 }
 
 #plusButton:hover {
-    -fx-background-color: rgba(33, 110, 178, 0.75);
-    -fx-border-radius: 50%;
-    -fx-background-radius: 50%;
+    -fx-background-color: rgba(0, 0, 0, 0.85);
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
 }
 
 #minusButton:hover {
-    -fx-background-color: rgba(33, 110, 178, 0.75);
-    -fx-border-radius: 50%;
-    -fx-background-radius: 50%;
+    -fx-background-color: rgba(0, 0, 0, 0.85);
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
 }
 
 

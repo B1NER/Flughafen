@@ -43,6 +43,7 @@ public class AnmeldenController {
         setMediaPlayer();
     }
 
+
     private void setMediaPlayer() {
         final File f = new File("src\\View\\Grafiken\\wolken.mp4");
 
@@ -104,4 +105,5 @@ public class AnmeldenController {
     void RegistrierenAction(ActionEvent event) {
         MAIN.fensterOeffnen(Views.Registrieren);
     }
+
 }
