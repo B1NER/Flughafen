@@ -142,25 +142,27 @@ public class RegistrierenController {
                 Verwaltung.anmelden(Verwaltung.getAnwenderByID(Verwaltung.getNutzerIDByEmail(EmailFeld.getText())));
                 KundenProfilControler.setAnwender((Anwender) Verwaltung.getAngemeldeter());
 
-                if (MAIN.viewsChronik.get(MAIN.viewsChronik.size() - 3).equals(Views.Flugliste)) {
-                    MAIN.fensterOeffnen(Views.Zahlung);
+                if (MAIN.viewsChronik.size() > 3) {
+                    if (MAIN.viewsChronik.get(MAIN.viewsChronik.size() - 3).equals(Views.Flugliste)) {
+                        MAIN.fensterOeffnen(Views.Zahlung);
+                    } else {
+                        MAIN.fensterOeffnen(Views.KundenProfil);
+                    }
                 } else {
                     MAIN.fensterOeffnen(Views.KundenProfil);
                 }
-
             }
         } catch (final EmailIsAlreadyUsedException e) {
-            EmailFeld.setPromptText("Diese Emai l wird bereits verwendet!");
+            EmailFeld.setPromptText("Diese Email wird bereits verwendet!");
             EmailFeld.setText("");
         } catch (final InvalidEmailException e) {
             EmailFeld.setPromptText("Ungültige Email!");
             EmailFeld.setText("");
         } catch (final NumberFormatException e) {
-            PassnummerFeld.setPromptText("Nur Zahlen erlaubt");
-            EmailFeld.setText("");
+            PassnummerFeld.setPromptText("Nur Zahlen erlaubt (max. 10 Stellen)");
+            PassnummerFeld.setText("");
         } catch (final NutzerDoesNotExistException e) {
             System.out.println("Kunde wurde nicht gefunden!");
-            //Nie der Fall da der Kunde gerade erstellt wurde
         }
     }
 }
