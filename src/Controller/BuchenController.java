@@ -74,6 +74,7 @@ public class BuchenController {
     private StackPane stackPane;
 
 
+
     public void initialize() {
         setMediaPlayer();
 
@@ -103,17 +104,15 @@ public class BuchenController {
         });
     }
 
+    private final Media m = new Media(new File("src\\View\\Grafiken\\wolken.mp4").toURI().toString());
+    private final MediaPlayer mp = new MediaPlayer(m);
 
     private void setMediaPlayer() {
-        final File f = new File("src\\View\\Grafiken\\wolken.mp4");
 
         VBox vBox = (VBox) stackPane.getChildren().get(0);
         stackPane.getChildren().remove(0);
 
-        final Media m = new Media(f.toURI().toString());
-        final MediaPlayer mp = new MediaPlayer(m);
         final javafx.scene.media.MediaView mv = new MediaView(mp);
-
         mv.setPreserveRatio(false);
         mp.setCycleCount(MediaPlayer.INDEFINITE);
 
@@ -121,9 +120,7 @@ public class BuchenController {
         stackPane.getChildren().add(vBox);
 
         mp.play();
-
     }
-
 
     @FXML
     void RegistrierenAction(ActionEvent event) {
@@ -132,6 +129,7 @@ public class BuchenController {
 
     @FXML
     void AnmeldenAction(ActionEvent event) {
+        mp.stop();
         MAIN.fensterOeffnen(Views.Anmelden);
     }
 
@@ -155,6 +153,7 @@ public class BuchenController {
         if (FlugNachFeld.getText().equals("")) {
             FlugNachFeld.setPromptText("Stadt eingeben");
         } else {
+            mp.stop();
             FluglisteController.setInfos(FlugAbFeld.getText(), FlugNachFeld.getText(), "", AnzahlFeld.getText(), DatumHinflug.getValue(), DatumRueckflug.getValue());
             MAIN.fensterOeffnen(Views.Flugliste);
         }
@@ -168,6 +167,7 @@ public class BuchenController {
         if (FlugNachFeld2.getText().equals("")) {
             FlugNachFeld2.setPromptText("Stadt eingeben");
         } else {
+            mp.stop();
             FluglisteController.setInfos(FlugAbFeld2.getText(), FlugNachFeld2.getText(), "", NurHinflugAnzahlFeld.getText(), DatumHinflug2.getValue());
             MAIN.fensterOeffnen(Views.Flugliste);
         }
@@ -186,6 +186,7 @@ public class BuchenController {
 
     @FXML
     void MeinProfilAction(ActionEvent event) {
+        mp.stop();
         if (Verwaltung.getAngemeldeter() instanceof Anwender) {
             MAIN.fensterOeffnen(Views.KundenProfil);
         } else if (Verwaltung.getAngemeldeter() instanceof Angestellter) {
