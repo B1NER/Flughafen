@@ -38,18 +38,6 @@ public class AnmeldenController {
     private PasswordField PasswordFeld;
 
     @FXML
-    private Button RegistrierenButton;
-
-    @FXML
-    private Button AnmeldenButton;
-
-    @FXML
-    private Button AbbrechenButton;
-
-    @FXML
-    private Label EmaliText;
-
-    @FXML
     private TextField EmailFeld;
 
     @FXML
@@ -66,6 +54,7 @@ public class AnmeldenController {
         });
         setMediaPlayer();
     }
+
 
     private void setMediaPlayer(){
         final File f = new File("src\\View\\Grafiken\\wolken.mp4");

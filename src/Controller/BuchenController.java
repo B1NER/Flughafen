@@ -102,12 +102,8 @@ public class BuchenController {
 
 
     public void initialize() {
-        try {
-            setMediaPlayer();
-        }catch (Exception e){
 
-        }
-
+        setMediaPlayer();
 
         if (Verwaltung.isAngemeldet()) {
             AnmeldenButton.setVisible(false);
@@ -133,8 +129,7 @@ public class BuchenController {
         });
     }
 
-
-    private void setMediaPlayer() throws Exception{
+    private void setMediaPlayer(){
         final File f = new File("src\\View\\Grafiken\\wolken.mp4");
 
         VBox vBox = (VBox) stackPane.getChildren().get(0);
@@ -158,8 +153,8 @@ public class BuchenController {
 
         mp.play();
 
-    }
 
+    }
 
     @FXML
     void RegistrierenAction(ActionEvent event) {
