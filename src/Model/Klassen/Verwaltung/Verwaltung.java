@@ -87,15 +87,15 @@ public abstract class Verwaltung {
             Buchung eingeleseneBuchung;
             if (zs.length == 8) { //Mit Rueckflug
                 if (zs[7].equals("0")) {
-                    eingeleseneBuchung = new Buchung(Integer.parseInt(zs[0]), Fluege.getFlugByID((zs[1])), Fluege.getFlugByID((zs[2])), Anwenders.getAnwenderByID(Integer.parseInt(zs[3])), Integer.parseInt(zs[4]), Gepaecke.getGepaeckByID(Integer.parseInt(zs[5])), Double.parseDouble(zs[6]), true);
-                } else {
                     eingeleseneBuchung = new Buchung(Integer.parseInt(zs[0]), Fluege.getFlugByID((zs[1])), Fluege.getFlugByID((zs[2])), Anwenders.getAnwenderByID(Integer.parseInt(zs[3])), Integer.parseInt(zs[4]), Gepaecke.getGepaeckByID(Integer.parseInt(zs[5])), Double.parseDouble(zs[6]), false);
+                } else {
+                    eingeleseneBuchung = new Buchung(Integer.parseInt(zs[0]), Fluege.getFlugByID((zs[1])), Fluege.getFlugByID((zs[2])), Anwenders.getAnwenderByID(Integer.parseInt(zs[3])), Integer.parseInt(zs[4]), Gepaecke.getGepaeckByID(Integer.parseInt(zs[5])), Double.parseDouble(zs[6]), true);
                 }
             } else { //Ohne Rueckflug
                 if (zs[6].equals("0")) {
-                    eingeleseneBuchung = new Buchung(Integer.parseInt(zs[0]), Fluege.getFlugByID((zs[1])), Anwenders.getAnwenderByID(Integer.parseInt(zs[2])), Integer.parseInt(zs[3]), Gepaecke.getGepaeckByID(Integer.parseInt(zs[4])), Double.parseDouble(zs[5]), true);
-                } else {
                     eingeleseneBuchung = new Buchung(Integer.parseInt(zs[0]), Fluege.getFlugByID((zs[1])), Anwenders.getAnwenderByID(Integer.parseInt(zs[2])), Integer.parseInt(zs[3]), Gepaecke.getGepaeckByID(Integer.parseInt(zs[4])), Double.parseDouble(zs[5]), false);
+                } else {
+                    eingeleseneBuchung = new Buchung(Integer.parseInt(zs[0]), Fluege.getFlugByID((zs[1])), Anwenders.getAnwenderByID(Integer.parseInt(zs[2])), Integer.parseInt(zs[3]), Gepaecke.getGepaeckByID(Integer.parseInt(zs[4])), Double.parseDouble(zs[5]), true);
                 }
             }
             Buchungen.addBuchung(eingeleseneBuchung);
@@ -221,9 +221,9 @@ public abstract class Verwaltung {
                 bw.write(String.valueOf(Buchungen.getBuchungen().get(i).getBuchungspreis()));
                 bw.write(';');
                 if (Buchungen.getBuchungen().get(i).isCreatedByAnwender()) {
-                    bw.write(String.valueOf(0));
+                    bw.write("1");
                 } else {
-                    bw.write(String.valueOf(1));
+                    bw.write("0");
                 }
                 bw.write(';');
                 bw.write('\n');
@@ -241,9 +241,9 @@ public abstract class Verwaltung {
                 bw.write(String.valueOf(Buchungen.getBuchungen().get(i).getBuchungspreis()));
                 bw.write(';');
                 if (Buchungen.getBuchungen().get(i).isCreatedByAnwender()) {
-                    bw.write(String.valueOf(0));
+                    bw.write("1");
                 } else {
-                    bw.write(String.valueOf(1));
+                    bw.write("0");
                 }
                 bw.write(';');
                 bw.write('\n');

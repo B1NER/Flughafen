@@ -15,7 +15,12 @@ import java.util.Stack;
  * Created by knoll on 21.03.2017.
  */
 
-//TODO Größen anpassen
+
+//TODO Tabulator in registrieren --> von Nachname zu Email
+//TODO umstylen --> Anzahl Personen Start --> buchen
+//TODO GEpaeckBEarbeiten fenster anderst skalieren
+//TODO DROPDOWN Verschönern
+//TODO Buchung bearbeiten falsch skaliert
 
 public class MAIN extends Application {
 

@@ -5,6 +5,7 @@ import Model.Enums.Views;
 import Model.Exceptions.ToHighWeightException;
 import Model.Klassen.Elemente.Flug;
 import Model.Klassen.MAIN;
+import Model.Klassen.Nutzer.Angestellter;
 import Model.Klassen.Nutzer.Anwender;
 import Model.Klassen.Verwaltung.Fluege;
 import Model.Klassen.Verwaltung.Verwaltung;
@@ -101,20 +102,19 @@ public class ZahlungController {
             GewichtFeld2.setText(newValue);
         });
 
+        if (rueckflug == null) {
+            RueckflugTab.setDisable(true);
+        } else {
+            NameFeld2.setText(Verwaltung.getAngemeldeter().getVorname());
+            NachnameFeld2.setText(Verwaltung.getAngemeldeter().getNachname());
+            PreisProPerson2.setText("" + rueckflug.getPreisProPerson() + "€");
+            GepaeckPreisProKilo2.setText("" + gepaecksPreisProKilo + "€");
+            AnzahlPersonen2.setText("" + anzahlPersonen);
+        }
+
         if (Verwaltung.getAngemeldeter() instanceof Anwender) {
             NameFeld1.setText(Verwaltung.getAngemeldeter().getVorname());
             NachnameFeld1.setText(Verwaltung.getAngemeldeter().getNachname());
-
-            if (rueckflug == null) {
-                RueckflugTab.setDisable(true);
-            } else {
-                NameFeld2.setText(Verwaltung.getAngemeldeter().getVorname());
-                NachnameFeld2.setText(Verwaltung.getAngemeldeter().getNachname());
-                PreisProPerson2.setText("" + rueckflug.getPreisProPerson() + "€");
-                GepaeckPreisProKilo2.setText("" + gepaecksPreisProKilo + "€");
-                AnzahlPersonen2.setText("" + anzahlPersonen);
-            }
-
         } else {
             NameFeld1.setText(anwender.getVorname());
             NachnameFeld1.setText(anwender.getNachname());
@@ -195,10 +195,10 @@ public class ZahlungController {
                         throw new ToHighWeightException();
                     }
                     Verwaltung.gepaeckErstellen(Double.parseDouble(GewichtFeld1.getText()), GepackFeld1.getValue());
-                    if (Verwaltung.getAngemeldeter() instanceof Anwender) {
-                        Verwaltung.buchungErstellen(hinflug, (Anwender) Verwaltung.getAngemeldeter(), anzahlPersonen, Verwaltung.getGepaeck().get(Verwaltung.getGepaeck().size() - 1), Double.parseDouble(GesamtpreisLabel1.getText()), true);
-                    } else {
+                    if (Verwaltung.getAngemeldeter() instanceof Angestellter) {
                         Verwaltung.buchungErstellen(hinflug, anwender, anzahlPersonen, Verwaltung.getGepaeck().get(Verwaltung.getGepaeck().size() - 1), Double.parseDouble(GesamtpreisLabel1.getText()), false);
+                    } else {
+                        Verwaltung.buchungErstellen(hinflug, anwender, anzahlPersonen, Verwaltung.getGepaeck().get(Verwaltung.getGepaeck().size() - 1), Double.parseDouble(GesamtpreisLabel1.getText()), true);
                     }
                     BuchungszusammenfassungController.setBuchung(Verwaltung.getBuchungen().get(Verwaltung.getBuchungen().size() - 1));
                     MAIN.fensterOeffnen(Views.Buchungszusammenfassung);
@@ -209,12 +209,15 @@ public class ZahlungController {
                 } catch (NumberFormatException e) {
                     GewichtFeld1.setText("");
                     GewichtFeld1.setPromptText("Gewicht in kg");
+                    e.printStackTrace();
                 } catch (IllegalArgumentException e) {
                     GewichtFeld1.setText("");
                     GewichtFeld1.setPromptText("Gewicht in kg");
+                    e.printStackTrace();
                 } catch (ClassCastException e) {
                     GewichtFeld1.setText("");
                     GewichtFeld1.setPromptText("Gewicht in kg");
+                    e.printStackTrace();
                 }
 
             }
@@ -252,10 +255,10 @@ public class ZahlungController {
                         throw new ToHighWeightException();
                     }
                     Verwaltung.gepaeckErstellen(Double.parseDouble(GewichtFeld1.getText()), GepackFeld1.getValue());
-                    if (Verwaltung.getAngemeldeter() instanceof Anwender) {
-                        Verwaltung.buchungErstellen(hinflug, rueckflug, (Anwender) Verwaltung.getAngemeldeter(), anzahlPersonen, Verwaltung.getGepaeck().get(Verwaltung.getGepaeck().size() - 1), Double.parseDouble(GesamtpreisLabel1.getText()), true);
-                    } else {
+                    if (Verwaltung.getAngemeldeter() instanceof Angestellter) {
                         Verwaltung.buchungErstellen(hinflug, rueckflug, anwender, anzahlPersonen, Verwaltung.getGepaeck().get(Verwaltung.getGepaeck().size() - 1), Double.parseDouble(GesamtpreisLabel1.getText()), false);
+                    } else {
+                        Verwaltung.buchungErstellen(hinflug, rueckflug, anwender, anzahlPersonen, Verwaltung.getGepaeck().get(Verwaltung.getGepaeck().size() - 1), Double.parseDouble(GesamtpreisLabel1.getText()), true);
                     }
 
                     BuchungszusammenfassungController.setBuchung(Verwaltung.getBuchungen().get(Verwaltung.getBuchungen().size() - 1));

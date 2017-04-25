@@ -341,8 +341,11 @@ public class FluglisteController {
                 MAIN.fensterOeffnen(Views.Anmelden);
             } else {
                 if (Verwaltung.getAngemeldeter() instanceof Anwender) {
+                    System.out.println("1 instance of Anwender");
+                    ZahlungController.setAnwender((Anwender) Verwaltung.getAngemeldeter());
                     MAIN.fensterOeffnen(Views.Zahlung);
                 } else {
+                    System.out.println("1 - 2");
                     //Buchung führt ein Admin/Angestellter durch
                     ZahlungController.setAnwender(anwender);
                     MAIN.fensterOeffnen(Views.Zahlung);
@@ -362,6 +365,7 @@ public class FluglisteController {
                 MAIN.fensterOeffnen(Views.Anmelden);
             } else {
                 if (Verwaltung.getAngemeldeter() instanceof Anwender) {
+                    ZahlungController.setAnwender((Anwender) Verwaltung.getAngemeldeter());
                     MAIN.fensterOeffnen(Views.Zahlung);
                 } else {
                     //Buchung führt ein Admin/Angestellter durch
