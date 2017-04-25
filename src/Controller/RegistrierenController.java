@@ -149,6 +149,7 @@ public class RegistrierenController {
                 }
 
             }
+            //todo oft geat die email net (Erninnerung ba simon), mann isch sem direkt von buchen kemmen
         } catch (final EmailIsAlreadyUsedException e) {
             EmailFeld.setPromptText("Diese Emai l wird bereits verwendet!");
             EmailFeld.setText("");
