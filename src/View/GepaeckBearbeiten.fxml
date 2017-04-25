@@ -6,56 +6,51 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<Pane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-      minWidth="-Infinity"
-      prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8"
-      fx:controller="Controller.GepaeckBearbeitenController">
+<StackPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+           minWidth="-Infinity"
+           prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8"
+           fx:controller="Controller.GepaeckBearbeitenController">
     <children>
-        <StackPane layoutX="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                   prefHeight="500.0" prefWidth="500.0">
+        <ImageView fitHeight="500.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Grafiken/Background.jpg"/>
+            </image>
+        </ImageView>
+        <VBox alignment="CENTER" prefHeight="500.0" prefWidth="500.0" spacing="30.0">
             <children>
-                <ImageView fitHeight="500.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@Grafiken/Background.jpg"/>
-                    </image>
-                </ImageView>
-                <VBox alignment="CENTER" prefHeight="500.0" prefWidth="500.0" spacing="30.0">
+                <Label fx:id="GepackbearbeitenText" alignment="CENTER" text="Gepäck bearbeiten"
+                       textFill="WHITE">
+                    <font>
+                        <Font size="30.0"/>
+                    </font>
+                    <VBox.margin>
+                        <Insets left="30.0"/>
+                    </VBox.margin>
+                </Label>
+                <ComboBox fx:id="GepaeckTyp" prefHeight="80.0" prefWidth="310.0" promptText="Gepäck Typ"/>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                     <children>
-                        <Label fx:id="GepackbearbeitenText" alignment="CENTER" text="Gepäck bearbeiten"
-                               textFill="WHITE">
-                            <font>
-                                <Font size="30.0"/>
-                            </font>
-                            <VBox.margin>
-                                <Insets left="30.0"/>
-                            </VBox.margin>
-                        </Label>
-                        <ComboBox fx:id="GepaeckTyp" prefHeight="80.0" prefWidth="310.0" promptText="Gepäck Typ"/>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                            <children>
-                                <TextField fx:id="GewichtFeld" prefHeight="80.0" prefWidth="300.0"
-                                           promptText="Gewicht in kg"/>
-                            </children>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="466.0" spacing="10.0">
-                            <children>
-                                <Button fx:id="AbbrechenButton" mnemonicParsing="false" onAction="#AbbrechenAction"
-                                        prefHeight="65.0" prefWidth="150.0" text="Abbrechen">
-                                    <font>
-                                        <Font size="21.0"/>
-                                    </font>
-                                </Button>
-                                <Button fx:id="BestatigenButton" mnemonicParsing="false" onAction="#BestatigenAction"
-                                        prefHeight="65.0" prefWidth="150.0" text="Bestätigen">
-                                    <font>
-                                        <Font size="21.0"/>
-                                    </font>
-                                </Button>
-                            </children>
-                        </HBox>
+                        <TextField fx:id="GewichtFeld" prefHeight="80.0" prefWidth="300.0"
+                                   promptText="Gewicht in kg"/>
                     </children>
-                </VBox>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="466.0" spacing="10.0">
+                    <children>
+                        <Button fx:id="AbbrechenButton" mnemonicParsing="false" onAction="#AbbrechenAction"
+                                prefHeight="65.0" prefWidth="150.0" text="Abbrechen">
+                            <font>
+                                <Font size="21.0"/>
+                            </font>
+                        </Button>
+                        <Button fx:id="BestatigenButton" mnemonicParsing="false" onAction="#BestatigenAction"
+                                prefHeight="65.0" prefWidth="150.0" text="Bestätigen">
+                            <font>
+                                <Font size="21.0"/>
+                            </font>
+                        </Button>
+                    </children>
+                </HBox>
             </children>
-        </StackPane>
+        </VBox>
     </children>
-</Pane>
+</StackPane>
