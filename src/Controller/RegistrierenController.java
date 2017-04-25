@@ -111,6 +111,7 @@ public class RegistrierenController {
             MAIN.fensterOeffnen(MAIN.viewsChronik.pop());
         }
         //TODO Zurück zur Flugliste
+        //Warum man kommt zurück auf anmelden --> meiner meinnug nach richtig
     }
 
     @FXML

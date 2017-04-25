@@ -126,8 +126,6 @@ public class KundenProfilControler {
     @FXML
     private Button AbmeldenButton;
 
-    //TODO Datum fixen
-
     private static Anwender anwender;
 
     public static void setAnwender(Anwender anwender) {

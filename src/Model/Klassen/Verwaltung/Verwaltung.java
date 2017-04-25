@@ -87,15 +87,15 @@ public abstract class Verwaltung {
             Buchung eingeleseneBuchung;
             if (zs.length == 8) { //Mit Rueckflug
                 if (zs[7].equals("0")) {
-                    eingeleseneBuchung = new Buchung(Integer.parseInt(zs[0]), Fluege.getFlugByID((zs[1])), Fluege.getFlugByID((zs[2])), Anwenders.getAnwenderByID(Integer.parseInt(zs[3])), Integer.parseInt(zs[4]), Gepaecke.getGepaeckByID(Integer.parseInt(zs[5])), Double.parseDouble(zs[6]), false);
-                } else {
                     eingeleseneBuchung = new Buchung(Integer.parseInt(zs[0]), Fluege.getFlugByID((zs[1])), Fluege.getFlugByID((zs[2])), Anwenders.getAnwenderByID(Integer.parseInt(zs[3])), Integer.parseInt(zs[4]), Gepaecke.getGepaeckByID(Integer.parseInt(zs[5])), Double.parseDouble(zs[6]), true);
+                } else {
+                    eingeleseneBuchung = new Buchung(Integer.parseInt(zs[0]), Fluege.getFlugByID((zs[1])), Fluege.getFlugByID((zs[2])), Anwenders.getAnwenderByID(Integer.parseInt(zs[3])), Integer.parseInt(zs[4]), Gepaecke.getGepaeckByID(Integer.parseInt(zs[5])), Double.parseDouble(zs[6]), false);
                 }
             } else { //Ohne Rueckflug
                 if (zs[6].equals("0")) {
-                    eingeleseneBuchung = new Buchung(Integer.parseInt(zs[0]), Fluege.getFlugByID((zs[1])), Anwenders.getAnwenderByID(Integer.parseInt(zs[2])), Integer.parseInt(zs[3]), Gepaecke.getGepaeckByID(Integer.parseInt(zs[4])), Double.parseDouble(zs[5]), false);
-                } else {
                     eingeleseneBuchung = new Buchung(Integer.parseInt(zs[0]), Fluege.getFlugByID((zs[1])), Anwenders.getAnwenderByID(Integer.parseInt(zs[2])), Integer.parseInt(zs[3]), Gepaecke.getGepaeckByID(Integer.parseInt(zs[4])), Double.parseDouble(zs[5]), true);
+                } else {
+                    eingeleseneBuchung = new Buchung(Integer.parseInt(zs[0]), Fluege.getFlugByID((zs[1])), Anwenders.getAnwenderByID(Integer.parseInt(zs[2])), Integer.parseInt(zs[3]), Gepaecke.getGepaeckByID(Integer.parseInt(zs[4])), Double.parseDouble(zs[5]), false);
                 }
             }
             Buchungen.addBuchung(eingeleseneBuchung);

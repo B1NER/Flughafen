@@ -231,14 +231,16 @@ public class ZahlungController {
 
     @FXML
     void BestatigenAction(ActionEvent event) {
-        if(GesamtpreisLabel1.getText().equals("")){
+        //if(GesamtpreisLabel1.getText().equals("")){
+
+            berechneGesamtPreisAction(new ActionEvent());   //TODO Jonas muss schauen ob so passt --> theoretisch nie falsch vorher gesamtpreis zu berechnen
+
+            //return;
+        //}
+        /*if(rueckflug!= null && GesamtpreisLabel2.getText().equals("")){
             berechneGesamtPreisAction(new ActionEvent());
             return;
-        }
-        if(rueckflug!= null && GesamtpreisLabel2.getText().equals("")){
-            berechneGesamtPreisAction(new ActionEvent());
-            return;
-        }
+        }*/
 
         if (rueckflug == null) {
             if (KreditkartennummerFeld1.getText().equals("")) {

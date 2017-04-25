@@ -19,6 +19,9 @@ import java.util.Stack;
 //TODO Größen anpassen
 //TODO preis in zahlungscontroller bugt
 //TODO Großklein schreibung
+//TODO CPU stirbt
+/*TODO Buchung speichern bugt? *///Mehrere Fälle Probiert, aber fehler nicht gefunden
+//TODO keine Email wurde akzeptiert (keine ahnung warum --> funktioniert momentan aber)
 
 public class MAIN extends Application {
 
