@@ -43,29 +43,36 @@
     -fx-background-color: rgba(33, 110, 178, 0.75);
 }
 
+#NurHinflugplusButton {
+    -fx-background-color: rgba(47, 162, 255, 0.75);
+}
+
+#NurHinflugminusButton {
+    -fx-background-color: rgba(47, 162, 255, 0.75);
+}
+
+#NurHinflugplusButton:hover {
+    -fx-background-color: rgba(33, 110, 178, 0.75);
+}
+
+#NurHinflugminusButton:hover {
+    -fx-background-color: rgba(33, 110, 178, 0.75);
+}
 
 #plusButton {
-    -fx-background-color: rgba(16, 21, 86, 0);
-    -fx-text-fill: white;
-    -fx-border-radius: 0px, 0px, 0px, 0px;
+    -fx-background-color: rgba(47, 162, 255, 0.75);
 }
 
 #minusButton {
-    -fx-background-color: rgba(16, 21, 86, 0);
-    -fx-text-fill: white;
-    -fx-border-radius: 0px, 0px, 0px, 0px;
+    -fx-background-color: rgba(47, 162, 255, 0.75);
 }
 
 #plusButton:hover {
-    -fx-background-color: rgba(16, 21, 86, 0.51);
-    -fx-text-fill: white;
-    -fx-border-radius: 0px, 0px, 0px, 0px;
+    -fx-background-color: rgba(33, 110, 178, 0.75);
 }
 
 #minusButton:hover {
-    -fx-background-color: rgba(16, 21, 86, 0.51);
-    -fx-text-fill: white;
-    -fx-border-radius: 0px, 0px, 0px, 0px;
+    -fx-background-color: rgba(33, 110, 178, 0.75);
 }
 
 
@@ -78,7 +85,7 @@
 /* Table */
 
 .table-view {
-    -fx-background-color: transparent;
+    -fx-background-color: rgba(0, 0, 0, 0.0);
 }
 
 .table-view .column-header-background .label {
@@ -122,8 +129,6 @@
 
 .table-row-cell:selected {
     -fx-background-color: rgb(32, 44, 66);
-    -fx-background-insets: 0, 0 0 1 0;
-    -fx-padding: 0.0em;
 }
 
 /*TabPane*/

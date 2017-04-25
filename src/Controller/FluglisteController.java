@@ -215,9 +215,7 @@ public class FluglisteController {
             rueckflugTab.setDisable(true);
 
             FlugfindenAction(new ActionEvent());
-
         } else {
-
             if (tab.getId().equals("hinflugTab")) {
 
                 FlugauswahlText.setText("Hinflug auswählen");
@@ -254,7 +252,6 @@ public class FluglisteController {
 
                 FlugfindenAction(new ActionEvent());
             }
-
         }
     }
 
@@ -363,11 +360,6 @@ public class FluglisteController {
                     MAIN.fensterOeffnen(Views.Zahlung);
                 }
             }
-
-
         }
-
     }
-
-
 }

@@ -111,7 +111,9 @@
                                         <Insets />
                                     </HBox.margin>
                                 </VBox>
-                                <TabPane id="TABPANE" fx:id="tabPane" prefHeight="500.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="90.0" tabMaxWidth="800.0" tabMinHeight="20.0" tabMinWidth="420.0">
+                                <TabPane id="TABPANE" fx:id="tabPane" prefHeight="500.0" prefWidth="900.0"
+                                         tabClosingPolicy="UNAVAILABLE" tabMaxHeight="200.0" tabMaxWidth="800.0"
+                                         tabMinHeight="40.0" tabMinWidth="400.0">
                                     <tabs>
                                         <Tab fx:id="hinflugTab" styleClass="TabClass" text="Hinflug wählen">
                                             <content>
