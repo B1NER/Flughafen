@@ -36,11 +36,15 @@
                             <children>
                                 <VBox alignment="TOP_CENTER" prefHeight="738.0" prefWidth="380.0" spacing="20.0">
                                     <children>
-                                        <Label fx:id="IhreSucheText" text="Ihre Suche:" textFill="WHITE">
-                                            <font>
-                                                <Font size="36.0" />
-                                            </font>
-                                        </Label>
+                                        <HBox prefHeight="65.0" prefWidth="300.0">
+                                            <children>
+                                                <Label fx:id="IhreSucheText" text="Ihre Suche:" textFill="WHITE">
+                                                    <font>
+                                                        <Font size="48.0"/>
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </HBox>
                                         <TextField fx:id="FlugabFeld" prefHeight="65.0" prefWidth="300.0" promptText="Abflugort">
                                             <font>
                                                 <Font size="30.0" />

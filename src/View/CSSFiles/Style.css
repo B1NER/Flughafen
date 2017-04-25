@@ -5,11 +5,13 @@
     -fx-border-color: white;
     -fx-text-fill: white;
     -fx-transition-duration: 0.4s;
+    -fx-border-radius: 4px;
 }
 
 .button:hover {
     -fx-background-color: rgba(13, 13, 54, 0.95);
     -fx-text-fill: white;
+    -fx-border-radius: 4px;
 }
 
 /* IDs */
@@ -29,6 +31,14 @@
 }
 
 #FlugSuchenButton2:hover {
+    -fx-background-color: rgba(33, 110, 178, 0.75);
+}
+
+#FlugfindenButton {
+    -fx-background-color: rgba(47, 162, 255, 0.75);
+}
+
+#FlugfindenButton:hover {
     -fx-background-color: rgba(33, 110, 178, 0.75);
 }
 
@@ -135,19 +145,18 @@
 }
 
 .tab-pane .tab {
-    -fx-background-color: #e6e6e6;
-
+    -fx-background-color: rgb(1, 0, 85);
 }
 
 .tab .tab-label {
     -fx-alignment: CENTER;
-    -fx-text-fill: rgba(95, 95, 95, 0.4);
+    -fx-text-fill: white;
     -fx-font-size: 12px;
     -fx-font-weight: bold;
 }
 
 .tab-pane .tab:selected {
-    -fx-background-color: rgb(60, 60, 60);
+    -fx-background-color: rgb(1, 0, 60);
 }
 
 .tab:selected .tab-label {
