@@ -1,3 +1,4 @@
+/*
 import Model.Enums.Gepaecktypen;
 import Model.Exceptions.*;
 import Model.Klassen.Elemente.Buchung;
@@ -17,9 +18,11 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 
+*/
 /**
  * Created by jonas on 22.03.2017.
- */
+ *//*
+
 
 
 public class VerwaltungTest {
@@ -348,3 +351,4 @@ public class VerwaltungTest {
     }
 
 }
+*/
