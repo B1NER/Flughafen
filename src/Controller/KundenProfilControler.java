@@ -53,6 +53,8 @@ public class KundenProfilControler {
     @FXML
     private Label AbgelaufenFeld;
     @FXML
+    private Label keineBerechtigung;
+    @FXML
     private Button AbmeldenButton;
 
     public static void setAnwender(Anwender anwender) {
@@ -91,6 +93,7 @@ public class KundenProfilControler {
                     PreisFeld.setText("");
                     SitzplaetzeFeld.setText("");
                     AbgelaufenFeld.setText("");
+                    keineBerechtigung.setText("");
 
                     Buchung rowData = row.getItem();
                     HinflugFeld.setText(rowData.getHinflug().toString());
@@ -142,8 +145,8 @@ public class KundenProfilControler {
         if (tableBuchungen.getSelectionModel().getSelectedItem() != null) {
             if (Verwaltung.getAngemeldeter() instanceof Angestellter) {
                 if (tableBuchungen.getSelectionModel().getSelectedItem().isCreatedByAnwender()) {
+                    keineBerechtigung.setText("keine Berechtigung");
                     return;
-                    //TODO Evtl LAbel das sagt, dass man nicht die berechtigung hat
                 }
             }
             if (!(Verwaltung.getAngemeldeter() instanceof Administrator)) {
