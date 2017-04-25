@@ -18,10 +18,6 @@ import java.util.Stack;
 
 //TODO Tabulator in registrieren --> von Nachname zu Email
 //TODO umstylen --> Anzahl Personen Start --> buchen
-//TODO Angestellter kommt auf zubearbeitende Buchung finden bei buchung bearbeiten bestätigen
-//TODO zu bearbeitende Buchung zurück
-//TODO Registrieren button --> anlegen button
-//TODO Zahlung Preis pro person wird nicht richtig angezeigt
 //TODO GEpaeckBEarbeiten fenster anderst skalieren
 //TODO DROPDOWN Verschönern
 //TODO Buchung bearbeiten falsch skaliert
