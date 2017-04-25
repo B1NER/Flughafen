@@ -7,9 +7,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <StackPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-           minWidth="-Infinity"
-           prefHeight="1024.0" prefWidth="1280.0" scaleShape="false"
-           stylesheets="@../View/CSSFiles/Style.css" xmlns="http://javafx.com/javafx/8.0.111"
+           minWidth="-Infinity" prefHeight="1024.0" prefWidth="1280.0" scaleShape="false"
+           stylesheets="@../View/CSSFiles/Style.css" xmlns="http://javafx.com/javafx/8"
            fx:controller="Controller.AngestellterStartseiteController">
     <children>
         <ImageView fitHeight="1024.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true" scaleY="1.44">
@@ -19,7 +18,7 @@
         </ImageView>
         <VBox alignment="CENTER" prefHeight="1024.0" prefWidth="1280.0" spacing="20.0">
             <children>
-                <HBox prefHeight="100.0" prefWidth="1280.0">
+                <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="1280.0" spacing="20.0">
                     <children>
                         <Label fx:id="AngestellterText" prefHeight="58.0" prefWidth="297.0" text="Angestellter"
                                textFill="#fcfafa">
@@ -29,7 +28,7 @@
                         </Label>
                     </children>
                     <padding>
-                        <Insets left="455.0"/>
+                        <Insets left="5.0"/>
                     </padding>
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="111.0" prefWidth="1280.0" spacing="20.0">
@@ -39,8 +38,8 @@
                                 <Font size="36.0"/>
                             </font>
                         </Label>
-                        <TextField id="txtKundenListeVorname" fx:id="VornameFeld" alignment="CENTER"
-                                   prefHeight="65.0" prefWidth="250.0">
+                        <TextField id="txtKundenListeVorname" fx:id="VornameFeld" alignment="CENTER" prefHeight="65.0"
+                                   prefWidth="250.0">
                             <font>
                                 <Font size="25.0"/>
                             </font>
@@ -50,15 +49,14 @@
                                 <Font size="36.0"/>
                             </font>
                         </Label>
-                        <TextField id="txtKundenListeNachname" fx:id="NachnameFeld" alignment="CENTER"
-                                   layoutY="50.0" prefHeight="65.0" prefWidth="250.0">
+                        <TextField id="txtKundenListeNachname" fx:id="NachnameFeld" alignment="CENTER" layoutY="50.0"
+                                   prefHeight="65.0" prefWidth="250.0">
                             <font>
                                 <Font size="25.0"/>
                             </font>
                         </TextField>
-                        <Button fx:id="KundenSuchenButton" mnemonicParsing="false"
-                                onAction="#KundenSuchenAction" prefHeight="65.0" prefWidth="230.0"
-                                text="Kunde suchen">
+                        <Button fx:id="KundenSuchenButton" mnemonicParsing="false" onAction="#KundenSuchenAction"
+                                prefHeight="65.0" prefWidth="230.0" text="Kunde suchen">
                             <font>
                                 <Font size="30.0"/>
                             </font>
@@ -84,16 +82,16 @@
                                 <Font size="22.0"/>
                             </font>
                         </Button>
-                        <Button id="btnKundenListeBearbeiten" fx:id="KundebearbeitenButton"
-                                mnemonicParsing="false" onAction="#KundebearbeitenAction" prefHeight="65.0"
-                                prefWidth="250.0" text="Kunde bearbeiten">
+                        <Button id="btnKundenListeBearbeiten" fx:id="KundebearbeitenButton" mnemonicParsing="false"
+                                onAction="#KundebearbeitenAction" prefHeight="65.0" prefWidth="250.0"
+                                text="Kunde bearbeiten">
                             <font>
                                 <Font size="22.0"/>
                             </font>
                         </Button>
-                        <Button id="btnKundenListeNeuErstellen" fx:id="KundenanlegenButton"
-                                mnemonicParsing="false" onAction="#KundenanlegenAction" prefHeight="65.0"
-                                prefWidth="200.0" text="Kunde anlegen">
+                        <Button id="btnKundenListeNeuErstellen" fx:id="KundenanlegenButton" mnemonicParsing="false"
+                                onAction="#KundenanlegenAction" prefHeight="65.0" prefWidth="200.0"
+                                text="Kunde anlegen">
                             <font>
                                 <Font size="22.0"/>
                             </font>
@@ -104,4 +102,3 @@
         </VBox>
     </children>
 </StackPane>
-

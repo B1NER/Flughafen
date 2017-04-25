@@ -23,6 +23,26 @@
     -fx-border-radius: 4px;
 }
 
+.date-picker {
+    -fx-background-color: transparent;
+    -fx-border-color: white;
+    -fx-text-fill: white;
+    -fx-transition-duration: 0.4s;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4;
+    -fx-font-size: 20pt;
+}
+
+.choice-box {
+    -fx-background-color: transparent;
+    -fx-border-color: white;
+    -fx-text-fill: white;
+    -fx-transition-duration: 0.4s;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4;
+    -fx-font-size: 20pt;
+}
+
 /* IDs */
 
 #FlugSuchenButton {
@@ -46,66 +66,36 @@
 /* Plus/Minus Buttons */
 #FlugfindenButton {
     -fx-background-color: rgba(47, 162, 255, 0.75);
+    -fx-font-size: 20pt;
 }
 
 #FlugfindenButton:hover {
     -fx-background-color: rgba(33, 110, 178, 0.75);
+    -fx-font-size: 20pt;
 }
-
-#NurHinflugplusButton {
-    -fx-background-color: rgba(0, 0, 0, 0.6);
-    -fx-border-radius: 4px;
-    -fx-background-radius: 4px;
-}
-
-#NurHinflugminusButton {
-    -fx-background-color: rgba(0, 0, 0, 0.6);
-    -fx-border-radius: 4px;
-    -fx-background-radius: 4px;
-}
-
-#NurHinflugplusButton:hover {
-    -fx-background-color: rgba(0, 0, 0, 0.85);
-    -fx-border-radius: 4px;
-    -fx-background-radius: 4px;
-}
-
-#NurHinflugminusButton:hover {
-    -fx-background-color: rgba(0, 0, 0, 0.85);
-    -fx-border-radius: 4px;
-    -fx-background-radius: 4px;
-}
-
-#plusButton {
-    -fx-background-color: rgba(0, 0, 0, 0.6);
-    -fx-border-radius: 4px;
-    -fx-background-radius: 4px;
-}
-
-#minusButton {
-    -fx-background-color: rgba(0, 0, 0, 0.6);
-    -fx-border-radius: 4px;
-    -fx-background-radius: 4px;
-}
-
-#plusButton:hover {
-    -fx-background-color: rgba(0, 0, 0, 0.85);
-    -fx-border-radius: 4px;
-    -fx-background-radius: 4px;
-}
-
-#minusButton:hover {
-    -fx-background-color: rgba(0, 0, 0, 0.85);
-    -fx-border-radius: 4px;
-    -fx-background-radius: 4px;
-}
-
 
 #keinErgebnis {
     -fx-font-size: 40px;
     -fx-font-weight: bold;
     -fx-text-fill: rgb(255, 255, 255);
 }
+
+#Textgroesse {
+    -fx-font-size: 20pt;
+}
+
+#anzahlPersonenButtonBuchen {
+    -fx-background-color: rgba(0, 0, 0, 0.6);
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+}
+
+#anzahlPersonenButtonBuchen:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.85);
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+}
+
 
 /* Table */
 
