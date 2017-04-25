@@ -77,6 +77,8 @@ public class BuchenController {
     public void initialize() {
         setMediaPlayer();
 
+        AnzahlFeld.setDisable(true);
+
         if (Verwaltung.isAngemeldet()) {
             AnmeldenButton.setVisible(false);
             RegistrierenButton.setVisible(false);

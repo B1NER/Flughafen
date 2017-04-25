@@ -158,9 +158,17 @@ public class FluglisteController {
         });
 
         PersonenanzahlFeld.textProperty().addListener((observable, oldValue, newValue) -> {
-            anzahlPersonen = newValue;
-            if (!anzahlPersonen.equals("")) {
-                FlugfindenAction(new ActionEvent());
+            try {
+                anzahlPersonen = newValue;
+                if (!anzahlPersonen.equals("")) {
+                    if (!PersonenanzahlFeld.getText().contains("-")) {
+                        FlugfindenAction(new ActionEvent());
+                    } else {
+                        PersonenanzahlFeld.setText(PersonenanzahlFeld.getText().replace("-", ""));
+                    }
+                }
+            } catch (NumberFormatException e) {
+                PersonenanzahlFeld.setText("");
             }
         });
 
