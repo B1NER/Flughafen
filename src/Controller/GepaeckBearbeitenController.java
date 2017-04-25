@@ -32,6 +32,7 @@ public class GepaeckBearbeitenController {
     private Button AbbrechenButton;
 
     private static Gepaeck gepaeck;
+
     private static int gewicht;
 
     public static void setGepaeck(Gepaeck gepaeck, int gewicht) {
@@ -45,6 +46,7 @@ public class GepaeckBearbeitenController {
                 Gepaecktypen.Koffer,
                 Gepaecktypen.Tasche,
                 Gepaecktypen.Sportgepaeck);
+        GepaeckTyp.setValue(gepaeck.getGepaeckTyp());
     }
 
     @FXML
@@ -58,21 +60,20 @@ public class GepaeckBearbeitenController {
 
     @FXML
     void BestatigenAction(ActionEvent event) {
-        boolean x = false;
-        while (!x) {
-            try {
-                Verwaltung.gepaeckBearbeiten(gepaeck, Integer.parseInt(GewichtFeld.getText()), GepaeckTyp.getValue());
-                x = true;
-            } catch (final ToHighWeightException e) {
-                GewichtFeld.setPromptText("Zu hohes Gewicht!");
+
+        try {
+            Verwaltung.gepaeckBearbeiten(gepaeck, Integer.parseInt(GewichtFeld.getText()), GepaeckTyp.getValue());
+            if (Verwaltung.getAngemeldeter() instanceof Angestellter) {
+                MAIN.fensterOeffnen(Views.ZuBearbeitendeBuchungFinden);
+            } else {
+                MAIN.fensterOeffnen(Views.KundenProfil);
             }
+        } catch (final ToHighWeightException e) {
+            GewichtFeld.setPromptText("Zu hohes Gewicht!");
+            GewichtFeld.setText("");
         }
 
-        if (Verwaltung.getAngemeldeter() instanceof Angestellter) {
-            MAIN.fensterOeffnen(Views.ZuBearbeitendeBuchungFinden);
-        } else {
-            MAIN.fensterOeffnen(Views.KundenProfil);
-        }
+
     }
 
 }

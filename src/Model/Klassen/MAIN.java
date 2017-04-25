@@ -17,7 +17,7 @@ import java.util.Stack;
  */
 
 //TODO Größen anpassen
-//TODO Gepaeck bearbeiten
+//TODO preis in zahlungscontroller bugt
 //TODO Großklein schreibung
 
 public class MAIN extends Application {
