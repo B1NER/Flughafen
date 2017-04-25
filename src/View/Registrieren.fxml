@@ -7,7 +7,7 @@
 <?import javafx.scene.text.*?>
 <StackPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
            minWidth="-Infinity" prefHeight="1024.0" prefWidth="1280.0" stylesheets="@../View/CSSFiles/Style.css"
-           xmlns="http://javafx.com/javafx/8.0.111" fx:controller="Controller.RegistrierenController">
+           xmlns="http://javafx.com/javafx/8"  fx:controller="Controller.RegistrierenController">
     <children>
         <ImageView fitHeight="1024.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true" scaleY="1.44">
             <image>

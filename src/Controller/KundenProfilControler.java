@@ -143,7 +143,6 @@ public class KundenProfilControler {
             if (Verwaltung.getAngemeldeter() instanceof Angestellter) {
                 if (tableBuchungen.getSelectionModel().getSelectedItem().isCreatedByAnwender()) {
                     return;
-                    //TODO Evtl LAbel das sagt, dass man nicht die berechtigung hat
                 }
             }
             if (!(Verwaltung.getAngemeldeter() instanceof Administrator)) {

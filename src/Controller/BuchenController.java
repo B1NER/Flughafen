@@ -74,7 +74,6 @@ public class BuchenController {
     private StackPane stackPane;
 
 
-
     public void initialize() {
         setMediaPlayer();
 
@@ -124,6 +123,7 @@ public class BuchenController {
 
     @FXML
     void RegistrierenAction(ActionEvent event) {
+        mp.stop();
         MAIN.fensterOeffnen(Views.Registrieren);
     }
 
@@ -143,7 +143,6 @@ public class BuchenController {
     void plusAction(ActionEvent event) {
         AnzahlFeld.setText("" + (Integer.parseInt(AnzahlFeld.getText()) + 1));
     }
-
 
     @FXML
     void FlugSuchenAction(ActionEvent event) {
