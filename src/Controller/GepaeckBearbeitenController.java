@@ -5,7 +5,7 @@ import Model.Enums.Views;
 import Model.Exceptions.ToHighWeightException;
 import Model.Klassen.Elemente.Gepaeck;
 import Model.Klassen.MAIN;
-import Model.Klassen.Nutzer.Angestellter;
+import Model.Klassen.Nutzer.Administrator;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -33,11 +33,12 @@ public class GepaeckBearbeitenController {
                 Gepaecktypen.Tasche,
                 Gepaecktypen.Sportgepaeck);
         GepaeckTyp.setValue(gepaeck.getGepaeckTyp());
+        GewichtFeld.setText(String.valueOf(gewicht));
     }
 
     @FXML
     void AbbrechenAction(ActionEvent event) {
-        if (Verwaltung.getAngemeldeter() instanceof Angestellter) {
+        if (Verwaltung.getAngemeldeter() instanceof Administrator) {
             MAIN.fensterOeffnen(Views.ZuBearbeitendeBuchungFinden);
         } else {
             MAIN.fensterOeffnen(Views.KundenProfil);
@@ -48,7 +49,7 @@ public class GepaeckBearbeitenController {
     void BestatigenAction(ActionEvent event) {
         try {
             Verwaltung.gepaeckBearbeiten(gepaeck, Integer.parseInt(GewichtFeld.getText()), GepaeckTyp.getValue());
-            if (Verwaltung.getAngemeldeter() instanceof Angestellter) {
+            if (Verwaltung.getAngemeldeter() instanceof Administrator) {
                 MAIN.fensterOeffnen(Views.ZuBearbeitendeBuchungFinden);
             } else {
                 MAIN.fensterOeffnen(Views.KundenProfil);

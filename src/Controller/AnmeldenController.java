@@ -80,6 +80,7 @@ public class AnmeldenController {
                 MAIN.fensterOeffnen(Views.AngestellterStartseite);
                 //Wenn zuletzt die Flugliste offen war, dann gehe zur Zahlung
             } else if (MAIN.viewsChronik.get(MAIN.viewsChronik.size() - 2).equals(Views.Flugliste)) {
+                ZahlungController.setAnwender((Anwender) Verwaltung.getAngemeldeter());
                 MAIN.fensterOeffnen(Views.Zahlung);
             } else {
                 KundenProfilControler.setAnwender((Anwender) Verwaltung.getAngemeldeter());

@@ -51,23 +51,29 @@ public class RegistrierenController {
     @FXML
     private TextField PassnummerFeld;
 
+    @FXML
+    private Button RegistrierenButton;
+
 
     public void initialize() {
         if (Verwaltung.isAngemeldet()) {
             if (Verwaltung.getAngemeldeter() instanceof Administrator) { //admin kann alles erstellen
                 RegistrierenText.setText("Nutzer anlegen");
+                RegistrierenButton.setText("Anlegen");
                 AnwenderRbutton.setVisible(true);
                 AdminRButton.setVisible(true);
                 AngestellterRButton.setVisible(true);
             }
             if (Verwaltung.getAngemeldeter() instanceof Angestellter) { //angestellter kann nur Anwender erstellen
                 RegistrierenText.setText("Nutzer anlegen");
+                RegistrierenButton.setText("Anlegen");
                 AnwenderRbutton.setVisible(false);
                 AdminRButton.setVisible(false);
                 AngestellterRButton.setVisible(false);
             }
         } else { //falls keiner angemeldet ist, meldet sich ein Anwender an
             RegistrierenText.setText("Registrieren");
+            RegistrierenButton.setText("Registrieren");
             AnwenderRbutton.setVisible(false);
             AdminRButton.setVisible(false);
             AngestellterRButton.setVisible(false);
@@ -90,7 +96,6 @@ public class RegistrierenController {
 
     @FXML
     void RegistrierenAction(ActionEvent event) {
-
 
         if (VornameFeld.getText().equals("")) {
             VornameFeld.setPromptText("Geben Sie einen Vornamen ein!");

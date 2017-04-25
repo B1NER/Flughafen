@@ -140,6 +140,12 @@ public class KundenProfilControler {
     @FXML
     void BuchungBearbeitenAction(ActionEvent event) {
         if (tableBuchungen.getSelectionModel().getSelectedItem() != null) {
+            if (Verwaltung.getAngemeldeter() instanceof Angestellter) {
+                if (tableBuchungen.getSelectionModel().getSelectedItem().isCreatedByAnwender()) {
+                    return;
+                    //TODO Evtl LAbel das sagt, dass man nicht die berechtigung hat
+                }
+            }
             if (!(Verwaltung.getAngemeldeter() instanceof Administrator)) {
                 GepaeckBearbeitenController.setGepaeck(tableBuchungen.getSelectionModel().getSelectedItem().getGepaeck(), (int) tableBuchungen.getSelectionModel().getSelectedItem().getGepaeck().getGewicht());
                 MAIN.fensterOeffnen(Views.GepaeckBearbeiten);
@@ -158,9 +164,10 @@ public class KundenProfilControler {
 
     @FXML
     void AbmeldenAction(ActionEvent event) {
-        if (Verwaltung.getAngemeldeter() instanceof Administrator || Verwaltung.getAngemeldeter() instanceof Angestellter) {
-            MAIN.viewsChronik.pop();
-            MAIN.fensterOeffnen(MAIN.viewsChronik.pop());
+        if (Verwaltung.getAngemeldeter() instanceof Administrator) {
+            MAIN.fensterOeffnen(Views.AdminStartseite);
+        } else if (Verwaltung.getAngemeldeter() instanceof Angestellter) {
+            MAIN.fensterOeffnen(Views.AngestellterStartseite);
         } else {
             Verwaltung.setAngemeldeter(null);
             MAIN.fensterOeffnen(Views.Buchen);
