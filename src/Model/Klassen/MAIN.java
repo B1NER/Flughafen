@@ -15,11 +15,6 @@ import java.util.Stack;
  * Created by knoll on 21.03.2017.
  */
 
-
-//TODO umstylen --> Anzahl Personen Start --> buchen
-//TODO GEpaeckBEarbeiten fenster anderst skalieren
-//TODO Buchung bearbeiten falsch skaliert
-
 public class MAIN extends Application {
 
     //bei jedem neuem Fensteröffnen muss das fenster in diese Chronik eingetragen werden!

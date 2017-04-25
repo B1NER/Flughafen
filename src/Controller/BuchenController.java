@@ -5,9 +5,6 @@ import Model.Klassen.MAIN;
 import Model.Klassen.Nutzer.Angestellter;
 import Model.Klassen.Nutzer.Anwender;
 import Model.Klassen.Verwaltung.Verwaltung;
-import javafx.beans.binding.Bindings;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -28,57 +25,44 @@ import java.io.File;
  */
 public class BuchenController {
 
+    private final Media m = new Media(new File("src\\View\\Grafiken\\wolken.mp4").toURI().toString());
+    private final MediaPlayer mp = new MediaPlayer(m);
     @FXML
     private Button RegistrierenButton;
-
     @FXML
     private DatePicker DatumRueckflug;
-
     @FXML
     private Button AnmeldenButton;
-
     @FXML
     private TextField FlugNachFeld2;
-
     @FXML
     private DatePicker DatumHinflug2;
-
     @FXML
     private DatePicker DatumHinflug;
-
     @FXML
     private TextField AnzahlFeld;
-
     @FXML
     private TextField FlugNachFeld;
-
     @FXML
     private TextField NurHinflugAnzahlFeld;
-
     @FXML
     private TextField FlugAbFeld2;
-
     @FXML
     private TextField FlugAbFeld;
-
     @FXML
     private Tab tabPaneMitRueckflug;
-
     @FXML
     private Tab tabPaneOhneRueckflug;
-
     @FXML
     private Button MeinProfilButton;
-
     @FXML
     private StackPane stackPane;
-
-
 
     public void initialize() {
         setMediaPlayer();
 
         AnzahlFeld.setDisable(true);
+        NurHinflugAnzahlFeld.setDisable(true);
 
         if (Verwaltung.isAngemeldet()) {
             AnmeldenButton.setVisible(false);
@@ -104,9 +88,6 @@ public class BuchenController {
         });
     }
 
-    private final Media m = new Media(new File("src\\View\\Grafiken\\wolken.mp4").toURI().toString());
-    private final MediaPlayer mp = new MediaPlayer(m);
-
     private void setMediaPlayer() {
 
         VBox vBox = (VBox) stackPane.getChildren().get(0);
@@ -124,6 +105,7 @@ public class BuchenController {
 
     @FXML
     void RegistrierenAction(ActionEvent event) {
+        mp.stop();
         MAIN.fensterOeffnen(Views.Registrieren);
     }
 
