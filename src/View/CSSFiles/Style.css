@@ -34,6 +34,7 @@
     -fx-background-color: rgba(33, 110, 178, 0.75);
 }
 
+
 #FlugfindenButton {
     -fx-background-color: rgba(47, 162, 255, 0.75);
 }
@@ -71,7 +72,7 @@
 #keinErgebnis {
     -fx-font-size: 40px;
     -fx-font-weight: bold;
-    -fx-text-fill: rgba(230, 57, 0, 0.69);
+    -fx-text-fill: rgb(255, 255, 255);
 }
 
 /* Table */
@@ -120,16 +121,12 @@
 }
 
 .table-row-cell:selected {
-    -fx-background-color: rgba(16, 21, 29, 0.5);
+    -fx-background-color: rgb(32, 44, 66);
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.0em;
 }
 
 /*TabPane*/
-
-.tab-pane .tab-header-area .tab-header-background {
-    -fx-opacity: 1;
-}
 
 .tab-pane .tab-header-area {
     -fx-tab-min-width: 90px;
@@ -138,10 +135,6 @@
 
 .tab {
     -fx-background-insets: 0 1 0 1, 0, 0;
-}
-
-.tab-pane {
-    -fx-background-color: rgba(0, 84, 230, 0);
 }
 
 .tab-pane .tab {
