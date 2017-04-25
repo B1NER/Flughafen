@@ -15,7 +15,11 @@ import java.util.Stack;
  * Created by knoll on 21.03.2017.
  */
 
-//TODO umstylen --> Anzahl Personen Start --> buchen
+
+//TODO Skalieren: BuchungBearbeiten, Anmelden, Kundenprofil
+//TODO Buchung Anmelden/Registrieren/MeinProfil Buttons zentrieren
+//TODO Dropdownmenü Städte
+
 
 public class MAIN extends Application {
 

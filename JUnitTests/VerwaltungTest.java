@@ -102,7 +102,7 @@ public class VerwaltungTest {
 
         Flug f = new Flug("LH3428", "Lufthansa", "München", "Berlin", 150, 20000, new Date(2017 - 1900, 2, 21, 14, 0), new Date(2017 - 1900, 2, 21, 15, 10), 150);
         Fluege.addFlug(f);
-        Gepaeck g = new Gepaeck(32, 1000, Gepaecktypen.Handgepaeck);
+        Gepaeck g = new Gepaeck(32, 1000, Gepaecktypen.Handgepäck);
         Gepaecke.addGepaeck(g);
         Anwender a = new Anwender("Jonas", "Pfeifhofer", "06.11.99", 3342, "jonas@gmail.com", "asdf123");
         a.setAnwenderID(7);
@@ -214,7 +214,7 @@ public class VerwaltungTest {
 
     private Flug flug = new Flug("ID", "B1nerGMBH", "Brixen", "Bozen", 140, 1000, new Date(2017, 03, 22), new Date(2017, 04, 22), 130);
     private Anwender anwender = new Anwender("Jonas", "Pfeifhofer", "06.11.99", 3342, "jonas@gmail.com", "asdf123");
-    private Gepaeck gepaeck = new Gepaeck(32, 10, Gepaecktypen.Handgepaeck);
+    private Gepaeck gepaeck = new Gepaeck(32, 10, Gepaecktypen.Handgepäck);
     private Buchung buchung = new Buchung(flug, anwender, 3, gepaeck, 140, false);
 
     private void getBuchungByID() {

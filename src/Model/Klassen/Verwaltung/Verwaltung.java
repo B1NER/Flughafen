@@ -74,7 +74,7 @@ public abstract class Verwaltung {
             Date ankunftdatum = new Date(Integer.parseInt(zeile[6].split("\\.")[2]) - 1900, Integer.parseInt(zeile[6].split("\\.")[1]) - 1, Integer.parseInt(zeile[6].split("\\.")[0]), Integer.parseInt(zeile[7].split(":")[0]), Integer.parseInt(zeile[7].split(":")[1]));
             Flug eingelesenerFlug = new Flug(zeile[0], zeile[1], zeile[2], zeile[3], Integer.parseInt(zeile[8]), Integer.parseInt(zeile[9]), abflugdatum, ankunftdatum, 100);
             Fluege.addFlug(eingelesenerFlug);
-            System.out.println("Fluege angelegt:" + eingelesenerFlug.toStringLog());
+            System.out.println("Fluege eingelesen:" + eingelesenerFlug.toStringLog());
         }
         s.close();
     }
@@ -99,7 +99,7 @@ public abstract class Verwaltung {
                 }
             }
             Buchungen.addBuchung(eingeleseneBuchung);
-            System.out.println("Buchung angelegt:" + eingeleseneBuchung);
+            System.out.println("Buchung eingelesen:" + eingeleseneBuchung);
         }
         s.close();
         Buchungen.setBuchungsCounter(getBiggestID("Buchung"));
@@ -118,7 +118,7 @@ public abstract class Verwaltung {
             } catch (InvalidEmailException e) {
                 System.out.println(eingelesenerAdministrator + " ungültige Email");
             }
-            System.out.println("Administrator angelegt:" + eingelesenerAdministrator);
+            System.out.println("Administrator eingelesen:" + eingelesenerAdministrator);
         }
         s.close();
         Administratoren.setAdminCounter(getBiggestID("Administrator"));
@@ -137,7 +137,7 @@ public abstract class Verwaltung {
             } catch (InvalidEmailException e) {
                 System.out.println(eingelesenerAngestellter + " ungültige Email");
             }
-            System.out.println("Angestellter angelegt:" + eingelesenerAngestellter);
+            System.out.println("Angestellter eingelesen:" + eingelesenerAngestellter);
         }
         s.close();
         Angestellte.setAngestelltenCounter(getBiggestID("Angestellter"));
@@ -182,10 +182,10 @@ public abstract class Verwaltung {
             String zs[] = zeile.split(";");
             Gepaeck eingelesenesGepaeck;
 
-            if (zs[2].equals(Gepaecktypen.Handgepaeck.toString())) {
-                eingelesenesGepaeck = new Gepaeck(Integer.parseInt(zs[0]), Double.parseDouble(zs[1]), Gepaecktypen.Handgepaeck);
-            } else if (zs[2].equals(Gepaecktypen.Sportgepaeck.toString())) {
-                eingelesenesGepaeck = new Gepaeck(Integer.parseInt(zs[0]), Double.parseDouble(zs[1]), Gepaecktypen.Sportgepaeck);
+            if (zs[2].equals(Gepaecktypen.Handgepäck.toString())) {
+                eingelesenesGepaeck = new Gepaeck(Integer.parseInt(zs[0]), Double.parseDouble(zs[1]), Gepaecktypen.Handgepäck);
+            } else if (zs[2].equals(Gepaecktypen.Sportgepäck.toString())) {
+                eingelesenesGepaeck = new Gepaeck(Integer.parseInt(zs[0]), Double.parseDouble(zs[1]), Gepaecktypen.Sportgepäck);
             } else if (zs[2].equals(Gepaecktypen.Tasche.toString())) {
                 eingelesenesGepaeck = new Gepaeck(Integer.parseInt(zs[0]), Double.parseDouble(zs[1]), Gepaecktypen.Tasche);
             } else {
@@ -193,7 +193,7 @@ public abstract class Verwaltung {
             }
 
             Gepaecke.addGepaeck(eingelesenesGepaeck);
-            System.out.println("Gepaeck angelegt:" + eingelesenesGepaeck.toStringLog());
+            System.out.println("Gepaeck eingelesen:" + eingelesenesGepaeck.toStringLog());
 
         }
         s.close();

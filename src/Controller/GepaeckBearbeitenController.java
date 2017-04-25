@@ -28,10 +28,10 @@ public class GepaeckBearbeitenController {
 
     public void initialize() {
         GepaeckTyp.getItems().addAll(
-                Gepaecktypen.Handgepaeck,
+                Gepaecktypen.Handgepäck,
                 Gepaecktypen.Koffer,
                 Gepaecktypen.Tasche,
-                Gepaecktypen.Sportgepaeck);
+                Gepaecktypen.Sportgepäck);
         GepaeckTyp.setValue(gepaeck.getGepaeckTyp());
         GewichtFeld.setText(String.valueOf(gewicht));
     }
