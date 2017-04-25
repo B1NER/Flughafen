@@ -91,6 +91,8 @@ public class ZahlungController {
     @FXML
     private Tab RueckflugTab;
 
+    @FXML
+    private Tab HinflugTab;
 
     @FXML
     private TextField GewichtFeld1;
@@ -137,13 +139,20 @@ public class ZahlungController {
     @FXML
     private TextField NachnameFeld2;
 
+    @FXML
+    private TabPane tabPane;
+
     private static Flug hinflug;
     private static Flug rueckflug;
     private static int anzahlPersonen;
     private static int gepaecksPreisProKilo = 10;
     private static Anwender anwender;
 
+    SingleSelectionModel<Tab> selectionModel;
+
     public void initialize() {
+        //tabPane.getTabs().addAll(HinflugTab, RueckflugTab);
+        selectionModel = tabPane.getSelectionModel();
 
         if (Verwaltung.getAngemeldeter() instanceof Anwender) {
             NameFeld1.setText(Verwaltung.getAngemeldeter().getVorname());
@@ -261,6 +270,7 @@ public class ZahlungController {
                 } catch (ToHighWeightException e) {
                     GewichtFeld1.setText("");
                     GewichtFeld1.setPromptText("Zu hohes Gewicht");
+                    System.out.println("zu hohes gewicht");
                 } catch (NumberFormatException e) {
                     GewichtFeld1.setText("");
                     GewichtFeld1.setPromptText("Gewicht in kg");
@@ -276,24 +286,32 @@ public class ZahlungController {
         } else {
             if (KreditkartennummerFeld1.getText().equals("")) {
                 KreditkartennummerFeld1.setPromptText("Pflichtfeld!");
+                selectionModel.select(HinflugTab);
             } else if (CSVFeld1.getText().equals("")) {
                 CSVFeld1.setPromptText("Pflichtfeld!");
+                selectionModel.select(HinflugTab);
             } else if (NameFeld1.getText().equals("")) {
                 NameFeld1.setPromptText("Pflichtfeld!");
+                selectionModel.select(HinflugTab);
             } else if (NachnameFeld1.getText().equals("")) {
                 NachnameFeld1.setPromptText("Pflichtfeld!");
+                selectionModel.select(HinflugTab);
             } else if (KreditkartennummerFeld2.getText().equals("")) {
                 KreditkartennummerFeld2.setPromptText("Pflichtfeld!");
+                selectionModel.select(RueckflugTab);
             } else if (CSVFeld2.getText().equals("")) {
                 CSVFeld2.setPromptText("Pflichtfeld!");
+                selectionModel.select(RueckflugTab);
             } else if (NameFeld2.getText().equals("")) {
                 NameFeld2.setPromptText("Pflichtfeld!");
+                selectionModel.select(RueckflugTab);
             } else if (NachnameFeld2.getText().equals("")) {
                 NachnameFeld2.setPromptText("Pflichtfeld!");
+                selectionModel.select(RueckflugTab);
             } else if (GewichtFeld1.getText().equals("")) {
                 GewichtFeld1.setPromptText("Gewicht in kg");
+                selectionModel.select(HinflugTab);
             } else {
-
                 try {
                     if (Integer.parseInt(GewichtFeld1.getText()) > anzahlPersonen * 20) {
                         throw new ToHighWeightException();
@@ -310,19 +328,15 @@ public class ZahlungController {
                 } catch (ToHighWeightException e) {
                     GewichtFeld1.setText("");
                     GewichtFeld1.setPromptText("Zu hohes Gewicht");
-                    e.printStackTrace();
                 } catch (NumberFormatException e) {
                     GewichtFeld1.setText("");
                     GewichtFeld1.setPromptText("Gewicht in kg");
-                    e.printStackTrace();
                 } catch (IllegalArgumentException e) {
                     GewichtFeld1.setText("");
                     GewichtFeld1.setPromptText("Gewicht in kg");
-                    e.printStackTrace();
                 } catch (ClassCastException e) {
                     GewichtFeld1.setText("");
                     GewichtFeld1.setPromptText("Gewicht in kg");
-                    e.printStackTrace();
                 }
 
             }

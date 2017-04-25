@@ -129,6 +129,7 @@ public class BuchenController {
         });
     }
 
+
     private void setMediaPlayer(){
         final File f = new File("src\\View\\Grafiken\\wolken.mp4");
 
@@ -153,8 +154,8 @@ public class BuchenController {
 
         mp.play();
 
-
     }
+
 
     @FXML
     void RegistrierenAction(ActionEvent event) {

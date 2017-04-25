@@ -5,6 +5,7 @@ import Model.Exceptions.FlugNotFoundException;
 import Model.Klassen.Elemente.Flug;
 import Model.Klassen.MAIN;
 import Model.Klassen.Nutzer.Anwender;
+import Model.Klassen.Verwaltung.Fluege;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -188,8 +189,12 @@ public class FluglisteController {
             flugNach = newValue;
         });
 
+        PersonenanzahlFeld.textProperty().addListener((observable, oldValue, newValue) -> {
+            flugNach = newValue;
+        });
+
         tabHasChanged(hinflugTab);
-        if(isWithRueckflug) {
+        if(isWithRueckflug && !MAIN.viewsChronik.get(MAIN.viewsChronik.size()-2).equals(Views.Zahlung)) {
             String zw = flugAb;
             FlugabFeld.setText(flugNach);
             FlugnachFeld.setText(zw);
@@ -204,6 +209,7 @@ public class FluglisteController {
             FlugabFeld.setText(flugAb);
             FlugnachFeld.setText(flugNach);
             fluggesellschaftFeld.setText(fluggesellschaft);
+            anzahlPersonen = PersonenanzahlFeld.getText();
             PersonenanzahlFeld.setText(anzahlPersonen);
             DatumHinflug.setValue(datumHinflug);
 
@@ -215,15 +221,15 @@ public class FluglisteController {
             rueckflugTab.setDisable(true);
 
             FlugfindenAction(new ActionEvent());
-
         } else {
-
             if (tab.getId().equals("hinflugTab")) {
 
                 FlugauswahlText.setText("Hinflug auswählen");
+
                 String zw = flugAb;
                 FlugabFeld.setText(flugNach);
                 FlugnachFeld.setText(zw);
+                anzahlPersonen = PersonenanzahlFeld.getText();
                 fluggesellschaftFeld.setText(fluggesellschaft);
                 PersonenanzahlFeld.setText(anzahlPersonen);
                 DatumHinflug.setValue(datumHinflug);
@@ -254,13 +260,15 @@ public class FluglisteController {
 
                 FlugfindenAction(new ActionEvent());
             }
-
         }
     }
 
     @FXML
     public void FlugfindenAction(ActionEvent event) {
         ObservableList<Flug> observableList = FXCollections.observableList(new ArrayList<>());
+
+        hinflug = null;
+        rueckflug = null;
 
         try {
             if (FlugabFeld.getText().equals("") && FlugnachFeld.getText().equals("")) {
@@ -327,6 +335,11 @@ public class FluglisteController {
     @FXML
     void buchenAction(ActionEvent event) {
 
+        if(Fluege.getVerfuegbarePlaetze(hinflug) > Integer.parseInt(anzahlPersonen) || Fluege.getVerfuegbarePlaetze(rueckflug) > Integer.parseInt(anzahlPersonen)){
+            keineBuchungAusgewaehltLabel.setText("Kein Plätze");
+            return;
+        }
+
         if (!isWithRueckflug) {
             if(hinflug == null) {
                 keineBuchungAusgewaehltLabel.setTextFill(Color.RED);
@@ -363,11 +376,6 @@ public class FluglisteController {
                     MAIN.fensterOeffnen(Views.Zahlung);
                 }
             }
-
-
         }
-
     }
-
-
 }

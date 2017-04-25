@@ -212,7 +212,6 @@ public class KundenProfilControler {
 
     @FXML
     void BuchungBearbeitenAction(ActionEvent event) {
-
         if (tableBuchungen.getSelectionModel().getSelectedItem() != null) {
             if (!(Verwaltung.getAngemeldeter() instanceof Administrator)) {
                 GepaeckBearbeitenController.setGepaeck(tableBuchungen.getSelectionModel().getSelectedItem().getGepaeck(), (int) tableBuchungen.getSelectionModel().getSelectedItem().getGepaeck().getGewicht());
@@ -240,5 +239,4 @@ public class KundenProfilControler {
             MAIN.fensterOeffnen(Views.Buchen);
         }
     }
-
 }
