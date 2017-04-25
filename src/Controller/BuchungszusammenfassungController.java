@@ -13,35 +13,33 @@ import javafx.scene.control.Label;
 
 public class BuchungszusammenfassungController {
 
+    private static Buchung buchung;
     @FXML
     private Label ZusammenfassungText;
-
-    private static Buchung buchung;
-
-    public void initialize(){
-        ZusammenfassungText.setWrapText(true);
-        if(buchung.getRueckflug() == null) {
-            ZusammenfassungText.setText("Sie fliegen mit: " + buchung.getHinflug().getFlugGesellschaft() + " Airlines\nHinflug: " + buchung.getHinflug().getAbflugort() + " - " + buchung.getHinflug().getAnkunftsort() + "\nPreis: " + buchung.getBuchungspreis() + "€");
-        }else {
-            ZusammenfassungText.setText("Sie fliegen mit: " + buchung.getHinflug().getFlugGesellschaft()+ " Airlines\nHinflug: " + buchung.getHinflug().getAbflugort() + " - " + buchung.getHinflug().getAnkunftsort() + "\nSie fliegen mit: " + buchung.getRueckflug().getFlugGesellschaft() + " Airlines\nRückflug: " + buchung.getRueckflug().getAbflugort() + " - " + buchung.getRueckflug().getAnkunftsort() + "\nPreis: " + buchung.getBuchungspreis() + "€");
-        }
-    }
 
     public static void setBuchung(Buchung buchung) {
         BuchungszusammenfassungController.buchung = buchung;
     }
 
+    public void initialize() {
+        ZusammenfassungText.setWrapText(true);
+        if (buchung.getRueckflug() == null) {
+            ZusammenfassungText.setText("Sie fliegen mit: " + buchung.getHinflug().getFlugGesellschaft() + " Airlines\nHinflug: " + buchung.getHinflug().getAbflugort() + " - " + buchung.getHinflug().getAnkunftsort() + "\nPreis: " + buchung.getBuchungspreis() + "€");
+        } else {
+            ZusammenfassungText.setText("Sie fliegen mit: " + buchung.getHinflug().getFlugGesellschaft() + " Airlines\nHinflug: " + buchung.getHinflug().getAbflugort() + " - " + buchung.getHinflug().getAnkunftsort() + "\nSie fliegen mit: " + buchung.getRueckflug().getFlugGesellschaft() + " Airlines\nRückflug: " + buchung.getRueckflug().getAbflugort() + " - " + buchung.getRueckflug().getAnkunftsort() + "\nPreis: " + buchung.getBuchungspreis() + "€");
+        }
+    }
+
     @FXML
     void ZumKundenprofilAction(ActionEvent event) {
-        if(Verwaltung.getAngemeldeter() instanceof Anwender) {
+        if (Verwaltung.getAngemeldeter() instanceof Anwender) {
             KundenProfilControler.setAnwender((Anwender) Verwaltung.getAngemeldeter());
             MAIN.fensterOeffnen(Views.KundenProfil);
-        }else if(Verwaltung.getAngemeldeter() instanceof Angestellter){
+        } else if (Verwaltung.getAngemeldeter() instanceof Angestellter) {
             MAIN.fensterOeffnen(Views.AngestellterStartseite);
-        }else if(Verwaltung.getAngemeldeter() instanceof Administrator){
+        } else if (Verwaltung.getAngemeldeter() instanceof Administrator) {
             MAIN.fensterOeffnen(Views.AdminStartseite);
         }
 
     }
-
 }

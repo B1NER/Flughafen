@@ -8,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.util.HashMap;
 import java.util.Stack;
 
@@ -16,6 +15,7 @@ import java.util.Stack;
  * Created by knoll on 21.03.2017.
  */
 
+//TODO Größen anpassen
 
 public class MAIN extends Application {
 
@@ -38,8 +38,6 @@ public class MAIN extends Application {
 
             Pane pane = loader.load();
             Scene scene = new Scene(pane);
-
-            GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 
             primaryStage.setFullScreen(false);
             primaryStage.setScene(scene);

@@ -5,7 +5,6 @@ import Model.Exceptions.FlugNotFoundException;
 import Model.Klassen.Elemente.Flug;
 import Model.Klassen.MAIN;
 import Model.Klassen.Nutzer.Anwender;
-import Model.Klassen.Verwaltung.Fluege;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -24,87 +23,6 @@ import java.util.Date;
 
 
 public class FluglisteController {
-
-
-    @FXML
-    private TableColumn<Flug, String> RueckSpaltePreis;
-
-    @FXML
-    private TableColumn<Flug, String> HinSpalteAnkunftsOrt;
-
-    @FXML
-    private TextField PersonenanzahlFeld;
-
-    @FXML
-    private TableColumn<Flug, String> HinSpalteDatum;
-
-    @FXML
-    private Label IhreSucheText;
-
-    @FXML
-    private TextField fluggesellschaftFeld;
-
-    @FXML
-    private TextField FlugnachFeld;
-
-    @FXML
-    private TableColumn<Flug, String> HinSpalteAbflugsOrt;
-
-    @FXML
-    private TableColumn<Flug, String> HinSpaltePreis;
-
-    @FXML
-    private TableColumn<Flug, String> HinSpalteFluggesellschaft;
-
-    @FXML
-    private TableColumn<Flug, String> RueckSpalteAnkunftsOrt;
-
-    @FXML
-    private TableView<Flug> hinflugTabelle;
-
-    @FXML
-    private Button FlugfindenButton;
-
-    @FXML
-    private TableColumn<Flug, String> RueckSpalteAbflugsOrt;
-
-    @FXML
-    private TableColumn<Flug, String> RueckSpalteFluggesellschaft;
-
-    @FXML
-    private DatePicker DatumHinflug;
-
-    @FXML
-    private Label keineBuchungAusgewaehltLabel;
-
-    @FXML
-    private Button zurueckButton1;
-
-    @FXML
-    private TabPane tabPane;
-
-    @FXML
-    private Tab rueckflugTab;
-
-    @FXML
-    private Tab hinflugTab;
-
-    @FXML
-    private Button buchenButton;
-
-    @FXML
-    private TableColumn<Flug, String> RueckSpalteDatum;
-
-    @FXML
-    private Label FlugauswahlText;
-
-    @FXML
-    private TextField FlugabFeld;
-
-    @FXML
-    private TableView<Flug> rueckflugTabelle;
-
-
     private static String flugAb;
     private static String flugNach;
     private static String fluggesellschaft;
@@ -115,6 +33,50 @@ public class FluglisteController {
     private static Flug hinflug = null;
     private static Flug rueckflug = null;
     private static Anwender anwender;
+    @FXML
+    private TableColumn<Flug, String> RueckSpaltePreis;
+    @FXML
+    private TableColumn<Flug, String> HinSpalteAnkunftsOrt;
+    @FXML
+    private TextField PersonenanzahlFeld;
+    @FXML
+    private TableColumn<Flug, String> HinSpalteDatum;
+    @FXML
+    private TextField fluggesellschaftFeld;
+    @FXML
+    private TextField FlugnachFeld;
+    @FXML
+    private TableColumn<Flug, String> HinSpalteAbflugsOrt;
+    @FXML
+    private TableColumn<Flug, String> HinSpaltePreis;
+    @FXML
+    private TableColumn<Flug, String> HinSpalteFluggesellschaft;
+    @FXML
+    private TableColumn<Flug, String> RueckSpalteAnkunftsOrt;
+    @FXML
+    private TableView<Flug> hinflugTabelle;
+    @FXML
+    private TableColumn<Flug, String> RueckSpalteAbflugsOrt;
+    @FXML
+    private TableColumn<Flug, String> RueckSpalteFluggesellschaft;
+    @FXML
+    private DatePicker DatumHinflug;
+    @FXML
+    private Label keineBuchungAusgewaehltLabel;
+    @FXML
+    private TabPane tabPane;
+    @FXML
+    private Tab rueckflugTab;
+    @FXML
+    private Tab hinflugTab;
+    @FXML
+    private TableColumn<Flug, String> RueckSpalteDatum;
+    @FXML
+    private Label FlugauswahlText;
+    @FXML
+    private TextField FlugabFeld;
+    @FXML
+    private TableView<Flug> rueckflugTabelle;
 
     public static void setInfos(String flugAb, String flugNach, String fluggesellschaft, String anzahlPersonen, LocalDate datumHinflug) {
         FluglisteController.flugAb = flugAb;
@@ -135,7 +97,7 @@ public class FluglisteController {
         FluglisteController.isWithRueckflug = true;
     }
 
-    public static void setAnwender(Anwender anwender){
+    public static void setAnwender(Anwender anwender) {
         FluglisteController.anwender = anwender;
     }
 
@@ -161,7 +123,7 @@ public class FluglisteController {
             TableRow<Flug> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 1 && (!row.isEmpty())) {
-                    if(PersonenanzahlFeld.getText().equals("")){
+                    if (PersonenanzahlFeld.getText().equals("")) {
                         PersonenanzahlFeld.setText("1");
                     }
                     hinflug = row.getItem();
@@ -176,7 +138,7 @@ public class FluglisteController {
             TableRow<Flug> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 1 && (!row.isEmpty())) {
-                    if(PersonenanzahlFeld.getText().equals("")){
+                    if (PersonenanzahlFeld.getText().equals("")) {
                         PersonenanzahlFeld.setText("1");
                     }
                     rueckflug = row.getItem();
@@ -197,7 +159,7 @@ public class FluglisteController {
 
         PersonenanzahlFeld.textProperty().addListener((observable, oldValue, newValue) -> {
             anzahlPersonen = newValue;
-            if(!anzahlPersonen.equals("")) {
+            if (!anzahlPersonen.equals("")) {
                 FlugfindenAction(new ActionEvent());
             }
         });
@@ -207,7 +169,7 @@ public class FluglisteController {
         });
 
         tabHasChanged(hinflugTab);
-        if(isWithRueckflug && !MAIN.viewsChronik.get(MAIN.viewsChronik.size()-2).equals(Views.Zahlung)) {
+        if (isWithRueckflug && !MAIN.viewsChronik.get(MAIN.viewsChronik.size() - 2).equals(Views.Zahlung)) {
             String zw = flugAb;
             FlugabFeld.setText(flugNach);
             FlugnachFeld.setText(zw);
@@ -280,7 +242,7 @@ public class FluglisteController {
     public void FlugfindenAction(ActionEvent event) {
         ObservableList<Flug> observableList = FXCollections.observableList(new ArrayList<>());
 
-        if(PersonenanzahlFeld.getText().equals("")){
+        if (PersonenanzahlFeld.getText().equals("")) {
             PersonenanzahlFeld.setText("1");
         }
 
@@ -324,7 +286,7 @@ public class FluglisteController {
                 rueckflugTabelle.setPlaceholder(keineFluege);
                 hinflugTabelle.setItems(observableList);
                 hinflugTabelle.setPlaceholder(keineFluege2);
-            }else {
+            } else {
                 observableList.clear();
                 hinflugTabelle.setItems(observableList);
                 hinflugTabelle.setPlaceholder(keineFluege);
@@ -350,15 +312,15 @@ public class FluglisteController {
     void buchenAction(ActionEvent event) {
 
         if (!isWithRueckflug) {
-            if(hinflug == null) {
+            if (hinflug == null) {
                 keineBuchungAusgewaehltLabel.setTextFill(Color.RED);
                 keineBuchungAusgewaehltLabel.setText("Flug auswählen!");
-            }else if (!Verwaltung.isAngemeldet()) {
+            } else if (!Verwaltung.isAngemeldet()) {
                 MAIN.fensterOeffnen(Views.Anmelden);
             } else {
-                if(Verwaltung.getAngemeldeter() instanceof Anwender) {
+                if (Verwaltung.getAngemeldeter() instanceof Anwender) {
                     MAIN.fensterOeffnen(Views.Zahlung);
-                }else {
+                } else {
                     //Buchung führt ein Admin/Angestellter durch
                     ZahlungController.setAnwender(anwender);
                     MAIN.fensterOeffnen(Views.Zahlung);
@@ -367,19 +329,19 @@ public class FluglisteController {
         } else {
 
             if (rueckflug == null || hinflug == null) {
-                if(hinflug==null) {
+                if (hinflug == null) {
                     keineBuchungAusgewaehltLabel.setTextFill(Color.RED);
                     keineBuchungAusgewaehltLabel.setText("Hinflug auswählen!");
-                }else{
+                } else {
                     keineBuchungAusgewaehltLabel.setTextFill(Color.RED);
                     keineBuchungAusgewaehltLabel.setText("Rückflug auswählen!");
                 }
             } else if (!Verwaltung.isAngemeldet()) {
                 MAIN.fensterOeffnen(Views.Anmelden);
             } else {
-                if(Verwaltung.getAngemeldeter() instanceof Anwender) {
+                if (Verwaltung.getAngemeldeter() instanceof Anwender) {
                     MAIN.fensterOeffnen(Views.Zahlung);
-                }else {
+                } else {
                     //Buchung führt ein Admin/Angestellter durch
                     ZahlungController.setAnwender(anwender);
                     MAIN.fensterOeffnen(Views.Zahlung);

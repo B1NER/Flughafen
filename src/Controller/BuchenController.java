@@ -10,7 +10,10 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -35,22 +38,13 @@ public class BuchenController {
     private Button AnmeldenButton;
 
     @FXML
-    private Label FlugsuchenText;
-
-    @FXML
     private TextField FlugNachFeld2;
-
-    @FXML
-    private Button minusButton;
 
     @FXML
     private DatePicker DatumHinflug2;
 
     @FXML
     private DatePicker DatumHinflug;
-
-    @FXML
-    private Button NurHinflugminusButton;
 
     @FXML
     private TextField AnzahlFeld;
@@ -62,28 +56,10 @@ public class BuchenController {
     private TextField NurHinflugAnzahlFeld;
 
     @FXML
-    private javafx.scene.media.MediaView MediaView;
-
-    @FXML
-    private Button plusButton;
-
-    @FXML
-    private Button FlugSuchenButton2;
-
-    @FXML
-    private Button NurHinflugplusButton;
-
-    @FXML
     private TextField FlugAbFeld2;
 
     @FXML
     private TextField FlugAbFeld;
-
-    @FXML
-    private Button MitRuecksflugSuchenButton;
-
-    @FXML
-    private Button NurHinflugSuchenButton;
 
     @FXML
     private Tab tabPaneMitRueckflug;
@@ -115,10 +91,10 @@ public class BuchenController {
         DatumHinflug2.setEditable(false);
 
         stackPane.setOnKeyReleased(event -> {
-            if (event.getCode() == KeyCode.ENTER){
-                if(tabPaneMitRueckflug.isSelected()){
+            if (event.getCode() == KeyCode.ENTER) {
+                if (tabPaneMitRueckflug.isSelected()) {
                     FlugSuchenAction(new ActionEvent());
-                }else if(tabPaneOhneRueckflug.isSelected()){
+                } else if (tabPaneOhneRueckflug.isSelected()) {
                     FlugSuchenAction2(new ActionEvent());
                 }
             }
@@ -126,7 +102,7 @@ public class BuchenController {
     }
 
 
-    private void setMediaPlayer(){
+    private void setMediaPlayer() {
         final File f = new File("src\\View\\Grafiken\\wolken.mp4");
 
         VBox vBox = (VBox) stackPane.getChildren().get(0);
@@ -176,12 +152,13 @@ public class BuchenController {
 
 
     @FXML
-    void FlugSuchenAction(ActionEvent event){
+    void FlugSuchenAction(ActionEvent event) {
         if (FlugAbFeld.getText().equals("")) {
             FlugAbFeld.setPromptText("Stadt eingeben");
-        }if (FlugNachFeld.getText().equals("")) {
+        }
+        if (FlugNachFeld.getText().equals("")) {
             FlugNachFeld.setPromptText("Stadt eingeben");
-        }else {
+        } else {
             FluglisteController.setInfos(FlugAbFeld.getText(), FlugNachFeld.getText(), "", AnzahlFeld.getText(), DatumHinflug.getValue(), DatumRueckflug.getValue());
             MAIN.fensterOeffnen(Views.Flugliste);
         }
@@ -191,9 +168,10 @@ public class BuchenController {
     void FlugSuchenAction2(ActionEvent event) {
         if (FlugAbFeld2.getText().equals("")) {
             FlugAbFeld2.setPromptText("Stadt eingeben");
-        }if (FlugNachFeld2.getText().equals("")) {
+        }
+        if (FlugNachFeld2.getText().equals("")) {
             FlugNachFeld2.setPromptText("Stadt eingeben");
-        }else {
+        } else {
             FluglisteController.setInfos(FlugAbFeld2.getText(), FlugNachFeld2.getText(), "", NurHinflugAnzahlFeld.getText(), DatumHinflug2.getValue());
             MAIN.fensterOeffnen(Views.Flugliste);
         }
