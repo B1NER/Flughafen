@@ -43,15 +43,14 @@ public class AnmeldenController {
         setMediaPlayer();
     }
 
+    private final Media m = new Media(new File("src\\View\\Grafiken\\wolken.mp4").toURI().toString());
+    private final MediaPlayer mp = new MediaPlayer(m);
 
     private void setMediaPlayer() {
-        final File f = new File("src\\View\\Grafiken\\wolken.mp4");
 
         StackPane st = (StackPane) stackPane.getChildren().get(0);
         stackPane.getChildren().remove(0);
 
-        final Media m = new Media(f.toURI().toString());
-        final MediaPlayer mp = new MediaPlayer(m);
         final javafx.scene.media.MediaView mv = new MediaView(mp);
 
         mv.setPreserveRatio(false);
@@ -68,7 +67,7 @@ public class AnmeldenController {
         try {
 
             Verwaltung.anmelden(EmailFeld.getText(), PasswordFeld.getText());
-
+            mp.stop();
             if (Verwaltung.getAngemeldeter() instanceof Administrator) {
                 MAIN.fensterOeffnen(Views.AdminStartseite);
             } else if (Verwaltung.getAngemeldeter() instanceof Angestellter) {
@@ -91,12 +90,14 @@ public class AnmeldenController {
 
     @FXML
     void AbbrechenAction(ActionEvent event) {
+        mp.stop();
         MAIN.viewsChronik.pop();
         MAIN.fensterOeffnen(MAIN.viewsChronik.pop());
     }
 
     @FXML
     void RegistrierenAction(ActionEvent event) {
+        mp.stop();
         MAIN.fensterOeffnen(Views.Registrieren);
     }
 
