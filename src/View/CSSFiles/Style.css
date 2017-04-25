@@ -1,12 +1,15 @@
 /* Allgemein */
 
 .button {
+    -fx-background-color: transparent;
+    -fx-border-color: white;
+    -fx-text-fill: white;
     -fx-transition-duration: 0.4s;
 }
 
 .button:hover {
-    -fx-background-color: #4CAF50; /* Green */
-    -fx-color: white;
+    -fx-background-color: rgba(13, 13, 54, 0.95);
+    -fx-text-fill: white;
 }
 
 /* IDs */
@@ -29,13 +32,31 @@
     -fx-background-color: rgba(33, 110, 178, 0.75);
 }
 
+
 #plusButton {
+    -fx-background-color: rgba(16, 21, 86, 0);
+    -fx-text-fill: white;
     -fx-border-radius: 0px, 0px, 0px, 0px;
 }
 
 #minusButton {
+    -fx-background-color: rgba(16, 21, 86, 0);
+    -fx-text-fill: white;
     -fx-border-radius: 0px, 0px, 0px, 0px;
 }
+
+#plusButton:hover {
+    -fx-background-color: rgba(16, 21, 86, 0.51);
+    -fx-text-fill: white;
+    -fx-border-radius: 0px, 0px, 0px, 0px;
+}
+
+#minusButton:hover {
+    -fx-background-color: rgba(16, 21, 86, 0.51);
+    -fx-text-fill: white;
+    -fx-border-radius: 0px, 0px, 0px, 0px;
+}
+
 
 #keinErgebnis {
     -fx-font-size: 40px;
@@ -76,7 +97,7 @@
     -fx-padding: 0.0em;
 }
 
-.table-row-cell: odd {
+.table-row-cell:odd {
     -fx-background-color: rgba(88, 122, 145, 0.25);
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.0em;
@@ -137,31 +158,4 @@
 .tab-pane .tab-header-area .tab-header-background {
     -fx-background-color: rgba(14, 0, 86, 0.25);
     -fx-border-color: white;
-}
-
-
-.button{
-  -fx-width:140px;
-  -fx-height:50px;
-  -fx-border:2px solid #34495e;
-  -fx-float:left;
-  -fx-text-align:center;
-  -fx-cursor:pointer;
-  -fx-position:relative;
-  -fx-box-sizing:border-box;
-  -fx-overflow:hidden;
-  -fx-margin:0 0 40px 50px;
-}
-
-.eff-8{
-  -fx-width:140px;
-  -fx-height:50px;
-  -fx-border:70px solid #34495e;
-  -fx-position:absolute;
-  -fx-transition:all .5s ease;
-  -fx-z-index:1;
-  -fx-box-sizing:border-box;
-}
-.button-8:hover .eff-8{
-  -fx-border:0px solid #34495e;
 }
