@@ -88,15 +88,15 @@
                                                                 <HBox alignment="CENTER_LEFT" prefHeight="100.0"
                                                                       prefWidth="500.0">
                                                                     <children>
-                                                                        <TextField fx:id="FlugAbFeld" prefHeight="65.0"
-                                                                                   prefWidth="400.0"
+                                                                        <TextField id="Textgroesse" fx:id="FlugAbFeld"
+                                                                                   prefHeight="65.0" prefWidth="400.0"
                                                                                    promptText="Flug ab"/>
                                                                     </children>
                                                                 </HBox>
                                                                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0"
                                                                       prefWidth="500.0">
                                                                     <children>
-                                                                        <TextField fx:id="FlugNachFeld"
+                                                                        <TextField id="Textgroesse" fx:id="FlugNachFeld"
                                                                                    prefHeight="65.0" prefWidth="400.0"
                                                                                    promptText="Flug nach"/>
                                                                     </children>
@@ -138,7 +138,8 @@
                                                                                 <Image url="@Grafiken/17797.png"/>
                                                                             </image>
                                                                         </ImageView>
-                                                                        <Button fx:id="minusButton"
+                                                                        <Button id="anzahlPersonenButtonBuchen"
+                                                                                fx:id="minusButton"
                                                                                 mnemonicParsing="false"
                                                                                 onAction="#minusAction"
                                                                                 prefHeight="65.0" prefWidth="65.0"
@@ -147,10 +148,12 @@
                                                                                 <Font size="30.0"/>
                                                                             </font>
                                                                         </Button>
-                                                                        <TextField fx:id="AnzahlFeld" alignment="CENTER"
+                                                                        <TextField id="anzahlPersonenButtonBuchen"
+                                                                                   fx:id="AnzahlFeld" alignment="CENTER"
                                                                                    prefHeight="65.0" prefWidth="65.0"
                                                                                    text="1"/>
-                                                                        <Button fx:id="plusButton"
+                                                                        <Button id="anzahlPersonenButtonBuchen"
+                                                                                fx:id="plusButton"
                                                                                 mnemonicParsing="false"
                                                                                 onAction="#plusAction" prefHeight="65.0"
                                                                                 prefWidth="65.0" text="+">
@@ -163,7 +166,8 @@
                                                                 <HBox alignment="CENTER" prefHeight="75.0"
                                                                       prefWidth="554.0">
                                                                     <children>
-                                                                        <Button fx:id="FlugSuchenButton"
+                                                                        <Button id="FlugfindenButton"
+                                                                                fx:id="FlugSuchenButton"
                                                                                 mnemonicParsing="false"
                                                                                 onAction="#FlugSuchenAction"
                                                                                 prefHeight="66.0" prefWidth="397.0"
@@ -193,15 +197,16 @@
                                                                 <HBox alignment="CENTER_LEFT" prefHeight="100.0"
                                                                       prefWidth="500.0">
                                                                     <children>
-                                                                        <TextField fx:id="FlugAbFeld2" prefHeight="65.0"
-                                                                                   prefWidth="400.0"
+                                                                        <TextField id="Textgroesse" fx:id="FlugAbFeld2"
+                                                                                   prefHeight="65.0" prefWidth="400.0"
                                                                                    promptText="Flug ab"/>
                                                                     </children>
                                                                 </HBox>
                                                                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0"
                                                                       prefWidth="500.0">
                                                                     <children>
-                                                                        <TextField fx:id="FlugNachFeld2"
+                                                                        <TextField id="Textgroesse"
+                                                                                   fx:id="FlugNachFeld2"
                                                                                    prefHeight="65.0" prefWidth="400.0"
                                                                                    promptText="Flug nach"/>
                                                                     </children>
@@ -230,7 +235,8 @@
                                                                                 <Image url="@Grafiken/17797.png"/>
                                                                             </image>
                                                                         </ImageView>
-                                                                        <Button fx:id="NurHinflugminusButton"
+                                                                        <Button id="anzahlPersonenButtonBuchen"
+                                                                                fx:id="NurHinflugminusButton"
                                                                                 mnemonicParsing="false"
                                                                                 onAction="#NurHinflugminusAction"
                                                                                 prefHeight="65.0" prefWidth="65.0"
@@ -242,7 +248,8 @@
                                                                         <TextField fx:id="NurHinflugAnzahlFeld"
                                                                                    alignment="CENTER" prefHeight="65.0"
                                                                                    prefWidth="65.0" text="1"/>
-                                                                        <Button fx:id="NurHinflugplusButton"
+                                                                        <Button id="anzahlPersonenButtonBuchen"
+                                                                                fx:id="NurHinflugplusButton"
                                                                                 mnemonicParsing="false"
                                                                                 onAction="#NurHinflugplusAction"
                                                                                 prefHeight="65.0" prefWidth="65.0"
@@ -256,7 +263,8 @@
                                                                 <HBox alignment="CENTER" prefHeight="75.0"
                                                                       prefWidth="554.0">
                                                                     <children>
-                                                                        <Button fx:id="FlugSuchenButton2"
+                                                                        <Button id="FlugfindenButton"
+                                                                                fx:id="FlugSuchenButton2"
                                                                                 mnemonicParsing="false"
                                                                                 onAction="#FlugSuchenAction2"
                                                                                 prefHeight="65.0" prefWidth="400.0"
