@@ -20,6 +20,9 @@ import java.util.Stack;
 //TODO CPU stirbt
 /*TODO Buchung speichern bugt? *///Mehrere Fälle Probiert, aber fehler nicht gefunden
 //TODO Kundenproil bei Buchung auswählen --> farbe hässlich grau (bei Flüge suchen funktioniert es)
+//TODO TESTEN OB GEP. KAPAZITÄT funktioniert
+//TODO anzahlplätze muss übertragen werden
+
 
 public class MAIN extends Application {
 
