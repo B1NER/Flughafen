@@ -120,11 +120,11 @@ public class ZuBearbeitendenNutzerFindenConroller {
     @FXML
     void LoschenAction(ActionEvent event) {
         if (tabelle.getSelectionModel().getSelectedItem() instanceof Administrator) {
-            Administratoren.removeAdministrator((Administrator) tabelle.getSelectionModel().getSelectedItem());
+            Verwaltung.adminLoeschen((Administrator) tabelle.getSelectionModel().getSelectedItem());
         } else if (tabelle.getSelectionModel().getSelectedItem() instanceof Angestellter) {
-            Angestellte.removeAngestellter((Angestellter) tabelle.getSelectionModel().getSelectedItem());
+            Verwaltung.angestelltenLoeschen((Angestellter) tabelle.getSelectionModel().getSelectedItem());
         } else {
-            Anwenders.removeAnwender((Anwender) tabelle.getSelectionModel().getSelectedItem());
+            Verwaltung.anwenderLoeschen((Anwender) tabelle.getSelectionModel().getSelectedItem());
         }
         observableList.remove(tabelle.getSelectionModel().getSelectedItem());
         initialize();
