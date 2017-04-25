@@ -133,6 +133,12 @@
 
 /*TabPane*/
 
+.tab-pane {
+    -fx-tab-min-width: 90px;
+    -fx-background-color: rgba(14, 0, 86, 0.25);
+    -fx-border-color: white;
+}
+
 .tab-pane .tab-header-area {
     -fx-tab-min-width: 90px;
     -fx-background-color: rgba(14, 0, 86, 0.25);

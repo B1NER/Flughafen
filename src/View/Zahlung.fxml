@@ -1,24 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0" prefWidth="1280.0" stylesheets="@../View/CSSFiles/Style.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ZahlungController">
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0"
+      prefWidth="1280.0" stylesheets="@../View/CSSFiles/Style.css" xmlns="http://javafx.com/javafx/8"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ZahlungController">
     <children>
         <StackPane prefHeight="1024.0" prefWidth="1280.0">
             <children>
@@ -42,69 +32,85 @@
                                 </Label>
                             </children>
                         </HBox>
-                        <TabPane fx:id="tabPane" prefHeight="1000.0" prefWidth="20.0" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="90.0" tabMaxWidth="400.0" tabMinHeight="40.0" tabMinWidth="320.0">
+                        <TabPane fx:id="tabPane" prefHeight="669.0" prefWidth="1280.0" tabClosingPolicy="UNAVAILABLE"
+                                 tabMaxHeight="90.0" tabMaxWidth="400.0" tabMinHeight="40.0" tabMinWidth="320.0">
                             <tabs>
                                 <Tab fx:id="HinflugTab" text="Hinflug Optionen">
                                     <content>
                                         <GridPane alignment="CENTER_LEFT" prefHeight="471.0" prefWidth="1280.0">
                                             <children>
-                                                <Label fx:id="NameText1" text="Name" textFill="#f8f7f7" GridPane.rowIndex="2">
+                                                <Label fx:id="NameText1" text="Name" textFill="#f8f7f7"
+                                                       GridPane.columnIndex="1" GridPane.rowIndex="2">
                                                     <font>
                                                         <Font size="30.0" />
                                                     </font>
                                                 </Label>
-                                                <Label fx:id="NachnameText1" text="Nachname" textFill="#f8f7f7" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                                <Label fx:id="NachnameText1" text="Nachname" textFill="#f8f7f7"
+                                                       GridPane.columnIndex="3" GridPane.rowIndex="2">
                                                     <font>
                                                         <Font size="30.0" />
                                                     </font>
                                                 </Label>
-                                                <TextField fx:id="NachnameFeld1" prefHeight="65.0" prefWidth="320.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                                <TextField fx:id="NachnameFeld1" prefHeight="65.0" prefWidth="320.0"
+                                                           GridPane.columnIndex="3" GridPane.rowIndex="3">
                                                     <font>
                                                         <Font size="30.0" />
                                                     </font>
                                                 </TextField>
-                                                <TextField fx:id="NameFeld1" prefHeight="65.0" prefWidth="300.0" GridPane.rowIndex="3">
+                                                <TextField fx:id="NameFeld1" prefHeight="65.0" prefWidth="300.0"
+                                                           GridPane.columnIndex="1" GridPane.rowIndex="3">
                                                     <font>
                                                         <Font size="30.0" />
                                                     </font>
                                                 </TextField>
-                                                <Label fx:id="KreditkartennummerText1" text="Kreditkartennummer" textFill="#f8f7f7" GridPane.rowIndex="4">
+                                                <Label fx:id="KreditkartennummerText1" text="Kreditkartennummer"
+                                                       textFill="#f8f7f7" GridPane.columnIndex="1"
+                                                       GridPane.rowIndex="4">
                                                     <font>
                                                         <Font size="30.0" />
                                                     </font>
                                                 </Label>
-                                                <Label fx:id="CSVText1" text="CSV" textFill="#f8f7f7" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                                                <Label fx:id="CSVText1" text="CSV" textFill="#f8f7f7"
+                                                       GridPane.columnIndex="3" GridPane.rowIndex="4">
                                                     <font>
                                                         <Font size="30.0" />
                                                     </font>
                                                 </Label>
-                                                <TextField fx:id="CSVFeld1" prefHeight="65.0" prefWidth="315.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                                                <TextField fx:id="CSVFeld1" prefHeight="65.0" prefWidth="315.0"
+                                                           GridPane.columnIndex="3" GridPane.rowIndex="5">
                                                     <font>
                                                         <Font size="30.0" />
                                                     </font>
                                                 </TextField>
-                                                <TextField fx:id="KreditkartennummerFeld1" prefHeight="65.0" prefWidth="300.0" GridPane.rowIndex="5">
+                                                <TextField fx:id="KreditkartennummerFeld1" prefHeight="65.0"
+                                                           prefWidth="300.0" GridPane.columnIndex="1"
+                                                           GridPane.rowIndex="5">
                                                     <font>
                                                         <Font size="30.0" />
                                                     </font>
                                                 </TextField>
-                                                <Label fx:id="GepackText1" text="Gepäck" textFill="#f8f7f7">
+                                                <Label fx:id="GepackText1" text="Gepäck" textFill="#f8f7f7"
+                                                       GridPane.columnIndex="1">
                                                     <font>
                                                         <Font size="30.0" />
                                                     </font>
                                                 </Label>
-                                                <ChoiceBox fx:id="GepackFeld1" prefHeight="65.0" prefWidth="387.0" GridPane.rowIndex="1" />
-                                                <Label fx:id="GewichtText1" text="Gewicht in kg" textFill="#f8f7f7" GridPane.columnIndex="2">
+                                                <ChoiceBox fx:id="GepackFeld1" prefHeight="65.0" prefWidth="387.0"
+                                                           GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                                <Label fx:id="GewichtText1" text="Gewicht in kg" textFill="#f8f7f7"
+                                                       GridPane.columnIndex="3">
                                                     <font>
                                                         <Font size="30.0" />
                                                     </font>
                                                 </Label>
-                                                <TextField fx:id="GewichtFeld1" prefHeight="65.0" prefWidth="320.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                <TextField fx:id="GewichtFeld1" prefHeight="65.0" prefWidth="320.0"
+                                                           GridPane.columnIndex="3" GridPane.rowIndex="1">
                                                     <font>
                                                         <Font size="30.0" />
                                                     </font>
                                                 </TextField>
-                                                <HBox alignment="CENTER_LEFT" prefHeight="66.0" prefWidth="385.0" GridPane.columnIndex="4">
+                                                <HBox alignment="CENTER_LEFT" prefHeight="66.0" prefWidth="385.0"
+                                                      GridPane.columnIndex="5">
                                                     <children>
                                                         <Label prefHeight="100.0" prefWidth="370.0" text="Preis pro Person:" textFill="#fcfafa">
                                                             <font>
@@ -118,7 +124,8 @@
                                                         </Label>
                                                     </children>
                                                 </HBox>
-                                                <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                                <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0"
+                                                      GridPane.columnIndex="5" GridPane.rowIndex="1">
                                                     <children>
                                                         <Label fx:id="PreisproGepackText1" prefHeight="100.0" prefWidth="370.0" text="Gepäck Preis pro Kilo:" textFill="#fcfafa">
                                                             <font>
@@ -132,7 +139,8 @@
                                                         </Label>
                                                     </children>
                                                 </HBox>
-                                                <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                                                <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0"
+                                                      GridPane.columnIndex="5" GridPane.rowIndex="2">
                                                     <children>
                                                         <Label fx:id="PreisproGepackText11" prefHeight="100.0" prefWidth="370.0" text="Anzahl Personen:" textFill="#fcfafa">
                                                             <font>
@@ -146,7 +154,8 @@
                                                         </Label>
                                                     </children>
                                                 </HBox>
-                                                <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                                                <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0"
+                                                      GridPane.columnIndex="5" GridPane.rowIndex="3">
                                                     <children>
                                                         <Label prefHeight="50.0" prefWidth="370.0" text="Hinflug Gesamt Preis:" textFill="#f8f8f8">
                                                             <font>
@@ -160,7 +169,8 @@
                                                         </Label>
                                                     </children>
                                                 </HBox>
-                                                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="4">
+                                                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0"
+                                                      GridPane.columnIndex="5" GridPane.rowIndex="4">
                                                     <children>
                                                         <Label fx:id="GesamtpreisText1" prefHeight="50.0" prefWidth="370.0" text="Gesamtpreis: " textFill="#fcfafa">
                                                             <font>
@@ -174,7 +184,8 @@
                                                         </Label>
                                                     </children>
                                                 </HBox>
-                                                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="5">
+                                                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0"
+                                                      GridPane.columnIndex="5" GridPane.rowIndex="5">
                                                     <children>
                                                         <Button fx:id="berechneGesamtPreisButton1" mnemonicParsing="false" onAction="#berechneGesamtPreisAction" prefHeight="65.0" text="Berechne Gesamt Preis">
                                                             <font>
@@ -185,7 +196,10 @@
                                                 </HBox>
                                             </children>
                                             <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="297.57054138183594" minWidth="10.0" prefWidth="297.57054138183594" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="297.57054138183594"
+                                                                   minWidth="10.0" prefWidth="18.0"/>
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="454.0" minWidth="10.0"
+                                                                   prefWidth="454.0"/>
                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="221.03460693359375" minWidth="10.0" prefWidth="80.0" />
                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="355.8477478027344" minWidth="10.0" prefWidth="314.08221435546875" />
                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="355.8477478027344" minWidth="10.0" prefWidth="80.0" />
@@ -364,6 +378,9 @@
                                     </content>
                                 </Tab>
                             </tabs>
+                            <VBox.margin>
+                                <Insets right="35.0"/>
+                            </VBox.margin>
                         </TabPane>
                         <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
                             <children>
