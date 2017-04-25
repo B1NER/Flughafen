@@ -7,7 +7,7 @@
 <?import javafx.scene.text.*?>
 <StackPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
            minWidth="-Infinity" prefHeight="1024.0" prefWidth="1280.0" stylesheets="@../View/CSSFiles/Style.css"
-           xmlns="http://javafx.com/javafx/8" fx:controller="Controller.RegistrierenController">
+           xmlns="http://javafx.com/javafx/8.0.111" fx:controller="Controller.RegistrierenController">
     <children>
         <ImageView fitHeight="1024.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true" scaleY="1.44">
             <image>
@@ -29,14 +29,19 @@
                                 <Font size="30.0"/>
                             </font>
                         </Label>
+                        <Label fx:id="NachnameText" text="Nachname" textAlignment="CENTER" textFill="WHITE"
+                               GridPane.rowIndex="1">
+                            <font>
+                                <Font size="30.0"/>
+                            </font>
+                        </Label>
                         <Label fx:id="GeburtsdatumText" text="Geburtsdatum" textAlignment="CENTER" textFill="WHITE"
                                GridPane.rowIndex="2">
                             <font>
                                 <Font size="30.0"/>
                             </font>
                         </Label>
-                        <Label fx:id="NachnameText" text="Nachname" textAlignment="CENTER" textFill="WHITE"
-                               GridPane.rowIndex="1">
+                        <Label fx:id="Password2Text1" text="Passnummer" textFill="WHITE" GridPane.rowIndex="3">
                             <font>
                                 <Font size="30.0"/>
                             </font>
@@ -60,17 +65,12 @@
                                    GridPane.columnSpan="2"/>
                         <TextField fx:id="NachnameFeld" prefHeight="65.0" prefWidth="480.0" GridPane.columnIndex="1"
                                    GridPane.columnSpan="2" GridPane.rowIndex="1"/>
-                        <TextField fx:id="EmailFeld" prefHeight="65.0" prefWidth="480.0" GridPane.columnIndex="1"
-                                   GridPane.columnSpan="2" GridPane.rowIndex="4"/>
                         <DatePicker fx:id="GeburtsdatumFeld" prefHeight="65.0" prefWidth="480.0"
                                     GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2"/>
                         <TextField fx:id="PassnummerFeld" prefHeight="65.0" prefWidth="480.0" GridPane.columnIndex="1"
                                    GridPane.rowIndex="3"/>
-                        <Label fx:id="Password2Text1" text="Passnummer" textFill="WHITE" GridPane.rowIndex="3">
-                            <font>
-                                <Font size="30.0"/>
-                            </font>
-                        </Label>
+                        <TextField fx:id="EmailFeld" prefHeight="65.0" prefWidth="480.0" GridPane.columnIndex="1"
+                                   GridPane.columnSpan="2" GridPane.rowIndex="4"/>
                         <PasswordField fx:id="PasswortFeld" prefHeight="65.0" prefWidth="380.0" GridPane.columnIndex="1"
                                        GridPane.rowIndex="5"/>
                         <PasswordField fx:id="PasswortBestaetigen" prefHeight="65.0" prefWidth="380.0"
@@ -112,4 +112,3 @@
         </VBox>
     </children>
 </StackPane>
-
