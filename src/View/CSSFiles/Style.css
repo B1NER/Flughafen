@@ -1,10 +1,15 @@
 /* Allgemein */
 
-.button:hover {
-    -fx-background-color: #b3b3cc;
+.button {
+    -fx-transition-duration: 0.4s;
 }
 
-/* Buchen */
+.button:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+
+/* IDs */
 
 #FlugSuchenButton {
     -fx-background-color: rgba(47, 162, 255, 0.75);
@@ -32,9 +37,13 @@
     -fx-border-radius: 0px, 0px, 0px, 0px;
 }
 
-.tab-pane .tab-header-area .tab-header-background {
-    -fx-opacity: 0;
+#keinErgebnis {
+    -fx-font-size: 40px;
+    -fx-font-weight: bold;
+    -fx-text-fill: rgba(230, 57, 0, 0.69);
 }
+
+/* Table */
 
 .table-view {
     -fx-background-color: transparent;
@@ -85,13 +94,8 @@
     -fx-padding: 0.0em;
 }
 
-#keinErgebnis {
-    -fx-font-size: 40px;
-    -fx-font-weight: bold;
-    -fx-text-fill: rgba(230, 57, 0, 0.69);
-}
-
 /*TabPane*/
+
 .tab-pane .tab-header-area .tab-header-background {
     -fx-opacity: 1;
 }
@@ -105,13 +109,13 @@
     -fx-background-insets: 0 1 0 1, 0, 0;
 }
 
+.tab-pane {
+    -fx-background-color: rgba(0, 84, 230, 0);
+}
+
 .tab-pane .tab {
     -fx-background-color: #e6e6e6;
 
-}
-
-.tab-pane .tab:selected {
-    -fx-background-color: rgb(60, 60, 60);
 }
 
 .tab .tab-label {
@@ -121,18 +125,13 @@
     -fx-font-weight: bold;
 }
 
+.tab-pane .tab:selected {
+    -fx-background-color: rgb(60, 60, 60);
+}
+
 .tab:selected .tab-label {
     -fx-alignment: CENTER;
     -fx-text-fill: White;
-}
-
-/*.tab-pane *.tab-header-background {
-    -fx-background-color: -fx-outer-border, -fx-inner-border, derive(-fx-color, -20%);
-    -fx-effect: innershadow(two-pass-box, rgba(0, 0, 0, 0), 4, 0.0, 0, 0);
-}*/
-
-.tab-pane {
-    -fx-background-color: rgba(0, 84, 230, 0);
 }
 
 .tab-pane .tab-header-area .tab-header-background {

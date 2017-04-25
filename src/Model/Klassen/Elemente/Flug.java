@@ -30,9 +30,9 @@ public class Flug {
         this.abflugzeit = abflugzeit;
         this.ankunftszeit = ankunftszeit;
         this.preisProPerson = preisProPerson;
-        if(Fluege.isVerfallen(this)){
+        if (Fluege.isVerfallen(this)) {
             this.status = "verfallen";
-        }else{
+        } else {
             this.status = "aktuell";
         }
     }
@@ -120,7 +120,7 @@ public class Flug {
     @Override
 
     public String toString() {
-        return abflugort +" - "+ ankunftsort;
+        return abflugort + " - " + ankunftsort;
     }
 
     public String toStringLog() {
@@ -135,5 +135,60 @@ public class Flug {
                 ", ankunftszeit=" + ankunftszeit +
                 ", preisProPerson=" + preisProPerson +
                 '}';
+    }
+
+    public String toStringAbflugzeit() {
+        if (this.getAbflugzeit().getHours() == 0 && this.getAbflugzeit().getMinutes() == 0) {
+            return "00:00" +
+                    " " + (this.getAbflugzeit().getDay() + 18) +
+                    "." + (this.getAbflugzeit().getMonth() + 1) +
+                    "." + (this.getAbflugzeit().getYear() + 1900);
+        } else if (this.getAbflugzeit().getHours() == 0) {
+            return "00:" +
+                    this.getAbflugzeit().getMinutes() +
+                    " " + (this.getAbflugzeit().getDay() + 18) +
+                    "." + (this.getAbflugzeit().getMonth() + 1) +
+                    "." + (this.getAbflugzeit().getYear() + 1900);
+        } else if (this.getAbflugzeit().getMinutes() == 0) {
+            return this.getAbflugzeit().getHours() +
+                    ":00" +
+                    " " + (this.getAbflugzeit().getDay() + 18) +
+                    "." + (this.getAbflugzeit().getMonth() + 1) +
+                    "." + (this.getAbflugzeit().getYear() + 1900);
+        } else {
+            return this.getAbflugzeit().getHours() +
+                    ":" + this.getAbflugzeit().getMinutes() +
+                    " " + (this.getAnkunftszeit().getDay() + 18) +
+                    "." + (this.getAnkunftszeit().getMonth() + 1) +
+                    "." + (this.getAnkunftszeit().getYear() + 1900);
+        }
+    }
+
+    public String toStringAnkunftszeit() {
+        if (this.getAnkunftszeit().getHours() == 0 && this.getAnkunftszeit().getMinutes() == 0) {
+            return "00:00" +
+                    " " + (this.getAnkunftszeit().getDay() + 18) +
+                    "." + (this.getAnkunftszeit().getMonth() + 1) +
+                    "." + (this.getAnkunftszeit().getYear() + 1900);
+        } else if (this.getAnkunftszeit().getHours() == 0) {
+            return "00:" +
+                    this.getAnkunftszeit().getMinutes() +
+                    " " + (this.getAnkunftszeit().getDay() + 18) +
+                    "." + (this.getAnkunftszeit().getMonth() + 1) +
+                    "." + (this.getAnkunftszeit().getYear() + 1900);
+        } else if (this.getAnkunftszeit().getMinutes() == 0) {
+            return this.getAnkunftszeit().getHours() +
+                    ":00" +
+                    " " + (this.getAnkunftszeit().getDay() + 18) +
+                    "." + (this.getAnkunftszeit().getMonth() + 1) +
+                    "." + (this.getAnkunftszeit().getYear() + 1900);
+        } else {
+            return this.getAnkunftszeit().getHours() +
+                    ":" + this.getAnkunftszeit().getMinutes() +
+                    " " + (this.getAnkunftszeit().getDay() + 18) +
+                    "." + (this.getAnkunftszeit().getMonth() + 1) +
+                    "." + (this.getAnkunftszeit().getYear() + 1900);
+        }
+
     }
 }

@@ -17,6 +17,8 @@ import java.util.Stack;
  */
 
 //TODO Größen anpassen
+//TODO Gepaeck bearbeiten
+//TODO Großklein schreibung
 
 public class MAIN extends Application {
 

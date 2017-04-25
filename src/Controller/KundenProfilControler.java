@@ -109,6 +109,12 @@ public class KundenProfilControler {
     private Label AbgelaufenFeld;
 
     @FXML
+    private Label AbgelaufenText1;
+
+    @FXML
+    private Label AbgelaufenFeld1;
+
+    @FXML
     private Button NeueBuchungButton;
 
     @FXML
@@ -130,9 +136,9 @@ public class KundenProfilControler {
 
     @FXML
     public void initialize() {
-        if(Verwaltung.getAngemeldeter() instanceof Administrator || Verwaltung.getAngemeldeter() instanceof Angestellter){
+        if (Verwaltung.getAngemeldeter() instanceof Administrator || Verwaltung.getAngemeldeter() instanceof Angestellter) {
             AbmeldenButton.setText("Zurück");
-        }else{
+        } else {
             AbmeldenButton.setText("Abmelden");
         }
         VornameFeld.setText(anwender.getVorname());
@@ -146,10 +152,10 @@ public class KundenProfilControler {
 
         tableBuchungen.setItems(observableList);
 
-        tableBuchungen.setRowFactory( tv -> {
+        tableBuchungen.setRowFactory(tv -> {
             TableRow<Buchung> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
-                if (event.getClickCount() == 1 && (! row.isEmpty()) ) {
+                if (event.getClickCount() == 1 && (!row.isEmpty())) {
                     HinflugFeld.setText("");
                     StartDatumFeld.setText("");
                     AnkunftsDatumFeld.setText("");
@@ -161,29 +167,33 @@ public class KundenProfilControler {
                     SitzplaetzeFeld.setText("");
                     AbgelaufenFeld.setText("");
 
-
                     Buchung rowData = row.getItem();
                     HinflugFeld.setText(rowData.getHinflug().toString());
-                    StartDatumFeld.setText(rowData.getHinflug().getAbflugzeit().toString());
-                    AnkunftsDatumFeld.setText(rowData.getHinflug().getAbflugzeit().toString());
-
-                    if(Buchungen.isRueckflug(rowData)){
-                        RuckflugFeld.setText(rowData.getRueckflug().toString());
-                        StartDatumFeld1.setText(rowData.getHinflug().getAbflugzeit().toString());
-                        AnkunftsDatumFeld1.setText(rowData.getHinflug().getAbflugzeit().toString());
-                    }
-
+                    StartDatumFeld.setText(rowData.getHinflug().toStringAbflugzeit());
+                    AnkunftsDatumFeld.setText(rowData.getHinflug().toStringAnkunftszeit());
                     GepackFeld.setText(rowData.getGepaeck().toString());
                     PreisFeld.setText(String.valueOf(rowData.getBuchungspreis()));
                     SitzplaetzeFeld.setText(String.valueOf(rowData.getAnzahlSitzplaetze()));
-                    if(Fluege.isVerfallen(rowData.getHinflug()) || Fluege.isVerfallen(rowData.getRueckflug())) {
+
+                    if (Fluege.isVerfallen(rowData.getHinflug())) {
                         AbgelaufenFeld.setText("Abgelaufen");
-                    }else{
+                    } else {
                         AbgelaufenFeld.setText("Aktuell");
+                    }
+
+                    if (Buchungen.isRueckflug(rowData)) {
+                        RuckflugFeld.setText(rowData.getRueckflug().toString());
+                        StartDatumFeld1.setText(rowData.getHinflug().toStringAbflugzeit());
+                        AnkunftsDatumFeld1.setText(rowData.getHinflug().toStringAnkunftszeit());
+                        if (Fluege.isVerfallen(rowData.getHinflug())) {
+                            AbgelaufenFeld.setText("Abgelaufen");
+                        } else {
+                            AbgelaufenFeld.setText("Aktuell");
+                        }
                     }
                 }
             });
-            return row ;
+            return row;
         });
         if (observableList.size() < 1) {
             observableList.clear();
@@ -203,17 +213,17 @@ public class KundenProfilControler {
     }
 
     @FXML
-    void BuchungBearbeitenAction(ActionEvent event) {   //TODO Überprüffen (Admin, Angestellter, Anwender)
+    void BuchungBearbeitenAction(ActionEvent event) {
 
-            if (tableBuchungen.getSelectionModel().getSelectedItem() != null) {
-                if(!(Verwaltung.getAngemeldeter() instanceof Administrator)) {
-                    GepaeckBearbeitenController.setGepaeck(tableBuchungen.getSelectionModel().getSelectedItem().getGepaeck(), (int) tableBuchungen.getSelectionModel().getSelectedItem().getGepaeck().getGewicht());
-                    MAIN.fensterOeffnen(Views.GepaeckBearbeiten);
-                }else{
-                    BuchungBearbeitenController.setBuchung(tableBuchungen.getSelectionModel().getSelectedItem());
-                    MAIN.fensterOeffnen(Views.BuchungBearbeiten);
-                }
+        if (tableBuchungen.getSelectionModel().getSelectedItem() != null) {
+            if (!(Verwaltung.getAngemeldeter() instanceof Administrator)) {
+                GepaeckBearbeitenController.setGepaeck(tableBuchungen.getSelectionModel().getSelectedItem().getGepaeck(), (int) tableBuchungen.getSelectionModel().getSelectedItem().getGepaeck().getGewicht());
+                MAIN.fensterOeffnen(Views.GepaeckBearbeiten);
+            } else {
+                BuchungBearbeitenController.setBuchung(tableBuchungen.getSelectionModel().getSelectedItem());
+                MAIN.fensterOeffnen(Views.BuchungBearbeiten);
             }
+        }
     }
 
     @FXML
@@ -224,10 +234,10 @@ public class KundenProfilControler {
 
     @FXML
     void AbmeldenAction(ActionEvent event) {
-        if(Verwaltung.getAngemeldeter() instanceof Administrator || Verwaltung.getAngemeldeter() instanceof Angestellter){
+        if (Verwaltung.getAngemeldeter() instanceof Administrator || Verwaltung.getAngemeldeter() instanceof Angestellter) {
             MAIN.viewsChronik.pop();
             MAIN.fensterOeffnen(MAIN.viewsChronik.pop());
-        }else{
+        } else {
             Verwaltung.setAngemeldeter(null);
             MAIN.fensterOeffnen(Views.Buchen);
         }

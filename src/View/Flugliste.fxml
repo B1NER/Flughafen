@@ -1,23 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-
-<Pane prefHeight="1024.0" prefWidth="1280.0" stylesheets="@../View/CSSFiles/Style.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FluglisteController">
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<Pane prefHeight="1024.0" prefWidth="1280.0" stylesheets="@../View/CSSFiles/Style.css"
+      xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="Controller.FluglisteController">
     <children>
         <StackPane prefHeight="1024.0" prefWidth="1280.0">
             <children>
@@ -81,7 +72,7 @@
                                                 <Font size="30.0" />
                                             </font>
                                         </Button>
-                                        <HBox alignment="CENTER">
+                                        <HBox alignment="CENTER" prefHeight="65.0" prefWidth="300.0">
                                             <children>
                                                 <Button fx:id="zurueckButton1" mnemonicParsing="false" onAction="#zurueckAction" prefHeight="65.0" prefWidth="175.0" text="zurück">
                                                     <font>
@@ -101,11 +92,16 @@
                                                 </Button>
                                             </children>
                                         </HBox>
-                                        <Label fx:id="keineBuchungAusgewaehltLabel" prefHeight="17.0" prefWidth="160.0">
-                                            <VBox.margin>
-                                                <Insets left="150.0" top="-10.0" />
-                                            </VBox.margin>
-                                        </Label>
+                                        <HBox alignment="CENTER" prefHeight="65.0" prefWidth="300.0">
+                                            <children>
+                                                <Label fx:id="keineBuchungAusgewaehltLabel" prefHeight="65.0"
+                                                       prefWidth="300.0">
+                                                    <font>
+                                                        <Font size="30.0"/>
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </HBox>
                                     </children>
                                     <HBox.margin>
                                         <Insets />

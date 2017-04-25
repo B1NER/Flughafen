@@ -2,7 +2,6 @@ package Controller;
 
 import Model.Enums.Views;
 import Model.Exceptions.FlugNotFoundException;
-import Model.Klassen.Elemente.Buchung;
 import Model.Klassen.Elemente.Flug;
 import Model.Klassen.MAIN;
 import Model.Klassen.Nutzer.Anwender;
@@ -16,7 +15,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.Color;
-import org.omg.CORBA.DATA_CONVERSION;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -293,14 +291,17 @@ public class FluglisteController {
         } catch (FlugNotFoundException e) {
 
             Label keineFluege = new Label("Keine Flüge gefunden!");
+            Label keineFluege2 = new Label("Keine Flüge gefunden!");
+
             keineFluege.setId("keinErgebnis");
+            keineFluege2.setId("keinErgebnis");
             observableList.clear();
-            //TODO label wird nicht angezeigt
+
             if (isWithRueckflug) {
                 rueckflugTabelle.setItems(observableList);
                 rueckflugTabelle.setPlaceholder(keineFluege);
                 hinflugTabelle.setItems(observableList);
-                hinflugTabelle.setPlaceholder(keineFluege);
+                hinflugTabelle.setPlaceholder(keineFluege2);
             }else {
                 observableList.clear();
                 hinflugTabelle.setItems(observableList);
