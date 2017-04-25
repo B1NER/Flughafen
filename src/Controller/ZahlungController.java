@@ -72,7 +72,6 @@ public class ZahlungController {
     @FXML
     private TabPane tabPane;
 
-    //TODO ANwender wird vlt nicht gesetzt
     public static void setAnwender(Anwender anwender) {
         ZahlungController.anwender = anwender;
     }
@@ -95,7 +94,6 @@ public class ZahlungController {
         GepackFeld2.setDisable(true);
         GewichtFeld2.setDisable(true);
 
-        //TODO listener funktioniert bei gepaeckfeld noch nicht ganz
         GepackFeld1.valueProperty().addListener((observable, oldValue, newValue) -> {
             GepackFeld2.setValue(newValue);
         });
