@@ -90,7 +90,6 @@ public class AdminStartseiteController {
         ArrayList<Flug> alleFluege = Verwaltung.getFluege();
         ObservableList<Flug> observableList = FXCollections.observableList(alleFluege);
         tabelle.setItems(observableList);
-
     }
 
     @FXML
