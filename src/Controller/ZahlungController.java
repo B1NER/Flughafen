@@ -91,7 +91,7 @@ public class ZahlungController {
     public void initialize() {
         selectionModel = tabPane.getSelectionModel();
 
-        GepackFeld2.getItems().addAll(Gepaecktypen.Handgepaeck, Gepaecktypen.Koffer, Gepaecktypen.Sportgepaeck, Gepaecktypen.Tasche);
+        GepackFeld2.getItems().addAll(Gepaecktypen.Handgepäck, Gepaecktypen.Koffer, Gepaecktypen.Sportgepäck, Gepaecktypen.Tasche);
         GepackFeld1.valueProperty().addListener((observable, oldValue, newValue) -> {
             GepackFeld2.setValue(newValue);
         });
@@ -130,8 +130,8 @@ public class ZahlungController {
             }
         }
 
-        GepackFeld1.getItems().addAll(Gepaecktypen.Handgepaeck, Gepaecktypen.Koffer, Gepaecktypen.Sportgepaeck, Gepaecktypen.Tasche);
-        GepackFeld1.setValue(Gepaecktypen.Handgepaeck);
+        GepackFeld1.getItems().addAll(Gepaecktypen.Handgepäck, Gepaecktypen.Koffer, Gepaecktypen.Sportgepäck, Gepaecktypen.Tasche);
+        GepackFeld1.setValue(Gepaecktypen.Handgepäck);
         PreisProPerson1.setText("" + hinflug.getPreisProPerson() + "€");
         GepaeckPreisProKilo1.setText("" + gepaecksPreisProKilo + "€");
         AnzahlPersonen1.setText("" + anzahlPersonen);

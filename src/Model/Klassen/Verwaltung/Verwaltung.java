@@ -182,10 +182,10 @@ public abstract class Verwaltung {
             String zs[] = zeile.split(";");
             Gepaeck eingelesenesGepaeck;
 
-            if (zs[2].equals(Gepaecktypen.Handgepaeck.toString())) {
-                eingelesenesGepaeck = new Gepaeck(Integer.parseInt(zs[0]), Double.parseDouble(zs[1]), Gepaecktypen.Handgepaeck);
-            } else if (zs[2].equals(Gepaecktypen.Sportgepaeck.toString())) {
-                eingelesenesGepaeck = new Gepaeck(Integer.parseInt(zs[0]), Double.parseDouble(zs[1]), Gepaecktypen.Sportgepaeck);
+            if (zs[2].equals(Gepaecktypen.Handgepäck.toString())) {
+                eingelesenesGepaeck = new Gepaeck(Integer.parseInt(zs[0]), Double.parseDouble(zs[1]), Gepaecktypen.Handgepäck);
+            } else if (zs[2].equals(Gepaecktypen.Sportgepäck.toString())) {
+                eingelesenesGepaeck = new Gepaeck(Integer.parseInt(zs[0]), Double.parseDouble(zs[1]), Gepaecktypen.Sportgepäck);
             } else if (zs[2].equals(Gepaecktypen.Tasche.toString())) {
                 eingelesenesGepaeck = new Gepaeck(Integer.parseInt(zs[0]), Double.parseDouble(zs[1]), Gepaecktypen.Tasche);
             } else {

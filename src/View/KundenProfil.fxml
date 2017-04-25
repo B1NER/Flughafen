@@ -8,7 +8,7 @@
 <?import javafx.scene.text.*?>
 <StackPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
            minWidth="-Infinity" prefHeight="1024.0" prefWidth="1280.0" stylesheets="@../View/CSSFiles/Style.css"
-           xmlns="http://javafx.com/javafx/8"  fx:controller="Controller.KundenProfilControler">
+           xmlns="http://javafx.com/javafx/8.0.112" fx:controller="Controller.KundenProfilControler">
     <children>
         <ImageView fitHeight="1024.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true" scaleY="1.44">
             <image>
@@ -159,7 +159,7 @@
                                 </HBox>
                                 <HBox prefHeight="100.0" prefWidth="200.0">
                                     <children>
-                                        <Label fx:id="AbgelaufenText" prefHeight="30.0" prefWidth="240.0" text="Status:"
+                                        <Label fx:id="AbgelaufenText" prefHeight="30.0" prefWidth="230.0" text="Status:"
                                                textFill="WHITE">
                                             <font>
                                                 <Font size="25.0"/>
@@ -235,7 +235,7 @@
                                 </HBox>
                                 <HBox prefHeight="100.0" prefWidth="200.0">
                                     <children>
-                                        <Label fx:id="AbgelaufenText1" prefHeight="30.0" prefWidth="240.0"
+                                        <Label fx:id="AbgelaufenText1" prefHeight="30.0" prefWidth="230.0"
                                                text="Status:" textFill="WHITE">
                                             <font>
                                                 <Font size="25.0"/>

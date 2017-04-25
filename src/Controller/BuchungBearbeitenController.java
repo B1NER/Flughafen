@@ -42,7 +42,7 @@ public class BuchungBearbeitenController {
         AnzahlSitzplatzeFeld.setText(String.valueOf(buchung.getAnzahlSitzplaetze()));
         PreisFeld.setText(String.valueOf(buchung.getBuchungspreis()));
         GewichtGepaeck.setText(String.valueOf(buchung.getGepaeck().getGewicht()));
-        GepaeckTypChoiceBox.getItems().addAll(Gepaecktypen.Handgepaeck, Gepaecktypen.Koffer, Gepaecktypen.Tasche, Gepaecktypen.Sportgepaeck);
+        GepaeckTypChoiceBox.getItems().addAll(Gepaecktypen.Handgepäck, Gepaecktypen.Koffer, Gepaecktypen.Tasche, Gepaecktypen.Sportgepäck);
         GepaeckTypChoiceBox.setValue(buchung.getGepaeck().getGepaeckTyp());
     }
 
