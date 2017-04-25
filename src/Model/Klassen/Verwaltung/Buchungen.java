@@ -1,6 +1,7 @@
 package Model.Klassen.Verwaltung;
 
 import Model.Exceptions.BuchungDoesNotExistException;
+import Model.Exceptions.GepaeckDoesNotExist;
 import Model.Klassen.Elemente.Buchung;
 import Model.Klassen.Elemente.Flug;
 import Model.Klassen.Elemente.Gepaeck;
@@ -41,7 +42,13 @@ public abstract class Buchungen {
     }
 
     public static void removeBuchung(Buchung buchung) {
-        buchungen.remove(buchung);
+        try {
+            Gepaecke.removeGepaeck(Gepaecke.getGepaeckByID(buchung.getGepaeck().getGepaeckID()));
+            buchungen.remove(buchung);
+        } catch (final GepaeckDoesNotExist e) {
+            System.out.println("Buchung existiert nicht!");
+            e.printStackTrace();
+        }
     }
 
     public static boolean isRueckflug(Buchung buchung) {

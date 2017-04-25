@@ -15,7 +15,9 @@ import java.util.Stack;
  * Created by knoll on 21.03.2017.
  */
 
-//TODO umstylen --> Anzahl Personen Start --> buchen
+
+//TODO Skalieren: BuchungBearbeiten, Anmelden, Kundenprofil
+
 
 public class MAIN extends Application {
 
