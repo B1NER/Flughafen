@@ -1,8 +1,8 @@
 package Model.Klassen.Verwaltung;
+
 import Model.Exceptions.NutzerDoesNotExistException;
 import Model.Exceptions.WrongPasswordException;
 import Model.Klassen.Nutzer.Administrator;
-
 
 import java.util.ArrayList;
 
@@ -37,9 +37,9 @@ public abstract class Administratoren {
     }
 
 
-    public static Administrator getAdministratorByID(int adminID) throws NutzerDoesNotExistException{
+    public static Administrator getAdministratorByID(int adminID) throws NutzerDoesNotExistException {
         for (int i = 0; i < administratoren.size(); i++) {
-            if(administratoren.get(i).getAdminID() == adminID){
+            if (administratoren.get(i).getAdminID() == adminID) {
                 return administratoren.get(i);
             }
         }
@@ -50,16 +50,15 @@ public abstract class Administratoren {
         return administratoren;
     }
 
+    public static void setAdministratoren(ArrayList<Administrator> administratoren) {
+        Administratoren.administratoren = administratoren;
+    }
+
     public static int getAdminCounter() {
         return adminCounter;
     }
 
-
     public static void setAdminCounter(int adminCounter) {
         Administratoren.adminCounter = adminCounter;
-    }
-
-    public static void setAdministratoren(ArrayList<Administrator> administratoren) {
-        Administratoren.administratoren = administratoren;
     }
 }

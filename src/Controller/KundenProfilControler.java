@@ -21,112 +21,39 @@ import java.util.ArrayList;
 
 public class KundenProfilControler {
 
-    @FXML
-    private Label KundenProfilText;
-
-    @FXML
-    private Label VornameText;
-
+    private static Anwender anwender;
     @FXML
     private Label VornameFeld;
-
-    @FXML
-    private Label NachnameText;
-
     @FXML
     private Label NachnameFeld;
-
-    @FXML
-    private Label BuchungenText;
-
     @FXML
     private TableView<Buchung> tableBuchungen;
-
     @FXML
     private TableColumn<Buchung, Flug> SpalteHinflug;
-
     @FXML
     private TableColumn<Buchung, Flug> SpalteRueckflug;
-
-    @FXML
-    private Label HinflugText;
-
     @FXML
     private Label HinflugFeld;
-
-    @FXML
-    private Label StartDatumText;
-
     @FXML
     private Label StartDatumFeld;
-
-    @FXML
-    private Label AnkunftsDatumText;
-
     @FXML
     private Label AnkunftsDatumFeld;
-
-    @FXML
-    private Label RuckflugText;
-
     @FXML
     private Label RuckflugFeld;
-
-    @FXML
-    private Label StartDatumText1;
-
     @FXML
     private Label StartDatumFeld1;
-
-    @FXML
-    private Label AnkunftsDatumText1;
-
     @FXML
     private Label AnkunftsDatumFeld1;
-
-    @FXML
-    private Label GepackText;
-
     @FXML
     private Label GepackFeld;
-
-    @FXML
-    private Label PreisText;
-
     @FXML
     private Label PreisFeld;
-
-    @FXML
-    private Label SitzplaetzeText;
-
     @FXML
     private Label SitzplaetzeFeld;
-
-    @FXML
-    private Label AbgelaufenText;
-
     @FXML
     private Label AbgelaufenFeld;
-
-    @FXML
-    private Label AbgelaufenText1;
-
-    @FXML
-    private Label AbgelaufenFeld1;
-
-    @FXML
-    private Button NeueBuchungButton;
-
-    @FXML
-    private Button BuchungBearbeiten;
-
-    @FXML
-    private Button ProfilBearbeitenButton;
-
     @FXML
     private Button AbmeldenButton;
-
-    private static Anwender anwender;
 
     public static void setAnwender(Anwender anwender) {
         KundenProfilControler.anwender = anwender;

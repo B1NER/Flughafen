@@ -30,6 +30,6 @@ public class Angestellter extends Mensch {
     }
 
     public String toString() {
-        return "Angestellter: "+super.toString() + "angestelltenID=" + angestelltenID;
+        return "Angestellter: " + super.toString() + "angestelltenID=" + angestelltenID;
     }
 }

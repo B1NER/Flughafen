@@ -44,9 +44,9 @@ public abstract class Gepaecke {
     }
 
 
-    public static Gepaeck getGepaeckByID(int gepaeckID)throws GepaeckDoesNotExist{
+    public static Gepaeck getGepaeckByID(int gepaeckID) throws GepaeckDoesNotExist {
         for (int i = 0; i < gepaecke.size(); i++) {
-            if(gepaecke.get(i).getGepaeckID() == gepaeckID){
+            if (gepaecke.get(i).getGepaeckID() == gepaeckID) {
                 return gepaecke.get(i);
             }
         }
@@ -57,12 +57,12 @@ public abstract class Gepaecke {
         return gepaecke;
     }
 
-    public static int getGepaeckecounter() {
-        return gepaeckecounter;
-    }
-
     public static void setGepaecke(ArrayList<Gepaeck> gepaecke) {
         Gepaecke.gepaecke = gepaecke;
+    }
+
+    public static int getGepaeckecounter() {
+        return gepaeckecounter;
     }
 
     public static void setGepaeckecounter(int gepaeckecounter) {

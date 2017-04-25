@@ -1,7 +1,6 @@
 package Model.Klassen.Verwaltung;
 
 import Model.Exceptions.BuchungDoesNotExistException;
-import Model.Exceptions.NutzerDoesNotExistException;
 import Model.Klassen.Elemente.Buchung;
 import Model.Klassen.Elemente.Flug;
 import Model.Klassen.Elemente.Gepaeck;
@@ -46,36 +45,31 @@ public abstract class Buchungen {
     }
 
     public static boolean isRueckflug(Buchung buchung) {
-        if (buchung.getRueckflug() == null) {
-            return false;
-        } else {
-            return true;
-        }
+        return buchung.getRueckflug() != null;
     }
 
-    public static Buchung getBuchungByID(int buchungsID)throws BuchungDoesNotExistException {
+    public static Buchung getBuchungByID(int buchungsID) throws BuchungDoesNotExistException {
         for (int i = 0; i < buchungen.size(); i++) {
-            if(buchungen.get(i).getBuchungsID() == buchungsID){
+            if (buchungen.get(i).getBuchungsID() == buchungsID) {
                 return buchungen.get(i);
             }
         }
         throw new BuchungDoesNotExistException();
     }
 
+    public static ArrayList<Buchung> getBuchungen() {
+        return buchungen;
+    }
 
     public static void setBuchungen(ArrayList<Buchung> buchungen) {
         Buchungen.buchungen = buchungen;
     }
 
-    public static void setBuchungsCounter(int buchungsCounter) {
-        Buchungen.buchungsCounter = buchungsCounter;
-    }
-
-    public static ArrayList<Buchung> getBuchungen() {
-        return buchungen;
-    }
-
     public static int getBuchungsCounter() {
         return buchungsCounter;
+    }
+
+    public static void setBuchungsCounter(int buchungsCounter) {
+        Buchungen.buchungsCounter = buchungsCounter;
     }
 }

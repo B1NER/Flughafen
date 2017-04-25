@@ -57,7 +57,7 @@ public abstract class Fluege {
         ArrayList<Flug> zutreffendeFluege = new ArrayList<>();
         for (int i = 0; i < Fluege.getFluege().size(); i++) {
             if (Fluege.getFluege().get(i).getAbflugort().equalsIgnoreCase(abflugort) && Fluege.getFluege().get(i).getAnkunftsort().equalsIgnoreCase(ankunftsort) && Fluege.getFluege().get(i).getAbflugzeit().getYear() == abflugzeit.getYear() && Fluege.getFluege().get(i).getAbflugzeit().getMonth() == abflugzeit.getMonth() && Fluege.getFluege().get(i).getAbflugzeit().getDay() == abflugzeit.getDay() && Fluege.getVerfuegbarePlaetze(Fluege.getFluege().get(i)) > anzahlSitzplaetze) {
-                if(!Fluege.isVerfallen(Fluege.getFluege().get(i))){
+                if (!Fluege.isVerfallen(Fluege.getFluege().get(i))) {
                     zutreffendeFluege.add(Fluege.getFluege().get(i));
                 }
             }
@@ -73,7 +73,7 @@ public abstract class Fluege {
         ArrayList<Flug> zutreffendeFluege = new ArrayList<>();
         for (int i = 0; i < Fluege.getFluege().size(); i++) {
             if (Fluege.getFluege().get(i).getAbflugort().equalsIgnoreCase(abflugort) && Fluege.getFluege().get(i).getAnkunftsort().equalsIgnoreCase(ankunftsort) && Fluege.getFluege().get(i).getFlugGesellschaft().equals(fluggesellschaft) && Fluege.getVerfuegbarePlaetze(Fluege.getFluege().get(i)) > anzahlSitzplaetze) {
-                if(!Fluege.isVerfallen(Fluege.getFluege().get(i))){
+                if (!Fluege.isVerfallen(Fluege.getFluege().get(i))) {
                     zutreffendeFluege.add(Fluege.getFluege().get(i));
                 }
             }
@@ -89,7 +89,7 @@ public abstract class Fluege {
         ArrayList<Flug> zutreffendeFluege = new ArrayList<>();
         for (int i = 0; i < Fluege.getFluege().size(); i++) {
             if (Fluege.getFluege().get(i).getAbflugort().equalsIgnoreCase(abflugort) && Fluege.getFluege().get(i).getAnkunftsort().equalsIgnoreCase(ankunftsort) && Fluege.getFluege().get(i).getAbflugzeit().getYear() == abflugzeit.getYear() && Fluege.getFluege().get(i).getAbflugzeit().getMonth() == abflugzeit.getMonth() && Fluege.getFluege().get(i).getAbflugzeit().getDay() == abflugzeit.getDay() && Fluege.getFluege().get(i).getFlugGesellschaft().equals(fluggesellschaft) && Fluege.getVerfuegbarePlaetze(Fluege.getFluege().get(i)) > anzahlSitzplaetze) {
-                if(!Fluege.isVerfallen(Fluege.getFluege().get(i))){
+                if (!Fluege.isVerfallen(Fluege.getFluege().get(i))) {
                     zutreffendeFluege.add(Fluege.getFluege().get(i));
                 }
             }
@@ -105,7 +105,7 @@ public abstract class Fluege {
         ArrayList<Flug> zutreffendeFluege = new ArrayList<>();
         for (int i = 0; i < Fluege.getFluege().size(); i++) {
             if (Fluege.getFluege().get(i).getAbflugort().equalsIgnoreCase(abflugort) && Fluege.getFluege().get(i).getAnkunftsort().equalsIgnoreCase(ankunftsort) && Fluege.getVerfuegbarePlaetze(Fluege.getFluege().get(i)) > anzahlSitzplaetze) {
-                if(!Fluege.isVerfallen(Fluege.getFluege().get(i))){
+                if (!Fluege.isVerfallen(Fluege.getFluege().get(i))) {
                     zutreffendeFluege.add(Fluege.getFluege().get(i));
                 }
             }
@@ -141,15 +141,15 @@ public abstract class Fluege {
         return fluegecounter;
     }
 
+    public static void setFluegecounter(int fluegecounter) {
+        Fluege.fluegecounter = fluegecounter;
+    }
+
     public static ArrayList<Flug> getFluege() {
         return fluege;
     }
 
     public static void setFluege(ArrayList<Flug> fluege) {
         Fluege.fluege = fluege;
-    }
-
-    public static void setFluegecounter(int fluegecounter) {
-        Fluege.fluegecounter = fluegecounter;
     }
 }

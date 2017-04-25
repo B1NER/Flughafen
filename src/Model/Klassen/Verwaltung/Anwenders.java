@@ -37,9 +37,9 @@ public abstract class Anwenders {
         System.out.println(a + "zu" + anwender + " bearbeitet!");
     }
 
-    public static Anwender getAnwenderByID(int anwenderID) throws NutzerDoesNotExistException{
+    public static Anwender getAnwenderByID(int anwenderID) throws NutzerDoesNotExistException {
         for (int i = 0; i < anwenders.size(); i++) {
-            if(anwenders.get(i).getAnwenderID() == anwenderID){
+            if (anwenders.get(i).getAnwenderID() == anwenderID) {
                 return anwenders.get(i);
             }
         }
@@ -54,12 +54,11 @@ public abstract class Anwenders {
         return anwenderCounter;
     }
 
+    public static void setAnwenderCounter(int anwenderCounter) {
+        Anwenders.anwenderCounter = anwenderCounter;
+    }
 
     public static void setAnwender(ArrayList<Anwender> anwenders) {
         Anwenders.anwenders = anwenders;
-    }
-
-    public static void setAnwenderCounter(int anwenderCounter) {
-        Anwenders.anwenderCounter = anwenderCounter;
     }
 }

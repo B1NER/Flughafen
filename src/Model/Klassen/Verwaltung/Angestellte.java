@@ -21,7 +21,7 @@ public abstract class Angestellte {
         angestellte.add(angestellter);
     }
 
-    public static void removeAngestellter(Angestellter angestellter){
+    public static void removeAngestellter(Angestellter angestellter) {
         for (HashMap.Entry<Anwender, Angestellter> h : Verwaltung.getAnwenderAnestellten().entrySet()) {
             if (h.getValue().equals(angestellter)) {
                 Verwaltung.getAnwenderAnestellten().remove(h.getKey());
@@ -45,9 +45,9 @@ public abstract class Angestellte {
     }
 
 
-    public static Angestellter getAngestelltenByID(int angestelltenID) throws NutzerDoesNotExistException{
+    public static Angestellter getAngestelltenByID(int angestelltenID) throws NutzerDoesNotExistException {
         for (int i = 0; i < angestellte.size(); i++) {
-            if(angestellte.get(i).getAngestelltenID() == angestelltenID){
+            if (angestellte.get(i).getAngestelltenID() == angestelltenID) {
                 return angestellte.get(i);
             }
         }
@@ -58,13 +58,12 @@ public abstract class Angestellte {
         return angestellte;
     }
 
-    public static int getAngestelltenCounter() {
-        return angestelltenCounter;
-    }
-
-
     public static void setAngestellte(ArrayList<Angestellter> angestellte) {
         Angestellte.angestellte = angestellte;
+    }
+
+    public static int getAngestelltenCounter() {
+        return angestelltenCounter;
     }
 
     public static void setAngestelltenCounter(int angestelltenCounter) {

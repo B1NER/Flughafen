@@ -19,37 +19,16 @@ import java.util.Date;
 public class RegistrierenController {
 
     @FXML
-    private Label NachnameText;
-
-    @FXML
-    private Button RegistrierenButton;
-
-    @FXML
     private PasswordField PasswortFeld;
 
     @FXML
     private PasswordField PasswortBestaetigen;
 
     @FXML
-    private Label GeburtsdatumText;
-
-    @FXML
     private RadioButton AngestellterRButton;
 
     @FXML
-    private Label Password2Text;
-
-    @FXML
-    private Label VornameText;
-
-    @FXML
-    private Button AbbrechenButton;
-
-    @FXML
     private TextField VornameFeld;
-
-    @FXML
-    private Label PasswordText;
 
     @FXML
     private TextField NachnameFeld;
@@ -65,9 +44,6 @@ public class RegistrierenController {
 
     @FXML
     private RadioButton AdminRButton;
-
-    @FXML
-    private Label EmailText;
 
     @FXML
     private TextField EmailFeld;
@@ -159,11 +135,11 @@ public class RegistrierenController {
             } else {
                 Verwaltung.anwenderErstellen(VornameFeld.getText(), NachnameFeld.getText(), Date.from(GeburtsdatumFeld.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()).toString(), Integer.parseInt(PassnummerFeld.getText()), EmailFeld.getText(), PasswortFeld.getText());
                 Verwaltung.anmelden(Verwaltung.getAnwenderByID(Verwaltung.getNutzerIDByEmail(EmailFeld.getText())));
-                KundenProfilControler.setAnwender((Anwender)Verwaltung.getAngemeldeter());
+                KundenProfilControler.setAnwender((Anwender) Verwaltung.getAngemeldeter());
 
-                if(MAIN.viewsChronik.get(MAIN.viewsChronik.size()-3).equals(Views.Flugliste)){
+                if (MAIN.viewsChronik.get(MAIN.viewsChronik.size() - 3).equals(Views.Flugliste)) {
                     MAIN.fensterOeffnen(Views.Zahlung);
-                }else {
+                } else {
                     MAIN.fensterOeffnen(Views.KundenProfil);
                 }
 

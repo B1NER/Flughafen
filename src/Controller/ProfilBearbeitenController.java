@@ -8,7 +8,9 @@ import Model.Klassen.Nutzer.Mensch;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -19,43 +21,17 @@ import java.util.Locale;
 
 public class ProfilBearbeitenController {
 
+    private static Mensch zuBearbeitenderMensch;
     @FXML
     private TextField NachnameFeld;
-
-    @FXML
-    private Label PasswordText;
-
-    @FXML
-    private Button BestatigenButton;
-
-    @FXML
-    private Label GeburtsdatumText;
-
     @FXML
     private PasswordField Password2Feld;
-
-    @FXML
-    private Label Password2Text;
-
     @FXML
     private DatePicker GeburtsdatumFeld;
-
-    @FXML
-    private Label VornameText;
-
-    @FXML
-    private Button AbbrechenButton;
-
-    @FXML
-    private Label PersonbearbeitenText;
-
     @FXML
     private TextField VornameFeld;
-
     @FXML
     private PasswordField Password;
-
-    private static Mensch zuBearbeitenderMensch;
 
     public static void setZuBearbeitenderMensch(Mensch zuBearbeitenderMensch) {
         ProfilBearbeitenController.zuBearbeitenderMensch = zuBearbeitenderMensch;
@@ -67,9 +43,9 @@ public class ProfilBearbeitenController {
         try {
             String target = zuBearbeitenderMensch.getGeburtsdatum();
             DateFormat df = new SimpleDateFormat("EEE MMM dd kk:mm:ss z yyyy", Locale.ENGLISH);
-            Date result =  df.parse(target);
+            Date result = df.parse(target);
             GeburtsdatumFeld.setValue(result.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-        }catch(ParseException e){
+        } catch (ParseException e) {
             System.out.println("Parseexception");
         }
 
@@ -79,34 +55,34 @@ public class ProfilBearbeitenController {
 
     @FXML
     void AbbrechenAction(ActionEvent event) {
-        if(Verwaltung.getAngemeldeter() instanceof Administrator){
+        if (Verwaltung.getAngemeldeter() instanceof Administrator) {
             MAIN.viewsChronik.pop();
             MAIN.fensterOeffnen(MAIN.viewsChronik.pop());
-        }else if(Verwaltung.getAngemeldeter() instanceof Angestellter){
+        } else if (Verwaltung.getAngemeldeter() instanceof Angestellter) {
             MAIN.viewsChronik.pop();
             MAIN.fensterOeffnen(MAIN.viewsChronik.pop());
-        }else{
+        } else {
             MAIN.fensterOeffnen(Views.KundenProfil);
         }
     }
 
     @FXML
     void BestatigenAction(ActionEvent event) {
-        if(Password.getText().equals(Password2Feld.getText())) {
+        if (Password.getText().equals(Password2Feld.getText())) {
             zuBearbeitenderMensch.setVorname(VornameFeld.getText());
             zuBearbeitenderMensch.setNachname(NachnameFeld.getText());
             zuBearbeitenderMensch.setGeburtsdatum(Date.from(GeburtsdatumFeld.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()).toString());
             zuBearbeitenderMensch.setPasswort(Password.getText());
-            if(Verwaltung.getAngemeldeter() instanceof Administrator){
+            if (Verwaltung.getAngemeldeter() instanceof Administrator) {
                 MAIN.viewsChronik.pop();
                 MAIN.fensterOeffnen(MAIN.viewsChronik.pop());
-            }else if(Verwaltung.getAngemeldeter() instanceof Angestellter){
+            } else if (Verwaltung.getAngemeldeter() instanceof Angestellter) {
                 MAIN.viewsChronik.pop();
                 MAIN.fensterOeffnen(MAIN.viewsChronik.pop());
-            }else{
+            } else {
                 MAIN.fensterOeffnen(Views.KundenProfil);
             }
-        }else{
+        } else {
             Password.setText("");
             Password2Feld.setText("");
             Password.setPromptText("Die Passwörter stimmen nicht überein!");

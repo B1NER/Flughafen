@@ -11,62 +11,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.media.MediaView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ZuBearbeitendeBuchungFindenConroller {
-
-    @FXML
-    private Button RegistrierenButton;
-
-    @FXML
-    private TextField FlugAbFeld;
-
-    @FXML
-    private DatePicker DatumRuckflug;
-
-    @FXML
-    private Button AnmeldenButton;
-
-    @FXML
-    private Label FlugsuchenText;
-
-    @FXML
-    private TextField FlugNachFeld2;
-
-    @FXML
-    private Button minusButton;
-
-    @FXML
-    private DatePicker DatumHinflug2;
-
-    @FXML
-    private DatePicker DatumHinflug;
-
-    @FXML
-    private TextField AnzahlFeld;
-
-    @FXML
-    private TextField FlugNachFeld;
-
-    @FXML
-    private MediaView MediaView;
-
-    @FXML
-    private Button plusButton;
-
-    @FXML
-    private Button FlugSuchenButton2;
-
-    @FXML
-    private TextField FlugAbFeld2;
-
-    @FXML
-    private Button FlugSuchenButton;
 
     @FXML
     private TableView<Buchung> tabelle;
@@ -103,15 +57,15 @@ public class ZuBearbeitendeBuchungFindenConroller {
 
     public void initialize() {
         for (int i = 0; i < Verwaltung.getBuchungen().size(); i++) {
-                if (!Verwaltung.getBuchungen().get(i).isCreatedByAnwender()) {
-                    for (HashMap.Entry<Anwender, Angestellter> h : Verwaltung.getAnwenderAnestellten().entrySet()) {
-                        if (h.getKey().equals(Verwaltung.getBuchungen().get(i).getAnwender())) {
-                            Verwaltung.getBuchungen().get(i).setCreatedBy(h.getValue().getVorname() + " " + h.getValue().getNachname());
-                        }
+            if (!Verwaltung.getBuchungen().get(i).isCreatedByAnwender()) {
+                for (HashMap.Entry<Anwender, Angestellter> h : Verwaltung.getAnwenderAnestellten().entrySet()) {
+                    if (h.getKey().equals(Verwaltung.getBuchungen().get(i).getAnwender())) {
+                        Verwaltung.getBuchungen().get(i).setCreatedBy(h.getValue().getVorname() + " " + h.getValue().getNachname());
                     }
-
                 }
+
             }
+        }
         SpalteHinflug.setCellValueFactory(new PropertyValueFactory<Buchung, String>("hinflug"));
         SpalteRueckflug.setCellValueFactory(new PropertyValueFactory<Buchung, String>("rueckflug"));
         SpalteAnwender.setCellValueFactory(new PropertyValueFactory<Buchung, Anwender>("anwender"));

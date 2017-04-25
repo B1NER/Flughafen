@@ -30,30 +30,29 @@ public class Gepaeck {
         return gewicht;
     }
 
-    public int getGepaeckID() {
-        return gepaeckID;
+    public void setGewicht(double gewicht) {
+        this.gewicht = gewicht;
     }
 
-    public Gepaecktypen getGepaeckTyp() {
-        return gepaeckTyp;
+    public int getGepaeckID() {
+        return gepaeckID;
     }
 
     public void setGepaeckID(int gepaeckID) {
         this.gepaeckID = gepaeckID;
     }
 
+    public Gepaecktypen getGepaeckTyp() {
+        return gepaeckTyp;
+    }
+
     public void setGepaeckTyp(Gepaecktypen gepaeckTyp) {
         this.gepaeckTyp = gepaeckTyp;
     }
 
-    public void setGewicht(double gewicht) {
-        this.gewicht = gewicht;
-    }
-
-
     @Override
     public String toString() {
-        return gepaeckTyp+ " - " +gewicht;
+        return gepaeckTyp + " - " + gewicht;
     }
 
     public String toStringLog() {

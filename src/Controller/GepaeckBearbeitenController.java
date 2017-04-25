@@ -9,31 +9,17 @@ import Model.Klassen.Nutzer.Angestellter;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class GepaeckBearbeitenController {
 
-    @FXML
-    private Button BestatigenButton;
-
+    private static Gepaeck gepaeck;
+    private static int gewicht;
     @FXML
     private TextField GewichtFeld;
-
-    @FXML
-    private Label GepackbearbeitenText;
-
     @FXML
     private ComboBox<Gepaecktypen> GepaeckTyp;
-
-    @FXML
-    private Button AbbrechenButton;
-
-    private static Gepaeck gepaeck;
-
-    private static int gewicht;
 
     public static void setGepaeck(Gepaeck gepaeck, int gewicht) {
         GepaeckBearbeitenController.gepaeck = gepaeck;
@@ -60,7 +46,6 @@ public class GepaeckBearbeitenController {
 
     @FXML
     void BestatigenAction(ActionEvent event) {
-
         try {
             Verwaltung.gepaeckBearbeiten(gepaeck, Integer.parseInt(GewichtFeld.getText()), GepaeckTyp.getValue());
             if (Verwaltung.getAngemeldeter() instanceof Angestellter) {
@@ -72,8 +57,5 @@ public class GepaeckBearbeitenController {
             GewichtFeld.setPromptText("Zu hohes Gewicht!");
             GewichtFeld.setText("");
         }
-
-
     }
-
 }

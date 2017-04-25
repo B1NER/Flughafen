@@ -6,6 +6,7 @@ import Model.Exceptions.ToHighWeightException;
 import Model.Klassen.Elemente.Flug;
 import Model.Klassen.MAIN;
 import Model.Klassen.Nutzer.Anwender;
+import Model.Klassen.Verwaltung.Fluege;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,146 +14,93 @@ import javafx.scene.control.*;
 
 public class ZahlungController {
 
-    @FXML
-    private Button BestatigenButton;
-
-    @FXML
-    private Label Gesamtpreis1;
-
-    @FXML
-    private Label HinflugGesamtPreis;
-
-    @FXML
-    private Label RueckflugGesamtPreis;
-
-    @FXML
-    private TextField CSVFeld1;
-
-    @FXML
-    private TextField CSVFeld2;
-
-    @FXML
-    private Label NachnameText1;
-
-    @FXML
-    private Label GesamtPreis2;
-
-    @FXML
-    private ChoiceBox<Gepaecktypen> GepackFeld1;
-
-    @FXML
-    private Label AnzahlPersonenLabel11;
-
-    @FXML
-    private Label GepackText1;
-
-    @FXML
-    private Label NachnameText11;
-
-    @FXML
-    private Label GewichtText1;
-
-    @FXML
-    private Label PreisproGepackText;
-
-    @FXML
-    private Label NameText1;
-
-    @FXML
-    private Button berechneGesamtPreisButton2;
-
-    @FXML
-    private Label PreisproGepackText11;
-
-    @FXML
-    private TextField NameFeld2;
-
-    @FXML
-    private Label AnzahlPersonenLabel1;
-
-    @FXML
-    private Label AnzahlPersonen2;
-
-    @FXML
-    private Label PreisProPerson2;
-
-    @FXML
-    private Label PreisProPerson1;
-
-    @FXML
-    private Button berechneGesamtPreisButton1;
-
-    @FXML
-    private Label AnzahlPersonen1;
-
-    @FXML
-    private TextField NachnameFeld1;
-
-    @FXML
-    private Tab RueckflugTab;
-
-    @FXML
-    private Tab HinflugTab;
-
-    @FXML
-    private TextField GewichtFeld1;
-
-    @FXML
-    private TextField KreditkartennummerFeld2;
-
-    @FXML
-    private Label GesamtpreisText2;
-
-    @FXML
-    private TextField KreditkartennummerFeld1;
-
-    @FXML
-    private Label GesamtpreisText1;
-
-    @FXML
-    private Label GepackText11;
-
-    @FXML
-    private Label GepaeckPreisProKilo2;
-
-    @FXML
-    private TextField NameFeld1;
-
-    @FXML
-    private Label GepaeckPreisProKilo1;
-
-    @FXML
-    private Label CSVText1;
-
-    @FXML
-    private Label NameText11;
-
-    @FXML
-    private Label GesamtpreisLabel1;
-
-    @FXML
-    private Label GesamtpreisLabel2;
-
-    @FXML
-    private Button zurueckButton;
-
-    @FXML
-    private TextField NachnameFeld2;
-
-    @FXML
-    private TabPane tabPane;
-
     private static Flug hinflug;
     private static Flug rueckflug;
     private static int anzahlPersonen;
     private static int gepaecksPreisProKilo = 10;
     private static Anwender anwender;
-
     SingleSelectionModel<Tab> selectionModel;
+    @FXML
+    private Label HinflugGesamtPreis;
+    @FXML
+    private Label RueckflugGesamtPreis;
+    @FXML
+    private TextField CSVFeld1;
+    @FXML
+    private TextField CSVFeld2;
+    @FXML
+    private ChoiceBox<Gepaecktypen> GepackFeld1;
+    @FXML
+    private TextField NameFeld2;
+    @FXML
+    private Label AnzahlPersonen2;
+    @FXML
+    private Label PreisProPerson2;
+    @FXML
+    private Label PreisProPerson1;
+    @FXML
+    private Label AnzahlPersonen1;
+    @FXML
+    private TextField NachnameFeld1;
+    @FXML
+    private Tab RueckflugTab;
+    @FXML
+    private Tab HinflugTab;
+    @FXML
+    private TextField GewichtFeld1;
+    @FXML
+    private TextField KreditkartennummerFeld2;
+    @FXML
+    private TextField KreditkartennummerFeld1;
+    @FXML
+    private Label GepaeckPreisProKilo2;
+    @FXML
+    private TextField NameFeld1;
+    @FXML
+    private Label GepaeckPreisProKilo1;
+    @FXML
+    private Label GesamtpreisLabel1;
+    @FXML
+    private Label GesamtpreisLabel2;
+    @FXML
+    private TextField NachnameFeld2;
+    @FXML
+    private TextField GewichtFeld2;
+    @FXML
+    private ChoiceBox<Gepaecktypen> GepackFeld2;
+    @FXML
+    private TabPane tabPane;
+
+    public static void setAnwender(Anwender anwender) {
+        ZahlungController.anwender = anwender;
+    }
+
+    public static void setHinflug(Flug hinflug) {
+        ZahlungController.hinflug = hinflug;
+    }
+
+    public static void setRueckflug(Flug rueckflug) {
+        ZahlungController.rueckflug = rueckflug;
+    }
+
+    public static void setAnzahlPersonen(int anzahlPersonen) {
+        ZahlungController.anzahlPersonen = anzahlPersonen;
+    }
 
     public void initialize() {
-        //tabPane.getTabs().addAll(HinflugTab, RueckflugTab);
         selectionModel = tabPane.getSelectionModel();
+
+        GepackFeld2.setDisable(true);
+        GewichtFeld2.setDisable(true);
+
+        //TODO listener funktioniert bei gepaeckfeld noch nicht ganz
+        GepackFeld1.valueProperty().addListener((observable, oldValue, newValue) -> {
+            GepackFeld2.setValue(newValue);
+        });
+
+        GewichtFeld1.textProperty().addListener((observable, oldValue, newValue) -> {
+            GewichtFeld2.setText(newValue);
+        });
 
         if (Verwaltung.getAngemeldeter() instanceof Anwender) {
             NameFeld1.setText(Verwaltung.getAngemeldeter().getVorname());
@@ -191,22 +139,6 @@ public class ZahlungController {
 
     }
 
-    public static void setAnwender(Anwender anwender) {
-        ZahlungController.anwender = anwender;
-    }
-
-    public static void setHinflug(Flug hinflug) {
-        ZahlungController.hinflug = hinflug;
-    }
-
-    public static void setRueckflug(Flug rueckflug) {
-        ZahlungController.rueckflug = rueckflug;
-    }
-
-    public static void setAnzahlPersonen(int anzahlPersonen) {
-        ZahlungController.anzahlPersonen = anzahlPersonen;
-    }
-
     @FXML
     void berechneGesamtPreisAction(ActionEvent event) {
 
@@ -217,9 +149,11 @@ public class ZahlungController {
             } catch (IllegalArgumentException e) {
                 GewichtFeld1.setText("");
                 GewichtFeld1.setPromptText("Gewicht in kg");
+                selectionModel.select(HinflugTab);
             } catch (ClassCastException e) {
                 GewichtFeld1.setText("");
                 GewichtFeld1.setPromptText("Gewicht in kg");
+                selectionModel.select(HinflugTab);
             }
         } else {
             try {
@@ -230,15 +164,17 @@ public class ZahlungController {
             } catch (IllegalArgumentException e) {
                 GewichtFeld1.setText("");
                 GewichtFeld1.setPromptText("Gewicht in kg");
+                selectionModel.select(HinflugTab);
             } catch (ClassCastException e) {
                 GewichtFeld1.setText("");
                 GewichtFeld1.setPromptText("Gewicht in kg");
+                selectionModel.select(HinflugTab);
             }
         }
     }
 
     @FXML
-    void BestatigenAction(ActionEvent event)    {
+    void BestatigenAction(ActionEvent event) {
 
         berechneGesamtPreisAction(new ActionEvent());
 
@@ -256,7 +192,7 @@ public class ZahlungController {
             } else {
 
                 try {
-                    if (Integer.parseInt(GewichtFeld1.getText()) > anzahlPersonen * 20) {
+                    if (Integer.parseInt(GewichtFeld1.getText()) > anzahlPersonen * 20 || (Integer.parseInt(GewichtFeld1.getText()) > Fluege.getVerfuegbaresGewicht(hinflug))) {
                         throw new ToHighWeightException();
                     }
                     Verwaltung.gepaeckErstellen(Double.parseDouble(GewichtFeld1.getText()), GepackFeld1.getValue());
@@ -313,7 +249,7 @@ public class ZahlungController {
                 selectionModel.select(HinflugTab);
             } else {
                 try {
-                    if (Integer.parseInt(GewichtFeld1.getText()) > anzahlPersonen * 20) {
+                    if (Integer.parseInt(GewichtFeld1.getText()) > anzahlPersonen * 20 || (Integer.parseInt(GewichtFeld1.getText()) > Fluege.getVerfuegbaresGewicht(hinflug) || Integer.parseInt(GewichtFeld1.getText()) > Fluege.getVerfuegbaresGewicht(rueckflug))) {
                         throw new ToHighWeightException();
                     }
                     Verwaltung.gepaeckErstellen(Double.parseDouble(GewichtFeld1.getText()), GepackFeld1.getValue());
@@ -347,6 +283,4 @@ public class ZahlungController {
     void zurueckButtonAction(ActionEvent event) {
         MAIN.fensterOeffnen(Views.Flugliste);
     }
-
-
 }

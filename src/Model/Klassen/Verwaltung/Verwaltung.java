@@ -113,10 +113,9 @@ public abstract class Verwaltung {
             Administrator eingelesenerAdministrator = new Administrator(Integer.parseInt(zs[0]), zs[1], zs[2], zs[3], Integer.parseInt(zs[4]), zs[5], zs[6]);
             try {
                 Verwaltung.adminErstellten(eingelesenerAdministrator);
-            }catch(EmailIsAlreadyUsedException e){
+            } catch (EmailIsAlreadyUsedException e) {
                 System.out.println(eingelesenerAdministrator + "Email bereits in Verwendung");
-            }
-            catch(InvalidEmailException e){
+            } catch (InvalidEmailException e) {
                 System.out.println(eingelesenerAdministrator + " ungültige Email");
             }
             System.out.println("Administrator angelegt:" + eingelesenerAdministrator);
@@ -133,10 +132,9 @@ public abstract class Verwaltung {
             Angestellter eingelesenerAngestellter = new Angestellter(Integer.parseInt(zs[0]), zs[1], zs[2], zs[3], Integer.parseInt(zs[4]), zs[5], zs[6]);
             try {
                 Verwaltung.angestellterErstellen(eingelesenerAngestellter);
-            }catch(EmailIsAlreadyUsedException e){
+            } catch (EmailIsAlreadyUsedException e) {
                 System.out.println(eingelesenerAngestellter + "Email bereits in Verwendung");
-            }
-            catch(InvalidEmailException e){
+            } catch (InvalidEmailException e) {
                 System.out.println(eingelesenerAngestellter + " ungültige Email");
             }
             System.out.println("Angestellter angelegt:" + eingelesenerAngestellter);
@@ -153,10 +151,9 @@ public abstract class Verwaltung {
             Anwender eingelesenerAnwender = new Anwender(Integer.parseInt(zs[0]), zs[1], zs[2], zs[3], Integer.parseInt(zs[4]), zs[5], zs[6]);
             try {
                 Verwaltung.anwenderErstellen(eingelesenerAnwender);
-            }catch(EmailIsAlreadyUsedException e){
+            } catch (EmailIsAlreadyUsedException e) {
                 System.out.println(eingelesenerAnwender + "Email bereits in Verwendung");
-            }
-            catch(InvalidEmailException e){
+            } catch (InvalidEmailException e) {
                 System.out.println(eingelesenerAnwender + " ungültige Email");
             }
 
@@ -342,7 +339,7 @@ public abstract class Verwaltung {
             bw.write(";");
             bw.write(String.valueOf(Gepaecke.getGepaecke().get(i).getGewicht()));
             bw.write(";");
-            bw.write(Gepaecke.getGepaecke().get(i).getGepaeckTyp().toString() +"\n");
+            bw.write(Gepaecke.getGepaecke().get(i).getGepaeckTyp().toString() + "\n");
             System.out.println("Speichern: " + Gepaecke.getGepaecke().get(i).toStringLog());
         }
         bw.close();
@@ -624,11 +621,11 @@ public abstract class Verwaltung {
         return Buchungen.getBuchungenByAnwender(anwender);
     }
 
-    public static ArrayList<Buchung> getBuchungen(){
+    public static ArrayList<Buchung> getBuchungen() {
         return Buchungen.getBuchungen();
     }
 
-    public static ArrayList<Gepaeck> getGepaeck(){
+    public static ArrayList<Gepaeck> getGepaeck() {
         return Gepaecke.getGepaecke();
     }
 
@@ -716,11 +713,9 @@ public abstract class Verwaltung {
         return Fluege.getZutreffendeFluege(abflugort, ankunftsort, anzahlSitzplaetze);
     }
 
-    public static ArrayList<Flug> getFluege(){
+    public static ArrayList<Flug> getFluege() {
         return Fluege.getFluege();
     }
-
-
 
 
     //Funktionelle Methoden
@@ -764,22 +759,20 @@ public abstract class Verwaltung {
         return anwenderAnestellten;
     }
 
+    public static void setAnwenderAnestellten(HashMap<Anwender, Angestellter> anwenderAnestellten) {
+        Verwaltung.anwenderAnestellten = anwenderAnestellten;
+    }
+
     public static Mensch getAngemeldeter() {
         return angemeldeter;
     }
-
-    public static ArrayList<Anwender> getAnwender() {
-        return Anwenders.getAnwenders();
-    }
-
-
 
     //Setter
     public static void setAngemeldeter(Mensch angemeldeter) {
         Verwaltung.angemeldeter = angemeldeter;
     }
 
-    public static void setAnwenderAnestellten(HashMap<Anwender, Angestellter> anwenderAnestellten) {
-        Verwaltung.anwenderAnestellten = anwenderAnestellten;
+    public static ArrayList<Anwender> getAnwender() {
+        return Anwenders.getAnwenders();
     }
 }

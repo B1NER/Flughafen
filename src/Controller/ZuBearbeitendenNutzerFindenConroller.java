@@ -14,15 +14,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.util.ArrayList;
 
 public class ZuBearbeitendenNutzerFindenConroller {
-
-    @FXML
-    private Label NachnameText;
 
     @FXML
     private TableColumn<Mensch, String> SpalteVorname;
@@ -31,19 +31,10 @@ public class ZuBearbeitendenNutzerFindenConroller {
     private TableColumn<Mensch, String> SpalteGeburtsdatum;
 
     @FXML
-    private Button BearbeitenButton;
-
-    @FXML
-    private Label VornameText;
-
-    @FXML
     private TextField VornameFeld;
 
     @FXML
     private TextField NachnameFeld;
-
-    @FXML
-    private Button ZuruckButton;
 
     @FXML
     private TableColumn<Mensch, String> SpaltEmail;
@@ -52,22 +43,10 @@ public class ZuBearbeitendenNutzerFindenConroller {
     private TableView<Mensch> tabelle;
 
     @FXML
-    private Button LoschenButton;
-
-    @FXML
-    private Label NuterbearbeitenText;
-
-    @FXML
     private TableColumn<Mensch, String> SpalteNachname;
 
     @FXML
     private TableColumn<Mensch, String> spalteTyp;
-
-    @FXML
-    private Label SuchenText;
-
-    @FXML
-    private Button SuchenButton;
 
 
     private ArrayList<Mensch> menschen = new ArrayList<>();
