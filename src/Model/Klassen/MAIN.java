@@ -17,6 +17,8 @@ import java.util.Stack;
 
 
 //TODO Skalieren: BuchungBearbeiten, Anmelden, Kundenprofil
+//TODO Buchung Anmelden/Registrieren/MeinProfil Buttons zentrieren
+//TODO Dropdownmenü Städte
 
 
 public class MAIN extends Application {
