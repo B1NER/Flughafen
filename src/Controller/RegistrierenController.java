@@ -153,7 +153,7 @@ public class RegistrierenController {
                 }
             }
         } catch (final EmailIsAlreadyUsedException e) {
-            EmailFeld.setPromptText("Diese Emai l wird bereits verwendet!");
+            EmailFeld.setPromptText("Diese Email wird bereits verwendet!");
             EmailFeld.setText("");
         } catch (final InvalidEmailException e) {
             EmailFeld.setPromptText("Ungültige Email!");
