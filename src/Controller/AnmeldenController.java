@@ -54,12 +54,6 @@ public class AnmeldenController {
         final MediaPlayer mp = new MediaPlayer(m);
         final javafx.scene.media.MediaView mv = new MediaView(mp);
 
-        final DoubleProperty width = new SimpleDoubleProperty(1280);    //mv.fitWidthProperty();
-        final DoubleProperty height = new SimpleDoubleProperty(1024);   //mv.fitHeightProperty();
-
-        width.bind(Bindings.selectDouble(mv.sceneProperty(), "width"));
-        height.bind(Bindings.selectDouble(mv.sceneProperty(), "height"));
-
         mv.setPreserveRatio(false);
         mp.setCycleCount(MediaPlayer.INDEFINITE);
 

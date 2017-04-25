@@ -33,6 +33,8 @@ public class FluglisteController {
     private static Flug hinflug = null;
     private static Flug rueckflug = null;
     private static Anwender anwender;
+
+
     @FXML
     private TableColumn<Flug, String> RueckSpaltePreis;
     @FXML
@@ -78,6 +80,8 @@ public class FluglisteController {
     @FXML
     private TableView<Flug> rueckflugTabelle;
 
+    private Tab aktuellerTab = hinflugTab;
+
     public static void setInfos(String flugAb, String flugNach, String fluggesellschaft, String anzahlPersonen, LocalDate datumHinflug) {
         FluglisteController.flugAb = flugAb;
         FluglisteController.flugNach = flugNach;
@@ -112,11 +116,13 @@ public class FluglisteController {
             tabPane.getSelectionModel().selectedItemProperty().addListener(
                     new ChangeListener<Tab>() {
                         @Override
-                        public void changed(ObservableValue<? extends Tab> ov, Tab t, Tab aktuellerTab) {
-                            tabHasChanged(aktuellerTab);
+                        public void changed(ObservableValue<? extends Tab> ov, Tab t, Tab changedTab) {
+                            aktuellerTab = changedTab;
+                            tabHasChanged(changedTab);
                         }
                     }
             );
+
         }
 
         hinflugTabelle.setRowFactory(tv -> {
@@ -208,6 +214,10 @@ public class FluglisteController {
 
             if (tab.getId().equals("hinflugTab")) {
 
+                DatumHinflug.setOnAction(event -> {
+                    datumHinflug = DatumHinflug.getValue();
+                });
+
                 FlugauswahlText.setText("Hinflug auswählen");
 
                 String zw = flugAb;
@@ -226,6 +236,10 @@ public class FluglisteController {
                 FlugfindenAction(new ActionEvent());
 
             } else if (tab.getId().equals("rueckflugTab")) {
+
+                DatumHinflug.setOnAction(event -> {
+                    datumRueckflug = DatumHinflug.getValue();
+                });
 
                 FlugauswahlText.setText("Rückflug auswählen");
                 String zw = flugAb;

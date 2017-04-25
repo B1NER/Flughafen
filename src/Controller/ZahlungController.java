@@ -90,13 +90,12 @@ public class ZahlungController {
     public void initialize() {
         selectionModel = tabPane.getSelectionModel();
 
-        GepackFeld2.setDisable(true);
-        GewichtFeld2.setDisable(true);
-
-        //TODO listener funktioniert bei gepaeckfeld noch nicht ganz
+        GepackFeld2.getItems().addAll(Gepaecktypen.Handgepaeck, Gepaecktypen.Koffer, Gepaecktypen.Sportgepaeck, Gepaecktypen.Tasche);
         GepackFeld1.valueProperty().addListener((observable, oldValue, newValue) -> {
             GepackFeld2.setValue(newValue);
         });
+        GepackFeld2.setDisable(true);
+        GewichtFeld2.setDisable(true);
 
         GewichtFeld1.textProperty().addListener((observable, oldValue, newValue) -> {
             GewichtFeld2.setText(newValue);
