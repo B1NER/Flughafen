@@ -265,6 +265,7 @@ public class ZahlungController {
                     MAIN.fensterOeffnen(Views.Buchungszusammenfassung);
                 } catch (ToHighWeightException e) {
                     GewichtFeld1.setText("");
+                    selectionModel.select(HinflugTab);
                     GewichtFeld1.setPromptText("Zu hohes Gewicht");
                 } catch (NumberFormatException e) {
                     GewichtFeld1.setText("");
