@@ -114,17 +114,11 @@ public class BuchenController {
         final MediaPlayer mp = new MediaPlayer(m);
         final javafx.scene.media.MediaView mv = new MediaView(mp);
 
-        final DoubleProperty width = new SimpleDoubleProperty(1280);    //mv.fitWidthProperty();
-        final DoubleProperty height = new SimpleDoubleProperty(1024);   //mv.fitHeightProperty();
-
         mv.setPreserveRatio(false);
         mp.setCycleCount(MediaPlayer.INDEFINITE);
 
         stackPane.getChildren().add(mv);
         stackPane.getChildren().add(vBox);
-
-        width.bind(Bindings.selectDouble(mv.sceneProperty(), "width"));
-        height.bind(Bindings.selectDouble(mv.sceneProperty(), "height"));
 
         mp.play();
 
