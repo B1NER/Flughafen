@@ -3,4 +3,6 @@
 *.iml
 out
 gen
+/src/View/Grafiken/wolken.mp4
 /src/Model/Daten/Fluege/Flugliste.csv
+/src/META-INF
