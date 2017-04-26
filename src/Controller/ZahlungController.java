@@ -98,6 +98,13 @@ public class ZahlungController {
         GewichtFeld2.setDisable(true);
 
         GewichtFeld1.textProperty().addListener((observable, oldValue, newValue) -> {
+            try {
+                if (!GewichtFeld1.equals("")) {
+                    GewichtFeld1.setText(GewichtFeld1.getText().replace("-", ""));
+                }
+            } catch (NumberFormatException e) {
+                GewichtFeld1.setText("");
+            }
             GewichtFeld2.setText(newValue);
         });
 
