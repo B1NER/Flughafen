@@ -7,8 +7,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <StackPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-           minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" stylesheets="@CSSFiles/Style.css"
-           xmlns="http://javafx.com/javafx/8.0.112" fx:controller="Controller.GepaeckBearbeitenController">
+           minWidth="-Infinity"
+           prefHeight="800.0" prefWidth="800.0" stylesheets="@CSSFiles/Style.css"
+           xmlns="http://javafx.com/javafx/8" fx:controller="Controller.GepaeckBearbeitenController">
     <children>
         <ImageView fitHeight="854.0" fitWidth="1479.0" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -32,7 +33,9 @@
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="500.0">
                     <children>
-                        <ComboBox fx:id="GepaeckTyp" prefHeight="80.0" prefWidth="500.0" promptText="Gepäck Typ"
+                        <ComboBox id="GepaeckBearbeiten" fx:id="GepaeckTyp" prefHeight="80.0" prefWidth="500.0"
+                                  promptText="Gepäck Typ"
+                                  style="-fx-border-color: white; -fx-border-radius: 4px; -fx-text-fill: white;"
                                   stylesheets="@CSSFiles/Style.css"/>
                     </children>
                 </HBox>
