@@ -227,13 +227,3 @@
      -fx-background-color: rgba(14, 0, 86, 0.25);
      -fx-text-fill: white;
  }
-
- .combo-box .arrow {
-     -fx-background-color: black;
- }
-
- .combo-box .arrow-button {
-     -fx-background-color: rgba(0, 0, 0, 0.6);
-     -fx-border-radius: 4px;
-     -fx-background-radius: 4px;
- }

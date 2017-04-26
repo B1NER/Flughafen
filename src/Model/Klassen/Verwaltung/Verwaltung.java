@@ -73,7 +73,7 @@ public abstract class Verwaltung {
             Flug eingelesenerFlug = new Flug(zeile[0], zeile[1], zeile[2], zeile[3], Integer.parseInt(zeile[8]), Integer.parseInt(zeile[9]), abflugdatum, ankunftdatum, 100);
 
             Collections.sort(staedte);
-            if(!(staedte.contains(zeile[2])) && !(staedte.contains(zeile[3]))) {
+            if (!(staedte.contains(zeile[2])) && !(staedte.contains(zeile[3]))) {
                 staedte.add(zeile[2]);
                 staedte.add(zeile[3]);
             }

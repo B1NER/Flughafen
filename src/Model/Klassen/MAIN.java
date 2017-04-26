@@ -16,11 +16,8 @@ import java.util.Stack;
  * Created by knoll on 21.03.2017.
  */
 
-//TODO Skalieren: BuchungBearbeiten, Anmelden, Kundenprofil
-
 public class MAIN extends Application {
 
-    //bei jedem neuem Fensteröffnen muss das fenster in diese Chronik eingetragen werden!
     static public Stack<Views> viewsChronik = new Stack<>();
     static private Stage primaryStage;
     static private HashMap<Views, String> viewPfad = new HashMap<>();
