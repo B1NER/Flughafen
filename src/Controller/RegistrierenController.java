@@ -145,6 +145,7 @@ public class RegistrierenController {
 
                 if (MAIN.viewsChronik.size() > 3) {
                     if (MAIN.viewsChronik.get(MAIN.viewsChronik.size() - 3).equals(Views.Flugliste)) {
+                        ZahlungController.setAnwender((Anwender) Verwaltung.getAngemeldeter());
                         MAIN.fensterOeffnen(Views.Zahlung);
                     } else {
                         MAIN.fensterOeffnen(Views.KundenProfil);
