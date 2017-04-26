@@ -88,17 +88,15 @@
                                                                 <HBox alignment="CENTER_LEFT" prefHeight="100.0"
                                                                       prefWidth="500.0">
                                                                     <children>
-                                                                        <TextField id="Textgroesse" fx:id="FlugAbFeld"
-                                                                                   prefHeight="65.0" prefWidth="400.0"
-                                                                                   promptText="Flug ab"/>
+                                                                        <ComboBox id="Textgroesse" fx:id="FlugAbFeld"
+                                                                                   prefHeight="65.0" prefWidth="400.0"/>
                                                                     </children>
                                                                 </HBox>
                                                                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0"
                                                                       prefWidth="500.0">
                                                                     <children>
-                                                                        <TextField id="Textgroesse" fx:id="FlugNachFeld"
-                                                                                   prefHeight="65.0" prefWidth="400.0"
-                                                                                   promptText="Flug nach"/>
+                                                                        <ComboBox id="Textgroesse" fx:id="FlugNachFeld"
+                                                                                   prefHeight="65.0" prefWidth="400.0"/>
                                                                     </children>
                                                                 </HBox>
                                                             </children>

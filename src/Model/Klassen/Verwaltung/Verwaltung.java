@@ -10,8 +10,11 @@ import Model.Klassen.Nutzer.Administrator;
 import Model.Klassen.Nutzer.Angestellter;
 import Model.Klassen.Nutzer.Anwender;
 import Model.Klassen.Nutzer.Mensch;
+import com.sun.org.apache.bcel.internal.generic.ARRAYLENGTH;
+import com.sun.org.apache.regexp.internal.StreamCharacterIterator;
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -27,6 +30,7 @@ public abstract class Verwaltung {
 
     private static HashMap<Anwender, Angestellter> anwenderAnestellten = new HashMap<>();
     private static Mensch angemeldeter;
+    private static ArrayList<String> staedte = new ArrayList<>();
 
 
     public static void init() {
@@ -73,6 +77,12 @@ public abstract class Verwaltung {
             Date abflugdatum = new Date(Integer.parseInt(zeile[4].split("\\.")[2]) - 1900, Integer.parseInt(zeile[4].split("\\.")[1]) - 1, Integer.parseInt(zeile[4].split("\\.")[0]), Integer.parseInt(zeile[5].split(":")[0]), Integer.parseInt(zeile[5].split(":")[1]));
             Date ankunftdatum = new Date(Integer.parseInt(zeile[6].split("\\.")[2]) - 1900, Integer.parseInt(zeile[6].split("\\.")[1]) - 1, Integer.parseInt(zeile[6].split("\\.")[0]), Integer.parseInt(zeile[7].split(":")[0]), Integer.parseInt(zeile[7].split(":")[1]));
             Flug eingelesenerFlug = new Flug(zeile[0], zeile[1], zeile[2], zeile[3], Integer.parseInt(zeile[8]), Integer.parseInt(zeile[9]), abflugdatum, ankunftdatum, 100);
+
+            if(!(staedte.contains(zeile[2])) && !(staedte.contains(zeile[3]))) {
+                staedte.add(zeile[2]);
+                staedte.add(zeile[3]);
+            }
+
             Fluege.addFlug(eingelesenerFlug);
             System.out.println("Fluege eingelesen:" + eingelesenerFlug.toStringLog());
         }
@@ -795,6 +805,11 @@ public abstract class Verwaltung {
     public static void setAnwenderAnestellten(HashMap<Anwender, Angestellter> anwenderAnestellten) {
         Verwaltung.anwenderAnestellten = anwenderAnestellten;
     }
+
+    public static ArrayList<String> getStaedte() {
+        return staedte;
+    }
+
 
     public static Mensch getAngemeldeter() {
         return angemeldeter;

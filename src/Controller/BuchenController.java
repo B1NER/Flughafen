@@ -5,13 +5,14 @@ import Model.Klassen.MAIN;
 import Model.Klassen.Nutzer.Angestellter;
 import Model.Klassen.Nutzer.Anwender;
 import Model.Klassen.Verwaltung.Verwaltung;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
@@ -44,13 +45,13 @@ public class BuchenController {
     @FXML
     private TextField AnzahlFeld;
     @FXML
-    private TextField FlugNachFeld;
+    private ComboBox<String> FlugNachFeld;
     @FXML
     private TextField NurHinflugAnzahlFeld;
     @FXML
     private TextField FlugAbFeld2;
     @FXML
-    private TextField FlugAbFeld;
+    private ComboBox<String> FlugAbFeld;
     @FXML
     private Tab tabPaneMitRueckflug;
     @FXML
@@ -81,13 +82,26 @@ public class BuchenController {
 
         stackPane.setOnKeyReleased(event -> {
             if (event.getCode() == KeyCode.ENTER) {
-                if (tabPaneMitRueckflug.isSelected()) {
+                if (tabPaneMitRueckflug.isSelected() && !FlugAbFeld.isFocused() && !FlugAbFeld.isFocused()) {
                     FlugSuchenAction(new ActionEvent());
                 } else if (tabPaneOhneRueckflug.isSelected()) {
                     FlugSuchenAction2(new ActionEvent());
                 }
             }
         });
+
+        FlugAbFeld.setEditable(true);
+        FlugNachFeld.setEditable(true);
+
+        FlugAbFeld.setItems(FXCollections.observableList(Verwaltung.getStaedte()));
+        FlugNachFeld.setItems(FXCollections.observableList(Verwaltung.getStaedte()));
+
+        new AutoCompleteComboBoxListener<String>(FlugAbFeld);
+        new AutoCompleteComboBoxListener<String>(FlugNachFeld);
+
+        FlugAbFeld.setPromptText("Von");
+        FlugNachFeld.setPromptText("Nach");
+
     }
 
     private void setMediaPlayer() {
@@ -130,14 +144,14 @@ public class BuchenController {
 
     @FXML
     void FlugSuchenAction(ActionEvent event) {
-        if (FlugAbFeld.getText().equals("")) {
-            FlugAbFeld.setPromptText("Stadt eingeben");
+        if (FlugAbFeld.getValue() == null) {
+            FlugAbFeld.setPromptText("Von");
         }
-        if (FlugNachFeld.getText().equals("")) {
-            FlugNachFeld.setPromptText("Stadt eingeben");
+        if (FlugNachFeld.getValue() == null) {
+            FlugNachFeld.setPromptText("Nach");
         } else {
             mp.stop();
-            FluglisteController.setInfos(FlugAbFeld.getText(), FlugNachFeld.getText(), "", AnzahlFeld.getText(), DatumHinflug.getValue(), DatumRueckflug.getValue());
+            FluglisteController.setInfos(FlugAbFeld.getValue(), FlugNachFeld.getValue(), "", AnzahlFeld.getText(), DatumHinflug.getValue(), DatumRueckflug.getValue());
             MAIN.fensterOeffnen(Views.Flugliste);
         }
     }
@@ -178,4 +192,88 @@ public class BuchenController {
             MAIN.fensterOeffnen(Views.AdminStartseite);
         }
     }
+
+
+    public class AutoCompleteComboBoxListener<T> implements EventHandler<KeyEvent> {
+
+        private ComboBox<T> comboBox;
+        private ObservableList<T> data;
+        private boolean moveCaretToPos = false;
+        private int caretPos;
+
+        public AutoCompleteComboBoxListener(final ComboBox<T> comboBox) {
+            this.comboBox = comboBox;
+            data = comboBox.getItems();
+
+            this.comboBox.setEditable(true);
+            this.comboBox.setOnKeyReleased(AutoCompleteComboBoxListener.this);
+        }
+
+        @Override
+        public void handle(KeyEvent event) {
+            if(event.getCode() == KeyCode.UP) {
+                caretPos = -1;
+                moveCaret(comboBox.getEditor().getText().length());
+                return;
+            } else if(event.getCode() == KeyCode.DOWN) {
+                if(!comboBox.isShowing())
+                    comboBox.show();
+
+                caretPos = -1;
+                moveCaret(comboBox.getEditor().getText().length());
+                return;
+            }
+
+            if (event.getCode() == KeyCode.RIGHT || event.getCode() == KeyCode.LEFT
+                    || event.isControlDown() || event.getCode() == KeyCode.HOME
+                    || event.getCode() == KeyCode.END || event.getCode() == KeyCode.TAB) {
+                return;
+            }
+
+            comboBox.hide();
+
+            if(event.getCode() == KeyCode.BACK_SPACE) {
+                moveCaretToPos = true;
+                caretPos = comboBox.getEditor().getCaretPosition();
+            } else if(event.getCode() == KeyCode.DELETE) {
+                moveCaretToPos = true;
+                caretPos = comboBox.getEditor().getCaretPosition();
+            }
+
+            ObservableList<T> list = FXCollections.observableArrayList();
+            for (int i=0; i<data.size(); i++) {
+                if(data.get(i).toString().toLowerCase().startsWith(
+                        AutoCompleteComboBoxListener.this.comboBox
+                                .getEditor().getText().toLowerCase())) {
+                    list.add(data.get(i));
+                }
+            }
+            String t = comboBox.getEditor().getText();
+
+            comboBox.setItems(list);
+
+            comboBox.getEditor().setText(t);
+
+            if(!moveCaretToPos) {
+                caretPos = -1;
+            }
+            moveCaret(t.length());
+            if(!list.isEmpty()) {
+                comboBox.show();
+            }
+        }
+
+        private void moveCaret(int textLength) {
+            if(caretPos == -1)
+                comboBox.getEditor().positionCaret(textLength);
+            else
+                comboBox.getEditor().positionCaret(caretPos);
+
+            moveCaretToPos = false;
+        }
+
+    }
+
+
+
 }

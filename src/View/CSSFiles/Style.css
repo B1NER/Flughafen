@@ -28,6 +28,13 @@
     -fx-border-radius: 4px;
 }
 
+.comboBox{
+     -fx-background-color: rgba(0, 0, 0, 0.2);
+     -fx-border-color: white;
+     -fx-text-fill: white;
+     -fx-border-radius: 4px;
+}
+
 .date-picker {
     -fx-background-color: transparent;
     -fx-border-color: white;
@@ -192,3 +199,8 @@
     -fx-background-color: rgba(14, 0, 86, 0.25);
     -fx-border-color: white;
 }
+
+/** Size the combo-box drop down list. */
+ .combo-box-popup > .list-view {
+     -fx-pref-height: 200;
+ }
