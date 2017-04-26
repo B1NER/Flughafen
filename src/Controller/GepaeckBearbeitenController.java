@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
+//Verwaltung getestet
 public class GepaeckBearbeitenController {
 
     private static Gepaeck gepaeck;
@@ -34,6 +35,18 @@ public class GepaeckBearbeitenController {
                 Gepaecktypen.Sportgepäck);
         GepaeckTyp.setValue(gepaeck.getGepaeckTyp());
         GewichtFeld.setText(String.valueOf(gewicht));
+
+        GewichtFeld.textProperty().addListener((observable, oldValue, newValue) -> {
+            try {
+                gewicht = Integer.parseInt(newValue);
+                if (!GewichtFeld.equals("")) {
+                    GewichtFeld.setText(GewichtFeld.getText().replace("-", ""));
+                }
+            } catch (NumberFormatException e) {
+                GewichtFeld.setText("");
+            }
+        });
+
     }
 
     @FXML

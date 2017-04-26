@@ -7,9 +7,6 @@ import Model.Klassen.Nutzer.Administrator;
 import Model.Klassen.Nutzer.Angestellter;
 import Model.Klassen.Nutzer.Anwender;
 import Model.Klassen.Verwaltung.Verwaltung;
-import javafx.beans.binding.Bindings;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
@@ -22,15 +19,15 @@ import javafx.scene.media.MediaView;
 
 import java.io.File;
 
-
+//Auf VErwaltung getestet
 public class AnmeldenController {
 
+    private final Media m = new Media(new File("src\\View\\Grafiken\\wolken.mp4").toURI().toString());
+    private final MediaPlayer mp = new MediaPlayer(m);
     @FXML
     private PasswordField PasswordFeld;
-
     @FXML
     private TextField EmailFeld;
-
     @FXML
     private StackPane stackPane;
 
@@ -42,9 +39,6 @@ public class AnmeldenController {
         });
         setMediaPlayer();
     }
-
-    private final Media m = new Media(new File("src\\View\\Grafiken\\wolken.mp4").toURI().toString());
-    private final MediaPlayer mp = new MediaPlayer(m);
 
     private void setMediaPlayer() {
 

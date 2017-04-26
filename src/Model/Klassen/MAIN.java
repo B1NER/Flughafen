@@ -19,6 +19,7 @@ import java.util.Stack;
 //TODO Skalieren: BuchungBearbeiten, Anmelden, Kundenprofil
 //TODO Buchung Anmelden/Registrieren/MeinProfil Buttons zentrieren
 //TODO Dropdownmenü Städte
+//TODO Gepäck bearbeiten --> negative zahl kann eingegeben werden
 
 
 public class MAIN extends Application {

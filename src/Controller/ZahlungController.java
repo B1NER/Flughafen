@@ -7,7 +7,6 @@ import Model.Klassen.Elemente.Flug;
 import Model.Klassen.MAIN;
 import Model.Klassen.Nutzer.Angestellter;
 import Model.Klassen.Nutzer.Anwender;
-import Model.Klassen.Verwaltung.Fluege;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -191,7 +190,7 @@ public class ZahlungController {
             } else {
 
                 try {
-                    if (Integer.parseInt(GewichtFeld1.getText()) > anzahlPersonen * 20 || (Integer.parseInt(GewichtFeld1.getText()) > Fluege.getVerfuegbaresGewicht(hinflug))) {
+                    if (Integer.parseInt(GewichtFeld1.getText()) > anzahlPersonen * 20 || (Integer.parseInt(GewichtFeld1.getText()) > Verwaltung.getVerfuegbaresGewicht(hinflug))) {
                         throw new ToHighWeightException();
                     }
                     Verwaltung.gepaeckErstellen(Double.parseDouble(GewichtFeld1.getText()), GepackFeld1.getValue());
@@ -251,7 +250,7 @@ public class ZahlungController {
                 selectionModel.select(HinflugTab);
             } else {
                 try {
-                    if (Integer.parseInt(GewichtFeld1.getText()) > anzahlPersonen * 20 || (Integer.parseInt(GewichtFeld1.getText()) > Fluege.getVerfuegbaresGewicht(hinflug) || Integer.parseInt(GewichtFeld1.getText()) > Fluege.getVerfuegbaresGewicht(rueckflug))) {
+                    if (Integer.parseInt(GewichtFeld1.getText()) > anzahlPersonen * 20 || (Integer.parseInt(GewichtFeld1.getText()) > Verwaltung.getVerfuegbaresGewicht(hinflug) || Integer.parseInt(GewichtFeld1.getText()) > Verwaltung.getVerfuegbaresGewicht(rueckflug))) {
                         throw new ToHighWeightException();
                     }
                     Verwaltung.gepaeckErstellen(Double.parseDouble(GewichtFeld1.getText()), GepackFeld1.getValue());

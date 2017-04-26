@@ -17,6 +17,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.util.ArrayList;
 
+//Auf Verwaltung überprüft
 public class AngestellterStartseiteController {
 
     private static ObservableList<Anwender> observableList = FXCollections.observableList(new ArrayList<>());

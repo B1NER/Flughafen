@@ -6,14 +6,13 @@ import Model.Exceptions.FlugNotFoundException;
 import Model.Exceptions.ToHighWeightException;
 import Model.Klassen.Elemente.Buchung;
 import Model.Klassen.MAIN;
-import Model.Klassen.Verwaltung.Buchungen;
-import Model.Klassen.Verwaltung.Fluege;
-import Model.Klassen.Verwaltung.Gepaecke;
+import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 
+//VErwaltung getestet
 public class BuchungBearbeitenController {
 
     private static Buchung buchung;
@@ -36,7 +35,7 @@ public class BuchungBearbeitenController {
 
     public void initialize() {
         HinflugFeld.setText(buchung.getHinflug().getFlugID());
-        if (Buchungen.isRueckflug(buchung)) {
+        if (Verwaltung.isRueckflug(buchung)) {
             RuckflugFeld.setText(buchung.getRueckflug().getFlugID());
         }
         AnzahlSitzplatzeFeld.setText(String.valueOf(buchung.getAnzahlSitzplaetze()));
@@ -57,7 +56,7 @@ public class BuchungBearbeitenController {
         buchung.setBuchungspreis(Double.parseDouble(PreisFeld.getText()));
         buchung.setAnzahlSitzplaetze(Integer.parseInt(AnzahlSitzplatzeFeld.getText()));
         try {
-            Gepaecke.gepeckBearbeiten(buchung.getGepaeck(), Double.parseDouble(GewichtGepaeck.getText()), GepaeckTypChoiceBox.getValue());
+            Verwaltung.gepaeckBearbeiten(buchung.getGepaeck(), Double.parseDouble(GewichtGepaeck.getText()), GepaeckTypChoiceBox.getValue());
             GewichtGepaeck.setPromptText("");
         } catch (ToHighWeightException e) {
             GewichtGepaeck.setPromptText("Zu hohes Gewicht");
@@ -65,7 +64,7 @@ public class BuchungBearbeitenController {
         }
 
         try {
-            buchung.setHinflug(Fluege.getFlugByID(HinflugFeld.getText()));
+            buchung.setHinflug(Verwaltung.getFlugByID(HinflugFeld.getText()));
             HinflugFeld.setPromptText("");
         } catch (FlugNotFoundException e) {
             HinflugFeld.setPromptText("Dieser Flug existiert nicht");
@@ -73,8 +72,8 @@ public class BuchungBearbeitenController {
         }
 
         try {
-            if (Buchungen.isRueckflug(buchung)) {
-                buchung.setRueckflug(Fluege.getFlugByID(RuckflugFeld.getText()));
+            if (Verwaltung.isRueckflug(buchung)) {
+                buchung.setRueckflug(Verwaltung.getFlugByID(RuckflugFeld.getText()));
                 RuckflugFeld.setPromptText("");
             }
         } catch (FlugNotFoundException e) {

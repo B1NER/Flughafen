@@ -353,7 +353,7 @@ public abstract class Verwaltung {
         Gepaecke.addGepaeck(new Gepaeck(gewicht, gepaeckTyp));
     }
 
-    public static void gepaeckBearbeiten(Gepaeck gepaeck, int neuesGewicht, Gepaecktypen gepaecktyp) throws ToHighWeightException {
+    public static void gepaeckBearbeiten(Gepaeck gepaeck, double neuesGewicht, Gepaecktypen gepaecktyp) throws ToHighWeightException {
         Gepaecke.gepeckBearbeiten(gepaeck, neuesGewicht, gepaecktyp);
     }
 
@@ -561,6 +561,20 @@ public abstract class Verwaltung {
         Angestellte.getAngestellte().remove(angestellter);
     }
 
+    //Nutzer Getter
+    public static ArrayList<Anwender> getAnwenders() {
+        return Anwenders.getAnwenders();
+    }
+
+    public static ArrayList<Angestellter> getAngestellte() {
+        return Angestellte.getAngestellte();
+    }
+
+    public static ArrayList<Administrator> getAdministratoren() {
+        return Administratoren.getAdministratoren();
+    }
+
+
     //Anmelden
     public static void anmelden(String eMail, String password) throws NutzerDoesNotExistException {
         for (int i = 0; i < Administratoren.getAdministratoren().size(); i++) {
@@ -615,6 +629,14 @@ public abstract class Verwaltung {
 
     public static void buchungBearbeiten(Buchung buchung, Flug hinflug, Flug rueckflug, Anwender anwender, int anzahlSitzplaetze, Gepaeck gepaeck, double buchungspreis) {
         Buchungen.buchungBearbeiten(buchung, hinflug, rueckflug, anwender, anzahlSitzplaetze, gepaeck, buchungspreis);
+    }
+
+    public static void removeBuchung(Buchung buchung) {
+        Buchungen.removeBuchung(buchung);
+    }
+
+    public static boolean isRueckflug(Buchung buchung) {
+        return Buchungen.isRueckflug(buchung);
     }
 
     public static ArrayList<Buchung> getBuchungenByAnwender(Anwender anwender) {
@@ -695,6 +717,10 @@ public abstract class Verwaltung {
         return Anwenders.getAnwenderByID(anwenderID);
     }
 
+    public static Flug getFlugByID(String flugID) throws FlugNotFoundException {
+        return Fluege.getFlugByID(flugID);
+    }
+
 
     //Fluege finden
     public static ArrayList<Flug> flugFinden(String abflugort, String ankunftsort, Date abflugzeit, int anzahlSitzplaetze) throws FlugNotFoundException {
@@ -717,6 +743,13 @@ public abstract class Verwaltung {
         return Fluege.getFluege();
     }
 
+    public static boolean isVerfallen(Flug flug) {
+        return Fluege.isVerfallen(flug);
+    }
+
+    public static int getVerfuegbaresGewicht(Flug flug) {
+        return Fluege.getVerfuegbaresGewicht(flug);
+    }
 
     //Funktionelle Methoden
     public static boolean isAngemeldet() {

@@ -6,9 +6,6 @@ import Model.Klassen.Nutzer.Administrator;
 import Model.Klassen.Nutzer.Angestellter;
 import Model.Klassen.Nutzer.Anwender;
 import Model.Klassen.Nutzer.Mensch;
-import Model.Klassen.Verwaltung.Administratoren;
-import Model.Klassen.Verwaltung.Angestellte;
-import Model.Klassen.Verwaltung.Anwenders;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -60,9 +57,9 @@ public class ZuBearbeitendenNutzerFindenConroller {
         spalteTyp.setCellValueFactory(new PropertyValueFactory<Mensch, String>("typ"));
 
         menschen.clear();
-        menschen.addAll(Anwenders.getAnwenders());
-        menschen.addAll(Administratoren.getAdministratoren());
-        menschen.addAll(Angestellte.getAngestellte());
+        menschen.addAll(Verwaltung.getAnwenders());
+        menschen.addAll(Verwaltung.getAdministratoren());
+        menschen.addAll(Verwaltung.getAngestellte());
 
 
         observableList = FXCollections.observableList(menschen);

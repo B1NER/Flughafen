@@ -5,7 +5,6 @@ import Model.Klassen.Elemente.Buchung;
 import Model.Klassen.MAIN;
 import Model.Klassen.Nutzer.Angestellter;
 import Model.Klassen.Nutzer.Anwender;
-import Model.Klassen.Verwaltung.Buchungen;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -135,7 +134,7 @@ public class ZuBearbeitendeBuchungFindenConroller {
 
     @FXML
     void LoschenAction(ActionEvent event) {
-        Buchungen.removeBuchung(tabelle.getSelectionModel().getSelectedItem());
+        Verwaltung.removeBuchung(tabelle.getSelectionModel().getSelectedItem());
         observableList.remove(tabelle.getSelectionModel().getSelectedItem());
         initialize();
     }

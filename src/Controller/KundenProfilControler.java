@@ -7,8 +7,6 @@ import Model.Klassen.MAIN;
 import Model.Klassen.Nutzer.Administrator;
 import Model.Klassen.Nutzer.Angestellter;
 import Model.Klassen.Nutzer.Anwender;
-import Model.Klassen.Verwaltung.Buchungen;
-import Model.Klassen.Verwaltung.Fluege;
 import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,6 +17,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.util.ArrayList;
 
+//Verwaltung getestet
 public class KundenProfilControler {
 
     private static Anwender anwender;
@@ -103,17 +102,17 @@ public class KundenProfilControler {
                     PreisFeld.setText(String.valueOf(rowData.getBuchungspreis()));
                     SitzplaetzeFeld.setText(String.valueOf(rowData.getAnzahlSitzplaetze()));
 
-                    if (Fluege.isVerfallen(rowData.getHinflug())) {
+                    if (Verwaltung.isVerfallen(rowData.getHinflug())) {
                         AbgelaufenFeld.setText("Abgelaufen");
                     } else {
                         AbgelaufenFeld.setText("Aktuell");
                     }
 
-                    if (Buchungen.isRueckflug(rowData)) {
+                    if (Verwaltung.isRueckflug(rowData)) {
                         RuckflugFeld.setText(rowData.getRueckflug().toString());
                         StartDatumFeld1.setText(rowData.getHinflug().toStringAbflugzeit());
                         AnkunftsDatumFeld1.setText(rowData.getHinflug().toStringAnkunftszeit());
-                        if (Fluege.isVerfallen(rowData.getHinflug())) {
+                        if (Verwaltung.isVerfallen(rowData.getHinflug())) {
                             AbgelaufenFeld.setText("Abgelaufen");
                         } else {
                             AbgelaufenFeld.setText("Aktuell");

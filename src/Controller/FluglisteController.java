@@ -21,7 +21,7 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 
-
+//VErwaltung geprüft
 public class FluglisteController {
     private static String flugAb;
     private static String flugNach;

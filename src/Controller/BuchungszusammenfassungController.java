@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
+//Verwaltung getestet
 public class BuchungszusammenfassungController {
 
     private static Buchung buchung;

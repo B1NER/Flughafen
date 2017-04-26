@@ -23,6 +23,8 @@ import java.io.File;
 /**
  * Created by knoll on 14.04.2017.
  */
+
+//Verwaltung getestet
 public class BuchenController {
 
     private final Media m = new Media(new File("src\\View\\Grafiken\\wolken.mp4").toURI().toString());
