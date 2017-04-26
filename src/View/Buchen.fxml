@@ -7,14 +7,14 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <StackPane xmlns:fx="http://javafx.com/fxml/1" fx:id="stackPane" layoutX="10.0" layoutY="10.0" prefHeight="1024.0"
-           prefWidth="1280.0" stylesheets="@../View/CSSFiles/Style.css" xmlns="http://javafx.com/javafx/8"
+           prefWidth="1280.0" stylesheets="@../View/CSSFiles/Style.css" xmlns="http://javafx.com/javafx/8.0.112"
            fx:controller="Controller.BuchenController">
     <children>
         <VBox alignment="CENTER" prefHeight="1024.0" prefWidth="1280.0">
             <children>
-                <HBox alignment="TOP_RIGHT" prefHeight="212.0" prefWidth="1317.0" spacing="20.0">
+                <HBox alignment="CENTER" prefHeight="212.0" prefWidth="1000.0">
                     <children>
-                        <HBox prefHeight="192.0" prefWidth="954.0">
+                        <HBox alignment="CENTER_LEFT" prefHeight="192.0" prefWidth="450.0">
                             <children>
                                 <Button fx:id="MeinProfilButton" mnemonicParsing="false" onAction="#MeinProfilAction"
                                         prefHeight="65.0" prefWidth="200.0" text="Mein Profil">
@@ -22,12 +22,12 @@
                                         <Font size="30.0"/>
                                     </font>
                                     <HBox.margin>
-                                        <Insets left="50.0"/>
+                                        <Insets/>
                                     </HBox.margin>
                                 </Button>
                             </children>
                         </HBox>
-                        <HBox prefHeight="100.0" prefWidth="620.0">
+                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="450.0">
                             <children>
                                 <Button fx:id="AnmeldenButton" mnemonicParsing="false" onAction="#AnmeldenAction"
                                         prefHeight="65.0" prefWidth="200.0" text="Anmelden">
@@ -35,7 +35,7 @@
                                         <Font size="30.0"/>
                                     </font>
                                     <HBox.margin>
-                                        <Insets right="20.0"/>
+                                        <Insets/>
                                     </HBox.margin>
                                 </Button>
                                 <Button fx:id="RegistrierenButton" mnemonicParsing="false"
@@ -44,15 +44,15 @@
                                     <font>
                                         <Font size="30.0"/>
                                     </font>
+                                    <HBox.margin>
+                                        <Insets left="20.0"/>
+                                    </HBox.margin>
                                 </Button>
                             </children>
                         </HBox>
                     </children>
-                    <padding>
-                        <Insets right="20.0" top="20.0"/>
-                    </padding>
                     <VBox.margin>
-                        <Insets right="50.0"/>
+                        <Insets/>
                     </VBox.margin>
                 </HBox>
                 <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="1280.0">
@@ -72,9 +72,9 @@
                                 <Insets/>
                             </VBox.margin>
                         </HBox>
-                        <HBox alignment="CENTER" prefHeight="300.0" prefWidth="1000.0">
+                        <HBox alignment="CENTER" prefHeight="320.0" prefWidth="1000.0">
                             <children>
-                                <TabPane prefHeight="500.0" prefWidth="900.0" tabClosingPolicy="ALL_TABS"
+                                <TabPane prefHeight="550.0" prefWidth="900.0" tabClosingPolicy="ALL_TABS"
                                          tabMaxHeight="100.0" tabMaxWidth="900.0" tabMinHeight="50.0"
                                          tabMinWidth="429.0">
                                     <tabs>
@@ -150,8 +150,12 @@
                                                                         </Button>
                                                                         <TextField id="anzahlPersonenButtonBuchen"
                                                                                    fx:id="AnzahlFeld" alignment="CENTER"
-                                                                                   prefHeight="65.0" prefWidth="65.0"
-                                                                                   text="1"/>
+                                                                                   prefHeight="65.0" prefWidth="90.0"
+                                                                                   text="1">
+                                                                            <font>
+                                                                                <Font size="30.0"/>
+                                                                            </font>
+                                                                        </TextField>
                                                                         <Button id="anzahlPersonenButtonBuchen"
                                                                                 fx:id="plusButton"
                                                                                 mnemonicParsing="false"
@@ -247,7 +251,11 @@
                                                                         </Button>
                                                                         <TextField fx:id="NurHinflugAnzahlFeld"
                                                                                    alignment="CENTER" prefHeight="65.0"
-                                                                                   prefWidth="65.0" text="1"/>
+                                                                                   prefWidth="90.0" text="1">
+                                                                            <font>
+                                                                                <Font size="30.0"/>
+                                                                            </font>
+                                                                        </TextField>
                                                                         <Button id="anzahlPersonenButtonBuchen"
                                                                                 fx:id="NurHinflugplusButton"
                                                                                 mnemonicParsing="false"

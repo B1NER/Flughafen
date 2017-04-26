@@ -13,9 +13,11 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.scene.shape.Rectangle;
 
 import java.io.File;
 
@@ -42,7 +44,10 @@ public class AnmeldenController {
 
     private void setMediaPlayer() {
 
-        StackPane st = (StackPane) stackPane.getChildren().get(0);
+        Rectangle rectangle = (Rectangle) stackPane.getChildren().get(0);
+        VBox st = (VBox) stackPane.getChildren().get(1);
+
+        stackPane.getChildren().remove(0);
         stackPane.getChildren().remove(0);
 
         final javafx.scene.media.MediaView mv = new MediaView(mp);
@@ -51,6 +56,7 @@ public class AnmeldenController {
         mp.setCycleCount(MediaPlayer.INDEFINITE);
 
         stackPane.getChildren().add(mv);
+        stackPane.getChildren().add(rectangle);
         stackPane.getChildren().add(st);
         mp.play();
 

@@ -169,7 +169,7 @@
 }
 
 .tab-pane .tab {
-    -fx-background-color: rgb(1, 0, 85);
+    -fx-background-color: rgba(0, 0, 0, 0.33);
 }
 
 .tab .tab-label {
@@ -180,7 +180,7 @@
 }
 
 .tab-pane .tab:selected {
-    -fx-background-color: rgb(1, 0, 60);
+    -fx-background-color: rgba(14, 0, 86, 0.25);
 }
 
 .tab:selected .tab-label {
