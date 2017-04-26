@@ -3,3 +3,4 @@
 *.iml
 out
 gen
+/src/Model/Daten/Fluege/Flugliste.csv
