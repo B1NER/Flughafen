@@ -5,6 +5,7 @@ import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -17,7 +18,6 @@ import java.util.Stack;
 
 //TODO Skalieren: BuchungBearbeiten, Anmelden, Kundenprofil
 //TODO Dropdownmenü Städte
-//TODO Gepäck bearbeiten  & Zahlungscontroller --> negative zahl kann eingegeben werden
 
 
 public class MAIN extends Application {
@@ -51,7 +51,9 @@ public class MAIN extends Application {
     }
 
     public void start(Stage primaryStage) {
+
         MAIN.primaryStage = primaryStage;
+        primaryStage.getIcons().add(new Image("View/Grafiken/b1ner_icon.png"));
         hashmapsFuellen();
         MAIN.fensterOeffnen(Views.Buchen);
     }
@@ -72,5 +74,4 @@ public class MAIN extends Application {
         viewPfad.put(Views.ZuBearbeitendeBuchungFinden, "/View/ZuBearbeitendeBuchungFinden.fxml");
         viewPfad.put(Views.ZuBearbeitendenNutzerFinden, "/View/ZuBearbeitendenNutzerFinden.fxml");
     }
-
 }

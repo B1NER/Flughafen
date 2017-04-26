@@ -31,6 +31,6 @@ public class Administrator extends Mensch {
     }
 
     public String toString() {
-        return "Angestellter: " + super.toString() + "angestelltenID=" + adminID;
+        return "Administrator: " + super.toString() + "adminID=" + adminID;
     }
 }

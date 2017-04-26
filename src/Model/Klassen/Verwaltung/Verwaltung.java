@@ -128,7 +128,7 @@ public abstract class Verwaltung {
             } catch (InvalidEmailException e) {
                 System.out.println(eingelesenerAdministrator + " ungültige Email");
             }
-            System.out.println("Administrator eingelesen:" + eingelesenerAdministrator);
+            System.out.println("Administrator eingelesen: " + eingelesenerAdministrator);
         }
         s.close();
         Administratoren.setAdminCounter(getBiggestID("Administrator"));
@@ -454,7 +454,6 @@ public abstract class Verwaltung {
         }
         Angestellter a = new Angestellter(vorname, nachname, geburtsdatum, passnummer, eMail, passwort);
         Angestellte.addAngestellter(a);
-        System.out.println("Angestellter angelegt:" + a);
     }
 
     public static void anwenderErstellen(Anwender anwender) throws InvalidEmailException, EmailIsAlreadyUsedException {
