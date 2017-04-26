@@ -66,7 +66,6 @@ public class BuchenController {
 
     public void initialize() {
         setMediaPlayer();
-
         AnzahlFeld.setDisable(true);
         NurHinflugAnzahlFeld.setDisable(true);
 
@@ -103,11 +102,6 @@ public class BuchenController {
         FlugNachFeld.setPromptText("Nach");
         FlugAbFeld2.setPromptText("Von");
         FlugNachFeld2.setPromptText("Nach");
-        FlugAbFeld.setOnKeyReleased(event -> {
-            if (event.getCode() == KeyCode.ENTER) {
-                FlugAbFeld.setValue(FlugAbFeld.getSelectionModel().getSelectedItem());
-            }
-        });
 
     }
 
