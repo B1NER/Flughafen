@@ -5,6 +5,7 @@ import Model.Klassen.Verwaltung.Verwaltung;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -54,7 +55,9 @@ public class MAIN extends Application {
     }
 
     public void start(Stage primaryStage) {
+
         MAIN.primaryStage = primaryStage;
+        primaryStage.getIcons().add(new Image("View/Grafiken/b1ner_icon.png"));
         hashmapsFuellen();
         MAIN.fensterOeffnen(Views.Buchen);
     }
