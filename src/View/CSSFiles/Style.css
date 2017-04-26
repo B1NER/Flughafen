@@ -108,6 +108,15 @@
     -fx-background-radius: 4px;
 }
 
+#GepaeckBearbeiten {
+    -fx-background-color: transparent;
+    -fx-border-color: white;
+    -fx-text-fill: white;
+    -fx-transition-duration: 0.4s;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4;
+    -fx-font-size: 20pt;
+}
 
 /* Table */
 
