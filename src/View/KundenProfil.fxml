@@ -8,7 +8,7 @@
 <?import javafx.scene.text.*?>
 <StackPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
            minWidth="-Infinity" prefHeight="1024.0" prefWidth="1280.0" stylesheets="@../View/CSSFiles/Style.css"
-           xmlns="http://javafx.com/javafx/8.0.112" fx:controller="Controller.KundenProfilControler">
+           xmlns="http://javafx.com/javafx/8" fx:controller="Controller.KundenProfilControler">
     <children>
         <ImageView fitHeight="1024.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true" scaleY="1.44">
             <image>
@@ -17,18 +17,24 @@
         </ImageView>
         <VBox alignment="CENTER" prefHeight="1024.0" prefWidth="1280.0" spacing="20.0">
             <children>
-                <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="1280.0" spacing="20.0">
+                <HBox prefHeight="100.0" prefWidth="1280.0" spacing="20.0">
                     <children>
                         <Label fx:id="KundenProfilText" alignment="CENTER" text="Kunden Profil" textFill="#fcf8f8">
                             <font>
                                 <Font size="62.0"/>
                             </font>
+                            <HBox.margin>
+                                <Insets/>
+                            </HBox.margin>
+                            <padding>
+                                <Insets left="450.0"/>
+                            </padding>
                         </Label>
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                     <children>
-                        <HBox alignment="TOP_CENTER" prefHeight="65.0" prefWidth="400.0">
+                        <HBox alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="400.0">
                             <children>
                                 <Label fx:id="VornameText" prefHeight="65.0" prefWidth="220.0" text="Vorname: "
                                        textFill="#eee9e9">
@@ -44,7 +50,7 @@
                                 </Label>
                             </children>
                         </HBox>
-                        <HBox alignment="TOP_CENTER" prefHeight="65.0" prefWidth="400.0">
+                        <HBox alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="400.0">
                             <children>
                                 <Label fx:id="NachnameText" prefHeight="65.0" prefWidth="220.0" text="Nachname:"
                                        textFill="#eee9e9">
@@ -302,7 +308,7 @@
                         </VBox>
                     </children>
                     <VBox.margin>
-                        <Insets left="20.0"/>
+                        <Insets left="20.0" right="20.0"/>
                     </VBox.margin>
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="958.0" spacing="20.0">
@@ -336,6 +342,12 @@
                     </children>
                 </HBox>
             </children>
+            <padding>
+                <Insets bottom="50.0" top="50.0"/>
+            </padding>
+            <StackPane.margin>
+                <Insets/>
+            </StackPane.margin>
         </VBox>
     </children>
 </StackPane>

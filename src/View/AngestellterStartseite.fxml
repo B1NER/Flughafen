@@ -76,12 +76,6 @@
                 </TableView>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1280.0" spacing="20.0">
                     <children>
-                        <Button id="btnKundenListeAbmelden" fx:id="AbmeldenButton" mnemonicParsing="false"
-                                onAction="#AbmeldenAction" prefHeight="65.0" prefWidth="200.0" text="Abmelden">
-                            <font>
-                                <Font size="22.0"/>
-                            </font>
-                        </Button>
                         <Button id="btnKundenListeBearbeiten" fx:id="KundebearbeitenButton" mnemonicParsing="false"
                                 onAction="#KundebearbeitenAction" prefHeight="65.0" prefWidth="250.0"
                                 text="Kunde bearbeiten">
@@ -92,6 +86,12 @@
                         <Button id="btnKundenListeNeuErstellen" fx:id="KundenanlegenButton" mnemonicParsing="false"
                                 onAction="#KundenanlegenAction" prefHeight="65.0" prefWidth="200.0"
                                 text="Kunde anlegen">
+                            <font>
+                                <Font size="22.0"/>
+                            </font>
+                        </Button>
+                        <Button id="btnKundenListeAbmelden" fx:id="AbmeldenButton" mnemonicParsing="false"
+                                onAction="#AbmeldenAction" prefHeight="65.0" prefWidth="200.0" text="Abmelden">
                             <font>
                                 <Font size="22.0"/>
                             </font>

@@ -17,7 +17,6 @@ import java.util.Stack;
 
 //TODO Skalieren: BuchungBearbeiten, Anmelden, Kundenprofil
 //TODO Dropdownmenü Städte
-//TODO Gepäck bearbeiten  & Zahlungscontroller --> negative zahl kann eingegeben werden
 
 
 public class MAIN extends Application {
@@ -72,5 +71,4 @@ public class MAIN extends Application {
         viewPfad.put(Views.ZuBearbeitendeBuchungFinden, "/View/ZuBearbeitendeBuchungFinden.fxml");
         viewPfad.put(Views.ZuBearbeitendenNutzerFinden, "/View/ZuBearbeitendenNutzerFinden.fxml");
     }
-
 }
