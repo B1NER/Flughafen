@@ -11,6 +11,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
@@ -19,6 +21,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 
+import java.awt.*;
 import java.io.File;
 
 /**
@@ -37,21 +40,21 @@ public class BuchenController {
     @FXML
     private Button AnmeldenButton;
     @FXML
-    private TextField FlugNachFeld2;
-    @FXML
     private DatePicker DatumHinflug2;
     @FXML
     private DatePicker DatumHinflug;
     @FXML
     private TextField AnzahlFeld;
     @FXML
-    private ComboBox<String> FlugNachFeld;
-    @FXML
     private TextField NurHinflugAnzahlFeld;
     @FXML
-    private TextField FlugAbFeld2;
+    private ComboBox<String> FlugAbFeld2;
     @FXML
     private ComboBox<String> FlugAbFeld;
+    @FXML
+    private ComboBox<String> FlugNachFeld;
+    @FXML
+    private ComboBox<String> FlugNachFeld2;
     @FXML
     private Tab tabPaneMitRueckflug;
     @FXML
@@ -80,27 +83,31 @@ public class BuchenController {
         DatumHinflug.setEditable(false);
         DatumHinflug2.setEditable(false);
 
-        stackPane.setOnKeyReleased(event -> {
-            if (event.getCode() == KeyCode.ENTER) {
-                if (tabPaneMitRueckflug.isSelected() && !FlugAbFeld.isFocused() && !FlugAbFeld.isFocused()) {
-                    FlugSuchenAction(new ActionEvent());
-                } else if (tabPaneOhneRueckflug.isSelected()) {
-                    FlugSuchenAction2(new ActionEvent());
-                }
-            }
-        });
-
+        //Set Dropdowns
         FlugAbFeld.setEditable(true);
         FlugNachFeld.setEditable(true);
+        FlugAbFeld2.setEditable(true);
+        FlugNachFeld2.setEditable(true);
 
         FlugAbFeld.setItems(FXCollections.observableList(Verwaltung.getStaedte()));
         FlugNachFeld.setItems(FXCollections.observableList(Verwaltung.getStaedte()));
+        FlugAbFeld2.setItems(FXCollections.observableList(Verwaltung.getStaedte()));
+        FlugNachFeld2.setItems(FXCollections.observableList(Verwaltung.getStaedte()));
 
         new AutoCompleteComboBoxListener<String>(FlugAbFeld);
         new AutoCompleteComboBoxListener<String>(FlugNachFeld);
+        new AutoCompleteComboBoxListener<String>(FlugAbFeld2);
+        new AutoCompleteComboBoxListener<String>(FlugNachFeld2);
 
         FlugAbFeld.setPromptText("Von");
         FlugNachFeld.setPromptText("Nach");
+        FlugAbFeld2.setPromptText("Von");
+        FlugNachFeld2.setPromptText("Nach");
+        FlugAbFeld.setOnKeyReleased(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                FlugAbFeld.setValue(FlugAbFeld.getSelectionModel().getSelectedItem());
+            }
+        });
 
     }
 
@@ -158,14 +165,14 @@ public class BuchenController {
 
     @FXML
     void FlugSuchenAction2(ActionEvent event) {
-        if (FlugAbFeld2.getText().equals("")) {
+        if (FlugAbFeld2.getValue() == null) {
             FlugAbFeld2.setPromptText("Stadt eingeben");
         }
-        if (FlugNachFeld2.getText().equals("")) {
+        if (FlugNachFeld2.getValue() == null) {
             FlugNachFeld2.setPromptText("Stadt eingeben");
         } else {
             mp.stop();
-            FluglisteController.setInfos(FlugAbFeld2.getText(), FlugNachFeld2.getText(), "", NurHinflugAnzahlFeld.getText(), DatumHinflug2.getValue());
+            FluglisteController.setInfos(FlugAbFeld2.getValue(), FlugNachFeld2.getValue(), "", NurHinflugAnzahlFeld.getText(), DatumHinflug2.getValue());
             MAIN.fensterOeffnen(Views.Flugliste);
         }
     }
@@ -193,7 +200,6 @@ public class BuchenController {
         }
     }
 
-
     public class AutoCompleteComboBoxListener<T> implements EventHandler<KeyEvent> {
 
         private ComboBox<T> comboBox;
@@ -211,12 +217,12 @@ public class BuchenController {
 
         @Override
         public void handle(KeyEvent event) {
-            if(event.getCode() == KeyCode.UP) {
+            if (event.getCode() == KeyCode.UP) {
                 caretPos = -1;
                 moveCaret(comboBox.getEditor().getText().length());
                 return;
-            } else if(event.getCode() == KeyCode.DOWN) {
-                if(!comboBox.isShowing())
+            } else if (event.getCode() == KeyCode.DOWN) {
+                if (!comboBox.isShowing())
                     comboBox.show();
 
                 caretPos = -1;
@@ -232,17 +238,17 @@ public class BuchenController {
 
             comboBox.hide();
 
-            if(event.getCode() == KeyCode.BACK_SPACE) {
+            if (event.getCode() == KeyCode.BACK_SPACE) {
                 moveCaretToPos = true;
                 caretPos = comboBox.getEditor().getCaretPosition();
-            } else if(event.getCode() == KeyCode.DELETE) {
+            } else if (event.getCode() == KeyCode.DELETE) {
                 moveCaretToPos = true;
                 caretPos = comboBox.getEditor().getCaretPosition();
             }
 
             ObservableList<T> list = FXCollections.observableArrayList();
-            for (int i=0; i<data.size(); i++) {
-                if(data.get(i).toString().toLowerCase().startsWith(
+            for (int i = 0; i < data.size(); i++) {
+                if (data.get(i).toString().toLowerCase().startsWith(
                         AutoCompleteComboBoxListener.this.comboBox
                                 .getEditor().getText().toLowerCase())) {
                     list.add(data.get(i));
@@ -254,17 +260,17 @@ public class BuchenController {
 
             comboBox.getEditor().setText(t);
 
-            if(!moveCaretToPos) {
+            if (!moveCaretToPos) {
                 caretPos = -1;
             }
             moveCaret(t.length());
-            if(!list.isEmpty()) {
+            if (!list.isEmpty()) {
                 comboBox.show();
             }
         }
 
         private void moveCaret(int textLength) {
-            if(caretPos == -1)
+            if (caretPos == -1)
                 comboBox.getEditor().positionCaret(textLength);
             else
                 comboBox.getEditor().positionCaret(caretPos);
@@ -273,7 +279,5 @@ public class BuchenController {
         }
 
     }
-
-
 
 }
