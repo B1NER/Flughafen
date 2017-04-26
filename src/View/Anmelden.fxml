@@ -1,86 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.*?>
 <StackPane xmlns:fx="http://javafx.com/fxml/1" fx:id="stackPane" maxHeight="-Infinity" maxWidth="-Infinity"
            minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0" prefWidth="1280.0"
-           stylesheets="@../View/CSSFiles/Style.css" xmlns="http://javafx.com/javafx/8"
+           stylesheets="@../View/CSSFiles/Style.css" xmlns="http://javafx.com/javafx/8.0.112"
            fx:controller="Controller.AnmeldenController">
     <children>
-        <StackPane prefHeight="150.0" prefWidth="200.0">
-            <children>
 
-                <Rectangle arcHeight="40.0" arcWidth="40.0" fill="#0d005486" height="550.0" stroke="TRANSPARENT"
-                           strokeType="INSIDE" styleClass="rectangleAnmelden" width="655.0"/>
-                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="50.0" spacing="10.0"
-                      stylesheets="@CSSFiles/Style.css">
+        <Rectangle arcHeight="40.0" arcWidth="40.0" fill="#0d005486" height="563.0" stroke="TRANSPARENT"
+                   strokeType="INSIDE" styleClass="rectangleAnmelden" width="655.0"/>
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+            <children>
+                <Label fx:id="AnmeldenText" text="Anmelden" textFill="#f2eded">
+                    <font>
+                        <Font size="64.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="EmaliText" alignment="TOP_LEFT" prefHeight="65.0" prefWidth="120.0" text="E-Mail"
+                       textFill="#fcf5f5">
+                    <font>
+                        <Font size="36.0"/>
+                    </font>
+                    <VBox.margin>
+                        <Insets right="420.0"/>
+                    </VBox.margin>
+                </Label>
+                <TextField fx:id="EmailFeld" promptText="beispiel@beispiel.com">
+                    <font>
+                        <Font size="36.0"/>
+                    </font>
+                    <VBox.margin>
+                        <Insets left="370.0" right="370.0"/>
+                    </VBox.margin>
+                </TextField>
+                <Label fx:id="PasswordText" text="Password" textFill="#f8f5f5">
+                    <font>
+                        <Font size="36.0"/>
+                    </font>
+                    <VBox.margin>
+                        <Insets right="400.0"/>
+                    </VBox.margin>
+                </Label>
+                <PasswordField fx:id="PasswordFeld" prefHeight="80.0" prefWidth="601.0" promptText="Beispielpasswort">
+                    <font>
+                        <Font size="36.0"/>
+                    </font>
+                    <VBox.margin>
+                        <Insets bottom="20.0" left="370.0" right="370.0"/>
+                    </VBox.margin>
+                </PasswordField>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                     <children>
-                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
-                            <children>
-                                <Label fx:id="AnmeldenText" text="Anmelden" textFill="#f2eded">
-                                    <font>
-                                        <Font size="64.0"/>
-                                    </font>
-                                </Label>
-                                <Label fx:id="EmaliText" alignment="TOP_LEFT" text="E-Mail" textFill="#fcf5f5">
-                                    <font>
-                                        <Font size="36.0"/>
-                                    </font>
-                                </Label>
-                                <TextField fx:id="EmailFeld" prefHeight="80.0" prefWidth="601.0"
-                                           promptText="beispiel@beispiel.com">
-                                    <font>
-                                        <Font size="36.0"/>
-                                    </font>
-                                </TextField>
-                                <Label fx:id="PasswordText" text="Password" textFill="#f8f5f5">
-                                    <font>
-                                        <Font size="36.0"/>
-                                    </font>
-                                </Label>
-                                <PasswordField fx:id="PasswordFeld" prefHeight="80.0" prefWidth="601.0"
-                                               promptText="Beispielpasswort">
-                                    <font>
-                                        <Font size="36.0"/>
-                                    </font>
-                                </PasswordField>
-                            </children>
-                            <padding>
-                                <Insets left="340.0" right="340.0"/>
-                            </padding>
-                        </VBox>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
-                            <children>
-                                <Button fx:id="AnmeldenButton" mnemonicParsing="false" onAction="#AnmeldenAction"
-                                        text="Anmelden">
-                                    <font>
-                                        <Font size="25.0"/>
-                                    </font>
-                                </Button>
-                                <Button fx:id="RegistrierenButton" alignment="CENTER" mnemonicParsing="false"
-                                        onAction="#RegistrierenAction" prefHeight="65.0" prefWidth="170.0"
-                                        text="Registrieren">
-                                    <HBox.margin>
-                                        <Insets/>
-                                    </HBox.margin>
-                                    <font>
-                                        <Font size="25.0"/>
-                                    </font>
-                                </Button>
-                                <Button fx:id="AbbrechenButton" mnemonicParsing="false" onAction="#AbbrechenAction"
-                                        prefHeight="65.0" prefWidth="180.0" text="Abbrechen">
-                                    <font>
-                                        <Font size="25.0"/>
-                                    </font>
-                                </Button>
-                            </children>
-                        </HBox>
+                        <Button fx:id="AnmeldenButton" mnemonicParsing="false" onAction="#AnmeldenAction"
+                                prefHeight="65.0" prefWidth="170.0" text="Anmelden">
+                            <font>
+                                <Font size="25.0"/>
+                            </font>
+                            <HBox.margin>
+                                <Insets right="10.0"/>
+                            </HBox.margin>
+                        </Button>
+                        <Button fx:id="RegistrierenButton" alignment="CENTER" mnemonicParsing="false"
+                                onAction="#RegistrierenAction" prefHeight="65.0" prefWidth="170.0" text="Registrieren">
+                            <font>
+                                <Font size="25.0"/>
+                            </font>
+                        </Button>
+                        <Button fx:id="AbbrechenButton" mnemonicParsing="false" onAction="#AbbrechenAction"
+                                prefHeight="65.0" prefWidth="180.0" text="Abbrechen">
+                            <font>
+                                <Font size="25.0"/>
+                            </font>
+                            <HBox.margin>
+                                <Insets left="10.0"/>
+                            </HBox.margin>
+                        </Button>
                     </children>
-                </VBox>
+                </HBox>
             </children>
-        </StackPane>
+        </VBox>
     </children>
 </StackPane>
